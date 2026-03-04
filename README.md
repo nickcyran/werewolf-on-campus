@@ -1,5 +1,9 @@
 # Godot Project – Setup Guide (Beginner Friendly)
 
+
+Link to playable build: https://nickcyran.github.io/werewolf-on-campus/
+---
+
 This repository contains a game project built using the **Godot Game Engine**.
 
 You have been invited to this **private repository via email**. Follow the steps below to access the project and run it locally.

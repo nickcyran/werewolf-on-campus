@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://d31kkopghnapc" path="res://3D/player.tscn" id="1_0sso4"]
 [ext_resource type="Script" uid="uid://da834q2uq0bs" path="res://3D/room/computer.gd" id="1_6j18c"]
+[ext_resource type="Script" uid="uid://b1nafkycbvr3j" path="res://3D/room/room.gd" id="1_qwhiq"]
 [ext_resource type="Material" uid="uid://dam4lb2dis3dj" path="res://assets/materials/outline.tres" id="2_7scl1"]
 [ext_resource type="Script" uid="uid://jxp26s5rmyyg" path="res://3D/room/phone.gd" id="2_ylybq"]
+[ext_resource type="PackedScene" uid="uid://cn8bjvas3k7gf" path="res://browser/browser.tscn" id="4_34v3w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0sso4"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,8 +19,12 @@ background_mode = 2
 sky = SubResource("Sky_6j18c")
 tonemap_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34v3w"]
+albedo_color = Color(0.1663743, 0.1663743, 0.1663743, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_34v3w"]
 lightmap_size_hint = Vector2i(6, 10)
+material = SubResource("StandardMaterial3D_34v3w")
 size = Vector3(0.515, 0.32, 0.045)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_copmputer"]
@@ -28,6 +34,16 @@ size = Vector3(0.435, 0.27, 0.06)
 material = ExtResource("2_7scl1")
 flip_faces = true
 size = Vector3(0.53, 0.33, 0.045)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3vqul"]
+size = Vector2(0.495, 0.295)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_34v3w"]
+viewport_path = NodePath("PlayableArea/Interactables/Computer/Screen/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vqul"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_34v3w")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j18c"]
 albedo_color = Color(0, 0, 0, 1)
@@ -71,6 +87,7 @@ material = SubResource("StandardMaterial3D_ylybq")
 size = Vector3(1.4, 0.825, 0.585)
 
 [node name="Room" type="Node3D" unique_id=1475979313]
+script = ExtResource("1_qwhiq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1179417521]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -98,6 +115,16 @@ shape = SubResource("BoxShape3D_copmputer")
 [node name="Outline" type="MeshInstance3D" parent="PlayableArea/Interactables/Computer" unique_id=848427297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7264856, 0.9726348, -0.14119953)
 mesh = SubResource("BoxMesh_konn3")
+
+[node name="Screen" type="MeshInstance3D" parent="PlayableArea/Interactables/Computer" unique_id=1778955787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7252929, 0.9741241, -0.11055377)
+mesh = SubResource("QuadMesh_3vqul")
+surface_material_override/0 = SubResource("StandardMaterial3D_3vqul")
+
+[node name="SubViewport" type="SubViewport" parent="PlayableArea/Interactables/Computer/Screen" unique_id=1908238549]
+size = Vector2i(840, 476)
+
+[node name="Browser" parent="PlayableArea/Interactables/Computer/Screen/SubViewport" unique_id=745076709 instance=ExtResource("4_34v3w")]
 
 [node name="Phone" type="Node3D" parent="PlayableArea/Interactables" unique_id=771575693]
 script = ExtResource("2_ylybq")

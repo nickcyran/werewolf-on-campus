@@ -24,6 +24,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F1:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 		return
+	
+	# Handle interaction click
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and _hovered_interactable:
+			
+			_hovered_interactable.interact()
+		return
 
 	# Handle mouse look
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED or not event is InputEventMouseMotion:
@@ -37,7 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _update_hovered_interactable() -> void:
 	if not is_inside_tree(): return
-
+	
 	var space_state := get_world_3d().direct_space_state
 	var from := camera.global_position
 	var to := from - camera.global_transform.basis.z * interact_max_distance

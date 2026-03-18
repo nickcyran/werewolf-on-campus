@@ -1,6 +1,7 @@
 class_name Interactable extends Node
 
 var outline_mesh: MeshInstance3D
+var _is_hovered: bool = false
 
 func initialize_outline(mesh: MeshInstance3D) -> void:
 	outline_mesh = mesh
@@ -16,7 +17,12 @@ func remove_outline() -> void:
 		outline_mesh.hide()
 
 func set_hovered(hovered: bool) -> void:
-	if hovered:
+	_is_hovered = hovered
+	
+	if _is_hovered:
 		apply_outline()
 	else:
 		remove_outline()
+
+func interact() -> void:
+	print("Interacted with ", name)

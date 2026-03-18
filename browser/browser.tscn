@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cn8bjvas3k7gf"]
 
+[ext_resource type="Script" uid="uid://jkk0k46bs2fd" path="res://browser/browser.gd" id="1_vmb4q"]
+
 [node name="Browser" type="Control" unique_id=745076709]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vmb4q")
 
 [node name="BG" type="ColorRect" parent="." unique_id=1134778306]
 layout_mode = 1
@@ -15,20 +18,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1.2237577, 0.87164474, 0.21772084, 1)
+color = Color(0.50349385, 0.5536071, 0.5786637, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=900852438]
+[node name="Browser Content" type="VBoxContainer" parent="." unique_id=1912024891]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.4074074
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.55864197
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[wave amp=50.0 freq=5.0 connected=1]IT WORKS!!![/wave]"
-horizontal_alignment = 1
+theme_override_constants/separation = 0
 metadata/_edit_use_anchors_ = true
+
+[node name="Tabs" type="Control" parent="Browser Content" unique_id=522076426]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="Tabs BG" type="ColorRect" parent="Browser Content/Tabs" unique_id=1172687238]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09051082, 0.2217389, 0.40424168, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Browser Content/Tabs" unique_id=1811788568]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Site" type="Control" parent="Browser Content" unique_id=1811657395]
+layout_mode = 2
+size_flags_vertical = 3

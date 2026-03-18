@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Toggle mouse mode
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F1:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_SHIFT:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 		return
 	

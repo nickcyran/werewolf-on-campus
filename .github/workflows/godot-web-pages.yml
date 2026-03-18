@@ -1,50 +1,57 @@
-workflow_dispatcname: Build and Deploy Godot Web to GH Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches-ignore:
-      - gh-pages
-
-permissions:
-  contents: write
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Export with Godot
+        uses: firebelley/godot-export@v7.0.0
+        with:
+          godot_executable_download_url: "https://github.com/godotengine/godot/releases/download/4.6.1-stable/Godot_v4.6.1-stable_linux.x86_64.zip"
+          godot_export_templates_download_url: "https://github.com/godotengine/godot/releases/download/4.6.1-stable/Godot_v4.6.1-stable_export_templates.tpz"
+          relative_project_path: ./
+          relative_export_path: ./build/web
+          cache: true
+
+      # Show what firebelley/godot-export actually produced so we know the real path.
+      - name: Show export output
+        run: find ./build -type f | sort
+
+      # Locate the directory containing index.html (the web export root).
+      # This handles any casing of the preset name (Web / web / MyPreset, etc.)
+      - name: Set WEB_OUT variable
         run: |
-          sudo apt-get update
-          sudo apt-get install -y wget unzip
+          WEB_OUT=$(dirname "$(find ./build -name "index.html" | head -1)")
+          echo "WEB_OUT=$WEB_OUT" >> $GITHUB_ENV
 
-      - name: Download Godot 4.6.1
+      # GitHub Pages doesn't allow custom response headers, so we inject a
+      # service worker (coi-serviceworker) that sets the Cross-Origin-Isolation
+      # headers Godot's web export requires for SharedArrayBuffer.
+      - name: Inject coi-serviceworker
         run: |
-          GODOT_VERSION="4.6.1"
-          GODOT_STATUS="stable"
+          curl -sL https://raw.githubusercontent.com/gzuidhof/coi-serviceworker/master/coi-serviceworker.js \
+            -o "$WEB_OUT/coi-serviceworker.js"
+          sed -i 's|<head>|<head>\n\t<script src="coi-serviceworker.js"></script>|' "$WEB_OUT/index.html"
 
-          wget -q "https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-${GODOT_STATUS}/Godot_v${GODOT_VERSION}-${GODOT_STATUS}_linux.x86_64.zip"
-          unzip -q "Godot_v${GODOT_VERSION}-${GODOT_STATUS}_linux.x86_64.zip"
-          chmod +x "Godot_v${GODOT_VERSION}-${GODOT_STATUS}_linux.x86_64"
-
-          mkdir -p "${HOME}/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_STATUS}"
-          wget -q "https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-${GODOT_STATUS}/Godot_v${GODOT_VERSION}-${GODOT_STATUS}_export_templates.tpz"
-          unzip -q "Godot_v${GODOT_VERSION}-${GODOT_STATUS}_export_templates.tpz" -d ./godot-templates
-          cp -r ./godot-templates/templates/* "${HOME}/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_STATUS}/"
-
-      - name: Build Web export
+      # 404.html redirect keeps deep-links working on gh-pages.
+      - name: Add 404 redirect
         run: |
-          mkdir -p build/web
-          ./Godot_v4.6.1-stable_linux.x86_64 --headless --path . --export-release "Web" "build/web/index.html"
-          touch build/web/.nojekyll
+          echo '<html><head><meta http-equiv="refresh" content="0;url=index.html"></head></html>' \
+            > "$WEB_OUT/404.html"
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./build/web
+          publish_dir: ${{ env.WEB_OUT }}
           force_orphan: true

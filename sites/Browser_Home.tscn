@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cwpmhn0ngqhpn"]
+
+[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://sites/site.gd" id="1_uuy8p"]
+
+[node name="BrowserHome" type="Control" unique_id=370203873]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_uuy8p")
+metadata/_custom_type_script = "uid://bh3cta78fe4un"

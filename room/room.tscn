@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bxflrystxtmop"]
+
+[ext_resource type="PackedScene" uid="uid://d31kkopghnapc" path="res://player/player.tscn" id="1_0sso4"]
+[ext_resource type="Script" uid="uid://c8qwntgb8icpt" path="res://interaction/interactable.gd" id="1_6j18c"]
+[ext_resource type="Script" uid="uid://b1nafkycbvr3j" path="res://room/room.gd" id="1_qwhiq"]
+[ext_resource type="PackedScene" uid="uid://cn8bjvas3k7gf" path="res://browser/browser.tscn" id="4_34v3w"]
+[ext_resource type="PackedScene" uid="uid://cbvjuhttt67co" path="res://room/environment.tscn" id="env_1"]
+[ext_resource type="Script" uid="uid://cptm2sbujptc3" path="res://interaction/focus_system.gd" id="fs_1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_computer"]
+size = Vector3(0.435, 0.27, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34v3w"]
+albedo_color = Color(0.1663743, 0.1663743, 0.1663743, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_34v3w"]
+lightmap_size_hint = Vector2i(6, 10)
+material = SubResource("StandardMaterial3D_34v3w")
+size = Vector3(0.515, 0.32, 0.045)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3vqul"]
+size = Vector2(0.495, 0.295)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_34v3w"]
+viewport_path = NodePath("Interactables/Computer/Screen/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vqul"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_34v3w")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phone"]
+size = Vector3(0.09, 0.015, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j18c"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vqul"]
+material = SubResource("StandardMaterial3D_6j18c")
+size = Vector3(0.09, 0.015, 0.15)
+
+[node name="Room" type="Node3D" unique_id=2024368730]
+script = ExtResource("1_qwhiq")
+
+[node name="FocusSystem" type="Node" parent="." unique_id=1245401149]
+script = ExtResource("fs_1")
+camera_path = NodePath("../Player/Camera3D")
+
+[node name="Player" parent="." unique_id=1808541239 instance=ExtResource("1_0sso4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.731053, 1.0158874, 0.35152888)
+interact_distance = 10.0
+
+[node name="Environment" parent="." unique_id=513449864 instance=ExtResource("env_1")]
+
+[node name="Interactables" type="Node3D" parent="." unique_id=661075775]
+
+[node name="Computer" type="StaticBody3D" parent="Interactables" unique_id=451763027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7264856, 0.9726348, -0.14119953)
+script = ExtResource("1_6j18c")
+focus_mode = 1
+viewport_path = NodePath("Screen/SubViewport")
+focus_offset = 0.06
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Computer" unique_id=1585571836]
+shape = SubResource("BoxShape3D_computer")
+
+[node name="Mesh" type="MeshInstance3D" parent="Interactables/Computer" unique_id=2138226437]
+mesh = SubResource("BoxMesh_34v3w")
+
+[node name="Screen" type="MeshInstance3D" parent="Interactables/Computer" unique_id=48374461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0011927, 0.0014893, 0.02486271)
+mesh = SubResource("QuadMesh_3vqul")
+surface_material_override/0 = SubResource("StandardMaterial3D_3vqul")
+
+[node name="SubViewport" type="SubViewport" parent="Interactables/Computer/Screen" unique_id=2123028240]
+size = Vector2i(840, 476)
+
+[node name="Browser" parent="Interactables/Computer/Screen/SubViewport" unique_id=1089262983 instance=ExtResource("4_34v3w")]
+
+[node name="FocusPoint" type="Marker3D" parent="Interactables/Computer" unique_id=309652515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0011927, 0.0014893, 0.32119954)
+
+[node name="Phone" type="StaticBody3D" parent="Interactables" unique_id=1305408668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3161004, 0.75523853, 0)
+script = ExtResource("1_6j18c")
+focus_mode = 2
+hold_distance = 0.125
+hold_offset = Vector3(0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Phone" unique_id=1874710947]
+shape = SubResource("BoxShape3D_phone")
+
+[node name="Mesh" type="MeshInstance3D" parent="Interactables/Phone" unique_id=1600266012]
+mesh = SubResource("BoxMesh_3vqul")

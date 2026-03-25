@@ -1,5 +1,8 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://dam4lb2dis3dj"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dam4lb2dis3dj"]
+
+[ext_resource type="Shader" path="res://assets/materials/outline.gdshader" id="1"]
 
 [resource]
-shading_mode = 0
-albedo_color = Color(1.224127, 0.8437529, 0, 1)
+shader = ExtResource("1")
+shader_parameter/outline_color = Color(1.224127, 0.8437529, 0, 1)
+shader_parameter/grow_amount = 0.005

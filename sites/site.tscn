@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c8elo7qjqcodp"]
+
+[ext_resource type="Script" path="res://sites/site.gd" id="1_site"]
+
+[node name="Site" type="Control" unique_id=1951142362]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_site")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=436189693]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="ScrollContainer" unique_id=1249881159]
+custom_minimum_size = Vector2(0, 2000)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control" unique_id=1483100079]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ScrollContainer/Control" unique_id=458376241]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09683099
+anchor_top = 0.734288
+anchor_right = 0.8635563
+anchor_bottom = 0.9045346
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 195
+text = "HELLO"
+metadata/_edit_use_anchors_ = true

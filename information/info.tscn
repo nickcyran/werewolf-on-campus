@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://ctemwlf3u5mcl"]
+
+[ext_resource type="Script" uid="uid://bls7ilph7p54x" path="res://information/info.gd" id="1_55op0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx0fl"]
+bg_color = Color(0.97645193, 0.38864368, 7.70092e-07, 1)
+
+[node name="Info" type="Control" unique_id=1447644326]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55op0")
+
+[node name="Slide1" type="Panel" parent="." unique_id=646229311]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx0fl")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Slide1" unique_id=1886444922]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.637
+anchor_bottom = 0.551
+offset_right = 0.17596436
+offset_bottom = -0.04800415
+theme_override_font_sizes/font_size = 138
+text = "Panel 1 ------------"
+
+[node name="Slide2" type="Panel" parent="." unique_id=1338644102]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx0fl")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Slide2" unique_id=2112784851]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 79
+text = "Panel 2 ================="
+
+[node name="Slide3" type="Panel" parent="." unique_id=415320945]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx0fl")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Slide3" unique_id=76137827]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 116
+text = "Panel 3 !!!!!!!!!!!!!!!!!!!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1382681547]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9461806
+anchor_top = 0.9382716
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="HBoxContainer" unique_id=438508712]
+layout_mode = 2
+text = "BACK"
+
+[node name="Forward" type="Button" parent="HBoxContainer" unique_id=776190081]
+layout_mode = 2
+text = "FORWARD"
+
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HBoxContainer/Forward" to="." method="_on_forward_pressed"]

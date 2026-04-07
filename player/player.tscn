@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d31kkopghnapc"]
 
 [ext_resource type="Script" uid="uid://bg5blptimqy66" path="res://player/player.gd" id="1_4v4u1"]
+[ext_resource type="PackedScene" uid="uid://ctemwlf3u5mcl" path="res://information/info.tscn" id="2_info"]
 
 [node name="Player" type="Node3D" unique_id=678926049]
 script = ExtResource("1_4v4u1")
@@ -50,3 +51,47 @@ grow_horizontal = 0
 horizontal_alignment = 2
 text = "9:00 AM"
 mouse_filter = 2
+
+[node name="InfoButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "i"
+
+[node name="InfoOverlay" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="DimRect" type="ColorRect" parent="UI/InfoOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="InfoPanel" parent="UI/InfoOverlay" instance=ExtResource("2_info")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.08
+anchor_right = 0.9
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2

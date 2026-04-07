@@ -1,0 +1,139 @@
+[gd_resource type="Theme" load_steps=11 format=3]
+
+[sub_resource type="StyleBoxFlat" id="tab_active"]
+bg_color = Color(0.18, 0.36, 0.58, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+content_margin_left = 6.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="tab_inactive"]
+bg_color = Color(0.08, 0.18, 0.35, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+content_margin_left = 6.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="tab_inactive_hover"]
+bg_color = Color(0.13, 0.27, 0.465, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+content_margin_left = 6.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="close_normal"]
+bg_color = Color(0, 0, 0, 0)
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="close_hover"]
+bg_color = Color(0.8, 0.2, 0.2, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="nav_normal"]
+bg_color = Color(0.12, 0.25, 0.42, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="nav_hover"]
+bg_color = Color(0.18, 0.35, 0.55, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="nav_disabled"]
+bg_color = Color(0.08, 0.15, 0.28, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="newtab_normal"]
+bg_color = Color(0, 0, 0, 0)
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="newtab_hover"]
+bg_color = Color(0.15, 0.3, 0.5, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[resource]
+type_variation/TabActive = "Button"
+type_variation/TabInactive = "Button"
+type_variation/TabClose = "Button"
+type_variation/NavButton = "Button"
+type_variation/NewTabButton = "Button"
+
+TabActive/colors/font_color = Color(0.9, 0.9, 0.9, 1)
+TabActive/font_sizes/font_size = 11
+TabActive/styles/focus = SubResource("tab_active")
+TabActive/styles/hover = SubResource("tab_active")
+TabActive/styles/normal = SubResource("tab_active")
+TabActive/styles/pressed = SubResource("tab_active")
+
+TabInactive/colors/font_color = Color(0.9, 0.9, 0.9, 1)
+TabInactive/font_sizes/font_size = 11
+TabInactive/styles/focus = SubResource("tab_inactive")
+TabInactive/styles/hover = SubResource("tab_inactive_hover")
+TabInactive/styles/normal = SubResource("tab_inactive")
+TabInactive/styles/pressed = SubResource("tab_inactive")
+
+TabClose/colors/font_color = Color(0.7, 0.7, 0.7, 1)
+TabClose/font_sizes/font_size = 10
+TabClose/styles/focus = SubResource("close_normal")
+TabClose/styles/hover = SubResource("close_hover")
+TabClose/styles/normal = SubResource("close_normal")
+TabClose/styles/pressed = SubResource("close_hover")
+
+NavButton/colors/font_color = Color(0.85, 0.85, 0.85, 1)
+NavButton/colors/font_disabled_color = Color(0.4, 0.4, 0.5, 1)
+NavButton/font_sizes/font_size = 12
+NavButton/styles/disabled = SubResource("nav_disabled")
+NavButton/styles/focus = SubResource("nav_normal")
+NavButton/styles/hover = SubResource("nav_hover")
+NavButton/styles/normal = SubResource("nav_normal")
+NavButton/styles/pressed = SubResource("nav_normal")
+
+NewTabButton/colors/font_color = Color(0.7, 0.7, 0.7, 1)
+NewTabButton/font_sizes/font_size = 14
+NewTabButton/styles/focus = SubResource("newtab_normal")
+NewTabButton/styles/hover = SubResource("newtab_hover")
+NewTabButton/styles/normal = SubResource("newtab_normal")
+NewTabButton/styles/pressed = SubResource("newtab_hover")

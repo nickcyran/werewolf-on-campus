@@ -1,9 +1,53 @@
 [gd_scene format=3 uid="uid://cwpmhn0ngqhpn"]
 
-[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://sites/site.gd" id="1_uuy8p"]
+[ext_resource type="Script" path="res://sites/browser_home.gd" id="1_home"]
+[ext_resource type="PackedScene" uid="uid://bqkh6hns1kohv" path="res://sites/nowolves.tscn" id="2_nw"]
 
-[node name="BrowserHome" type="Control" unique_id=370203873]
+[node name="BrowserHome" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_uuy8p")
-metadata/_custom_type_script = "uid://bh3cta78fe4un"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_home")
+site_title = "Home"
+site_scenes = Array[PackedScene]([ExtResource("2_nw")])
+site_labels = PackedStringArray("NoWolves")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.94, 0.94, 0.96, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/font_size = 32
+text = "Home"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 4

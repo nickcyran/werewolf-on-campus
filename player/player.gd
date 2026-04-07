@@ -10,11 +10,14 @@ extends Node3D
 
 @onready var camera: Camera3D = $Camera3D
 @onready var _time_label: Label = %TimeLabel
+@onready var _info_btn: Button = %InfoButton
+@onready var _info_overlay: Control = %InfoOverlay
 
 var _hovered_interactable: Interactable
 var _base_yaw: float
 var _base_pitch: float
 var _look_offset: Vector2 = Vector2.ZERO
+var _state_before_info: GameManager.State
 
 
 func _ready() -> void:
@@ -25,6 +28,8 @@ func _ready() -> void:
 	_time_label.text = DayClock.get_display_time()
 	GameManager.state_changed.connect(_on_game_state_changed)
 	DayClock.time_changed.connect(func(t: String): _time_label.text = t)
+	_info_btn.pressed.connect(_toggle_info)
+	_info_overlay.visible = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -33,6 +38,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_info"):
+		_toggle_info()
+		return
+
 	if !GameManager.is_playing():
 		return
 
@@ -100,6 +109,16 @@ func _on_game_state_changed(new_state: GameManager.State) -> void:
 
 	if !playing:
 		_clear_hover()
+
+
+# -- Info panel ---------------------------------------------------------------
+func _toggle_info() -> void:
+	_info_overlay.visible = !_info_overlay.visible
+	if _info_overlay.visible:
+		_state_before_info = GameManager.state
+		GameManager.state = GameManager.State.PAUSED
+	else:
+		GameManager.state = _state_before_info
 
 
 # -- Helpers ------------------------------------------------------------------

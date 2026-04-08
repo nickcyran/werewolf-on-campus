@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cwpmhn0ngqhpn" path="res://sites/Browser_Home.tscn" id="2_vmb4q"]
 [ext_resource type="Theme" path="res://browser/browser_theme.tres" id="3_theme"]
 
-[node name="Browser" type="Control"]
+[node name="Browser" type="Control" unique_id=97724406]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ theme = ExtResource("3_theme")
 script = ExtResource("1_vmb4q")
 home_page = ExtResource("2_vmb4q")
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=1874740100]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.503, 0.554, 0.579, 1)
 
-[node name="Browser Content" type="VBoxContainer" parent="."]
+[node name="Browser Content" type="VBoxContainer" parent="." unique_id=763080510]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,20 +33,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="TabStrip" type="Control" parent="Browser Content"]
+[node name="TabStrip" type="Control" parent="Browser Content" unique_id=507449811]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 
-[node name="TabStripBG" type="ColorRect" parent="Browser Content/TabStrip"]
+[node name="TabStripBG" type="ColorRect" parent="Browser Content/TabStrip" unique_id=2044685492]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.06, 0.15, 0.30, 1)
+color = Color(0.06, 0.15, 0.3, 1)
 
-[node name="TabsHBox" type="HBoxContainer" parent="Browser Content/TabStrip"]
+[node name="TabsHBox" type="HBoxContainer" parent="Browser Content/TabStrip" unique_id=1169295527]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,11 +55,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="NavBar" type="Control" parent="Browser Content"]
+[node name="NavBar" type="Control" parent="Browser Content" unique_id=252710286]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 
-[node name="NavBarBG" type="ColorRect" parent="Browser Content/NavBar"]
+[node name="NavBarBG" type="ColorRect" parent="Browser Content/NavBar" unique_id=407574392]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,7 +68,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14, 0.28, 0.48, 1)
 
-[node name="NavBarHBox" type="HBoxContainer" parent="Browser Content/NavBar"]
+[node name="NavBarHBox" type="HBoxContainer" parent="Browser Content/NavBar" unique_id=142889367]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,25 +77,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 4
 
-[node name="BackBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox"]
+[node name="BackBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=332798419]
 custom_minimum_size = Vector2(26, 0)
 layout_mode = 2
-theme_type_variation = "NavButton"
+theme_type_variation = &"NavButton"
 text = "<"
 
-[node name="ForwardBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox"]
+[node name="ForwardBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=206801185]
 custom_minimum_size = Vector2(26, 0)
 layout_mode = 2
-theme_type_variation = "NavButton"
+theme_type_variation = &"NavButton"
 text = ">"
 
-[node name="AddressLabel" type="Label" parent="Browser Content/NavBar/NavBarHBox"]
+[node name="AddressLabel" type="Label" parent="Browser Content/NavBar/NavBarHBox" unique_id=498520388]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
 theme_override_font_sizes/font_size = 11
 vertical_alignment = 1
 
-[node name="Site" type="Control" parent="Browser Content"]
+[node name="Site" type="Control" parent="Browser Content" unique_id=1084887329]
 layout_mode = 2
 size_flags_vertical = 3

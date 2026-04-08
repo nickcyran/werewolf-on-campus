@@ -1,4 +1,7 @@
+class_name Info
 extends Control
+
+signal exit_pressed
 
 @onready var info_panels: Array[Panel] = [$Slide1, $Slide2, $Slide3]
 @onready var _back_btn: Button = $HBoxContainer/Back
@@ -29,6 +32,10 @@ func _handle_panel_change(increment_amount: int) -> void:
 			info_panels[i].hide()
 
 	_update_buttons()
+
+
+func _on_exit_pressed() -> void:
+	exit_pressed.emit()
 
 
 func _update_buttons() -> void:

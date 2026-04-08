@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://bls7ilph7p54x" path="res://information/info.gd" id="1_55op0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx0fl"]
-bg_color = Color(0.97645193, 0.38864368, 7.70092e-07, 1)
+bg_color = Color(0.15, 0.15, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="Info" type="Control" unique_id=1447644326]
 layout_mode = 3
@@ -22,17 +26,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qx0fl")
-metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Slide1" unique_id=1886444922]
+[node name="Margin" type="MarginContainer" parent="Slide1"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.637
-anchor_bottom = 0.551
-offset_right = 0.17596436
-offset_bottom = -0.04800415
-theme_override_font_sizes/font_size = 138
-text = "Panel 1 ------------"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBox" type="VBoxContainer" parent="Slide1/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="Slide1/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 36
+text = "The Goal"
+
+[node name="Bullet1" type="Label" parent="Slide1/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Learn common propaganda / disinformation techniques
+   that apply to all kinds of topics and mediums"
+autowrap_mode = 3
+
+[node name="Bullet2" type="Label" parent="Slide1/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Learn to recognize well-meaning but less reliable
+   information sources"
+autowrap_mode = 3
+
+[node name="Bullet3" type="Label" parent="Slide1/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Learn to recognize more reliable claims and/or sources"
+autowrap_mode = 3
+
+[node name="Bullet4" type="Label" parent="Slide1/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Have some fun in a more memorable way than talking
+   about depressing real-world examples of mis &
+   disinformation"
+autowrap_mode = 3
 
 [node name="Slide2" type="Panel" parent="." unique_id=1338644102]
 visible = false
@@ -43,14 +90,76 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qx0fl")
-metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Slide2" unique_id=2112784851]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 79
-text = "Panel 2 ================="
+[node name="Margin" type="MarginContainer" parent="Slide2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBox" type="VBoxContainer" parent="Slide2/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Slide2/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 36
+text = "The Game Scenario"
+
+[node name="Bullet1" type="Label" parent="Slide2/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Reports of a werewolf on campus"
+autowrap_mode = 3
+
+[node name="Bullet2" type="Label" parent="Slide2/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Werewolves are real and eat people"
+autowrap_mode = 3
+
+[node name="Sub2" type="Label" parent="Slide2/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "      They are human-looking most of the time &
+      can turn into wolf monsters
+      — that part is not disputed within the game"
+autowrap_mode = 3
+
+[node name="Bullet3" type="Label" parent="Slide2/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Lots of conflicting information going around:"
+autowrap_mode = 3
+
+[node name="Sub3" type="Label" parent="Slide2/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "      Is there really a monster?
+      How do you recognize one? What are the signs?
+      How can you protect yourself?"
+autowrap_mode = 3
+
+[node name="Bullet4" type="Label" parent="Slide2/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Use your knowledge and skills in real-world
+   information evaluation to determine what is
+   \"true\" in the game"
+autowrap_mode = 3
 
 [node name="Slide3" type="Panel" parent="." unique_id=415320945]
 visible = false
@@ -61,14 +170,88 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qx0fl")
-metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Slide3" unique_id=76137827]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 116
-text = "Panel 3 !!!!!!!!!!!!!!!!!!!"
+[node name="Margin" type="MarginContainer" parent="Slide3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBox" type="VBoxContainer" parent="Slide3/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Slide3/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 36
+text = "The Process"
+
+[node name="Bullet1" type="Label" parent="Slide3/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Read through the documents in the packet"
+autowrap_mode = 3
+
+[node name="Sub1" type="Label" parent="Slide3/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "      Imagine them all as online sources / graphics
+      Evaluate which ones are more reliable and which
+      may be less trustworthy"
+autowrap_mode = 3
+
+[node name="Bullet2" type="Label" parent="Slide3/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Some info is accurate, some is mis/disinformation"
+autowrap_mode = 3
+
+[node name="Sub2" type="Label" parent="Slide3/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "      You must determine which is which based on your
+      knowledge of online misinformation"
+autowrap_mode = 3
+
+[node name="Bullet3" type="Label" parent="Slide3/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "•  Once you're ready, you can use the optional QR code
+   to check your answers:"
+autowrap_mode = 3
+
+[node name="Sub3" type="Label" parent="Slide3/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "      Is there a werewolf on campus?
+      How would you identify one?"
+autowrap_mode = 3
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "✕"
+theme_override_font_sizes/font_size = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1382681547]
 layout_mode = 1
@@ -89,5 +272,6 @@ text = "BACK"
 layout_mode = 2
 text = "FORWARD"
 
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="HBoxContainer/Forward" to="." method="_on_forward_pressed"]

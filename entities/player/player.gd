@@ -18,14 +18,14 @@ extends Node3D
 @onready var _controls_hint: VBoxContainer = $UI/Control/ControlsHint
 
 var _controls_hint_tween: Tween
-var _controls_hint_timer: float = 8.0  # auto-hide after 8 seconds
+var _controls_hint_timer: float = 8.0 # auto-hide after 8 seconds
 var _controls_visible := true
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	_camera_ctl.initialize(_camera, self)
+	_camera_ctl.initialize(_camera, self )
 	_raycaster.initialize(_camera)
 	_info_ctl.initialize(_info_overlay, _info_panel)
 	_hud.initialize(_time_label, _day_end_overlay)

@@ -17,8 +17,8 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-GameManager="*uid://boyy7vfchmv5s"
 DayClock="*res://core/autoload/day_clock.gd"
+GameManager="*uid://boyy7vfchmv5s"
 
 [display]
 
@@ -62,8 +62,8 @@ toggle_fullscreen={
 
 [physics]
 
-3d/physics_engine="Jolt Physics"
 common/physics_ticks_per_second=30
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 
@@ -73,4 +73,3 @@ lights_and_shadows/directional_shadow/size=2048
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 environment/defaults/default_clear_color=Color(0.1, 0.1, 0.12, 1)
-anti_aliasing/quality/msaa_3d=0

@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit_focus"):
 		get_viewport().set_input_as_handled()
 		unfocus()
-	elif target and target.embedded_viewport:
+	elif target && target.embedded_viewport:
 		if _forward_input(event):
 			get_viewport().set_input_as_handled()
 

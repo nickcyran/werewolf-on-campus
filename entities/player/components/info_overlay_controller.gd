@@ -8,7 +8,7 @@ const SLIDE_OFFSET := 30.0
 var overlay: Control
 var info_panel: Info
 
-var _state_before_open: GameManager.State
+var _state_before_open: GameManager.State 
 var _dim_rect: ColorRect
 var _tween: Tween
 var _is_animating := false

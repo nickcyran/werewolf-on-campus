@@ -29,15 +29,15 @@ func _input(event: InputEvent) -> void:
 	if GameManager.state != GameManager.State.FOCUSED:
 		return
 
-	get_viewport().set_input_as_handled()
-
 	if is_animating:
 		return
 
 	if event.is_action_pressed("exit_focus"):
+		get_viewport().set_input_as_handled()
 		unfocus()
 	elif target and target.embedded_viewport:
-		_forward_input(event)
+		if _forward_input(event):
+			get_viewport().set_input_as_handled()
 
 
 func _on_focus_requested(node: Node3D) -> void:
@@ -100,13 +100,13 @@ func _tween_to(dest: Transform3D, on_complete: Callable = Callable()) -> void:
 	, CONNECT_ONE_SHOT)
 
 
-func _forward_input(event: InputEvent) -> void:
+func _forward_input(event: InputEvent) -> bool:
 	var vp := target.embedded_viewport
 
 	# Any non-mouse events forwarded
 	if !(event is InputEventMouse):
 		vp.push_input(event)
-		return
+		return true
 
 	# Recalculate rect + scale only when the target changes
 	if _rect_dirty:
@@ -114,6 +114,19 @@ func _forward_input(event: InputEvent) -> void:
 		_cached_vp_size = Vector2(vp.size)
 		_cached_scale = _cached_vp_size / _cached_rect.size
 		_rect_dirty = false
+
+	# Ignore mouse input outside the embedded screen. Without this, clamping maps
+	# out-of-bounds cursor positions to the viewport edge (often top-left), causing
+	# false hover states like the first browser tab appearing hovered.
+	if !_cached_rect.has_point(event.position):
+		if event is InputEventMouseMotion:
+			var exit_event := (event as InputEventMouseMotion).duplicate()
+			exit_event.position = Vector2(-1, -1)
+			exit_event.global_position = exit_event.position
+			exit_event.relative = Vector2.ZERO
+			exit_event.velocity = Vector2.ZERO
+			vp.push_input(exit_event)
+		return false
 
 	var mouse_event := (event as InputEventMouse).duplicate()
 
@@ -127,6 +140,7 @@ func _forward_input(event: InputEvent) -> void:
 		mouse_event.velocity *= _cached_scale
 
 	vp.push_input(mouse_event)
+	return true
 
 
 func _compute_screen_rect() -> Rect2:

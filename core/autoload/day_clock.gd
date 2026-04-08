@@ -10,13 +10,18 @@ const REFRESH_INTERVAL := 1.0
 
 var elapsed := 0.0
 var day_over := false
+var started := false
 
 var _prev_display := ""
 var _refresh_acc := 0.0
 
 
+func start() -> void:
+	started = true
+
+
 func _process(delta: float) -> void:
-	if day_over:
+	if !started or day_over:
 		return
 
 	elapsed = minf(elapsed + delta, REAL_DURATION)

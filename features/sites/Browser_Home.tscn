@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cwpmhn0ngqhpn"]
 
-[ext_resource type="Script" path="res://sites/browser_home.gd" id="1_home"]
-[ext_resource type="PackedScene" uid="uid://bqkh6hns1kohv" path="res://sites/nowolves.tscn" id="2_nw"]
-[ext_resource type="PackedScene" uid="uid://dgreendit0001a" path="res://sites/greendit.tscn" id="3_greendit"]
+[ext_resource type="Script" path="res://features/sites/browser_home.gd" id="1_home"]
+[ext_resource type="PackedScene" uid="uid://bqkh6hns1kohv" path="res://features/sites/nowolves.tscn" id="2_nw"]
+[ext_resource type="PackedScene" uid="uid://dgreendit0001a" path="res://features/sites/greendit.tscn" id="3_greendit"]
 
 [node name="BrowserHome" type="Control"]
 layout_mode = 3

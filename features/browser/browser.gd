@@ -1,7 +1,7 @@
 class_name Browser extends Control
 
-const BrowserTab = preload("res://browser/browser_tab.gd")
-const BROWSER_THEME = preload("res://browser/browser_theme.tres")
+const BrowserTab = preload("res://features/browser/browser_tab.gd")
+const BROWSER_THEME = preload("res://features/browser/browser_theme.tres")
 
 const MAX_TABS := 5
 const PAGE_FADE_DURATION := 0.15

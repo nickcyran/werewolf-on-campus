@@ -1,0 +1,327 @@
+[gd_scene format=3 uid="uid://b2erg81ifc7k7"]
+
+[ext_resource type="Script" uid="uid://1hocdmnbbt1w" path="res://ui/landing_page/landing_page.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slide"]
+bg_color = Color(0.12, 0.12, 0.16, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.18, 0.18, 0.24, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.24, 0.32, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="LandingPage" type="Control" unique_id=213543456]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1722824878]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.06, 0.08, 1)
+
+[node name="Slide1" type="Panel" parent="." unique_id=1566983244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slide")
+
+[node name="Margin" type="MarginContainer" parent="Slide1" unique_id=951344696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 70
+
+[node name="VBox" type="VBoxContainer" parent="Slide1/Margin" unique_id=846411004]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Title" type="Label" parent="Slide1/Margin/VBox" unique_id=933335930]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.25, 0.2, 1)
+theme_override_font_sizes/font_size = 42
+text = "WEREWOLF ON CAMPUS"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Slide1/Margin/VBox" unique_id=516678240]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.6, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "A  MISINFORMATION  LITERACY  GAME"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="Slide1/Margin/VBox" unique_id=1811582790]
+custom_minimum_size = Vector2(400, 1)
+layout_mode = 2
+color = Color(0.85, 0.25, 0.2, 0.35)
+
+[node name="Spacer" type="Control" parent="Slide1/Margin/VBox" unique_id=923864333]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Body1" type="Label" parent="Slide1/Margin/VBox" unique_id=1740343479]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 19
+text = "You are a student at Tri-Fang University in Tri City."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Body2" type="Label" parent="Slide1/Margin/VBox" unique_id=993954038]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 19
+text = "There are reports of a werewolf on campus."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer2" type="Control" parent="Slide1/Margin/VBox" unique_id=912901464]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Detail1" type="Label" parent="Slide1/Margin/VBox" unique_id=1391113845]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.58, 0.63, 1)
+theme_override_font_sizes/font_size = 16
+text = "Within the game, werewolves are real and always want to eat people.
+They are human-looking most of the time & can turn into wolf monsters."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Slide2" type="Panel" parent="." unique_id=436371981]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slide")
+
+[node name="Margin" type="MarginContainer" parent="Slide2" unique_id=1222691189]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 70
+
+[node name="VBox" type="VBoxContainer" parent="Slide2/Margin" unique_id=575625988]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Title" type="Label" parent="Slide2/Margin/VBox" unique_id=984162133]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.75, 0.45, 1)
+theme_override_font_sizes/font_size = 32
+text = "Your Mission"
+horizontal_alignment = 1
+
+[node name="Intro" type="Label" parent="Slide2/Margin/VBox" unique_id=1582171546]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 18
+text = "You encounter lots of conflicting information
+about the werewolves. Your goal is to determine:"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Q1" type="Label" parent="Slide2/Margin/VBox" unique_id=564879708]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.93, 1)
+theme_override_font_sizes/font_size = 19
+text = "  >  Is there really a werewolf on campus right now?"
+autowrap_mode = 3
+
+[node name="Q2" type="Label" parent="Slide2/Margin/VBox" unique_id=1380352124]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.93, 1)
+theme_override_font_sizes/font_size = 19
+text = "  >  How can you recognize it?"
+autowrap_mode = 3
+
+[node name="Q3" type="Label" parent="Slide2/Margin/VBox" unique_id=819873596]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.93, 1)
+theme_override_font_sizes/font_size = 19
+text = "  >  How can you protect yourself and avoid getting eaten?"
+autowrap_mode = 3
+
+[node name="Hint" type="Label" parent="Slide2/Margin/VBox" unique_id=750727093]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.6, 1)
+theme_override_font_sizes/font_size = 16
+text = "Use your knowledge and skills in real-world information
+evaluation to determine what is \"true\" in the game."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Slide3" type="Panel" parent="." unique_id=1632655815]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slide")
+
+[node name="Margin" type="MarginContainer" parent="Slide3" unique_id=440613337]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 70
+
+[node name="VBox" type="VBoxContainer" parent="Slide3/Margin" unique_id=1756762203]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Title" type="Label" parent="Slide3/Margin/VBox" unique_id=957760551]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.65, 0.9, 1)
+theme_override_font_sizes/font_size = 32
+text = "How To Play"
+horizontal_alignment = 1
+
+[node name="Bullet1" type="Label" parent="Slide3/Margin/VBox" unique_id=813252685]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 19
+text = "  >  Look through all the sources of information
+       presented in the game"
+autowrap_mode = 3
+
+[node name="Bullet2" type="Label" parent="Slide3/Margin/VBox" unique_id=2119433965]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 19
+text = "  >  Evaluate which ones are more reliable
+       and which may be less trustworthy"
+autowrap_mode = 3
+
+[node name="Bullet3" type="Label" parent="Slide3/Margin/VBox" unique_id=1717718615]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 19
+text = "  >  Some info is accurate, some is mis/disinformation
+       — you don't know which is which"
+autowrap_mode = 3
+
+[node name="Bullet4" type="Label" parent="Slide3/Margin/VBox" unique_id=1858758346]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 19
+text = "  >  Determine what is true within the game
+       by the end of the \"night\""
+autowrap_mode = 3
+
+[node name="NavBar" type="PanelContainer" parent="." unique_id=1980966765]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -56.0
+offset_right = 140.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NavContent" type="HBoxContainer" parent="NavBar" unique_id=211510669]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Back" type="Button" parent="NavBar/NavContent" unique_id=2111968673]
+visible = false
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.8, 1)
+theme_override_colors/font_hover_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_disabled_color = Color(0.35, 0.35, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "◀  Back"
+
+[node name="PageIndicator" type="Label" parent="NavBar/NavContent" unique_id=657896861]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.55, 1)
+theme_override_font_sizes/font_size = 13
+text = "1 / 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="Button" parent="NavBar/NavContent" unique_id=1738790177]
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.8, 1)
+theme_override_colors/font_hover_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_disabled_color = Color(0.35, 0.35, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "Next  ▶"
+
+[node name="FadeOverlay" type="ColorRect" parent="." unique_id=1265407545]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jx04rrr7disu"]
 
-[ext_resource type="Script" path="res://sites/greendit.gd" id="1_greendit"]
+[ext_resource type="Script" path="res://features/sites/greendit.gd" id="1_greendit"]
 
 [node name="Greendit" type="Control"]
 layout_mode = 3

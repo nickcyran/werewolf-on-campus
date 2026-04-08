@@ -2,7 +2,7 @@ class_name Interactable extends StaticBody3D
 
 enum FocusMode { NONE, CAMERA_TO_OBJECT, PICKUP }
 
-const OUTLINE_MATERIAL := preload("res://assets/materials/outline.tres")
+const OUTLINE_MATERIAL := preload("res://vfx/outline/outline.tres")
 
 @export var focus_mode: FocusMode = FocusMode.NONE
 @export var tween_transition: Tween.TransitionType = Tween.TRANS_SINE

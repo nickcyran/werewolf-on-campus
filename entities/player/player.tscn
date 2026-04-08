@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://d31kkopghnapc"]
 
-[ext_resource type="Script" uid="uid://bg5blptimqy66" path="res://player/player.gd" id="1_4v4u1"]
-[ext_resource type="PackedScene" uid="uid://ctemwlf3u5mcl" path="res://information/info.tscn" id="2_info"]
-[ext_resource type="Script" path="res://player/components/player_camera.gd" id="3_pcam"]
-[ext_resource type="Script" path="res://player/components/interaction_raycaster.gd" id="4_iray"]
-[ext_resource type="Script" path="res://player/components/info_overlay_controller.gd" id="5_info"]
-[ext_resource type="Script" path="res://player/components/hud_manager.gd" id="6_hud"]
+[ext_resource type="Script" uid="uid://bg5blptimqy66" path="res://entities/player/player.gd" id="1_4v4u1"]
+[ext_resource type="PackedScene" uid="uid://ctemwlf3u5mcl" path="res://features/information/info.tscn" id="2_info"]
+[ext_resource type="Script" path="res://entities/player/components/player_camera.gd" id="3_pcam"]
+[ext_resource type="Script" path="res://entities/player/components/interaction_raycaster.gd" id="4_iray"]
+[ext_resource type="Script" path="res://entities/player/components/info_overlay_controller.gd" id="5_info"]
+[ext_resource type="Script" path="res://entities/player/components/hud_manager.gd" id="6_hud"]
 [ext_resource type="Theme" path="res://ui/hud/hud_theme.tres" id="7_hud_theme"]
 
 [node name="Player" type="Node3D" unique_id=678926049]

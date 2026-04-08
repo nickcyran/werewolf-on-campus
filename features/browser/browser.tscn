@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cn8bjvas3k7gf"]
 
-[ext_resource type="Script" uid="uid://jkk0k46bs2fd" path="res://browser/browser.gd" id="1_vmb4q"]
-[ext_resource type="PackedScene" uid="uid://cwpmhn0ngqhpn" path="res://sites/Browser_Home.tscn" id="2_vmb4q"]
-[ext_resource type="Theme" uid="uid://ds283i4swr252" path="res://browser/browser_theme.tres" id="3_theme"]
+[ext_resource type="Script" uid="uid://jkk0k46bs2fd" path="res://features/browser/browser.gd" id="1_vmb4q"]
+[ext_resource type="PackedScene" uid="uid://cwpmhn0ngqhpn" path="res://features/sites/Browser_Home.tscn" id="2_vmb4q"]
+[ext_resource type="Theme" uid="uid://ds283i4swr252" path="res://features/browser/browser_theme.tres" id="3_theme"]
 
 [node name="Browser" type="Control" unique_id=97724406]
 layout_mode = 3

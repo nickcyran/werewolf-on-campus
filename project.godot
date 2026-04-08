@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="werewolf on campus"
-run/main_scene="uid://bxflrystxtmop"
+run/main_scene="res://ui/landing_page/landing_page.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
 GameManager="*uid://boyy7vfchmv5s"
-DayClock="*res://autoload/day_clock.gd"
+DayClock="*res://core/autoload/day_clock.gd"
 
 [display]
 

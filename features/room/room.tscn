@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bxflrystxtmop"]
 
-[ext_resource type="PackedScene" uid="uid://d31kkopghnapc" path="res://player/player.tscn" id="1_0sso4"]
-[ext_resource type="Script" uid="uid://c8qwntgb8icpt" path="res://interaction/interactable.gd" id="1_6j18c"]
-[ext_resource type="Script" uid="uid://b1nafkycbvr3j" path="res://room/room.gd" id="1_qwhiq"]
-[ext_resource type="PackedScene" uid="uid://cn8bjvas3k7gf" path="res://browser/browser.tscn" id="4_34v3w"]
-[ext_resource type="PackedScene" uid="uid://cbvjuhttt67co" path="res://room/environment.tscn" id="env_1"]
-[ext_resource type="Script" uid="uid://cptm2sbujptc3" path="res://interaction/focus_system.gd" id="fs_1"]
+[ext_resource type="PackedScene" uid="uid://d31kkopghnapc" path="res://entities/player/player.tscn" id="1_0sso4"]
+[ext_resource type="Script" uid="uid://c8qwntgb8icpt" path="res://core/interaction/interactable.gd" id="1_6j18c"]
+[ext_resource type="Script" uid="uid://b1nafkycbvr3j" path="res://features/room/room.gd" id="1_qwhiq"]
+[ext_resource type="PackedScene" uid="uid://cn8bjvas3k7gf" path="res://features/browser/browser.tscn" id="4_34v3w"]
+[ext_resource type="PackedScene" uid="uid://cbvjuhttt67co" path="res://features/room/environment.tscn" id="env_1"]
+[ext_resource type="Script" uid="uid://cptm2sbujptc3" path="res://core/interaction/focus_system.gd" id="fs_1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_computer"]
 size = Vector3(0.435, 0.27, 0.06)

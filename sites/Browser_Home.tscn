@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://sites/browser_home.gd" id="1_home"]
 [ext_resource type="PackedScene" uid="uid://bqkh6hns1kohv" path="res://sites/nowolves.tscn" id="2_nw"]
+[ext_resource type="PackedScene" uid="uid://dgreendit0001a" path="res://sites/greendit.tscn" id="3_greendit"]
 
 [node name="BrowserHome" type="Control"]
 layout_mode = 3
@@ -14,8 +15,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_home")
 site_title = "Home"
-site_scenes = Array[PackedScene]([ExtResource("2_nw")])
-site_labels = PackedStringArray("NoWolves")
+site_scenes = Array[PackedScene]([ExtResource("2_nw"), ExtResource("3_greendit")])
+site_labels = PackedStringArray("NoWolves", "Greendit")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

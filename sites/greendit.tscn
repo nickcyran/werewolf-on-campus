@@ -1,0 +1,317 @@
+[gd_scene format=3 uid="uid://jx04rrr7disu"]
+
+[ext_resource type="Script" path="res://sites/greendit.gd" id="1_greendit"]
+
+[node name="Greendit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_greendit")
+site_title = "Greendit"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.1, 0.1, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Header" type="Control" parent="ScrollContainer/Content"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="HeaderBG" type="ColorRect" parent="ScrollContainer/Content/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.12, 1)
+
+[node name="LogoCircle" type="ColorRect" parent="ScrollContainer/Content/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.1
+anchor_right = 0.06
+anchor_bottom = 0.9
+mouse_filter = 2
+color = Color(0.18, 0.55, 0.22, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="LogoLabel" type="Label" parent="ScrollContainer/Content/Header/LogoCircle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "G"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SiteName" type="Label" parent="ScrollContainer/Content/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.1
+anchor_right = 0.3
+anchor_bottom = 0.9
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 22
+text = "greendit"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SubName" type="Label" parent="ScrollContainer/Content/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.9
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 13
+text = "g/campuslife"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Separator" type="ColorRect" parent="ScrollContainer/Content"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.25, 0.28, 0.25, 1)
+
+[node name="BodySection" type="HBoxContainer" parent="ScrollContainer/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Feed" type="MarginContainer" parent="ScrollContainer/Content/BodySection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PostColumn" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PostCard" type="HBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn"]
+layout_mode = 2
+
+[node name="PostCardBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16, 0.17, 0.19, 1)
+
+[node name="VoteBar" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="UpArrow" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "▲"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 13
+text = "123"
+horizontal_alignment = 1
+
+[node name="DownArrow" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "▼"
+horizontal_alignment = 1
+
+[node name="PostBody" type="MarginContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="PostContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PostMeta" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 10
+text = "g/testforum  Posted by u/testuser01  3h"
+
+[node name="PostTitle" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 17
+text = "TEST TEST - Lorem ipsum dolor sit amet?"
+autowrap_mode = 3
+
+[node name="PostText" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
+theme_override_font_sizes/font_size = 12
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+autowrap_mode = 3
+
+[node name="PostStats" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1)
+theme_override_font_sizes/font_size = 11
+text = "42 comments"
+
+[node name="CommentDivider" type="ColorRect" parent="ScrollContainer/Content/BodySection/Feed/PostColumn"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.22, 0.24, 0.22, 1)
+
+[node name="CommentSection" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Sidebar" type="MarginContainer" parent="ScrollContainer/Content/BodySection"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 1.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="SidebarVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Sidebar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CommunityCard" type="PanelContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox"]
+layout_mode = 2
+
+[node name="CommunityCardBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16, 0.17, 0.19, 1)
+
+[node name="CardContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CommunityBanner" type="ColorRect" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+color = Color(0.18, 0.55, 0.22, 1)
+
+[node name="CommunityTitle" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "  g/campuslife"
+
+[node name="CommunityDesc" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "  The unofficial hub for campus news,
+  rumors, and late-night discussions."
+autowrap_mode = 3
+
+[node name="MemberInfo" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 11
+text = "  12.4k Members  342 Online"
+
+[node name="RulesCard" type="PanelContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox"]
+layout_mode = 2
+
+[node name="RulesCardBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16, 0.17, 0.19, 1)
+
+[node name="RulesContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RulesTitle" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "  Community Rules"
+
+[node name="Rule1" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "  1. No doxxing suspected werewolves"
+
+[node name="Rule2" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "  2. Flair your posts correctly"
+
+[node name="Rule3" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "  3. Be civil - no silver threats"
+
+[node name="Rule4" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "  4. Unverified sightings go in the Megathread"

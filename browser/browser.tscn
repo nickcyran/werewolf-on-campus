@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jkk0k46bs2fd" path="res://browser/browser.gd" id="1_vmb4q"]
 [ext_resource type="PackedScene" uid="uid://cwpmhn0ngqhpn" path="res://sites/Browser_Home.tscn" id="2_vmb4q"]
-[ext_resource type="Theme" path="res://browser/browser_theme.tres" id="3_theme"]
+[ext_resource type="Theme" uid="uid://ds283i4swr252" path="res://browser/browser_theme.tres" id="3_theme"]
 
 [node name="Browser" type="Control" unique_id=97724406]
 layout_mode = 3
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.503, 0.554, 0.579, 1)
+color = Color(0.11, 0.12, 0.14, 1)
 
 [node name="Browser Content" type="VBoxContainer" parent="." unique_id=763080510]
 layout_mode = 1
@@ -34,7 +34,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="TabStrip" type="Control" parent="Browser Content" unique_id=507449811]
-custom_minimum_size = Vector2(0, 28)
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
 [node name="TabStripBG" type="ColorRect" parent="Browser Content/TabStrip" unique_id=2044685492]
@@ -44,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.06, 0.15, 0.3, 1)
+color = Color(0.09, 0.1, 0.12, 1)
 
 [node name="TabsHBox" type="HBoxContainer" parent="Browser Content/TabStrip" unique_id=1169295527]
 layout_mode = 1
@@ -53,10 +53,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="NavBar" type="Control" parent="Browser Content" unique_id=252710286]
-custom_minimum_size = Vector2(0, 26)
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 
 [node name="NavBarBG" type="ColorRect" parent="Browser Content/NavBar" unique_id=407574392]
@@ -66,35 +67,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14, 0.28, 0.48, 1)
+color = Color(0.19, 0.2, 0.23, 1)
 
 [node name="NavBarHBox" type="HBoxContainer" parent="Browser Content/NavBar" unique_id=142889367]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 4
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = -4.0
+theme_override_constants/separation = 8
+alignment = 1
 
 [node name="BackBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=332798419]
-custom_minimum_size = Vector2(26, 0)
+custom_minimum_size = Vector2(36, 28)
 layout_mode = 2
+size_flags_vertical = 4
 theme_type_variation = &"NavButton"
-text = "<"
+text = "◀"
+icon_alignment = 1
 
 [node name="ForwardBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=206801185]
-custom_minimum_size = Vector2(26, 0)
+custom_minimum_size = Vector2(36, 28)
 layout_mode = 2
+size_flags_vertical = 4
 theme_type_variation = &"NavButton"
-text = ">"
+text = "▶"
+icon_alignment = 1
 
-[node name="AddressLabel" type="Label" parent="Browser Content/NavBar/NavBarHBox" unique_id=498520388]
+[node name="AddressBar" type="PanelContainer" parent="Browser Content/NavBar/NavBarHBox" unique_id=1080606760]
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+size_flags_vertical = 4
+theme_type_variation = &"AddressBar"
+
+[node name="AddressLabel" type="Label" parent="Browser Content/NavBar/NavBarHBox/AddressBar" unique_id=498520388]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.8, 0.85, 1)
 theme_override_font_sizes/font_size = 11
 vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="ContentDivider" type="ColorRect" parent="Browser Content" unique_id=1928374651]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.05, 0.06, 0.08, 1)
 
 [node name="Site" type="Control" parent="Browser Content" unique_id=1084887329]
 layout_mode = 2

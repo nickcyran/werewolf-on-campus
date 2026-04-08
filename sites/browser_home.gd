@@ -17,8 +17,8 @@ func _ready() -> void:
 func _add_tile(text: String, scene: PackedScene) -> void:
 	var btn := Button.new()
 	btn.text = text
-	btn.custom_minimum_size = Vector2(140, 90)
-	btn.add_theme_font_size_override("font_size", 14)
+	btn.custom_minimum_size = Vector2(160, 100)
+	btn.theme_type_variation = &"HomeTile"
 	btn.pressed.connect(_navigate_to.bind(scene))
 	_grid.add_child(btn)
 

@@ -27,6 +27,7 @@ viewport_path = NodePath("Interactables/Computer/Screen/SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vqul"]
 resource_local_to_scene = true
 shading_mode = 0
+texture_filter = 1
 albedo_texture = SubResource("ViewportTexture_34v3w")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_phone"]
@@ -73,7 +74,12 @@ mesh = SubResource("QuadMesh_3vqul")
 surface_material_override/0 = SubResource("StandardMaterial3D_3vqul")
 
 [node name="SubViewport" type="SubViewport" parent="Interactables/Computer/Screen" unique_id=2123028240]
-size = Vector2i(640, 360)
+size = Vector2i(1280, 720)
+gui_snap_controls_to_pixels = true
+content_scale_factor = 1.0
+disable_3d = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
 render_target_update_mode = 4
 
 [node name="Browser" parent="Interactables/Computer/Screen/SubViewport" unique_id=1089262983 instance=ExtResource("4_34v3w")]

@@ -73,7 +73,8 @@ mesh = SubResource("QuadMesh_3vqul")
 surface_material_override/0 = SubResource("StandardMaterial3D_3vqul")
 
 [node name="SubViewport" type="SubViewport" parent="Interactables/Computer/Screen" unique_id=2123028240]
-size = Vector2i(840, 476)
+size = Vector2i(640, 360)
+render_target_update_mode = 4
 
 [node name="Browser" parent="Interactables/Computer/Screen/SubViewport" unique_id=1089262983 instance=ExtResource("4_34v3w")]
 

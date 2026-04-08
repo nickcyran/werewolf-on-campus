@@ -30,6 +30,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_fullscreen"):
+		_toggle_fullscreen()
+		return
+
 	if event.is_action_pressed("toggle_info"):
 		_info_ctl.toggle()
 		return
@@ -68,3 +72,11 @@ func _toggle_mouse_capture() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _toggle_fullscreen() -> void:
+	var window := get_window()
+	if window.mode == Window.MODE_EXCLUSIVE_FULLSCREEN:
+		window.mode = Window.MODE_WINDOWED
+	else:
+		window.mode = Window.MODE_EXCLUSIVE_FULLSCREEN

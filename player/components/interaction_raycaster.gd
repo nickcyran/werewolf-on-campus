@@ -7,9 +7,13 @@ signal hovered_changed(new_target: Interactable)
 var camera: Camera3D
 var _hovered: Interactable
 
+# pre-allocated query object
+var _query: PhysicsRayQueryParameters3D
+
 
 func initialize(cam: Camera3D) -> void:
 	camera = cam
+	_query = PhysicsRayQueryParameters3D.new()
 
 
 # runs every physics frame while the game is in the PLAYING state.
@@ -49,9 +53,17 @@ func _raycast() -> Interactable:
 
 	var from := camera.global_position
 	var to := from - camera.global_transform.basis.z * interact_distance
-	var query := PhysicsRayQueryParameters3D.create(from, to)
+
+	# reuse the query instead of creating a new one each frame
+	_query.from = from
+	_query.to = to
+
 	var world := camera.get_world_3d()
-	var hit := world.direct_space_state.intersect_ray(query)
+	var space := world.direct_space_state
+	if !space:
+		return null
+
+	var hit := space.intersect_ray(_query)
 
 	if hit.is_empty():
 		return null

@@ -29,7 +29,6 @@ var _is_hovered: bool
 
 func _ready() -> void:
 	_discover_children()
-	_init_outline()
 
 	# Fetch subviewport safely
 	if !viewport_path.is_empty():
@@ -42,7 +41,8 @@ func set_hovered(hovered: bool) -> void:
 
 	_is_hovered = hovered
 	if _mesh:
-		# Outline the hovered interactable mesh
+		if hovered && !_outline:
+			_init_outline()
 		_mesh.material_overlay = _outline if hovered else null
 
 

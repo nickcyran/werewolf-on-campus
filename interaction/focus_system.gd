@@ -13,6 +13,12 @@ var saved_transform: Transform3D
 
 var is_animating := false
 
+# cached screen rect recompute only when the focus changes
+var _cached_rect: Rect2
+var _cached_vp_size: Vector2
+var _cached_scale: Vector2
+var _rect_dirty := true
+
 
 func _ready() -> void:
 	camera = get_node(camera_path) as Camera3D
@@ -39,14 +45,22 @@ func _on_focus_requested(node: Node3D) -> void:
 	if !target:
 		return
 
+	# force the embedded viewport to render while focused
+	if target.embedded_viewport:
+		target.embedded_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+
 	focused_node = _resolve_focus_node()
 	saved_transform = focused_node.global_transform
+	_rect_dirty = true
 
 	var destination := _compute_destination()
 	_tween_to(destination)
 
 
 func _unfocus() -> void:
+	# revert viewport to low-cost mode when leaving focus
+	if target and target.embedded_viewport:
+		target.embedded_viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_PARENT_VISIBLE
 	_tween_to(saved_transform, GameManager.release_focus)
 
 
@@ -94,26 +108,28 @@ func _forward_input(event: InputEvent) -> void:
 		vp.push_input(event)
 		return
 
-	# Screen-space mouse pos to viewport space
-	var rect := _get_screen_rect()
-	var vp_size := Vector2(vp.size)
+	# Recalculate rect + scale only when the target changes
+	if _rect_dirty:
+		_cached_rect = _compute_screen_rect()
+		_cached_vp_size = Vector2(vp.size)
+		_cached_scale = _cached_vp_size / _cached_rect.size
+		_rect_dirty = false
 
-	var scale := vp_size / rect.size
 	var mouse_event := (event as InputEventMouse).duplicate()
 
 	# Change pos into viewport coordinates
-	mouse_event.position = ((event.position - rect.position) * scale).clamp(Vector2.ZERO, vp_size)
+	mouse_event.position = ((event.position - _cached_rect.position) * _cached_scale).clamp(Vector2.ZERO, _cached_vp_size)
 	mouse_event.global_position = mouse_event.position
 
 	# Scale motion to match the viewport resolution
 	if mouse_event is InputEventMouseMotion:
-		mouse_event.relative *= scale
-		mouse_event.velocity *= scale
+		mouse_event.relative *= _cached_scale
+		mouse_event.velocity *= _cached_scale
 
 	vp.push_input(mouse_event)
 
 
-func _get_screen_rect() -> Rect2:
+func _compute_screen_rect() -> Rect2:
 	# Get mesh displaying viewport
 	var mesh := target.embedded_viewport.get_parent() as MeshInstance3D
 	var quad := mesh.mesh as QuadMesh

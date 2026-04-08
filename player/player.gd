@@ -10,7 +10,6 @@ extends Node3D
 
 @onready var camera: Camera3D = $Camera3D
 @onready var _time_label: Label = %TimeLabel
-@onready var _info_btn: Button = %InfoButton
 @onready var _info_overlay: Control = %InfoOverlay
 @onready var _info_panel: Info = %InfoOverlay.get_node("InfoPanel")
 
@@ -29,7 +28,6 @@ func _ready() -> void:
 	_time_label.text = DayClock.get_display_time()
 	GameManager.state_changed.connect(_on_game_state_changed)
 	DayClock.time_changed.connect(func(t: String): _time_label.text = t)
-	_info_btn.pressed.connect(_toggle_info)
 	_info_panel.exit_pressed.connect(_toggle_info)
 	_info_overlay.visible = false
 

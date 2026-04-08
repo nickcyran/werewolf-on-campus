@@ -52,18 +52,53 @@ horizontal_alignment = 2
 text = "9:00 AM"
 mouse_filter = 2
 
-[node name="InfoButton" type="Button" parent="UI"]
-unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
+[node name="ControlsHint" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -48.0
-grow_horizontal = 0
+offset_left = 16.0
+offset_top = -120.0
+offset_right = 250.0
+offset_bottom = -16.0
 grow_vertical = 0
-text = "i"
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="LookHint" type="Label" parent="UI/Control/ControlsHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "Mouse - Look around"
+mouse_filter = 2
+
+[node name="InteractHint" type="Label" parent="UI/Control/ControlsHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "LMB - Interact"
+mouse_filter = 2
+
+[node name="CursorHint" type="Label" parent="UI/Control/ControlsHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "Right Shift - Toggle cursor"
+mouse_filter = 2
+
+[node name="InfoHint" type="Label" parent="UI/Control/ControlsHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "I - Info slides"
+mouse_filter = 2
+
+[node name="EscHint" type="Label" parent="UI/Control/ControlsHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "Esc - Exit focus"
+mouse_filter = 2
 
 [node name="InfoOverlay" type="Control" parent="UI"]
 unique_name_in_owner = true

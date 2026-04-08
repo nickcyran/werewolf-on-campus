@@ -1,0 +1,23 @@
+[gd_resource type="Theme" format=3 uid="uid://hud_theme_001a"]
+
+[sub_resource type="StyleBoxFlat" id="time_panel"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.08, 0.08, 0.1, 0.75)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.24, 0.2, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[resource]
+PanelContainer/styles/panel = SubResource("time_panel")

@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://player/components/interaction_raycaster.gd" id="4_iray"]
 [ext_resource type="Script" path="res://player/components/info_overlay_controller.gd" id="5_info"]
 [ext_resource type="Script" path="res://player/components/hud_manager.gd" id="6_hud"]
+[ext_resource type="Theme" path="res://ui/hud/hud_theme.tres" id="7_hud_theme"]
 
 [node name="Player" type="Node3D" unique_id=678926049]
 script = ExtResource("1_4v4u1")
@@ -38,34 +39,73 @@ mouse_filter = 2
 mouse_behavior_recursive = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="UI/Control" unique_id=1161854943]
+[node name="Crosshair" type="CenterContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -2.25
-offset_top = -2.25
-offset_right = 2.25
-offset_bottom = 2.25
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TimeLabel" type="Label" parent="UI/Control"]
+[node name="CrosshairDot" type="ColorRect" parent="UI/Control/Crosshair"]
+layout_mode = 2
+custom_minimum_size = Vector2(3, 3)
+mouse_filter = 2
+color = Color(1, 1, 1, 0.85)
+
+[node name="InteractPrompt" type="Label" parent="UI/Control"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 0.9)
+theme_override_font_sizes/font_size = 13
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="TopBar" type="HBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 10
 anchor_right = 1.0
-offset_left = -200.0
-offset_top = 16.0
+offset_left = 16.0
+offset_top = 12.0
 offset_right = -16.0
 offset_bottom = 48.0
-grow_horizontal = 0
-horizontal_alignment = 2
+grow_horizontal = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="TimeBG" type="PanelContainer" parent="UI/Control/TopBar"]
+layout_mode = 2
+theme = ExtResource("7_hud_theme")
+mouse_filter = 2
+
+[node name="TimeLabel" type="Label" parent="UI/Control/TopBar/TimeBG"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.92, 0.82, 1)
+theme_override_font_sizes/font_size = 18
 text = "9:00 AM"
+horizontal_alignment = 1
+vertical_alignment = 1
 mouse_filter = 2
 
 [node name="ControlsHint" type="VBoxContainer" parent="UI/Control"]
@@ -74,47 +114,91 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = -120.0
-offset_right = 250.0
+offset_top = -148.0
+offset_right = 280.0
 offset_bottom = -16.0
 grow_vertical = 0
 mouse_filter = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 2
+
+[node name="ControlsTitle" type="Label" parent="UI/Control/ControlsHint"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 0.8)
+theme_override_font_sizes/font_size = 13
+text = "Controls"
+mouse_filter = 2
+
+[node name="Separator" type="ColorRect" parent="UI/Control/ControlsHint"]
+custom_minimum_size = Vector2(120, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 0.3)
 
 [node name="LookHint" type="Label" parent="UI/Control/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
-theme_override_font_sizes/font_size = 14
-text = "Mouse - Look around"
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
+theme_override_font_sizes/font_size = 12
+text = "Mouse — Look around"
 mouse_filter = 2
 
 [node name="InteractHint" type="Label" parent="UI/Control/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
-theme_override_font_sizes/font_size = 14
-text = "LMB - Interact"
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
+theme_override_font_sizes/font_size = 12
+text = "Left Click — Interact"
 mouse_filter = 2
 
 [node name="CursorHint" type="Label" parent="UI/Control/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
-theme_override_font_sizes/font_size = 14
-text = "Right Shift - Toggle cursor"
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
+theme_override_font_sizes/font_size = 12
+text = "Right Shift — Toggle cursor"
 mouse_filter = 2
 
 [node name="InfoHint" type="Label" parent="UI/Control/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
-theme_override_font_sizes/font_size = 14
-text = "I - Info slides"
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
+theme_override_font_sizes/font_size = 12
+text = "I — Info slides"
 mouse_filter = 2
 
 [node name="EscHint" type="Label" parent="UI/Control/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.7)
-theme_override_font_sizes/font_size = 14
-text = "Esc - Exit focus"
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
+theme_override_font_sizes/font_size = 12
+text = "Esc — Exit focus"
 mouse_filter = 2
+
+[node name="DayEndOverlay" type="ColorRect" parent="UI/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="DayEndLabel" type="Label" parent="UI/Control/DayEndOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -30.0
+offset_right = 200.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.7, 0)
+theme_override_font_sizes/font_size = 32
+text = "Day Complete"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="InfoOverlay" type="Control" parent="UI"]
 unique_name_in_owner = true
@@ -146,3 +230,22 @@ anchor_right = 0.9
 anchor_bottom = 0.92
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="OverlayUI" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="ExitFocusBtn" type="Button" parent="OverlayUI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 120.0
+offset_bottom = 50.0
+focus_mode = 0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 0.9)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "< Back"

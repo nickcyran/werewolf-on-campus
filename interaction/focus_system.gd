@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("exit_focus"):
-		_unfocus()
+		unfocus()
 	elif target and target.embedded_viewport:
 		_forward_input(event)
 
@@ -57,7 +57,7 @@ func _on_focus_requested(node: Node3D) -> void:
 	_tween_to(destination)
 
 
-func _unfocus() -> void:
+func unfocus() -> void:
 	# revert viewport to low-cost mode when leaving focus
 	if target and target.embedded_viewport:
 		target.embedded_viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_PARENT_VISIBLE

@@ -4,6 +4,7 @@ const BrowserTab = preload("res://browser/browser_tab.gd")
 const BROWSER_THEME = preload("res://browser/browser_theme.tres")
 
 const MAX_TABS := 5
+const PAGE_FADE_DURATION := 0.15
 
 @export var home_page: PackedScene
 
@@ -16,6 +17,7 @@ const MAX_TABS := 5
 var _tabs: Array[BrowserTab] = []
 var _active_tab: int = -1
 var _new_tab_btn: Button
+var _page_tween: Tween
 
 
 func _ready() -> void:
@@ -81,7 +83,7 @@ func load_site(scene: PackedScene) -> void:
 
 	var tab := _tabs[_active_tab]
 	tab.navigate_to(scene)
-	_show_page(tab)
+	_show_page_animated(tab)
 	_refresh_nav_state()
 
 
@@ -89,7 +91,7 @@ func go_back() -> void:
 	var tab := _active()
 
 	if tab && tab.go_back():
-		_show_page(tab)
+		_show_page_animated(tab)
 		_refresh_nav_state()
 
 
@@ -97,7 +99,7 @@ func go_forward() -> void:
 	var tab := _active()
 
 	if tab && tab.go_forward():
-		_show_page(tab)
+		_show_page_animated(tab)
 		_refresh_nav_state()
 
 
@@ -120,14 +122,23 @@ func _switch_to_tab(index: int) -> void:
 	_refresh_tab_visuals()
 
 
-func _show_page(tab: BrowserTab) -> void:
+func _show_page_animated(tab: BrowserTab) -> void:
 	var scene := tab.get_current_scene()
 	if !scene:
 		return
 
 	var page := tab.replace_page(scene)
 	if page && _tabs[_active_tab] == tab:
+		page.modulate.a = 0.0
 		_site_container.add_child(page)
+
+		# Fade in the new page
+		if _page_tween:
+			_page_tween.kill()
+			
+		_page_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		_page_tween.tween_property(page, "modulate:a", 1.0, PAGE_FADE_DURATION)
+
 	_refresh_tab_title(tab)
 	_refresh_address_label()
 

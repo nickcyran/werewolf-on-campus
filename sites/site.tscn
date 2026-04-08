@@ -20,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="ScrollContainer" unique_id=1249881159]
@@ -36,16 +37,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0.95, 0.95, 0.95, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ScrollContainer/Control" unique_id=458376241]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.09683099
-anchor_top = 0.734288
-anchor_right = 0.8635563
-anchor_bottom = 0.9045346
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 195
-text = "HELLO"
-metadata/_edit_use_anchors_ = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.3, 0.3, 0.35, 1)
+theme_override_font_sizes/font_size = 48
+text = "Page Template"
+horizontal_alignment = 1
+vertical_alignment = 1

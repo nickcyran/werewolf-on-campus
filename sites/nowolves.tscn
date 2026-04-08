@@ -52,7 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.85, 0.85, 0.85, 1)
+color = Color(0.96, 0.96, 0.96, 1)
 
 [node name="LogoCircle" type="ColorRect" parent="ScrollContainer/Content/Header" unique_id=877230302]
 layout_mode = 1
@@ -111,43 +111,52 @@ layout_mode = 2
 [node name="Article" type="MarginContainer" parent="ScrollContainer/Content/BodySection" unique_id=1004375466]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
 
 [node name="ArticleContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Article" unique_id=1946859470]
 layout_mode = 2
-theme_override_constants/separation = 1
+theme_override_constants/separation = 2
 
 [node name="Title" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1748151669]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 22
 text = "Signs of a Werewolf"
 
 [node name="Author" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1606928998]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.35, 0.35, 0.35, 1)
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 11
 text = "By [Author]"
 
 [node name="Date" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=802815567]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.35, 0.35, 0.35, 1)
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 10
 text = "[Date]"
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1692528923]
-custom_minimum_size = Vector2(0, 6)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/BodySection/Article/ArticleContent"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleContent"]
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
 [node name="Body" type="RichTextLabel" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=575954383]
-custom_minimum_size = Vector2(0, 350)
+custom_minimum_size = Vector2(0, 380)
 layout_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 11
-theme_override_font_sizes/bold_font_size = 11
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 13
 bbcode_enabled = true
 text = "  [b]1. Unnatural Sense of Smell and Eyesight:[/b]
 Werewolves have a keen senses, which a regular person can notice. Look for anyone affected strongly by smells, or anyone who sees well in the dark, but has trouble in bright light.
@@ -166,13 +175,13 @@ Werewolves shed when they take off their wolf form, and their hair doesn't go aw
 scroll_active = false
 
 [node name="AdSidebar" type="CenterContainer" parent="ScrollContainer/Content/BodySection" unique_id=1425141348]
-custom_minimum_size = Vector2(179.625, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 
 [node name="AdRight" type="Label" parent="ScrollContainer/Content/BodySection/AdSidebar" unique_id=1332654304]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1)
-theme_override_font_sizes/font_size = 12
-text = "[AD]"
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "[Advertisement]"
 horizontal_alignment = 1
 vertical_alignment = 1

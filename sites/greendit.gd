@@ -83,46 +83,86 @@ func _add_comment(data: Dictionary, parent: VBoxContainer, depth: int = 0) -> vo
 
 	# indent bar for nested replies
 	if depth > 0:
+		var spacer := Control.new()
+		spacer.custom_minimum_size = Vector2(depth * 20, 0)
+		row.add_child(spacer)
+
 		var indent := ColorRect.new()
 		indent.custom_minimum_size = Vector2(2, 0)
 		indent.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		indent.color = Color(0.3, 0.45, 0.32, 0.6)
-		var spacer := Control.new()
-		spacer.custom_minimum_size = Vector2(depth * 18, 0)
-		row.add_child(spacer)
+		# Gradient colors based on depth for visual hierarchy
+		var bar_colors := [
+			Color(0.3, 0.55, 0.35, 0.7),
+			Color(0.35, 0.45, 0.6, 0.6),
+			Color(0.5, 0.4, 0.55, 0.5),
+			Color(0.45, 0.45, 0.45, 0.4),
+		]
+		indent.color = bar_colors[mini(depth - 1, bar_colors.size() - 1)]
 		row.add_child(indent)
+
 		var gap := Control.new()
-		gap.custom_minimum_size = Vector2(8, 0)
+		gap.custom_minimum_size = Vector2(10, 0)
 		row.add_child(gap)
 
 	var col := VBoxContainer.new()
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	col.add_theme_constant_override("separation", 2)
+	col.add_theme_constant_override("separation", 3)
 	row.add_child(col)
 
-	# author + time + score
-	var meta := Label.new()
-	meta.text = "%s  %s  %s pts" % [
-		data.get("author", "u/anonymous"),
-		data.get("time", ""),
-		str(data.get("score", 0)),
-	]
-	meta.add_theme_font_size_override("font_size", 10)
-	meta.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5, 1))
-	col.add_child(meta)
+	# author + time header row
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 8)
+	col.add_child(header)
+
+	var author_label := Label.new()
+	author_label.text = data.get("author", "u/anonymous")
+	author_label.add_theme_font_size_override("font_size", 11)
+	author_label.add_theme_color_override("font_color", Color(0.4, 0.65, 0.45, 1))
+	header.add_child(author_label)
+
+	var time_label := Label.new()
+	time_label.text = data.get("time", "")
+	time_label.add_theme_font_size_override("font_size", 10)
+	time_label.add_theme_color_override("font_color", Color(0.45, 0.45, 0.45, 1))
+	header.add_child(time_label)
 
 	# comment body
 	var body := Label.new()
 	body.text = data.get("body", "")
 	body.add_theme_font_size_override("font_size", 12)
-	body.add_theme_color_override("font_color", Color(0.78, 0.78, 0.78, 1))
+	body.add_theme_color_override("font_color", Color(0.82, 0.82, 0.82, 1))
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(body)
 
-	# bottom spacer
+	# score / action bar
+	var actions := HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 12)
+	col.add_child(actions)
+
+	var score_label := Label.new()
+	var score_val: int = data.get("score", 0)
+	score_label.text = "▲ %d" % score_val
+	score_label.add_theme_font_size_override("font_size", 10)
+	score_label.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
+	actions.add_child(score_label)
+
+	var reply_label := Label.new()
+	reply_label.text = "Reply"
+	reply_label.add_theme_font_size_override("font_size", 10)
+	reply_label.add_theme_color_override("font_color", Color(0.45, 0.45, 0.45, 1))
+	actions.add_child(reply_label)
+
+	# bottom spacer between comments
 	var spacer_bottom := Control.new()
-	spacer_bottom.custom_minimum_size = Vector2(0, 4)
+	spacer_bottom.custom_minimum_size = Vector2(0, 6)
 	col.add_child(spacer_bottom)
+
+	# divider line between top-level comments
+	if depth == 0:
+		var divider := ColorRect.new()
+		divider.custom_minimum_size = Vector2(0, 1)
+		divider.color = Color(0.2, 0.22, 0.2, 0.5)
+		parent.add_child(divider)
 
 	# recurse into replies
 	var replies = data.get("replies", [])

@@ -245,33 +245,59 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -60.0
+offset_left = -52.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = 40.0
+offset_bottom = 44.0
 grow_horizontal = 0
 text = "✕"
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 22
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1382681547]
+[node name="NavBar" type="PanelContainer" parent="." unique_id=1382681547]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.9461806
-anchor_top = 0.9382716
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-grow_horizontal = 0
+offset_left = -140.0
+offset_top = -56.0
+offset_right = 140.0
+offset_bottom = -12.0
+grow_horizontal = 2
 grow_vertical = 0
-metadata/_edit_use_anchors_ = true
 
-[node name="Back" type="Button" parent="HBoxContainer" unique_id=438508712]
+[node name="NavContent" type="HBoxContainer" parent="NavBar"]
 layout_mode = 2
-text = "BACK"
+theme_override_constants/separation = 16
+alignment = 1
 
-[node name="Forward" type="Button" parent="HBoxContainer" unique_id=776190081]
+[node name="Back" type="Button" parent="NavBar/NavContent" unique_id=438508712]
+custom_minimum_size = Vector2(80, 36)
 layout_mode = 2
-text = "FORWARD"
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_colors/font_disabled_color = Color(0.4, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "◀  Back"
+
+[node name="PageIndicator" type="Label" parent="NavBar/NavContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 13
+text = "1 / 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Forward" type="Button" parent="NavBar/NavContent" unique_id=776190081]
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_colors/font_disabled_color = Color(0.4, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "Next  ▶"
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="HBoxContainer/Forward" to="." method="_on_forward_pressed"]
+[connection signal="pressed" from="NavBar/NavContent/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="NavBar/NavContent/Forward" to="." method="_on_forward_pressed"]

@@ -139,29 +139,29 @@ mouse_filter = 2
 color = Color(0.16, 0.17, 0.19, 1)
 
 [node name="VoteBar" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard"]
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(44, 0)
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 2
 alignment = 1
 
 [node name="UpArrow" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.4, 0.65, 0.45, 1)
+theme_override_font_sizes/font_size = 16
 text = "▲"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_font_sizes/font_size = 13
 text = "123"
 horizontal_alignment = 1
 
 [node name="DownArrow" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.55, 0.45, 0.45, 1)
+theme_override_font_sizes/font_size = 16
 text = "▼"
 horizontal_alignment = 1
 
@@ -175,13 +175,13 @@ theme_override_constants/margin_bottom = 10
 
 [node name="PostContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 6
 
 [node name="PostMeta" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1)
 theme_override_font_sizes/font_size = 10
-text = "g/testforum  Posted by u/testuser01  3h"
+text = "g/campuslife  •  Posted by u/testuser01  •  3h"
 
 [node name="PostTitle" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent"]
 layout_mode = 2

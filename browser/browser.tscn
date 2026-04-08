@@ -34,7 +34,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="TabStrip" type="Control" parent="Browser Content" unique_id=507449811]
-custom_minimum_size = Vector2(0, 34)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 
 [node name="TabStripBG" type="ColorRect" parent="Browser Content/TabStrip" unique_id=2044685492]
@@ -106,8 +106,8 @@ theme_type_variation = &"AddressBar"
 
 [node name="AddressLabel" type="Label" parent="Browser Content/NavBar/NavBarHBox/AddressBar" unique_id=498520388]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.78, 0.8, 0.85, 1)
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.72, 0.75, 0.8, 1)
+theme_override_font_sizes/font_size = 12
 vertical_alignment = 1
 text_overrun_behavior = 3
 

@@ -3,7 +3,7 @@ extends Node
 signal state_changed(new_state: State)
 signal focus_entered(interactable: Node3D)
 
-enum State { PLAYING, FOCUSED, PAUSED }
+enum State { PLAYING, FOCUSED, PAUSED, TIME_UP }
 
 var state: State = State.PLAYING:
 	set(value):
@@ -14,6 +14,9 @@ var state: State = State.PLAYING:
 		state_changed.emit(state)
 
 var focused_interactable: Node3D = null
+
+# Persistent checklist state: maps fact index (int) -> checked (bool)
+var werewolf_checklist := {}
 
 
 func request_focus(interactable: Node3D) -> void:

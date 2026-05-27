@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://cwpmhn0ngqhpn"]
+
+[ext_resource type="Script" path="res://features/sites/home/browser_home.gd" id="1_home"]
+[ext_resource type="PackedScene" uid="uid://bqkh6hns1kohv" path="res://features/sites/nowolves/nowolves.tscn" id="2_nw"]
+[ext_resource type="PackedScene" uid="uid://jx04rrr7disu" path="res://features/sites/greendit/greendit.tscn" id="3_greendit"]
+[ext_resource type="PackedScene" uid="uid://email_client" path="res://features/sites/email/EmailClient.tscn" id="4_email"]
+[ext_resource type="PackedScene" path="res://features/sites/acww/acww_main.tscn" id="5_acww"]
+[ext_resource type="PackedScene" path="res://features/sites/channel29/channel29.tscn" id="6_ch29"]
+[ext_resource type="PackedScene" path="res://features/sites/trifangnews/trifang_news.tscn" id="7_tfn"]
+
+[node name="BrowserHome" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_home")
+site_title = "Home"
+site_scenes = Array[PackedScene]([ExtResource("2_nw"), ExtResource("3_greendit"), ExtResource("4_email"), ExtResource("5_acww"), ExtResource("6_ch29"), ExtResource("7_tfn")])
+site_labels = PackedStringArray("NoWolves", "Greendit", "CloudMail", "ACWW", "Channel 29", "Tri-Fang News")
+site_descriptions = PackedStringArray("News & articles", "Campus forum", "Campus email", "Official commission news", "Local news station", "University news")
+site_icons = PackedStringArray("NW", "GD", "CM", "AC", "29", "TF")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.94, 0.94, 0.96, 1)
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="PageContent" type="VBoxContainer" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TopSpacer" type="Control" parent="Scroll/PageContent"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="SitesSection" type="VBoxContainer" parent="Scroll/PageContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Scroll/PageContent/SitesSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/font_size = 26
+text = "Where would you like to go?"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Scroll/PageContent/SitesSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.55, 1)
+theme_override_font_sizes/font_size = 12
+text = "Select a site to browse"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Scroll/PageContent/SitesSection"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Grid" type="GridContainer" parent="Scroll/PageContent/SitesSection"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 4
+
+[node name="Divider" type="MarginContainer" parent="Scroll/PageContent"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 28
+
+[node name="Line" type="ColorRect" parent="Scroll/PageContent/Divider"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.78, 0.78, 0.82, 1)
+
+[node name="ChecklistSection" type="VBoxContainer" parent="Scroll/PageContent"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="ChecklistMargin" type="MarginContainer" parent="Scroll/PageContent/ChecklistSection"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="ChecklistVBox" type="VBoxContainer" parent="Scroll/PageContent/ChecklistSection/ChecklistMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ChecklistTitle" type="Label" parent="Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/font_size = 20
+text = "Werewolf Fact Checker"
+horizontal_alignment = 1
+
+[node name="ChecklistDesc" type="Label" parent="Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.45, 0.5, 1)
+theme_override_font_sizes/font_size = 11
+text = "Check off the facts you believe are TRUE about werewolves."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ChecklistItems" type="VBoxContainer" parent="Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BottomSpacer" type="Control" parent="Scroll/PageContent"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2

@@ -10,12 +10,12 @@ extends Node3D
 @onready var _camera: Camera3D = $Camera3D
 @onready var _time_label: Label = %TimeLabel
 @onready var _info_overlay: Control = %InfoOverlay
-@onready var _info_panel: Info = %InfoOverlay.get_node("InfoPanel")
+@onready var _info_panel: Info = %InfoOverlay.get_node("InfoPanel") as Info
 @onready var _interact_prompt: Label = %InteractPrompt
 @onready var _day_end_overlay: ColorRect = %DayEndOverlay
 @onready var _crosshair_dot: ColorRect = $UI/Control/Crosshair/CrosshairDot
-@onready var _exit_focus_btn: Button = $OverlayUI/ExitFocusBtn
-@onready var _controls_hint: VBoxContainer = $UI/Control/ControlsHint
+@onready var _exit_focus_btn: Button = %ExitFocusBtn
+@onready var _controls_hint: VBoxContainer = %ControlsHint
 
 var _controls_hint_tween: Tween
 var _controls_hint_timer: float = 8.0 # auto-hide after 8 seconds
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	if _controls_visible and _controls_hint_timer > 0.0:
 		_controls_hint_timer -= delta
 		if _controls_hint_timer <= 0.0:
-			_fade_controls_hint(false)
+			_hide_controls_hint()
 
 
 func _physics_process(_delta: float) -> void:
@@ -132,13 +132,13 @@ func _pulse_crosshair() -> void:
 		tw.tween_property(dot, "scale", Vector2(1.0, 1.0), 0.15)
 
 
-func _fade_controls_hint(make_visible: bool) -> void:
+func _hide_controls_hint() -> void:
 	if _controls_hint_tween:
 		_controls_hint_tween.kill()
 
-	_controls_visible = make_visible
+	_controls_visible = false
 	_controls_hint_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	_controls_hint_tween.tween_property(_controls_hint, "modulate:a", 0.9 if make_visible else 0.0, 0.5)
+	_controls_hint_tween.tween_property(_controls_hint, "modulate:a", 0.0, 0.5)
 
 
 func _on_exit_focus_pressed() -> void:

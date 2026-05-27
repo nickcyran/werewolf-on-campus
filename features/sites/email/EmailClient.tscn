@@ -1,0 +1,260 @@
+[gd_scene format=3 uid="uid://cd1j70hcw1372"]
+
+[ext_resource type="Script" uid="uid://dj40wxghl736n" path="res://features/sites/email/email_client.gd" id="1"]
+[ext_resource type="Theme" uid="uid://dosjhvpyoh2j4" path="res://features/sites/email/email_theme.tres" id="2_them"]
+[ext_resource type="Texture2D" uid="uid://bc4lqvpe3n3qb" path="res://assets/logos/CloudMail_logo.png" id="3_logo"]
+
+[node name="EmailClient" type="Control" unique_id=2007259044]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_them")
+script = ExtResource("1")
+site_title = "CloudMail"
+
+[node name="RootPanel" type="PanelContainer" parent="." unique_id=578218129]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmailRootPanel"
+
+[node name="MainHBox" type="HBoxContainer" parent="RootPanel" unique_id=903099556]
+layout_mode = 2
+theme_type_variation = &"EmailRootHBox"
+
+[node name="SidebarPanel" type="PanelContainer" parent="RootPanel/MainHBox" unique_id=1769279673]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EmailSidebarPanel"
+
+[node name="SidebarVBox" type="VBoxContainer" parent="RootPanel/MainHBox/SidebarPanel" unique_id=1828041036]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailSidebarVBox"
+
+[node name="TopPad" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=70788374]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="BrandRow" type="HBoxContainer" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=825604055]
+layout_mode = 2
+theme_type_variation = &"EmailBrandRow"
+
+[node name="BrandPadL" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/BrandRow" unique_id=2039497365]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="BrandLogo" type="TextureRect" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/BrandRow" unique_id=1284444239]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BrandLabel" type="Label" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/BrandRow" unique_id=928747094]
+layout_mode = 2
+theme_type_variation = &"EmailBrand"
+text = "CloudMail"
+
+[node name="BrandGap" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=2097157879]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="BrandRule" type="PanelContainer" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=2138475906]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_type_variation = &"EmailChromeHRule"
+
+[node name="SectionPad" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=1051933485]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SectionLabel" type="Label" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=1035208398]
+layout_mode = 2
+theme_type_variation = &"EmailSectionLabel"
+text = "   FOLDERS"
+
+[node name="SectionGap" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=775370708]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="BtnInbox" type="Button" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=1664198351]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SidebarButton"
+text = "   Inbox"
+alignment = 0
+clip_text = true
+
+[node name="BtnSpam" type="Button" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=868225100]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SidebarButton"
+text = "   Spam"
+alignment = 0
+clip_text = true
+
+[node name="BtnTrash" type="Button" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=1817535437]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SidebarButton"
+text = "   Trash"
+alignment = 0
+clip_text = true
+
+[node name="SidebarFill" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=216709219]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FooterRule" type="PanelContainer" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=959397982]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_type_variation = &"EmailChromeHRule"
+
+[node name="FooterLabel" type="Label" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=254858885]
+layout_mode = 2
+theme_type_variation = &"EmailFooter"
+text = "   CloudMail v1.0"
+
+[node name="BotPad" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=1682981499]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VSep1" type="PanelContainer" parent="RootPanel/MainHBox" unique_id=1063158790]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EmailChromeVSeparator"
+
+[node name="ListPanel" type="PanelContainer" parent="RootPanel/MainHBox" unique_id=714821281]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.38
+theme_type_variation = &"EmailListPanel"
+
+[node name="ListInner" type="VBoxContainer" parent="RootPanel/MainHBox/ListPanel" unique_id=1491465894]
+layout_mode = 2
+theme_type_variation = &"EmailListInnerVBox"
+
+[node name="ListHeaderPad" type="Control" parent="RootPanel/MainHBox/ListPanel/ListInner" unique_id=358011968]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="ListHeader" type="Label" parent="RootPanel/MainHBox/ListPanel/ListInner" unique_id=524759943]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailListHeader"
+text = "   INBOX"
+
+[node name="ListHeaderPad2" type="Control" parent="RootPanel/MainHBox/ListPanel/ListInner" unique_id=1396552355]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="ListTopRule" type="PanelContainer" parent="RootPanel/MainHBox/ListPanel/ListInner" unique_id=1086404085]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_type_variation = &"EmailChromeHRule"
+
+[node name="ListScroll" type="ScrollContainer" parent="RootPanel/MainHBox/ListPanel/ListInner" unique_id=1610474709]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 2
+
+[node name="ListVBox" type="VBoxContainer" parent="RootPanel/MainHBox/ListPanel/ListInner/ListScroll" unique_id=798915849]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmailListScrollVBox"
+
+[node name="VSep2" type="PanelContainer" parent="RootPanel/MainHBox" unique_id=457515167]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EmailChromeVSeparator"
+
+[node name="DetailPanel" type="PanelContainer" parent="RootPanel/MainHBox" unique_id=926391043]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.62
+theme_type_variation = &"EmailDetailPanel"
+
+[node name="DetailLayer" type="Control" parent="RootPanel/MainHBox/DetailPanel" unique_id=1275634493]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DetailVBox" type="VBoxContainer" parent="RootPanel/MainHBox/DetailPanel/DetailLayer" unique_id=728407458]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmailDetailVBox"
+
+[node name="DetailSender" type="Label" parent="RootPanel/MainHBox/DetailPanel/DetailLayer/DetailVBox" unique_id=86832821]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailDetailSender"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="DetailSubject" type="Label" parent="RootPanel/MainHBox/DetailPanel/DetailLayer/DetailVBox" unique_id=74510104]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailDetailSubject"
+autowrap_mode = 3
+
+[node name="DetailRule" type="PanelContainer" parent="RootPanel/MainHBox/DetailPanel/DetailLayer/DetailVBox" unique_id=1920355324]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_type_variation = &"EmailChromeHRule"
+
+[node name="DetailBody" type="RichTextLabel" parent="RootPanel/MainHBox/DetailPanel/DetailLayer/DetailVBox" unique_id=211732811]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"EmailDetailBody"
+bbcode_enabled = true
+
+[node name="DetailCustomHost" type="MarginContainer" parent="RootPanel/MainHBox/DetailPanel/DetailLayer/DetailVBox" unique_id=1429845131]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DetailPlaceholder" type="Label" parent="RootPanel/MainHBox/DetailPanel/DetailLayer" unique_id=1431066396]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmailPlaceholder"
+text = "Select an email to read"
+horizontal_alignment = 1
+vertical_alignment = 1

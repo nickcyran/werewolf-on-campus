@@ -3,7 +3,9 @@ extends Node
 signal time_changed(display_time: String)
 signal day_ended
 
-const REAL_DURATION := 1200.0 	# 20 real-life minutes per in-game day
+## Wall-clock seconds for one full in-game day (until day_ended fires). Default 1200 ≈ 20 minutes.
+@export_range(30.0, 14400.0, 1.0, "or_greater") var max_game_time_seconds: float = 1200.0
+
 const START_HOUR := 9.0 		# 9 AM
 const END_HOUR := 22.0 			# 10 PM
 const REFRESH_INTERVAL := 1.0
@@ -24,8 +26,8 @@ func _process(delta: float) -> void:
 	if !started or day_over:
 		return
 
-	elapsed = minf(elapsed + delta, REAL_DURATION)
-	if elapsed == REAL_DURATION:
+	elapsed = minf(elapsed + delta, max_game_time_seconds)
+	if not day_over and elapsed >= max_game_time_seconds:
 		day_over = true
 		day_ended.emit()
 
@@ -42,7 +44,7 @@ func _process(delta: float) -> void:
 
 
 func get_progress() -> float:
-	return clampf(elapsed / REAL_DURATION, 0.0, 1.0)
+	return clampf(elapsed / max_game_time_seconds, 0.0, 1.0)
 
 
 func get_display_time() -> String:

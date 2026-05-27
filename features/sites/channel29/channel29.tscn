@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://c7lsmvhqyxdfx"]
+
+[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
+[ext_resource type="Texture2D" uid="uid://16tgesm3tp33" path="res://assets/logos/channel29_logo.png" id="2_logo"]
+[ext_resource type="Texture2D" uid="uid://cps3w2rwwa4oo" path="res://assets/logos/channel29_badge.png" id="3_badge"]
+
+[node name="Channel29" type="Control" unique_id=1787856998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_site")
+site_title = "www.channel29news.com/staff/mary-harker"
+
+[node name="BG" type="ColorRect" parent="." unique_id=1278891469]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.96, 0.96, 0.96, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1363300365]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=1516569518]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="NavBar" type="Control" parent="ScrollContainer/Content" unique_id=2016850191]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+
+[node name="NavBarBG" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=1728545769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12, 0.12, 0.14, 1)
+
+[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=255103961]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="News" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1955063093]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.78, 0.25, 1)
+theme_override_font_sizes/font_size = 14
+text = "News"
+vertical_alignment = 1
+
+[node name="Weather" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=202980808]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.82, 1)
+theme_override_font_sizes/font_size = 14
+text = "Weather"
+vertical_alignment = 1
+
+[node name="Sports" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1154974053]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.82, 1)
+theme_override_font_sizes/font_size = 14
+text = "Sports"
+vertical_alignment = 1
+
+[node name="TriFang" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1924185759]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.82, 1)
+theme_override_font_sizes/font_size = 14
+text = "Tri-Fang NY"
+vertical_alignment = 1
+
+[node name="BodySection" type="HBoxContainer" parent="ScrollContainer/Content" unique_id=1519437769]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftSidebar" type="VBoxContainer" parent="ScrollContainer/Content/BodySection" unique_id=829252730]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SidebarBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=1521915640]
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.94, 0.94, 0.94, 1)
+
+[node name="BadgeRow" type="CenterContainer" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=666127743]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Badge" type="TextureRect" parent="ScrollContainer/Content/BodySection/LeftSidebar/BadgeRow" unique_id=1588810959]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+texture = ExtResource("3_badge")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=1111319432]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 18
+text = "Mary Harker"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=122861539]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="AboutLabel" type="Label" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=1507800879]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.3, 1)
+theme_override_font_sizes/font_size = 14
+text = "About"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/BodySection" unique_id=1853839533]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.82, 0.82, 0.82, 1)
+
+[node name="MainContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection" unique_id=1276699817]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="LogoBanner" type="CenterContainer" parent="ScrollContainer/Content/BodySection/MainContent" unique_id=996407248]
+custom_minimum_size = Vector2(0, 95.7)
+layout_mode = 2
+
+[node name="LogoBannerBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/MainContent/LogoBanner" unique_id=370422975]
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.06, 0.06, 0.08, 1)
+
+[node name="Logo" type="TextureRect" parent="ScrollContainer/Content/BodySection/MainContent/LogoBanner" unique_id=518710090]
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 2
+texture = ExtResource("2_logo")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="BioSection" type="MarginContainer" parent="ScrollContainer/Content/BodySection/MainContent" unique_id=1793912702]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="BioVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/MainContent/BioSection" unique_id=1435453425]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BioTitle" type="Label" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=2028735478]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 22
+text = "Journalist Bio:"
+
+[node name="Divider1" type="ColorRect" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=84897490]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.82, 0.82, 0.82, 1)
+
+[node name="StaffLine" type="Label" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=110253113]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/font_size = 16
+text = "Mary Harker, staff writer"
+
+[node name="ContactLine" type="Label" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=2073235696]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.42, 1)
+theme_override_font_sizes/font_size = 12
+text = "mharker@channel29.com | 361-555-4321"
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=584594939]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BioBody" type="RichTextLabel" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=310972692]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.18, 0.18, 0.18, 1)
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "Mary Harker is a reporter with the rapid response team at Channel 29 News. Harker graduated magna cum laude with a degree in Journalism from Tri-Fang University in 2011.
+
+She worked at the student paper there and held an internship with the Tri-Fang City Herald before joining Channel 29 in 2016.
+
+She primarily covers public safety and topics of local concern for the Tri-City area.
+
+She won the Selden Ring Award in 2023 for her work exposing several members of the mayor's office as vampires."
+scroll_active = false

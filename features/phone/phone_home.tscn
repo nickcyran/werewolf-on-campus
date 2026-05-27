@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/phone/phone_home.gd" id="1_home"]
+[ext_resource type="PackedScene" path="res://features/phone/apps/capture/capture.tscn" id="2_capture"]
+
+[node name="PhoneHome" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_home")
+app_scenes = Array[PackedScene]([ExtResource("2_capture")])
+app_labels = PackedStringArray("Capture")
+app_icons = PackedStringArray("📷")
+app_colors = PackedColorArray(0.55, 0.35, 0.45, 1)
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08, 0.08, 0.1, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="CenterMargin" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="ScrollContainer/CenterMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+
+[node name="DateLabel" type="Label" parent="ScrollContainer/CenterMargin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 22
+text = "Campus Phone"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="ScrollContainer/CenterMargin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 28
+columns = 3

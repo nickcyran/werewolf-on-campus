@@ -1,0 +1,243 @@
+[gd_resource type="Theme" format=3 uid="uid://dosjhvpyoh2j4"]
+
+[sub_resource type="StyleBoxFlat" id="announce_footer_bg"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.91, 0.91, 0.93, 1)
+
+[sub_resource type="StyleBoxFlat" id="chrome_h_rule"]
+bg_color = Color(0.22, 0.23, 0.26, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="chrome_v_sep"]
+bg_color = Color(0.2, 0.21, 0.24, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="panel_detail"]
+content_margin_left = 24.0
+content_margin_top = 20.0
+content_margin_right = 24.0
+content_margin_bottom = 20.0
+bg_color = Color(0.11, 0.12, 0.14, 1)
+
+[sub_resource type="StyleBoxFlat" id="entry_disabled"]
+bg_color = Color(0.1, 0.1, 0.13, 1)
+border_width_bottom = 1
+border_color = Color(0.22, 0.23, 0.26, 0.6)
+
+[sub_resource type="StyleBoxEmpty" id="entry_focus"]
+
+[sub_resource type="StyleBoxFlat" id="entry_hover"]
+bg_color = Color(0.19, 0.2, 0.24, 1)
+border_width_bottom = 1
+border_color = Color(0.22, 0.23, 0.26, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="entry_normal"]
+bg_color = Color(0.14, 0.15, 0.18, 1)
+border_width_bottom = 1
+border_color = Color(0.22, 0.23, 0.26, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="entry_pressed"]
+bg_color = Color(0.23, 0.24, 0.28, 1)
+border_width_bottom = 1
+border_color = Color(0.22, 0.23, 0.26, 0.6)
+
+[sub_resource type="StyleBoxEmpty" id="entry_sel_focus"]
+
+[sub_resource type="StyleBoxFlat" id="entry_sel_hover"]
+bg_color = Color(0.9, 0.68, 0.24, 0.16)
+border_width_bottom = 1
+border_color = Color(0.22, 0.23, 0.26, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="entry_sel_normal"]
+bg_color = Color(0.9, 0.68, 0.24, 0.1)
+border_width_bottom = 1
+border_color = Color(0.22, 0.23, 0.26, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="entry_sel_pressed"]
+bg_color = Color(0.9, 0.68, 0.24, 0.22)
+border_width_bottom = 1
+border_color = Color(0.22, 0.23, 0.26, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="panel_list"]
+bg_color = Color(0.13, 0.14, 0.16, 1)
+
+[sub_resource type="StyleBoxFlat" id="reading_paper"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="panel_main"]
+bg_color = Color(0.1, 0.1, 0.12, 1)
+
+[sub_resource type="StyleBoxFlat" id="panel_sidebar"]
+bg_color = Color(0.12, 0.13, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="sidebar_btn_disabled"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.08, 0.09, 0.1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="sidebar_btn_focus"]
+
+[sub_resource type="StyleBoxFlat" id="sidebar_btn_hover"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.18, 0.19, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="sidebar_btn_normal"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.12, 0.13, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="sidebar_btn_pressed"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.22, 0.23, 0.26, 1)
+
+[sub_resource type="StyleBoxEmpty" id="sidebar_active_focus"]
+
+[sub_resource type="StyleBoxFlat" id="sidebar_active_hover"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.9, 0.68, 0.24, 0.2)
+border_width_left = 3
+border_color = Color(0.9, 0.68, 0.24, 1)
+
+[sub_resource type="StyleBoxFlat" id="sidebar_active_normal"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.9, 0.68, 0.24, 0.12)
+border_width_left = 3
+border_color = Color(0.9, 0.68, 0.24, 1)
+
+[sub_resource type="StyleBoxFlat" id="sidebar_active_pressed"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.22, 0.23, 0.26, 1)
+
+[resource]
+EmailAnnounceBody/base_type = &"RichTextLabel"
+EmailAnnounceBody/colors/default_color = Color(0.08, 0.08, 0.1, 1)
+EmailAnnounceBody/font_sizes/normal_font_size = 13
+EmailAnnounceFooterPanel/base_type = &"PanelContainer"
+EmailAnnounceFooterPanel/styles/panel = SubResource("announce_footer_bg")
+EmailAnnounceFooterText/base_type = &"Label"
+EmailAnnounceFooterText/colors/font_color = Color(0.88, 0.2, 0.52, 1)
+EmailAnnounceFooterText/font_sizes/font_size = 11
+EmailAnnounceFooterVBox/base_type = &"VBoxContainer"
+EmailAnnounceFooterVBox/constants/separation = 4
+EmailAnnounceHeadline/base_type = &"RichTextLabel"
+EmailAnnounceHeadline/colors/default_color = Color(0.05, 0.05, 0.08, 1)
+EmailAnnounceHeadline/font_sizes/bold_font_size = 17
+EmailAnnounceHeadline/font_sizes/normal_font_size = 17
+EmailAnnounceMeta/base_type = &"Label"
+EmailAnnounceMeta/colors/font_color = Color(0.08, 0.08, 0.1, 1)
+EmailAnnounceMeta/font_sizes/font_size = 12
+EmailAnnounceMetaVBox/base_type = &"VBoxContainer"
+EmailAnnounceMetaVBox/constants/separation = 2
+EmailAnnounceStack/base_type = &"VBoxContainer"
+EmailAnnounceStack/constants/separation = 14
+EmailBannerRich/base_type = &"RichTextLabel"
+EmailBannerRich/colors/default_color = Color(1, 1, 1, 1)
+EmailBannerRich/font_sizes/bold_font_size = 20
+EmailBannerRich/font_sizes/italics_font_size = 13
+EmailBannerRich/font_sizes/normal_font_size = 13
+EmailBrand/base_type = &"Label"
+EmailBrand/colors/font_color = Color(0.94, 0.94, 0.96, 1)
+EmailBrand/font_sizes/font_size = 15
+EmailBrandIcon/base_type = &"Label"
+EmailBrandIcon/colors/font_color = Color(0.9, 0.68, 0.24, 1)
+EmailBrandIcon/font_sizes/font_size = 16
+EmailBrandRow/base_type = &"HBoxContainer"
+EmailBrandRow/constants/separation = 6
+EmailChromeHRule/base_type = &"PanelContainer"
+EmailChromeHRule/styles/panel = SubResource("chrome_h_rule")
+EmailChromeVSeparator/base_type = &"PanelContainer"
+EmailChromeVSeparator/styles/panel = SubResource("chrome_v_sep")
+EmailDetailBody/base_type = &"RichTextLabel"
+EmailDetailBody/colors/default_color = Color(0.55, 0.56, 0.6, 1)
+EmailDetailBody/font_sizes/normal_font_size = 12
+EmailDetailPanel/base_type = &"PanelContainer"
+EmailDetailPanel/styles/panel = SubResource("panel_detail")
+EmailDetailSender/base_type = &"Label"
+EmailDetailSender/colors/font_color = Color(0.9, 0.68, 0.24, 1)
+EmailDetailSender/font_sizes/font_size = 11
+EmailDetailSubject/base_type = &"Label"
+EmailDetailSubject/colors/font_color = Color(0.94, 0.94, 0.96, 1)
+EmailDetailSubject/font_sizes/font_size = 18
+EmailDetailVBox/base_type = &"VBoxContainer"
+EmailDetailVBox/constants/separation = 8
+EmailEntry/base_type = &"Button"
+EmailEntry/styles/disabled = SubResource("entry_disabled")
+EmailEntry/styles/focus = SubResource("entry_focus")
+EmailEntry/styles/hover = SubResource("entry_hover")
+EmailEntry/styles/normal = SubResource("entry_normal")
+EmailEntry/styles/pressed = SubResource("entry_pressed")
+EmailEntryRowHBox/base_type = &"HBoxContainer"
+EmailEntryRowHBox/constants/separation = 0
+EmailEntrySelected/base_type = &"Button"
+EmailEntrySelected/styles/focus = SubResource("entry_sel_focus")
+EmailEntrySelected/styles/hover = SubResource("entry_sel_hover")
+EmailEntrySelected/styles/normal = SubResource("entry_sel_normal")
+EmailEntrySelected/styles/pressed = SubResource("entry_sel_pressed")
+EmailEntryTextVBox/base_type = &"VBoxContainer"
+EmailEntryTextVBox/constants/separation = 2
+EmailFooter/base_type = &"Label"
+EmailFooter/colors/font_color = Color(0.38, 0.38, 0.42, 1)
+EmailFooter/font_sizes/font_size = 9
+EmailListHeader/base_type = &"Label"
+EmailListHeader/colors/font_color = Color(0.38, 0.38, 0.42, 1)
+EmailListHeader/font_sizes/font_size = 10
+EmailListInnerVBox/base_type = &"VBoxContainer"
+EmailListInnerVBox/constants/separation = 0
+EmailListPanel/base_type = &"PanelContainer"
+EmailListPanel/styles/panel = SubResource("panel_list")
+EmailListScrollVBox/base_type = &"VBoxContainer"
+EmailListScrollVBox/constants/separation = 0
+EmailPlaceholder/base_type = &"Label"
+EmailPlaceholder/colors/font_color = Color(0.38, 0.38, 0.42, 1)
+EmailPlaceholder/font_sizes/font_size = 13
+EmailReadingPaper/base_type = &"PanelContainer"
+EmailReadingPaper/styles/panel = SubResource("reading_paper")
+EmailRootHBox/base_type = &"HBoxContainer"
+EmailRootHBox/constants/separation = 0
+EmailRootPanel/base_type = &"PanelContainer"
+EmailRootPanel/styles/panel = SubResource("panel_main")
+EmailSectionLabel/base_type = &"Label"
+EmailSectionLabel/colors/font_color = Color(0.38, 0.38, 0.42, 1)
+EmailSectionLabel/font_sizes/font_size = 9
+EmailSender/base_type = &"Label"
+EmailSender/colors/font_color = Color(0.88, 0.88, 0.9, 1)
+EmailSender/font_sizes/font_size = 12
+EmailSidebarPanel/base_type = &"PanelContainer"
+EmailSidebarPanel/styles/panel = SubResource("panel_sidebar")
+EmailSidebarVBox/base_type = &"VBoxContainer"
+EmailSidebarVBox/constants/separation = 2
+EmailSnippet/base_type = &"Label"
+EmailSnippet/colors/font_color = Color(0.48, 0.48, 0.52, 1)
+EmailSnippet/font_sizes/font_size = 10
+EmailSubject/base_type = &"Label"
+EmailSubject/colors/font_color = Color(0.65, 0.65, 0.7, 1)
+EmailSubject/font_sizes/font_size = 11
+SidebarButton/base_type = &"Button"
+SidebarButton/colors/font_color = Color(0.78, 0.78, 0.82, 1)
+SidebarButton/colors/font_hover_color = Color(0.94, 0.94, 0.96, 1)
+SidebarButton/colors/font_pressed_color = Color(0.9, 0.68, 0.24, 1)
+SidebarButton/font_sizes/font_size = 12
+SidebarButton/styles/disabled = SubResource("sidebar_btn_disabled")
+SidebarButton/styles/focus = SubResource("sidebar_btn_focus")
+SidebarButton/styles/hover = SubResource("sidebar_btn_hover")
+SidebarButton/styles/normal = SubResource("sidebar_btn_normal")
+SidebarButton/styles/pressed = SubResource("sidebar_btn_pressed")
+SidebarButtonActive/base_type = &"Button"
+SidebarButtonActive/colors/font_color = Color(0.9, 0.68, 0.24, 1)
+SidebarButtonActive/colors/font_hover_color = Color(0.9, 0.68, 0.24, 1)
+SidebarButtonActive/colors/font_pressed_color = Color(0.9, 0.68, 0.24, 1)
+SidebarButtonActive/font_sizes/font_size = 12
+SidebarButtonActive/styles/focus = SubResource("sidebar_active_focus")
+SidebarButtonActive/styles/hover = SubResource("sidebar_active_hover")
+SidebarButtonActive/styles/normal = SubResource("sidebar_active_normal")
+SidebarButtonActive/styles/pressed = SubResource("sidebar_active_pressed")

@@ -1,0 +1,252 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/phone/apps/capture/capture.gd" id="1_app"]
+
+[sub_resource type="StyleBoxFlat" id="HeaderStyle"]
+bg_color = Color(0.28, 0.26, 0.25, 1)
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StoriesStyle"]
+bg_color = Color(0.3, 0.28, 0.27, 1)
+content_margin_left = 10.0
+content_margin_top = 12.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="BottomNavStyle"]
+bg_color = Color(0.14, 0.13, 0.13, 1)
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+border_width_top = 1
+border_color = Color(0.22, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
+bg_color = Color(0.0, 0.0, 0.0, 0.0)
+
+[sub_resource type="StyleBoxFlat" id="NavBtnHover"]
+bg_color = Color(1.0, 1.0, 1.0, 0.06)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[sub_resource type="StyleBoxFlat" id="PostHeaderStyle"]
+bg_color = Color(0.25, 0.23, 0.22, 1)
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="ProfileDotStyle"]
+bg_color = Color(0.4, 0.65, 0.48, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_left = 16
+corner_radius_bottom_right = 16
+
+[sub_resource type="StyleBoxFlat" id="PostAvatarStyle"]
+bg_color = Color(0.6, 0.8, 0.72, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_radius_bottom_right = 20
+
+[node name="Capture" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_app")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22, 0.2, 0.19, 1)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="PanelContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/panel = SubResource("HeaderStyle")
+
+[node name="HeaderHBox" type="HBoxContainer" parent="VBox/Header"]
+layout_mode = 2
+
+[node name="AddBtn" type="Button" parent="VBox/Header/HeaderHBox"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+size_flags_vertical = 4
+flat = true
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.82, 0.8, 0.78, 1)
+text = "+"
+
+[node name="Spacer1" type="Control" parent="VBox/Header/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AppTitle" type="Label" parent="VBox/Header/HeaderHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.9, 0.88, 0.86, 1)
+theme_override_font_sizes/font_size = 26
+text = "Capture"
+
+[node name="Spacer2" type="Control" parent="VBox/Header/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeartBtn" type="Button" parent="VBox/Header/HeaderHBox"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+size_flags_vertical = 4
+flat = true
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.82, 0.5, 0.58, 1)
+text = "♥"
+
+[node name="Stories" type="PanelContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StoriesStyle")
+
+[node name="StoriesScroll" type="ScrollContainer" parent="VBox/Stories"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="StoriesHBox" type="HBoxContainer" parent="VBox/Stories/StoriesScroll"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StoriesDivider" type="ColorRect" parent="VBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.18, 0.16, 0.16, 1)
+
+[node name="PostHeader" type="PanelContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/panel = SubResource("PostHeaderStyle")
+
+[node name="PostHeaderHBox" type="HBoxContainer" parent="VBox/PostHeader"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PostAvatar" type="PanelContainer" parent="VBox/PostHeader/PostHeaderHBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("PostAvatarStyle")
+
+[node name="PostInfoVBox" type="VBoxContainer" parent="VBox/PostHeader/PostHeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="PostUsername" type="Label" parent="VBox/PostHeader/PostHeaderHBox/PostInfoVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.86, 0.84, 1)
+theme_override_font_sizes/font_size = 15
+text = "campus_life"
+
+[node name="PostLocation" type="Label" parent="VBox/PostHeader/PostHeaderHBox/PostInfoVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
+theme_override_font_sizes/font_size = 12
+text = "Main Quad"
+
+[node name="MoreBtn" type="Button" parent="VBox/PostHeader/PostHeaderHBox"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_vertical = 4
+flat = true
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.6, 0.58, 0.55, 1)
+text = "⋮"
+
+[node name="PostImage" type="ColorRect" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.35, 0.25, 0.23, 1)
+
+[node name="BottomNav" type="PanelContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("BottomNavStyle")
+
+[node name="NavHBox" type="HBoxContainer" parent="VBox/BottomNav"]
+layout_mode = 2
+
+[node name="HomeNav" type="Button" parent="VBox/BottomNav/NavHBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.82, 0.8, 0.78, 1)
+text = "⌂"
+
+[node name="ReelsNav" type="Button" parent="VBox/BottomNav/NavHBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
+text = "▐▌"
+
+[node name="ShopNav" type="Button" parent="VBox/BottomNav/NavHBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
+text = "⌓"
+
+[node name="MsgNav" type="Button" parent="VBox/BottomNav/NavHBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
+text = "💬"
+
+[node name="ProfileNav" type="PanelContainer" parent="VBox/BottomNav/NavHBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("NavBtnNormal")
+
+[node name="ProfileDot" type="PanelContainer" parent="VBox/BottomNav/NavHBox/ProfileNav"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("ProfileDotStyle")

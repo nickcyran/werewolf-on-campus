@@ -8,8 +8,7 @@ const SLIDE_OFFSET := 30.0
 var overlay: Control
 var info_panel: Info
 
-var _state_before_open: GameManager.State 
-var _dim_rect: ColorRect
+var _state_before_open: GameManager.State
 var _tween: Tween
 var _is_animating := false
 
@@ -20,9 +19,6 @@ func initialize(overlay_node: Control, panel: Info) -> void:
 	overlay.visible = false
 	overlay.modulate.a = 0.0
 	info_panel.exit_pressed.connect(toggle)
-
-	# Cache dim rect for animation
-	_dim_rect = overlay.get_node_or_null("DimRect") as ColorRect
 
 
 # toggle the overlay open / closed with animation.

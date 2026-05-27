@@ -29,16 +29,5 @@ func _on_time_changed(display_time: String) -> void:
 func _on_day_ended() -> void:
 	if !day_end_overlay:
 		return
-
-	day_end_overlay.visible = true
-	var day_label := day_end_overlay.get_node_or_null("DayEndLabel") as Label
-
-	# Fade in the overlay bg
-	var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	tw.tween_property(day_end_overlay, "color:a", 0.65, 1.5)
-
-	# Fade in the label text
-	if day_label:
-		var tw2 := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		tw2.tween_interval(0.5)
-		tw2.tween_property(day_label, "theme_override_colors/font_color:a", 1.0, 1.0)
+	if day_end_overlay.has_method("run_time_up_sequence"):
+		await day_end_overlay.run_time_up_sequence()

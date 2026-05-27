@@ -1,0 +1,225 @@
+[gd_scene format=3 uid="uid://kgsdixpw20t6"]
+
+[ext_resource type="Script" uid="uid://kvvfc6x3qfi1" path="res://features/sites/acww/acww_main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://d02ovf7iap15t" path="res://features/sites/acww/acww_about.tscn" id="2_about"]
+[ext_resource type="Texture2D" uid="uid://cstasonfmkim6" path="res://assets/logos/ACWW_logo.png" id="3_logo"]
+
+[node name="ACWWMain" type="Control" unique_id=1756041468]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_main")
+about_page_scene = ExtResource("2_about")
+site_title = "www.amcomwolves.com/news/ualbany-werewolf-hysteria"
+
+[node name="BG" type="ColorRect" parent="." unique_id=1022860714]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=382157683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=851736363]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="GovBar" type="MarginContainer" parent="ScrollContainer/Content" unique_id=1826235384]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="GovBarBG" type="ColorRect" parent="ScrollContainer/Content/GovBar" unique_id=874065983]
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.18, 0.65, 0.28, 1)
+
+[node name="GovLabel" type="Label" parent="ScrollContainer/Content/GovBar" unique_id=346955651]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "An official Website of the American Federal Government"
+vertical_alignment = 1
+
+[node name="NavBar" type="Control" parent="ScrollContainer/Content" unique_id=1975681478]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="NavBG" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=1885481608]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.18, 0.65, 0.28, 1)
+
+[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=552822154]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="AboutBtn" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=805588040]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "About"
+flat = true
+
+[node name="NewsLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=2021241890]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "News and Events"
+vertical_alignment = 1
+
+[node name="ContactLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=798666215]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Contact us"
+vertical_alignment = 1
+
+[node name="LogoSection" type="VBoxContainer" parent="ScrollContainer/Content" unique_id=1114357492]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="LogoTexture" type="TextureRect" parent="ScrollContainer/Content/LogoSection" unique_id=150404063]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AcwwLogo" type="Sprite2D" parent="ScrollContainer/Content/LogoSection" unique_id=1455975677]
+position = Vector2(624, 80)
+scale = Vector2(0.235, 0.21850002)
+texture = ExtResource("3_logo")
+
+[node name="BodySection" type="HBoxContainer" parent="ScrollContainer/Content" unique_id=988646979]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EventsSidebar" type="MarginContainer" parent="ScrollContainer/Content/BodySection" unique_id=344031793]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 10
+
+[node name="SidebarVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/EventsSidebar" unique_id=656707899]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="EventsTitle" type="Label" parent="ScrollContainer/Content/BodySection/EventsSidebar/SidebarVBox" unique_id=1824319909]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Events"
+
+[node name="Event1" type="Label" parent="ScrollContainer/Content/BodySection/EventsSidebar/SidebarVBox" unique_id=1915507848]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 11
+text = "National Commission
+of Werewolves
+meeting"
+
+[node name="Event2" type="Label" parent="ScrollContainer/Content/BodySection/EventsSidebar/SidebarVBox" unique_id=1280950098]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 11
+text = "Dr. Monroe
+Werewolf studies"
+
+[node name="Event3" type="Label" parent="ScrollContainer/Content/BodySection/EventsSidebar/SidebarVBox" unique_id=1992048502]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 11
+text = "How to Spot a
+Werewolf Night"
+
+[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/BodySection" unique_id=620135052]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Article" type="MarginContainer" parent="ScrollContainer/Content/BodySection" unique_id=1218852334]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="ArticleVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Article" unique_id=1966516502]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ArticleTitle" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleVBox" unique_id=1826290989]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 20
+text = "UAlbany Werewolf Hysteria"
+
+[node name="Author" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleVBox" unique_id=2019325212]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 11
+text = "By Lon Chaney Jr."
+
+[node name="Date" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleVBox" unique_id=817077433]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "September 4, 2025"
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleVBox" unique_id=626162343]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Body" type="RichTextLabel" parent="ScrollContainer/Content/BodySection/Article/ArticleVBox" unique_id=1960582947]
+custom_minimum_size = Vector2(0, 380)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]Reports are spreading of a werewolf stalking the University at Albany campus. While these rumors are almost certainly fabrications stirred by hysterical media personalities and influencers, this is a useful time to discuss the true warning signs of a werewolf. Expert Dr. John Landis, longtime employee of the American Commission on Werewolves, describes key indicators of a rogue canine in disguise.
+
+Landis explains, \"Werewolves are extremely rare, and we would certainly know if one was present on a college campus. However, for those who remain suspicious and afraid, meals are the best time to make an assessment. Werewolves cannot abide garlic and eat extremely high quantities of meat\"
+
+Unless you see someone consuming multiple steaks a day and refusing all seasoning on their food, we here at AmComWolves.com offer assurances that you are safe![/center]"
+scroll_active = false
+
+[node name="BottomBar" type="ColorRect" parent="ScrollContainer/Content" unique_id=461571217]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+color = Color(0.18, 0.65, 0.28, 1)

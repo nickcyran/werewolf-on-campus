@@ -1,0 +1,240 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
+[ext_resource type="Texture2D" path="res://assets/logos/Tri-fang logo 1.png" id="2_logo"]
+
+[node name="TriFangProfessor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_site")
+site_title = "www.trifang.edu/faculty/housman"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.97, 0.97, 0.97, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Header" type="Control" parent="ScrollContainer/Content"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="HeaderBG" type="ColorRect" parent="ScrollContainer/Content/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.1, 0.12, 1)
+
+[node name="HeaderHBox" type="HBoxContainer" parent="ScrollContainer/Content/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HeaderLogo" type="TextureRect" parent="ScrollContainer/Content/Header/HeaderHBox"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HeaderLabel" type="Label" parent="ScrollContainer/Content/Header/HeaderHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
+theme_override_font_sizes/font_size = 14
+text = "Tri-Fang University  |  Anthropology & Folklore"
+
+[node name="BodyMargin" type="MarginContainer" parent="ScrollContainer/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 40
+
+[node name="BodyHBox" type="HBoxContainer" parent="ScrollContainer/Content/BodyMargin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Sidebar" type="VBoxContainer" parent="ScrollContainer/Content/BodyMargin/BodyHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AvatarRect" type="ColorRect" parent="ScrollContainer/Content/BodyMargin/BodyHBox/Sidebar"]
+custom_minimum_size = Vector2(180, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.78, 0.78, 0.8, 1)
+
+[node name="AvatarLabel" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/Sidebar/AvatarRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.52, 1)
+theme_override_font_sizes/font_size = 42
+text = "CH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/Sidebar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 16
+text = "Dr. Clemence Housman"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DeptLabel" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/Sidebar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.42, 1)
+theme_override_font_sizes/font_size = 11
+text = "Professor of Cryptids
+and Lycanthropy"
+horizontal_alignment = 1
+
+[node name="SidebarDivider" type="ColorRect" parent="ScrollContainer/Content/BodyMargin/BodyHBox/Sidebar"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.8, 0.8, 0.82, 1)
+
+[node name="ContactLabel" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/Sidebar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.45, 0.6, 1)
+theme_override_font_sizes/font_size = 10
+text = "media@trifang.edu"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/BodyMargin/BodyHBox"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.82, 0.82, 0.82, 1)
+
+[node name="MainColumn" type="VBoxContainer" parent="ScrollContainer/Content/BodyMargin/BodyHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 22
+text = "Professor Bio"
+
+[node name="TitleRule" type="ColorRect" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.8, 0.8, 0.82, 1)
+
+[node name="FullName" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.12, 1)
+theme_override_font_sizes/font_size = 16
+text = "Dr. Clemence Housman, Professor of Cryptids and Lycanthropy"
+autowrap_mode = 2
+
+[node name="Education" type="RichTextLabel" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.3, 0.3, 0.32, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "1998 - Bachelor of Science in Cryptids, Kansas State University
+2006 - PhD in Lycanthropy, University of North Carolina at Chapel Hill"
+scroll_active = false
+
+[node name="DissertLabel" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.25, 0.28, 1)
+theme_override_font_sizes/font_size = 11
+text = "Dissertation: \"Werewolves and the Media: A Study of how Predators Leverage Distrust in the Fourth Estate.\""
+autowrap_mode = 2
+
+[node name="Spacer1" type="Control" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="BioDesc" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/font_size = 13
+text = "Dr. Housman is a widely recognized expert on werewolf and cryptid physiology and behavior."
+autowrap_mode = 2
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BooksHeader" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 15
+text = "Books:"
+
+[node name="BooksList" type="RichTextLabel" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.2, 0.2, 0.22, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "- Night Economies and Nocturnal Violence: Werewolves, Curfews, and the Modern City
+- The Right to Exist vs. the Right to Not Be Eaten"
+scroll_active = false
+
+[node name="ArticlesHeader" type="Label" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 15
+text = "Articles:"
+
+[node name="ArticlesList" type="RichTextLabel" parent="ScrollContainer/Content/BodyMargin/BodyHBox/MainColumn"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.2, 0.2, 0.22, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "- Risk Management vs. Human Rights in Lycanthrope Policy
+- Human-Lycanthrope Conflict Zones: A GIS-Based Risk Mapping Study
+- Green Space as Feeding Ground: Urban Ecology and Predatory Mobility
+- Predator-Prey Urbanism: A Coexistence Model That Fails
+- Werewolf Crime Statistics and the Problem of Underreporting
+- From Missing Persons to Myth: Data Laundering in Lycanthrope-Heavy Cities"
+scroll_active = false

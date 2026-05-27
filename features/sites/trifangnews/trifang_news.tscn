@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://c4ya7npfp4aot"]
+
+[ext_resource type="Script" uid="uid://b8u2wcy5kheox" path="res://features/sites/trifangnews/trifang_news.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://features/sites/trifangnews/trifang_professor.tscn" id="2_prof"]
+[ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="3_logo"]
+
+[sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="NavBtnHover"]
+bg_color = Color(1, 1, 1, 0.1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="TriFangNews" type="Control" unique_id=983499605]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+professor_page = ExtResource("2_prof")
+site_title = "www.trifang.edu/news"
+
+[node name="BG" type="ColorRect" parent="." unique_id=790893392]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.97, 0.97, 0.97, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=118634190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=585127540]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="NavBar" type="Control" parent="ScrollContainer/Content" unique_id=15252232]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="NavBarBG" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=1628151277]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.1, 0.12, 1)
+
+[node name="NavLogo" type="TextureRect" parent="ScrollContainer/Content/NavBar" unique_id=242697923]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.1
+anchor_right = 0.06
+anchor_bottom = 0.9
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=737420869]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_right = 0.72
+anchor_bottom = 1.0
+offset_left = 20.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="AboutBtn" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1516459997]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+text = "About"
+
+[node name="NewsLabel" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1428962630]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+text = "News"
+
+[node name="WeatherLabel" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1964949264]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+text = "Weather"
+
+[node name="SportsLabel" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=2075925038]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("NavBtnNormal")
+theme_override_styles/hover = SubResource("NavBtnHover")
+text = "Sports"
+
+[node name="WeatherWidget" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=1941673926]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.78
+anchor_top = 0.1
+anchor_right = 0.98
+anchor_bottom = 0.9
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="CloudIcon" type="Label" parent="ScrollContainer/Content/NavBar/WeatherWidget" unique_id=1774965449]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.82, 1)
+theme_override_font_sizes/font_size = 18
+text = "☁"
+
+[node name="TempVBox" type="VBoxContainer" parent="ScrollContainer/Content/NavBar/WeatherWidget" unique_id=1820541832]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -2
+
+[node name="Temp" type="Label" parent="ScrollContainer/Content/NavBar/WeatherWidget/TempVBox" unique_id=751918655]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.35, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "34°"
+
+[node name="Location" type="Label" parent="ScrollContainer/Content/NavBar/WeatherWidget/TempVBox" unique_id=756381669]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.72, 1)
+theme_override_font_sizes/font_size = 9
+text = "Tri-Fang NY"
+
+[node name="TopSpacer" type="Control" parent="ScrollContainer/Content" unique_id=1801421680]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ArticleMargin" type="MarginContainer" parent="ScrollContainer/Content" unique_id=1446234956]
+layout_mode = 2
+theme_override_constants/margin_left = 140
+theme_override_constants/margin_right = 140
+
+[node name="ArticleVBox" type="VBoxContainer" parent="ScrollContainer/Content/ArticleMargin" unique_id=1072740723]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Headline" type="Label" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1261720130]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 31
+text = "Werewolf on Tri-Fang University Campus"
+autowrap_mode = 2
+
+[node name="Subhead" type="Label" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=806002160]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.35, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+text = "Tri-Fang student recalls werewolf encounter"
+
+[node name="Author" type="Label" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1902509922]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.22, 1)
+theme_override_font_sizes/font_size = 16
+text = "Hendrick Adams"
+
+[node name="Date" type="Label" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1531382166]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.45, 0.48, 1)
+theme_override_font_sizes/font_size = 16
+text = "May. 6, 2026"
+
+[node name="Spacer1" type="Control" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1917423803]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Body" type="RichTextLabel" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=2139982874]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Tri-Fang University officials are investigating a strange late-night incident reported by a student near the central campus courtyard on Friday evening.
+
+According to the student, who was returning to their dorm after studying in the library, a large creature resembling a werewolf appeared near the biology building shortly after midnight. The student described the figure as tall, covered in dark fur, and emitting a low growl before disappearing into the wooded area behind campus.
+
+Campus security responded to the scene but found no physical evidence of the creature. University officials stated that the report is being taken seriously while reminding students to travel in groups at night as the investigation continues.
+
+"
+scroll_active = false
+
+[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1150142537]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.75, 0.75, 0.78, 1)
+
+[node name="BottomSpacer" type="Control" parent="ScrollContainer/Content" unique_id=1635290006]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2

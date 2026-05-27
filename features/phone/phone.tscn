@@ -1,0 +1,146 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/phone/phone.gd" id="1_phone"]
+[ext_resource type="PackedScene" path="res://features/phone/phone_home.tscn" id="2_home"]
+
+[sub_resource type="StyleBoxFlat" id="StatusBarStyle"]
+bg_color = Color(0.08, 0.08, 0.1, 1)
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="HomeBarStyle"]
+bg_color = Color(0.06, 0.06, 0.07, 1)
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="HomePillNormal"]
+bg_color = Color(0.4, 0.4, 0.45, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="StyleBoxFlat" id="HomePillHover"]
+bg_color = Color(0.55, 0.55, 0.6, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="StyleBoxFlat" id="HomePillPressed"]
+bg_color = Color(0.3, 0.3, 0.35, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="StyleBoxFlat" id="BackBtnNormal"]
+bg_color = Color(0.0, 0.0, 0.0, 0.0)
+
+[sub_resource type="StyleBoxFlat" id="BackBtnHover"]
+bg_color = Color(1.0, 1.0, 1.0, 0.1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[sub_resource type="StyleBoxFlat" id="BackBtnPressed"]
+bg_color = Color(1.0, 1.0, 1.0, 0.05)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[node name="Phone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_phone")
+home_screen = ExtResource("2_home")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.06, 0.07, 1)
+
+[node name="PhoneContent" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="StatusBar" type="PanelContainer" parent="PhoneContent"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StatusBarStyle")
+
+[node name="StatusBarHBox" type="HBoxContainer" parent="PhoneContent/StatusBar"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BackBtn" type="Button" parent="PhoneContent/StatusBar/StatusBarHBox"]
+visible = false
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("BackBtnNormal")
+theme_override_styles/hover = SubResource("BackBtnHover")
+theme_override_styles/pressed = SubResource("BackBtnPressed")
+theme_override_colors/font_color = Color(0.55, 0.7, 1.0, 1)
+theme_override_font_sizes/font_size = 28
+text = "‹"
+
+[node name="TimeLabel" type="Label" parent="PhoneContent/StatusBar/StatusBarHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.92, 0.92, 0.94, 1)
+theme_override_font_sizes/font_size = 20
+text = "9:00 AM"
+
+[node name="Spacer" type="Control" parent="PhoneContent/StatusBar/StatusBarHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SignalLabel" type="Label" parent="PhoneContent/StatusBar/StatusBarHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.65, 0.65, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "▂▄▆█"
+
+[node name="BatteryLabel" type="Label" parent="PhoneContent/StatusBar/StatusBarHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.65, 0.65, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "🔋"
+
+[node name="Content" type="Control" parent="PhoneContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HomeBar" type="PanelContainer" parent="PhoneContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("HomeBarStyle")
+
+[node name="HomeBtn" type="Button" parent="PhoneContent/HomeBar"]
+custom_minimum_size = Vector2(134, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("HomePillNormal")
+theme_override_styles/hover = SubResource("HomePillHover")
+theme_override_styles/pressed = SubResource("HomePillPressed")

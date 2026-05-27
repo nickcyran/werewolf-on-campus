@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://jx04rrr7disu"]
+[gd_scene load_steps=3 format=3 uid="uid://jx04rrr7disu"]
 
-[ext_resource type="Script" path="res://features/sites/greendit.gd" id="1_greendit"]
+[ext_resource type="Script" path="res://features/sites/greendit/greendit.gd" id="1_greendit"]
+[ext_resource type="Theme" uid="uid://b8k2greenditcm" path="res://features/sites/greendit/greendit_comments_theme.tres" id="2_comments_theme"]
 
 [node name="Greendit" type="Control"]
 layout_mode = 3
@@ -11,8 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_comments_theme")
 script = ExtResource("1_greendit")
-site_title = "Greendit"
+site_title = "www.greendit.com/r/campuslife/comments/8k2m9q/lorem_ipsum_dolor_sit_amet/"
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1

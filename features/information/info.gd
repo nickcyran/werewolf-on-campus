@@ -5,10 +5,10 @@ signal exit_pressed
 
 const SLIDE_DURATION := 0.25
 
-@onready var info_panels: Array[Panel] = [$Slide1, $Slide2, $Slide3]
-@onready var _back_btn: Button = $NavBar/NavContent/Back
-@onready var _forward_btn: Button = $NavBar/NavContent/Forward
-@onready var _page_indicator: Label = $NavBar/NavContent/PageIndicator
+@onready var info_panels: Array[Panel] = [$Slide1 as Panel, $Slide2 as Panel, $Slide3 as Panel]
+@onready var _back_btn: Button = $NavBar/NavContent/Back as Button
+@onready var _forward_btn: Button = $NavBar/NavContent/Forward as Button
+@onready var _page_indicator: Label = $NavBar/NavContent/PageIndicator as Label
 
 var panel_index: int = 0
 var _is_sliding := false

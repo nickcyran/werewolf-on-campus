@@ -6,7 +6,8 @@
 [ext_resource type="Script" path="res://entities/player/components/interaction_raycaster.gd" id="4_iray"]
 [ext_resource type="Script" path="res://entities/player/components/info_overlay_controller.gd" id="5_info"]
 [ext_resource type="Script" path="res://entities/player/components/hud_manager.gd" id="6_hud"]
-[ext_resource type="Theme" path="res://ui/hud/hud_theme.tres" id="7_hud_theme"]
+[ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="7_main_theme"]
+[ext_resource type="Script" path="res://entities/player/components/day_end_overlay.gd" id="8_day_end"]
 
 [node name="Player" type="Node3D" unique_id=678926049]
 script = ExtResource("1_4v4u1")
@@ -37,6 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 1
+theme = ExtResource("7_main_theme")
 metadata/_edit_use_anchors_ = true
 
 [node name="Crosshair" type="CenterContainer" parent="UI/Control"]
@@ -63,142 +65,118 @@ color = Color(1, 1, 1, 0.85)
 [node name="InteractPrompt" type="Label" parent="UI/Control"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.12
 anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 20.0
-offset_right = 100.0
-offset_bottom = 44.0
+anchor_right = 0.88
+anchor_bottom = 0.62
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.9, 0.4, 0.9)
-theme_override_font_sizes/font_size = 13
+theme_type_variation = &"HudInteractPrompt"
 text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 mouse_filter = 2
 
-[node name="TopBar" type="HBoxContainer" parent="UI/Control"]
+[node name="TopBarMargin" type="MarginContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 16.0
 offset_top = 12.0
 offset_right = -16.0
-offset_bottom = 48.0
+offset_bottom = 52.0
 grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TopBar" type="HBoxContainer" parent="UI/Control/TopBarMargin"]
+layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
 alignment = 2
 
-[node name="TimeBG" type="PanelContainer" parent="UI/Control/TopBar"]
+[node name="TimeBG" type="PanelContainer" parent="UI/Control/TopBarMargin/TopBar"]
 layout_mode = 2
-theme = ExtResource("7_hud_theme")
+theme_type_variation = &"HudTimeChip"
 mouse_filter = 2
 
-[node name="TimeLabel" type="Label" parent="UI/Control/TopBar/TimeBG"]
+[node name="TimeLabel" type="Label" parent="UI/Control/TopBarMargin/TopBar/TimeBG"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.95, 0.92, 0.82, 1)
-theme_override_font_sizes/font_size = 18
+theme_type_variation = &"HudTime"
 text = "9:00 AM"
 horizontal_alignment = 1
 vertical_alignment = 1
 mouse_filter = 2
 
-[node name="ControlsHint" type="VBoxContainer" parent="UI/Control"]
+[node name="BottomHudBar" type="HBoxContainer" parent="UI/Control"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
 anchor_bottom = 1.0
+anchor_right = 1.0
 offset_left = 16.0
-offset_top = -148.0
-offset_right = 280.0
+offset_top = -200.0
+offset_right = -16.0
 offset_bottom = -16.0
-grow_vertical = 0
+grow_horizontal = 2
+mouse_filter = 2
+alignment = 0
+
+[node name="ControlsHint" type="VBoxContainer" parent="UI/Control/BottomHudBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="ControlsTitle" type="Label" parent="UI/Control/ControlsHint"]
+[node name="BottomHudSpacer" type="Control" parent="UI/Control/BottomHudBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 0.8)
-theme_override_font_sizes/font_size = 13
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ControlsTitle" type="Label" parent="UI/Control/BottomHudBar/ControlsHint"]
+layout_mode = 2
+theme_type_variation = &"HudControlsHeading"
 text = "Controls"
 mouse_filter = 2
 
-[node name="Separator" type="ColorRect" parent="UI/Control/ControlsHint"]
+[node name="Separator" type="ColorRect" parent="UI/Control/BottomHudBar/ControlsHint"]
 custom_minimum_size = Vector2(120, 1)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.5, 0.5, 0.5, 0.3)
 
-[node name="LookHint" type="Label" parent="UI/Control/ControlsHint"]
+[node name="LookHint" type="Label" parent="UI/Control/BottomHudBar/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
-theme_override_font_sizes/font_size = 12
+theme_type_variation = &"HudControlLine"
 text = "Mouse — Look around"
 mouse_filter = 2
 
-[node name="InteractHint" type="Label" parent="UI/Control/ControlsHint"]
+[node name="InteractHint" type="Label" parent="UI/Control/BottomHudBar/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
-theme_override_font_sizes/font_size = 12
+theme_type_variation = &"HudControlLine"
 text = "Left Click — Interact"
 mouse_filter = 2
 
-[node name="CursorHint" type="Label" parent="UI/Control/ControlsHint"]
+[node name="CursorHint" type="Label" parent="UI/Control/BottomHudBar/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
-theme_override_font_sizes/font_size = 12
+theme_type_variation = &"HudControlLine"
 text = "Right Shift — Toggle cursor"
 mouse_filter = 2
 
-[node name="InfoHint" type="Label" parent="UI/Control/ControlsHint"]
+[node name="InfoHint" type="Label" parent="UI/Control/BottomHudBar/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
-theme_override_font_sizes/font_size = 12
+theme_type_variation = &"HudControlLine"
 text = "I — Info slides"
 mouse_filter = 2
 
-[node name="EscHint" type="Label" parent="UI/Control/ControlsHint"]
+[node name="EscHint" type="Label" parent="UI/Control/BottomHudBar/ControlsHint"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
-theme_override_font_sizes/font_size = 12
+theme_type_variation = &"HudControlLine"
 text = "Esc — Exit focus"
 mouse_filter = 2
-
-[node name="DayEndOverlay" type="ColorRect" parent="UI/Control"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
-
-[node name="DayEndLabel" type="Label" parent="UI/Control/DayEndOverlay"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -30.0
-offset_right = 200.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.92, 0.7, 0)
-theme_override_font_sizes/font_size = 32
-text = "Day Complete"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="InfoOverlay" type="Control" parent="UI"]
 unique_name_in_owner = true
@@ -231,21 +209,101 @@ anchor_bottom = 0.92
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DayEndOverlay" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+theme = ExtResource("7_main_theme")
+script = ExtResource("8_day_end")
+
+[node name="DayEndCenter" type="CenterContainer" parent="UI/DayEndOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TimeUpPanel" type="PanelContainer" parent="UI/DayEndOverlay/DayEndCenter"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Margin" type="MarginContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleLabel" type="Label" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+layout_mode = 2
+theme_type_variation = &"HudDayEnd"
+text = "Time's up"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HintLabel" type="Label" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+layout_mode = 2
+theme_type_variation = &"HudTime"
+text = "Werewolf Fact Checker — one last pass. Check every statement you believe is true, then confirm."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scroll" type="ScrollContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+custom_minimum_size = Vector2(420, 240)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+horizontal_scroll_mode = 0
+
+[node name="ChecklistVBox" type="VBoxContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ConfirmButton" type="Button" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="ResultLabel" type="Label" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+visible = false
+layout_mode = 2
+modulate = Color(1, 1, 1, 0)
+theme_type_variation = &"HudTime"
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="OverlayUI" type="CanvasLayer" parent="."]
 layer = 128
 
-[node name="ExitFocusBtn" type="Button" parent="OverlayUI"]
+[node name="OverlayRoot" type="Control" parent="OverlayUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("7_main_theme")
+
+[node name="ExitFocusBtn" type="Button" parent="OverlayUI/OverlayRoot"]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 120.0
-offset_bottom = 50.0
+offset_right = 128.0
+offset_bottom = 52.0
 focus_mode = 0
 mouse_filter = 0
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 0.9)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_font_sizes/font_size = 14
 text = "< Back"

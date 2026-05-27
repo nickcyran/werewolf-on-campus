@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://d02ovf7iap15t"]
+
+[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
+[ext_resource type="Texture2D" uid="uid://cstasonfmkim6" path="res://assets/logos/ACWW_logo.png" id="2_logo"]
+
+[node name="ACWWAbout" type="Control" unique_id=1748641575]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_site")
+site_title = "www.amcomwolves.com/about"
+
+[node name="BG" type="ColorRect" parent="." unique_id=132349895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=496907609]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=487905074]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="GovBar" type="MarginContainer" parent="ScrollContainer/Content" unique_id=1321134061]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="GovBarBG" type="ColorRect" parent="ScrollContainer/Content/GovBar" unique_id=596278259]
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.18, 0.65, 0.28, 1)
+
+[node name="GovLabel" type="Label" parent="ScrollContainer/Content/GovBar" unique_id=614675026]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "An official Website of the American Federal Government"
+vertical_alignment = 1
+
+[node name="NavBar" type="Control" parent="ScrollContainer/Content" unique_id=1680078887]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="NavBG" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=900949453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.18, 0.65, 0.28, 1)
+
+[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=1347395106]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="AboutLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=475373726]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "About"
+vertical_alignment = 1
+
+[node name="NewsLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=814822823]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "News and Events"
+vertical_alignment = 1
+
+[node name="ContactLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1289516744]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Contact us"
+vertical_alignment = 1
+
+[node name="LogoSection" type="VBoxContainer" parent="ScrollContainer/Content" unique_id=1065236683]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="LogoTexture" type="TextureRect" parent="ScrollContainer/Content/LogoSection" unique_id=760849932]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+texture = ExtResource("2_logo")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="AcwwLogo" type="Sprite2D" parent="ScrollContainer/Content/LogoSection" unique_id=1403093226]
+position = Vector2(621, 71)
+scale = Vector2(0.235, 0.21850002)
+texture = ExtResource("2_logo")
+
+[node name="BodySection" type="MarginContainer" parent="ScrollContainer/Content" unique_id=161422360]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 24
+
+[node name="BodyVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection" unique_id=913966614]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="ScrollContainer/Content/BodySection/BodyVBox" unique_id=1449821605]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 24
+text = "About us:"
+
+[node name="BodyText" type="RichTextLabel" parent="ScrollContainer/Content/BodySection/BodyVBox" unique_id=576052714]
+custom_minimum_size = Vector2(0, 520)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "Every day, the American Commission on Werewolves strives to build a country where people can live free from fear and pursue their dreams without being hampered by propaganda, lies, and those who would place security over liberty.
+
+We are not a traditional think tank, but a beacon of boldness and truth.
+
+Our mission is to share accurate and balanced information, ensure the public is educated on the question of werewolves without needless fearmongering, and promote the freedom, values, and patriotism that form the foundation of our Human nation.
+
+We support this mission with a trifold approach:
+	[b]1. Education[/b] - Ensure the public and the next generation have the facts
+	[b]2. Impact[/b] - Spread our important message in an effective, accessible, actionable way
+	[b]3. Lobbying[/b] - Work with government officials to ensure laws and policies support our aims and protect the citizens of America
+
+Please contact us at amcomwerewolves.org for information on:
+- Employment
+- Volunteer opportunities
+- Donations
+- Additional details on funding or organizational structure"
+scroll_active = false
+
+[node name="BottomBar" type="ColorRect" parent="ScrollContainer/Content" unique_id=1664361096]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+color = Color(0.18, 0.65, 0.28, 1)

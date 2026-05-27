@@ -17,7 +17,7 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-DayClock="*res://core/autoload/day_clock.gd"
+DayClock="*res://core/autoload/day_clock.tscn"
 GameManager="*uid://boyy7vfchmv5s"
 
 [display]

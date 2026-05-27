@@ -1,6 +1,6 @@
-[gd_resource type="Theme" format=3 uid="uid://d0jx4wd0hbena"]
+[gd_resource type="Theme" format=3 uid="uid://bk7hudalias001"]
 
-[sub_resource type="StyleBoxFlat" id="time_panel"]
+[sub_resource type="StyleBoxFlat" id="sb_time_panel"]
 content_margin_left = 16.0
 content_margin_top = 6.0
 content_margin_right = 16.0
@@ -19,5 +19,139 @@ shadow_color = Color(0, 0, 0, 0.2)
 shadow_size = 4
 shadow_offset = Vector2(0, 2)
 
+[sub_resource type="StyleBoxFlat" id="sb_slide_panel"]
+bg_color = Color(0.12, 0.12, 0.16, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_info_slide_panel"]
+bg_color = Color(0.15, 0.15, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_normal"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.18, 0.18, 0.24, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24, 0.24, 0.32, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_pressed"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.14, 0.14, 0.18, 0.95)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_disabled"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12, 0.12, 0.15, 0.42)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [resource]
-PanelContainer/styles/panel = SubResource("time_panel")
+Button/colors/font_color = Color(0.75, 0.75, 0.8, 1)
+Button/colors/font_disabled_color = Color(0.35, 0.35, 0.4, 1)
+Button/colors/font_hover_color = Color(0.9, 0.9, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.65, 0.65, 0.72, 1)
+Button/font_sizes/font_size = 14
+Button/styles/disabled = SubResource("sb_btn_disabled")
+Button/styles/hover = SubResource("sb_btn_hover")
+Button/styles/normal = SubResource("sb_btn_normal")
+Button/styles/pressed = SubResource("sb_btn_pressed")
+HudTimeChip/base_type = "PanelContainer"
+HudTimeChip/styles/panel = SubResource("sb_time_panel")
+HowToBullet/base_type = "Label"
+HowToBullet/colors/font_color = Color(0.82, 0.82, 0.86, 1)
+HowToBullet/font_sizes/font_size = 19
+HowToTitleBlue/base_type = "Label"
+HowToTitleBlue/colors/font_color = Color(0.4, 0.65, 0.9, 1)
+HowToTitleBlue/font_sizes/font_size = 32
+HudControlLine/base_type = "Label"
+HudControlLine/colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
+HudControlLine/font_sizes/font_size = 12
+HudControlsHeading/base_type = "Label"
+HudControlsHeading/colors/font_color = Color(0.85, 0.85, 0.85, 0.8)
+HudControlsHeading/font_sizes/font_size = 13
+HudDayEnd/base_type = "Label"
+HudDayEnd/colors/font_color = Color(1, 0.92, 0.7, 1)
+HudDayEnd/font_sizes/font_size = 32
+HudInteractPrompt/base_type = "Label"
+HudInteractPrompt/colors/font_color = Color(1, 0.9, 0.4, 0.9)
+HudInteractPrompt/font_sizes/font_size = 13
+HudTime/base_type = "Label"
+HudTime/colors/font_color = Color(0.95, 0.92, 0.82, 1)
+HudTime/font_sizes/font_size = 18
+InfoSlidePanel/base_type = "Panel"
+InfoSlidePanel/styles/panel = SubResource("sb_info_slide_panel")
+InfoBody/base_type = "Label"
+InfoBody/colors/font_color = Color(0.9, 0.9, 0.9, 1)
+InfoBody/font_sizes/font_size = 20
+InfoCloseButton/base_type = "Button"
+InfoCloseButton/colors/font_color = Color(0.7, 0.7, 0.7, 1)
+InfoCloseButton/colors/font_hover_color = Color(1, 0.4, 0.4, 1)
+InfoCloseButton/font_sizes/font_size = 22
+InfoSub/base_type = "Label"
+InfoSub/colors/font_color = Color(0.7, 0.7, 0.75, 1)
+InfoSub/font_sizes/font_size = 18
+InfoTitleGold/base_type = "Label"
+InfoTitleGold/colors/font_color = Color(1, 0.85, 0.3, 1)
+InfoTitleGold/font_sizes/font_size = 36
+Label/colors/font_color = Color(0.82, 0.82, 0.86, 1)
+Label/font_sizes/font_size = 16
+LandingBody/base_type = "Label"
+LandingBody/colors/font_color = Color(0.82, 0.82, 0.86, 1)
+LandingBody/font_sizes/font_size = 19
+LandingDetail/base_type = "Label"
+LandingDetail/colors/font_color = Color(0.58, 0.58, 0.63, 1)
+LandingDetail/font_sizes/font_size = 16
+LandingHeroTitle/base_type = "Label"
+LandingHeroTitle/colors/font_color = Color(0.85, 0.25, 0.2, 1)
+LandingHeroTitle/font_sizes/font_size = 42
+LandingSubtitle/base_type = "Label"
+LandingSubtitle/colors/font_color = Color(0.55, 0.55, 0.6, 0.7)
+LandingSubtitle/font_sizes/font_size = 14
+MissionEmphasis/base_type = "Label"
+MissionEmphasis/colors/font_color = Color(0.9, 0.9, 0.93, 1)
+MissionEmphasis/font_sizes/font_size = 19
+MissionHint/base_type = "Label"
+MissionHint/colors/font_color = Color(0.74, 0.75, 0.8, 1)
+MissionHint/font_sizes/font_size = 16
+MissionIntro/base_type = "Label"
+MissionIntro/colors/font_color = Color(0.82, 0.82, 0.86, 1)
+MissionIntro/font_sizes/font_size = 18
+MissionTitleGreen/base_type = "Label"
+MissionTitleGreen/colors/font_color = Color(0.35, 0.75, 0.45, 1)
+MissionTitleGreen/font_sizes/font_size = 32
+NavPageIndicator/base_type = "Label"
+NavPageIndicator/colors/font_color = Color(0.5, 0.5, 0.55, 1)
+NavPageIndicator/font_sizes/font_size = 13
+Panel/styles/panel = SubResource("sb_slide_panel")

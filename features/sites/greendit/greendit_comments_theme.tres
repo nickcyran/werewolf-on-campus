@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://bu4nqfrdq2xgm"]
+
+[sub_resource type="StyleBoxFlat" id="divider_panel"]
+bg_color = Color(0.2, 0.22, 0.2, 0.5)
+
+[resource]
+GreenditCommentActions/base_type = &"HBoxContainer"
+GreenditCommentActions/constants/separation = 12
+GreenditCommentAuthor/base_type = &"Label"
+GreenditCommentAuthor/colors/font_color = Color(0.4, 0.65, 0.45, 1)
+GreenditCommentAuthor/font_sizes/font_size = 11
+GreenditCommentBody/base_type = &"Label"
+GreenditCommentBody/colors/font_color = Color(0.82, 0.82, 0.82, 1)
+GreenditCommentBody/font_sizes/font_size = 12
+GreenditCommentCol/base_type = &"VBoxContainer"
+GreenditCommentCol/constants/separation = 3
+GreenditCommentHeader/base_type = &"HBoxContainer"
+GreenditCommentHeader/constants/separation = 8
+GreenditCommentReply/base_type = &"Label"
+GreenditCommentReply/colors/font_color = Color(0.45, 0.45, 0.45, 1)
+GreenditCommentReply/font_sizes/font_size = 10
+GreenditCommentRow/base_type = &"HBoxContainer"
+GreenditCommentRow/constants/separation = 0
+GreenditCommentScore/base_type = &"Label"
+GreenditCommentScore/colors/font_color = Color(0.55, 0.55, 0.55, 1)
+GreenditCommentScore/font_sizes/font_size = 10
+GreenditCommentTime/base_type = &"Label"
+GreenditCommentTime/colors/font_color = Color(0.45, 0.45, 0.45, 1)
+GreenditCommentTime/font_sizes/font_size = 10
+GreenditTopLevelDivider/base_type = &"PanelContainer"
+GreenditTopLevelDivider/styles/panel = SubResource("divider_panel")

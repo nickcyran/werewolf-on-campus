@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ctp87qjqffgmh"]
+
+[ext_resource type="Script" uid="uid://xhmes5hrbt58" path="res://core/autoload/day_clock.gd" id="1_day_clock"]
+
+[node name="DayClock" type="Node" unique_id=542910904]
+script = ExtResource("1_day_clock")
+max_game_time_seconds = 30.0

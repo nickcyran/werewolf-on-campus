@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4presannouncemail"]
+
+[ext_resource type="Script" path="res://features/sites/email/letters/president_announcement_email.gd" id="1_script"]
+[ext_resource type="GradientTexture2D" uid="uid://c7presbannergrad" path="res://features/sites/email/letters/president_banner_gradient.tres" id="2_grad"]
+
+[node name="PresidentAnnouncementEmail" type="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_type_variation = &"EmailReadingPaper"
+script = ExtResource("1_script")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceStack"
+
+[node name="Meta" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceMetaVBox"
+
+[node name="FromLine" type="Label" parent="VBox/Meta"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceMeta"
+
+[node name="SentLine" type="Label" parent="VBox/Meta"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceMeta"
+
+[node name="ToLine" type="Label" parent="VBox/Meta"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceMeta"
+
+[node name="SubjectLine" type="Label" parent="VBox/Meta"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceMeta"
+autowrap_mode = 3
+
+[node name="BannerSlot" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+clip_contents = true
+
+[node name="Gradient" type="TextureRect" parent="VBox/BannerSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_grad")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BannerOverlay" type="MarginContainer" parent="VBox/BannerSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="VBox/BannerSlot/BannerOverlay"]
+layout_mode = 2
+
+[node name="BannerRich" type="RichTextLabel" parent="VBox/BannerSlot/BannerOverlay/Center"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"EmailBannerRich"
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Headline" type="RichTextLabel" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceHeadline"
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 3
+
+[node name="BodyText" type="RichTextLabel" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EmailAnnounceBody"
+fit_content = true
+scroll_active = false
+autowrap_mode = 3
+
+[node name="Footer" type="PanelContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"EmailAnnounceFooterPanel"
+
+[node name="FooterVBox" type="VBoxContainer" parent="VBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceFooterVBox"
+
+[node name="FooterLine1" type="Label" parent="VBox/Footer/FooterVBox"]
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceFooterText"
+text = "University hall Room 302, 1400 Westvile Avenue, Tri-fang, NY 12043"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="FooterLine2" type="Label" parent="VBox/Footer/FooterVBox"]
+layout_mode = 2
+theme_type_variation = &"EmailAnnounceFooterText"
+text = "Phone: 518-956-8010 presmail@tri-fang.edu"
+horizontal_alignment = 1
+autowrap_mode = 3

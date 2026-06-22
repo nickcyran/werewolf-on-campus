@@ -13,9 +13,14 @@ func _ready() -> void:
 	pressed.connect(_on_pressed)
 
 
-func configure(icon_text: String, title_text: String, desc_text: String, target: PackedScene) -> void:
+func configure(icon_text: String, title_text: String, desc_text: String, target: PackedScene, logo: Texture2D = null) -> void:
 	_target = target
-	%Icon.text = icon_text
+	if logo:
+		%Logo.texture = logo
+		%Logo.visible = true
+		%Icon.visible = false
+	else:
+		%Icon.text = icon_text
 	%Title.text = title_text
 	if desc_text.is_empty():
 		%Desc.visible = false

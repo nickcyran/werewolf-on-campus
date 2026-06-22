@@ -6,6 +6,7 @@ const HomeSiteTileScene := preload("res://features/sites/home/home_site_tile.tsc
 @export var site_labels: PackedStringArray = []
 @export var site_descriptions: PackedStringArray = []
 @export var site_icons: PackedStringArray = []
+@export var site_logos: Array[Texture2D] = []
 
 @onready var _grid: GridContainer = $Scroll/PageContent/SitesSection/Grid
 @onready var _checklist_items: VBoxContainer = $Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox/ChecklistItems
@@ -18,9 +19,10 @@ func _ready() -> void:
 		var label_text: String = site_labels[i] if i < site_labels.size() else "Site"
 		var desc_text: String = site_descriptions[i] if i < site_descriptions.size() else ""
 		var icon_text: String = site_icons[i] if i < site_icons.size() else ""
+		var logo: Texture2D = site_logos[i] if i < site_logos.size() else null
 		var tile: HomeSiteTile = HomeSiteTileScene.instantiate() as HomeSiteTile
 		tile.navigate_requested.connect(_navigate_to)
-		tile.configure(icon_text, label_text, desc_text, site_scenes[i])
+		tile.configure(icon_text, label_text, desc_text, site_scenes[i], logo)
 		_grid.add_child(tile)
 
 	_build_checklist()

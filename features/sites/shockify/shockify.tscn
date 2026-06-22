@@ -1,0 +1,406 @@
+[gd_scene format=3 uid="uid://dqt5k7rnx2p8c"]
+
+[ext_resource type="Script" uid="uid://bm8vh3pxz6k1w" path="res://features/sites/shockify/shockify.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/SHOCKIFY logo.png" id="2_logo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_episode"]
+bg_color = Color(0.12, 0.03, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_normal"]
+bg_color = Color(0.5, 0.0, 0.9, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_hover"]
+bg_color = Color(0.65, 0.15, 1.0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_pressed"]
+bg_color = Color(0.4, 0.0, 0.75, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_normal"]
+bg_color = Color(0.5, 0.0, 0.9, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_hover"]
+bg_color = Color(0.65, 0.15, 1.0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_pressed"]
+bg_color = Color(0.4, 0.0, 0.75, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_bg"]
+bg_color = Color(0.22, 0.08, 0.38, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_fill"]
+bg_color = Color(0.6, 0.1, 1.0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_fill_hl"]
+bg_color = Color(0.7, 0.2, 1.0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Shockify" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+site_title = "shockify.fm/tricitycast"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.06, 0.02, 0.1, 1)
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+
+[node name="HeaderBG" type="ColorRect" parent="Layout/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.06, 0.0, 0.12, 1)
+
+[node name="HeaderLine" type="ColorRect" parent="Layout/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.35, 0.1, 0.55, 1)
+
+[node name="LogoImage" type="TextureRect" parent="Layout/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MainScroll" type="ScrollContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="Layout/MainScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ChannelBannerMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 28
+
+[node name="ChannelBanner" type="HBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ChannelThumb" type="ColorRect" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+color = Color(0.3, 0.05, 0.55, 1)
+
+[node name="ThumbInitials" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelThumb"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.65, 1.0, 0.6)
+theme_override_font_sizes/font_size = 38
+text = "TC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChannelInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="TypeLabel" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.5, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "PODCAST"
+
+[node name="ChannelName" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_font_sizes/font_size = 44
+text = "TriCityPod"
+
+[node name="ChannelDesc" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.62, 0.75, 1)
+theme_override_font_sizes/font_size = 14
+text = "Your local tri-city campus podcast"
+
+[node name="DividerMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 20
+
+[node name="Divider" type="ColorRect" parent="Layout/MainScroll/Content/DividerMargin"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.28, 0.1, 0.45, 1)
+
+[node name="EpisodesLabelMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 14
+
+[node name="EpisodesLabel" type="Label" parent="Layout/MainScroll/Content/EpisodesLabelMargin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Episodes"
+
+[node name="EpisodeCardMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 40
+
+[node name="EpisodePanel" type="PanelContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_episode")
+
+[node name="EpisodeRow" type="HBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="EpisodeThumb" type="ColorRect" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.22, 0.05, 0.42, 1)
+
+[node name="EpisodeInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="EpisodeTitle" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_font_sizes/font_size = 16
+text = "TriCityPod"
+
+[node name="EpisodeSub" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.55, 0.68, 1)
+theme_override_font_sizes/font_size = 12
+text = "Campus news & culture"
+
+[node name="PlayBtn" type="Button" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_playbig_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_playbig_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_playbig_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_playbig_normal")
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Play"
+
+[node name="PlayerBar" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 82)
+layout_mode = 2
+
+[node name="PlayerBG" type="ColorRect" parent="Layout/PlayerBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.04, 0.0, 0.08, 1)
+
+[node name="TopLine" type="ColorRect" parent="Layout/PlayerBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 1
+mouse_filter = 2
+color = Color(0.32, 0.1, 0.5, 1)
+
+[node name="PlayerMargin" type="MarginContainer" parent="Layout/PlayerBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 10
+
+[node name="PlayerContent" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="NowPlaying" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="NowPlayingTitle" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = ""
+
+[node name="NowPlayingChannel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.5, 0.68, 1)
+theme_override_font_sizes/font_size = 11
+text = ""
+
+[node name="Controls" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="ControlRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 0
+
+[node name="PlayPauseBtn" type="Button" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_play_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_play_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_play_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_play_normal")
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Play"
+
+[node name="Progress" type="HSlider" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+min_value = 0.0
+max_value = 1.0
+step = 0.001
+value = 0.0
+tick_count = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_prog_bg")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_prog_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_prog_fill_hl")
+
+[node name="TimeLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.6, 0.55, 0.7, 1)
+theme_override_font_sizes/font_size = 12
+text = "0:00"
+horizontal_alignment = 2
+vertical_alignment = 1

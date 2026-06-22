@@ -45,25 +45,44 @@ theme_type_variation = &"EmailSidebarVBox"
 custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
 
-[node name="BrandRow" type="HBoxContainer" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=825604055]
-layout_mode = 2
-theme_type_variation = &"EmailBrandRow"
-
-[node name="BrandPadL" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/BrandRow" unique_id=2039497365]
-custom_minimum_size = Vector2(14, 0)
+[node name="Control" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=105920824]
+custom_minimum_size = Vector2(4.37, 51.985)
 layout_mode = 2
 
-[node name="BrandLogo" type="TextureRect" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/BrandRow" unique_id=1284444239]
-custom_minimum_size = Vector2(42, 42)
-layout_mode = 2
+[node name="BrandLabel" type="Label" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/Control" unique_id=928747094]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044444446
+anchor_top = -0.2757637
+anchor_right = 1.0444444
+anchor_bottom = 1.1992364
+offset_left = 53.0
+offset_top = 28.335575
+offset_right = -48.0
+offset_bottom = -23.342304
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmailBrand"
+text = "CloudMail"
+metadata/_edit_use_anchors_ = true
+
+[node name="BrandLogo" type="TextureRect" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/Control" unique_id=1284444239]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033333335
+anchor_top = -0.2777637
+anchor_right = 1.0277778
+anchor_bottom = 1.1432364
+offset_top = 5.4395466
+offset_right = -119.0
+offset_bottom = -8.431145
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_logo")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="BrandLabel" type="Label" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox/BrandRow" unique_id=928747094]
-layout_mode = 2
-theme_type_variation = &"EmailBrand"
-text = "CloudMail"
+metadata/_edit_use_anchors_ = true
 
 [node name="BrandGap" type="Control" parent="RootPanel/MainHBox/SidebarPanel/SidebarVBox" unique_id=2097157879]
 custom_minimum_size = Vector2(0, 4)

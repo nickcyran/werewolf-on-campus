@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlw4sliwnm120"
-path="res://.godot/imported/SHOCKIFY logo.png-6794e6328d05153d522d837fc1b285af.ctex"
+path="res://.godot/imported/SHOCKIFY logo.png-994734a58ec9450737069657c490748a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mockups/SHOCKIFY logo.png"
-dest_files=["res://.godot/imported/SHOCKIFY logo.png-6794e6328d05153d522d837fc1b285af.ctex"]
+source_file="res://assets/SHOCKIFY logo.png"
+dest_files=["res://.godot/imported/SHOCKIFY logo.png-994734a58ec9450737069657c490748a.ctex"]
 
 [params]
 

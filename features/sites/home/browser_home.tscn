@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://features/sites/acww/acww_main.tscn" id="5_acww"]
 [ext_resource type="PackedScene" path="res://features/sites/channel29/channel29.tscn" id="6_ch29"]
 [ext_resource type="PackedScene" path="res://features/sites/trifangnews/trifang_news.tscn" id="7_tfn"]
+[ext_resource type="PackedScene" uid="uid://dqt5k7rnx2p8c" path="res://features/sites/shockify/shockify.tscn" id="8_shockify"]
 
 [node name="BrowserHome" type="Control"]
 layout_mode = 3
@@ -19,10 +20,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_home")
 site_title = "Home"
-site_scenes = Array[PackedScene]([ExtResource("2_nw"), ExtResource("3_greendit"), ExtResource("4_email"), ExtResource("5_acww"), ExtResource("6_ch29"), ExtResource("7_tfn")])
-site_labels = PackedStringArray("NoWolves", "Greendit", "CloudMail", "ACWW", "Channel 29", "Tri-Fang News")
-site_descriptions = PackedStringArray("News & articles", "Campus forum", "Campus email", "Official commission news", "Local news station", "University news")
-site_icons = PackedStringArray("NW", "GD", "CM", "AC", "29", "TF")
+site_scenes = Array[PackedScene]([ExtResource("2_nw"), ExtResource("3_greendit"), ExtResource("4_email"), ExtResource("5_acww"), ExtResource("6_ch29"), ExtResource("7_tfn"), ExtResource("8_shockify")])
+site_labels = PackedStringArray("NoWolves", "Greendit", "CloudMail", "ACWW", "Channel 29", "Tri-Fang News", "Shockify")
+site_descriptions = PackedStringArray("News & articles", "Campus forum", "Campus email", "Official commission news", "Local news station", "University news", "Campus podcast streaming")
+site_icons = PackedStringArray("NW", "GD", "CM", "AC", "29", "TF", "SK")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

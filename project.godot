@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 
 DayClock="*res://core/autoload/day_clock.tscn"
 GameManager="*uid://boyy7vfchmv5s"
+PodcastPlayer="*res://core/autoload/podcast_player.gd"
 
 [display]
 

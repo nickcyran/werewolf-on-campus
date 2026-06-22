@@ -39,7 +39,7 @@ func _ready() -> void:
 	_new_tab_btn = Button.new()
 	_new_tab_btn.text = "+"
 	_new_tab_btn.custom_minimum_size = Vector2(40, 0)
-	_new_tab_btn.size_flags_vertical = Control.SIZE_SHRINK_END
+	_new_tab_btn.size_flags_vertical = Control.SIZE_FILL
 	_new_tab_btn.theme_type_variation = &"NewTabButton"
 	_new_tab_btn.pressed.connect(_on_new_tab_pressed)
 	_tabs_hbox.add_child(_new_tab_btn)
@@ -171,8 +171,8 @@ func _build_tab_ui(tab: BrowserTab) -> void:
 
 	var btn := Button.new()
 	btn.text = "New Tab"
-	btn.custom_minimum_size = Vector2(144, 0)
-	btn.size_flags_vertical = Control.SIZE_SHRINK_END
+	btn.custom_minimum_size = Vector2(168, 0)
+	btn.size_flags_vertical = Control.SIZE_FILL
 	btn.clip_text = true
 	btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	btn.theme_type_variation = &"TabInactive"
@@ -181,7 +181,7 @@ func _build_tab_ui(tab: BrowserTab) -> void:
 	var close_btn := Button.new()
 	close_btn.text = "\u00d7"
 	close_btn.custom_minimum_size = Vector2(28, 0)
-	close_btn.size_flags_vertical = Control.SIZE_SHRINK_END
+	close_btn.size_flags_vertical = Control.SIZE_FILL
 	close_btn.theme_type_variation = &"TabClose"
 	close_btn.pressed.connect(_on_tab_close_clicked.bind(container))
 

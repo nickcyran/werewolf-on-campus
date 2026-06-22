@@ -4,4 +4,3 @@
 
 [node name="DayClock" type="Node" unique_id=542910904]
 script = ExtResource("1_day_clock")
-max_game_time_seconds = 30.0

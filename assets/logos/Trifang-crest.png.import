@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cstasonfmkim6"
-path="res://.godot/imported/ACWW_logo.png-f5add23607a171d5f1db83ee0f5896f6.ctex"
+uid="uid://bh2slt1wk4g4s"
+path="res://.godot/imported/Trifang-crest.png-98f4483296842ef82f42d2a2684781d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/logos/ACWW_logo.png"
-dest_files=["res://.godot/imported/ACWW_logo.png-f5add23607a171d5f1db83ee0f5896f6.ctex"]
+source_file="res://assets/logos/Trifang-crest.png"
+dest_files=["res://.godot/imported/Trifang-crest.png-98f4483296842ef82f42d2a2684781d0.ctex"]
 
 [params]
 

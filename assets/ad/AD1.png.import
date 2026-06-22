@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0u8xauiccq14"
-path="res://.godot/imported/Trifang crest.png-92c2225100f5edf7c71f25457ce8b3b7.ctex"
+uid="uid://b1nn6dsbb7jel"
+path="res://.godot/imported/AD1.png-5fbcd35bcd4b1aa2a9d3ef12b5629661.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/logos/Trifang crest.png"
-dest_files=["res://.godot/imported/Trifang crest.png-92c2225100f5edf7c71f25457ce8b3b7.ctex"]
+source_file="res://assets/ad/AD1.png"
+dest_files=["res://.godot/imported/AD1.png-5fbcd35bcd4b1aa2a9d3ef12b5629661.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d02ovf7iap15t"]
 
 [ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
-[ext_resource type="Texture2D" uid="uid://cstasonfmkim6" path="res://assets/logos/ACWW_logo.png" id="2_logo"]
+[ext_resource type="Texture2D" uid="uid://uh7v0v0flufl" path="res://assets/logos/ACWW.png" id="2_pvetf"]
 
 [node name="ACWWAbout" type="Control" unique_id=1748641575]
 layout_mode = 3
@@ -15,7 +15,7 @@ size_flags_vertical = 3
 script = ExtResource("1_site")
 site_title = "www.amcomwolves.com/about"
 
-[node name="BG" type="ColorRect" parent="." unique_id=132349895]
+[node name="BG" type="ColorRect" parent="." unique_id=54266056]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=496907609]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=717925892]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,34 +33,17 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=487905074]
+[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=890656357]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="GovBar" type="MarginContainer" parent="ScrollContainer/Content" unique_id=1321134061]
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 2
-theme_override_constants/margin_left = 8
-
-[node name="GovBarBG" type="ColorRect" parent="ScrollContainer/Content/GovBar" unique_id=596278259]
-show_behind_parent = true
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.18, 0.65, 0.28, 1)
-
-[node name="GovLabel" type="Label" parent="ScrollContainer/Content/GovBar" unique_id=614675026]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 10
-text = "An official Website of the American Federal Government"
-vertical_alignment = 1
-
-[node name="NavBar" type="Control" parent="ScrollContainer/Content" unique_id=1680078887]
-custom_minimum_size = Vector2(0, 42)
+[node name="NavBar" type="Control" parent="ScrollContainer/Content" unique_id=1915665322]
+custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 
-[node name="NavBG" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=900949453]
+[node name="NavBG" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=1376487110]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,81 +51,91 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.18, 0.65, 0.28, 1)
 
-[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=1347395106]
+[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=791473504]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.9875
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 80
-alignment = 1
+theme_override_constants/separation = 46
+alignment = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="AboutLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=475373726]
+[node name="AboutBtn" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=378438222]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0.4862745, 1)
+theme_override_colors/font_hover_color = Color(0, 0.7490196, 0.3882353, 1)
+theme_override_colors/font_hover_pressed_color = Color(5.0055983e-06, 0.92841977, 0.4871344, 1)
 theme_override_font_sizes/font_size = 18
 text = "About"
-vertical_alignment = 1
+flat = true
 
-[node name="NewsLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=814822823]
+[node name="NewsLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1213662274]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 text = "News and Events"
 vertical_alignment = 1
 
-[node name="ContactLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1289516744]
+[node name="ContactLabel" type="Label" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1712369646]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 text = "Contact us"
 vertical_alignment = 1
 
-[node name="LogoSection" type="VBoxContainer" parent="ScrollContainer/Content" unique_id=1065236683]
-custom_minimum_size = Vector2(0, 160)
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Content/NavBar" unique_id=1473177990]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00546875
+anchor_top = -0.16470589
+anchor_right = 0.99996555
+anchor_bottom = 1.1411766
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_pvetf")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=2131422805]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0117648
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0.7490196, 0.3882353, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BodySection2" type="MarginContainer" parent="ScrollContainer/Content" unique_id=490668537]
 layout_mode = 2
-theme_override_constants/separation = 4
-alignment = 1
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 12
 
-[node name="LogoTexture" type="TextureRect" parent="ScrollContainer/Content/LogoSection" unique_id=760849932]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-texture = ExtResource("2_logo")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="AcwwLogo" type="Sprite2D" parent="ScrollContainer/Content/LogoSection" unique_id=1403093226]
-position = Vector2(621, 71)
-scale = Vector2(0.235, 0.21850002)
-texture = ExtResource("2_logo")
-
-[node name="BodySection" type="MarginContainer" parent="ScrollContainer/Content" unique_id=161422360]
-layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 24
-
-[node name="BodyVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection" unique_id=913966614]
+[node name="BodyVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection2" unique_id=1725463724]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="ScrollContainer/Content/BodySection/BodyVBox" unique_id=1449821605]
+[node name="Title" type="Label" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=2099461259]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "About us:"
 
-[node name="BodyText" type="RichTextLabel" parent="ScrollContainer/Content/BodySection/BodyVBox" unique_id=576052714]
+[node name="BodyText" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=752298120]
 custom_minimum_size = Vector2(0, 520)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
-theme_override_font_sizes/normal_font_size = 12
-theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 18
 bbcode_enabled = true
 text = "Every day, the American Commission on Werewolves strives to build a country where people can live free from fear and pursue their dreams without being hampered by propaganda, lies, and those who would place security over liberty.
 
@@ -152,17 +145,12 @@ Our mission is to share accurate and balanced information, ensure the public is 
 
 We support this mission with a trifold approach:
 	[b]1. Education[/b] - Ensure the public and the next generation have the facts
-	[b]2. Impact[/b] - Spread our important message in an effective, accessible, actionable way
-	[b]3. Lobbying[/b] - Work with government officials to ensure laws and policies support our aims and protect the citizens of America
+	[b]2. Impact[/b]        - Spread our important message in an effective, accessible, actionable way
+	[b]3. Lobbying[/b]   - Work with government officials to ensure laws and policies support our aims and protect the citizens of America
 
 Please contact us at amcomwerewolves.org for information on:
-- Employment
-- Volunteer opportunities
-- Donations
-- Additional details on funding or organizational structure"
+	- Employment
+	- Volunteer opportunities
+	- Donations
+	- Additional details on funding or organizational structure"
 scroll_active = false
-
-[node name="BottomBar" type="ColorRect" parent="ScrollContainer/Content" unique_id=1664361096]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-color = Color(0.18, 0.65, 0.28, 1)

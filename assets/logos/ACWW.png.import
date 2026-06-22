@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ukstro5t886"
-path="res://.godot/imported/American Commision on Werewolves.png-f184b21e6bfdb1be8e629acec4ec0765.ctex"
+uid="uid://uh7v0v0flufl"
+path="res://.godot/imported/ACWW.png-bf1e0e4efe7d289704d8c4d0fe7bf3ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mockups/American Commision on Werewolves.png"
-dest_files=["res://.godot/imported/American Commision on Werewolves.png-f184b21e6bfdb1be8e629acec4ec0765.ctex"]
+source_file="res://assets/logos/ACWW.png"
+dest_files=["res://.godot/imported/ACWW.png-bf1e0e4efe7d289704d8c4d0fe7bf3ce.ctex"]
 
 [params]
 
@@ -23,8 +23,8 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
+mipmaps/generate=true
+mipmaps/limit=3
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0

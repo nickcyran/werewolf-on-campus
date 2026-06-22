@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://entities/player/components/hud_manager.gd" id="6_hud"]
 [ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="7_main_theme"]
 [ext_resource type="Script" path="res://entities/player/components/day_end_overlay.gd" id="8_day_end"]
+[ext_resource type="PackedScene" uid="uid://gl_overlay_scene01" path="res://features/guided_learning/guided_learning_overlay.tscn" id="9_guided"]
 
 [node name="Player" type="Node3D" unique_id=678926049]
 script = ExtResource("1_4v4u1")
@@ -258,7 +259,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Scroll" type="ScrollContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
-custom_minimum_size = Vector2(420, 240)
+custom_minimum_size = Vector2(500, 290)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
@@ -281,6 +282,15 @@ theme_type_variation = &"HudTime"
 text = ""
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="GuidedLearningOverlay" parent="UI" instance=ExtResource("9_guided")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="OverlayUI" type="CanvasLayer" parent="."]
 layer = 128

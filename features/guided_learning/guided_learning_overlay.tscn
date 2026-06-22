@@ -1,0 +1,212 @@
+[gd_scene load_steps=3 format=3 uid="uid://gl_overlay_scene01"]
+
+[ext_resource type="Script" path="res://features/guided_learning/guided_learning_overlay.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://cbcas75fhrnq8" path="res://features/guided_learning/guided_learning_theme.tres" id="2_theme"]
+
+[node name="GuidedLearningOverlay" type="ColorRect"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+layout_mode = 2
+custom_minimum_size = Vector2(820, 0)
+theme_type_variation = &"GuidedPanel"
+
+[node name="Layout" type="VBoxContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Center/Panel/Layout"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Center/Panel/Layout/Header"]
+layout_mode = 2
+text = "Guided Learning"
+theme_type_variation = &"GuidedTitle"
+
+[node name="HSpacer" type="Control" parent="Center/Panel/Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PageLabel" type="Label" parent="Center/Panel/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+vertical_alignment = 1
+theme_type_variation = &"GuidedPage"
+
+[node name="SubLabel" type="Label" parent="Center/Panel/Layout"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Scroll or interact with each site, then drag the matching facts into the drop zone."
+theme_type_variation = &"GuidedSub"
+
+[node name="Content" type="HBoxContainer" parent="Center/Panel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Left" type="VBoxContainer" parent="Center/Panel/Layout/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="SiteCard" type="PanelContainer" parent="Center/Panel/Layout/Content/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+clip_contents = true
+theme_type_variation = &"GuidedSiteCard"
+
+[node name="CardLayout" type="VBoxContainer" parent="Center/Panel/Layout/Content/Left/SiteCard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Chrome" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout"]
+layout_mode = 2
+theme_type_variation = &"GuidedChrome"
+
+[node name="ChromeRow" type="HBoxContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DotRed" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(10, 10)
+mouse_filter = 2
+theme_type_variation = &"GuidedDotRed"
+
+[node name="DotYellow" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(10, 10)
+mouse_filter = 2
+theme_type_variation = &"GuidedDotYellow"
+
+[node name="DotGreen" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(10, 10)
+mouse_filter = 2
+theme_type_variation = &"GuidedDotGreen"
+
+[node name="ChromeGap" type="Control" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(4, 0)
+
+[node name="AddrPill" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GuidedAddrPill"
+
+[node name="ChromeUrl" type="Label" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow/AddrPill"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+clip_text = true
+theme_type_variation = &"GuidedUrl"
+
+[node name="SiteARC" type="AspectRatioContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+ratio = 1.7778
+
+[node name="SiteContainer" type="SubViewportContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteARC"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+stretch = true
+
+[node name="SiteViewport" type="SubViewport" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteARC/SiteContainer"]
+unique_name_in_owner = true
+size = Vector2i(1280, 720)
+
+[node name="Right" type="VBoxContainer" parent="Center/Panel/Layout/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 10
+
+[node name="DropLabel" type="Label" parent="Center/Panel/Layout/Content/Right"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Drag the facts this site revealed:"
+theme_type_variation = &"GuidedDim"
+
+[node name="DropZone" type="PanelContainer" parent="Center/Panel/Layout/Content/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 100)
+mouse_filter = 0
+theme_type_variation = &"GuidedDropZone"
+
+[node name="DropFlow" type="HFlowContainer" parent="Center/Panel/Layout/Content/Right/DropZone"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="PoolLabel" type="Label" parent="Center/Panel/Layout/Content/Right"]
+layout_mode = 2
+text = "Fact pool"
+theme_type_variation = &"GuidedDim"
+
+[node name="PoolPanel" type="PanelContainer" parent="Center/Panel/Layout/Content/Right"]
+layout_mode = 2
+theme_type_variation = &"GuidedPool"
+
+[node name="PoolFlow" type="HFlowContainer" parent="Center/Panel/Layout/Content/Right/PoolPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="NavRow" type="HBoxContainer" parent="Center/Panel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PrevBtn" type="Button" parent="Center/Panel/Layout/NavRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "← Prev"
+theme_type_variation = &"GuidedNavBtn"
+
+[node name="NavSpacer1" type="Control" parent="Center/Panel/Layout/NavRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DoneBtn" type="Button" parent="Center/Panel/Layout/NavRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Done"
+theme_type_variation = &"GuidedDoneBtn"
+
+[node name="NavSpacer2" type="Control" parent="Center/Panel/Layout/NavRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NextBtn" type="Button" parent="Center/Panel/Layout/NavRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Next →"
+theme_type_variation = &"GuidedNavBtn"

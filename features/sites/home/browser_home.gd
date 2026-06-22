@@ -43,6 +43,7 @@ func _build_checklist() -> void:
 		var is_checked: bool = GameManager.werewolf_checklist.get(i, false)
 
 		var panel := PanelContainer.new()
+		panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var style := StyleBoxFlat.new()
 		style.bg_color = Color(0.92, 0.93, 0.96) if i % 2 == 0 else Color(0.86, 0.88, 0.93)
 		style.set_corner_radius_all(8)
@@ -57,7 +58,26 @@ func _build_checklist() -> void:
 		style.border_color = Color(0.55, 0.58, 0.66, 0.55)
 		panel.add_theme_stylebox_override("panel", style)
 
+		var bg_normal := style.bg_color
+		var bg_hover := bg_normal.darkened(0.08)
+		var border_normal := style.border_color
+		var border_hover := Color(0.42, 0.48, 0.70, 0.90)
+
+		panel.mouse_entered.connect(func():
+			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			tw.set_parallel(true)
+			tw.tween_property(style, "bg_color", bg_hover, 0.1)
+			tw.tween_property(style, "border_color", border_hover, 0.1)
+		)
+		panel.mouse_exited.connect(func():
+			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			tw.set_parallel(true)
+			tw.tween_property(style, "bg_color", bg_normal, 0.15)
+			tw.tween_property(style, "border_color", border_normal, 0.15)
+		)
+
 		var cb := CheckBox.new()
+		cb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		cb.text = WerewolfFactData.FACTS[i]
 		cb.add_theme_font_size_override("font_size", 16)
 		cb.add_theme_color_override("font_color", COLOR_TEXT)
@@ -71,6 +91,12 @@ func _build_checklist() -> void:
 		cb.toggled.connect(_on_fact_toggled.bind(i))
 		cb.set_pressed_no_signal(is_checked)
 		panel.add_child(cb)
+
+		# Toggle the checkbox when clicking the panel padding area (outside the checkbox itself)
+		panel.gui_input.connect(func(event: InputEvent):
+			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+				cb.button_pressed = !cb.button_pressed
+		)
 
 		_checklist_items.add_child(panel)
 

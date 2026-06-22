@@ -13,6 +13,7 @@ extends Node3D
 @onready var _info_panel: Info = %InfoOverlay.get_node("InfoPanel") as Info
 @onready var _interact_prompt: Label = %InteractPrompt
 @onready var _day_end_overlay: ColorRect = %DayEndOverlay
+@onready var _guided_learning: GuidedLearningOverlay = %GuidedLearningOverlay
 @onready var _crosshair_dot: ColorRect = $UI/Control/Crosshair/CrosshairDot
 @onready var _exit_focus_btn: Button = %ExitFocusBtn
 @onready var _controls_hint: VBoxContainer = %ControlsHint
@@ -33,6 +34,8 @@ func _ready() -> void:
 	_raycaster.hovered_changed.connect(_on_hovered_changed)
 	GameManager.state_changed.connect(_on_game_state_changed)
 	_exit_focus_btn.pressed.connect(_on_exit_focus_pressed)
+	_day_end_overlay.learning_requested.connect(_on_learning_requested)
+	_guided_learning.closed.connect(_on_guided_learning_closed)
 
 	# Start controls hint visible, fade after timer
 	_controls_hint.modulate.a = 0.9
@@ -160,3 +163,11 @@ func _toggle_fullscreen() -> void:
 		window.mode = Window.MODE_WINDOWED
 	else:
 		window.mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+
+
+func _on_learning_requested() -> void:
+	_guided_learning.run()
+
+
+func _on_guided_learning_closed() -> void:
+	_day_end_overlay.visible = false

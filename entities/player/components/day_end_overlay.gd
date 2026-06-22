@@ -1,6 +1,8 @@
 extends ColorRect
 class_name DayEndOverlay
 
+signal learning_requested
+
 const COLOR_GOLD := Color(0.95, 0.82, 0.35)
 const READABLE_TEXT := Color(0.96, 0.97, 0.98)
 const ROW_BG_A := Color(0.2, 0.21, 0.27)
@@ -26,6 +28,7 @@ const RESULT_HINT_WRONG := Color(0.98, 0.82, 0.82)
 @onready var _checklist_vbox: VBoxContainer = $DayEndCenter/TimeUpPanel/Margin/VBox/Scroll/ChecklistVBox
 @onready var _confirm: Button = $DayEndCenter/TimeUpPanel/Margin/VBox/ConfirmButton
 @onready var _result: Label = $DayEndCenter/TimeUpPanel/Margin/VBox/ResultLabel
+@onready var _vbox: VBoxContainer = $DayEndCenter/TimeUpPanel/Margin/VBox
 
 var _checkboxes: Array[CheckBox] = []
 var _rows: Array[PanelContainer] = []
@@ -46,10 +49,10 @@ func _apply_panel_style() -> void:
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0.14, 0.14, 0.17, 0.94)
 	sb.set_corner_radius_all(10)
-	sb.content_margin_left = 20
-	sb.content_margin_right = 20
-	sb.content_margin_top = 20
-	sb.content_margin_bottom = 20
+	sb.content_margin_left = 24
+	sb.content_margin_right = 24
+	sb.content_margin_top = 24
+	sb.content_margin_bottom = 24
 	sb.border_width_left = 1
 	sb.border_width_top = 1
 	sb.border_width_right = 1
@@ -57,10 +60,53 @@ func _apply_panel_style() -> void:
 	sb.border_color = Color(0.42, 0.44, 0.52, 0.95)
 	_panel.add_theme_stylebox_override("panel", sb)
 	_title.add_theme_color_override("font_color", READABLE_TEXT)
-	_hint.add_theme_color_override("font_color", Color(0.82, 0.84, 0.9))
-	_hint.add_theme_font_size_override("font_size", 15)
-	_result.add_theme_color_override("font_color", READABLE_TEXT)
-	_result.add_theme_font_size_override("font_size", 18)
+	_hint.add_theme_color_override("font_color", Color(0.75, 0.77, 0.86))
+	_hint.add_theme_font_size_override("font_size", 14)
+	_result.add_theme_color_override("font_color", Color(0.72, 0.74, 0.82))
+	_result.add_theme_font_size_override("font_size", 14)
+
+	var btn_normal := StyleBoxFlat.new()
+	btn_normal.bg_color = Color(0.18, 0.15, 0.06, 0.95)
+	btn_normal.set_corner_radius_all(8)
+	btn_normal.content_margin_left = 32
+	btn_normal.content_margin_right = 32
+	btn_normal.content_margin_top = 11
+	btn_normal.content_margin_bottom = 11
+	btn_normal.border_width_left = 1
+	btn_normal.border_width_top = 1
+	btn_normal.border_width_right = 1
+	btn_normal.border_width_bottom = 1
+	btn_normal.border_color = Color(0.7, 0.58, 0.18, 0.88)
+
+	var btn_hover := StyleBoxFlat.new()
+	btn_hover.bg_color = Color(0.24, 0.2, 0.08, 0.98)
+	btn_hover.set_corner_radius_all(8)
+	btn_hover.content_margin_left = 32
+	btn_hover.content_margin_right = 32
+	btn_hover.content_margin_top = 11
+	btn_hover.content_margin_bottom = 11
+	btn_hover.border_width_left = 1
+	btn_hover.border_width_top = 1
+	btn_hover.border_width_right = 1
+	btn_hover.border_width_bottom = 1
+	btn_hover.border_color = Color(0.92, 0.78, 0.28, 1.0)
+
+	var btn_pressed := StyleBoxFlat.new()
+	btn_pressed.bg_color = Color(0.13, 0.11, 0.05, 0.98)
+	btn_pressed.set_corner_radius_all(8)
+	btn_pressed.content_margin_left = 32
+	btn_pressed.content_margin_right = 32
+	btn_pressed.content_margin_top = 11
+	btn_pressed.content_margin_bottom = 11
+
+	_confirm.add_theme_stylebox_override("normal", btn_normal)
+	_confirm.add_theme_stylebox_override("hover", btn_hover)
+	_confirm.add_theme_stylebox_override("pressed", btn_pressed)
+	_confirm.add_theme_color_override("font_color", COLOR_GOLD)
+	_confirm.add_theme_color_override("font_hover_color", Color(1.0, 0.94, 0.6))
+	_confirm.add_theme_color_override("font_pressed_color", Color(0.8, 0.68, 0.22))
+	_confirm.add_theme_font_size_override("font_size", 15)
+	_confirm.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 
 
 func run_time_up_sequence() -> void:
@@ -74,8 +120,11 @@ func run_time_up_sequence() -> void:
 	GameManager.state = GameManager.State.TIME_UP
 	mouse_filter = MOUSE_FILTER_STOP
 	_panel.modulate = Color.WHITE
-	_title.text = "Time's up"
-	_hint.text = "Werewolf Fact Checker — one last pass. Check every statement you believe is true, then confirm."
+	_title.text = "Time's Up"
+	_hint.text = "Check every statement you believe is true about the campus werewolf, then confirm."
+	_hint.add_theme_font_size_override("font_size", 14)
+	_hint.add_theme_color_override("font_color", Color(0.75, 0.77, 0.86))
+	_confirm.text = "Submit Answers"
 	_confirmed = false
 	_result.visible = false
 	_result.modulate.a = 0.0
@@ -125,7 +174,28 @@ func _build_checklist() -> void:
 		var is_checked: bool = GameManager.werewolf_checklist.get(i, false)
 
 		var row := PanelContainer.new()
-		_apply_interactive_row_style(row, i)
+		var row_style := _apply_interactive_row_style(row, i)
+		var bg_normal := row_style.bg_color
+		var bg_hover := bg_normal + Color(0.07, 0.07, 0.09, 0.0)
+		var border_normal := row_style.border_color
+		var border_hover := Color(0.52, 0.55, 0.66, 0.9)
+
+		row.mouse_entered.connect(func():
+			if _confirmed:
+				return
+			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			tw.set_parallel(true)
+			tw.tween_property(row_style, "bg_color", bg_hover, 0.1)
+			tw.tween_property(row_style, "border_color", border_hover, 0.1)
+		)
+		row.mouse_exited.connect(func():
+			if _confirmed:
+				return
+			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			tw.set_parallel(true)
+			tw.tween_property(row_style, "bg_color", bg_normal, 0.15)
+			tw.tween_property(row_style, "border_color", border_normal, 0.15)
+		)
 
 		var inner := VBoxContainer.new()
 		inner.add_theme_constant_override("separation", 8)
@@ -160,7 +230,7 @@ func _build_checklist() -> void:
 		_rows.append(row)
 
 
-func _apply_interactive_row_style(row: PanelContainer, index: int) -> void:
+func _apply_interactive_row_style(row: PanelContainer, index: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
 	style.bg_color = ROW_BG_A if index % 2 == 0 else ROW_BG_B
 	style.set_corner_radius_all(8)
@@ -174,6 +244,7 @@ func _apply_interactive_row_style(row: PanelContainer, index: int) -> void:
 	style.border_width_bottom = 1
 	style.border_color = Color(0.4, 0.42, 0.5, 0.65)
 	row.add_theme_stylebox_override("panel", style)
+	return style
 
 
 func _apply_results_row_style(row: PanelContainer, index: int) -> void:
@@ -193,20 +264,20 @@ func _apply_results_row_style(row: PanelContainer, index: int) -> void:
 		if player_marked:
 			style.bg_color = RESULT_GREEN_MARKED_BG
 			style.border_color = RESULT_GREEN_MARKED_BORDER
-			hint_txt = "Correct — you checked this. The answer key treats this statement as true, and you marked it."
+			hint_txt = "True, and you marked it."
 			hint_col = RESULT_HINT_BRIGHT
 		else:
 			style.bg_color = RESULT_GREEN_OMISSION_BG
 			style.border_color = RESULT_GREEN_OMISSION_BORDER
-			hint_txt = "Correct — you left this unchecked. The answer key treats this statement as false, so the right move was not to mark it."
+			hint_txt = "False, and you left it blank."
 			hint_col = RESULT_HINT_TEAL
 	else:
 		style.bg_color = RESULT_RED_BG
 		style.border_color = RESULT_RED_BORDER
 		if statement_is_true and not player_marked:
-			hint_txt = "Wrong — the answer key says this statement is true, so you should have checked it."
+			hint_txt = "True, but you left it unchecked."
 		else:
-			hint_txt = "Wrong — the answer key says this statement is false, so you should have left it unchecked."
+			hint_txt = "False, but you marked it anyway."
 		hint_col = RESULT_HINT_WRONG
 
 	style.set_corner_radius_all(8)
@@ -231,6 +302,68 @@ func _apply_results_row_style(row: PanelContainer, index: int) -> void:
 		hint.add_theme_color_override("font_color", hint_col)
 
 
+func _add_continue_button() -> void:
+	var btn := Button.new()
+	btn.text = "Continue to Guided Learning  →"
+	btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	btn.focus_mode = Control.FOCUS_NONE
+
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0.12, 0.12, 0.16, 0.80)
+	st.set_corner_radius_all(8)
+	st.content_margin_left   = 24
+	st.content_margin_right  = 24
+	st.content_margin_top    = 10
+	st.content_margin_bottom = 10
+	st.border_width_left = 1; st.border_width_top = 1
+	st.border_width_right = 1; st.border_width_bottom = 1
+	st.border_color = Color(0.55, 0.57, 0.68, 0.80)
+
+	var st_h := StyleBoxFlat.new()
+	st_h.bg_color = Color(0.18, 0.19, 0.25, 0.95)
+	st_h.set_corner_radius_all(8)
+	st_h.content_margin_left   = 24
+	st_h.content_margin_right  = 24
+	st_h.content_margin_top    = 10
+	st_h.content_margin_bottom = 10
+	st_h.border_width_left = 1; st_h.border_width_top = 1
+	st_h.border_width_right = 1; st_h.border_width_bottom = 1
+	st_h.border_color = Color(0.72, 0.75, 0.88, 1.0)
+
+	btn.add_theme_stylebox_override("normal",  st)
+	btn.add_theme_stylebox_override("hover",   st_h)
+	btn.add_theme_stylebox_override("pressed", st)
+	btn.add_theme_stylebox_override("focus",   st)
+	btn.add_theme_color_override("font_color",       Color(0.72, 0.75, 0.88))
+	btn.add_theme_color_override("font_hover_color", Color(0.95, 0.97, 1.0))
+	btn.add_theme_font_size_override("font_size", 14)
+
+	btn.modulate.a = 0.0
+	_vbox.add_child(btn)
+
+	var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_property(btn, "modulate:a", 1.0, 0.4)
+
+	btn.pressed.connect(func():
+		btn.disabled = true
+		learning_requested.emit()
+	)
+
+
+func _score_flavor(score: int, total: int) -> String:
+	var pct := float(score) / float(total) if total > 0 else 0.0
+	if pct >= 1.0:
+		return "Perfect. You knew exactly what to look for."
+	elif pct >= 0.75:
+		return "Sharp eye. You caught most of the signs."
+	elif pct >= 0.5:
+		return "A few things slipped past you."
+	elif pct >= 0.25:
+		return "More than half the clues went unnoticed."
+	else:
+		return "The werewolf walked right past you."
+
+
 func _on_fact_toggled(checked: bool, index: int) -> void:
 	if _confirmed:
 		return
@@ -240,6 +373,7 @@ func _on_fact_toggled(checked: bool, index: int) -> void:
 func _on_confirm_pressed() -> void:
 	if _confirmed:
 		return
+		
 	_confirmed = true
 	for cb in _checkboxes:
 		cb.disabled = true
@@ -257,8 +391,10 @@ func _on_confirm_pressed() -> void:
 	var score := WerewolfFactData.count_matches(GameManager.werewolf_checklist)
 	var total := WerewolfFactData.fact_count()
 	_title.text = "Results"
-	_hint.text = "Green (lively) — right because you checked a true line. Green (teal) — right because you did not check a false line. Red — your check/omit choice did not match the key."
-	_result.text = "You got %d out of %d correct." % [score, total]
+	_hint.text = "%d / %d correct" % [score, total]
+	_hint.add_theme_font_size_override("font_size", 22)
+	_hint.add_theme_color_override("font_color", COLOR_GOLD)
+	_result.text = _score_flavor(score, total)
 	_result.visible = true
 	_result.modulate.a = 0.0
 
@@ -271,3 +407,6 @@ func _on_confirm_pressed() -> void:
 	tw_in.set_parallel(true)
 	tw_in.tween_property(_panel, "modulate:a", 1.0, 0.55)
 	tw_in.tween_property(_result, "modulate:a", 1.0, 0.5)
+	await tw_in.finished
+
+	_add_continue_button()

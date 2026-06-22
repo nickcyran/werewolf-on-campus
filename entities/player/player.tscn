@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="7_main_theme"]
 [ext_resource type="Script" path="res://entities/player/components/day_end_overlay.gd" id="8_day_end"]
 [ext_resource type="PackedScene" uid="uid://gl_overlay_scene01" path="res://features/guided_learning/guided_learning_overlay.tscn" id="9_guided"]
+[ext_resource type="Script" path="res://entities/player/components/clock_ring.gd" id="10_clock_ring"]
 
 [node name="Player" type="Node3D" unique_id=678926049]
 script = ExtResource("1_4v4u1")
@@ -80,29 +81,45 @@ vertical_alignment = 1
 autowrap_mode = 3
 mouse_filter = 2
 
-[node name="TopBarMargin" type="MarginContainer" parent="UI/Control"]
+[node name="TimeWidget" type="Control" parent="UI/Control"]
 layout_mode = 1
-anchors_preset = 10
+anchor_left = 1.0
+anchor_top = 0.0
 anchor_right = 1.0
-offset_left = 16.0
+anchor_bottom = 0.0
+offset_left = -116.0
 offset_top = 12.0
 offset_right = -16.0
-offset_bottom = 52.0
+offset_bottom = 112.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ClockRing" type="Control" parent="UI/Control/TimeWidget"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("10_clock_ring")
+
+[node name="TimeBGCenter" type="CenterContainer" parent="UI/Control/TimeWidget"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="TopBar" type="HBoxContainer" parent="UI/Control/TopBarMargin"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-alignment = 2
-
-[node name="TimeBG" type="PanelContainer" parent="UI/Control/TopBarMargin/TopBar"]
+[node name="TimeBG" type="PanelContainer" parent="UI/Control/TimeWidget/TimeBGCenter"]
 layout_mode = 2
 theme_type_variation = &"HudTimeChip"
 mouse_filter = 2
 
-[node name="TimeLabel" type="Label" parent="UI/Control/TopBarMargin/TopBar/TimeBG"]
+[node name="TimeLabel" type="Label" parent="UI/Control/TimeWidget/TimeBGCenter/TimeBG"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HudTime"

@@ -8,7 +8,7 @@ var _target: PackedScene
 
 func _ready() -> void:
 	text = ""
-	custom_minimum_size = Vector2(200, 120)
+	custom_minimum_size = Vector2(140, 140)
 	theme_type_variation = &"HomeTile"
 	pressed.connect(_on_pressed)
 

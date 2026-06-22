@@ -253,6 +253,7 @@ HomeTileDescLabel/base_type = &"Label"
 HomeTileDescLabel/colors/font_color = Color(0.5, 0.5, 0.55, 1)
 HomeTileDescLabel/font_sizes/font_size = 10
 HomeTileIconLabel/base_type = &"Label"
+HomeTileIconLabel/colors/font_color = Color(0, 0, 0, 1)
 HomeTileIconLabel/font_sizes/font_size = 28
 HomeTileTitleLabel/base_type = &"Label"
 HomeTileTitleLabel/colors/font_color = Color(0.2, 0.2, 0.25, 1)

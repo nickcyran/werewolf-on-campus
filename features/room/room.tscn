@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://b1nafkycbvr3j" path="res://features/room/room.gd" id="1_qwhiq"]
 [ext_resource type="PackedScene" uid="uid://cn8bjvas3k7gf" path="res://features/browser/browser.tscn" id="4_34v3w"]
 [ext_resource type="PackedScene" uid="uid://cbvjuhttt67co" path="res://features/room/environment.tscn" id="env_1"]
-[ext_resource type="PackedScene" path="res://features/phone/phone.tscn" id="phone_1"]
 [ext_resource type="Script" uid="uid://cptm2sbujptc3" path="res://core/interaction/focus_system.gd" id="fs_1"]
+[ext_resource type="PackedScene" path="res://features/phone/phone.tscn" id="phone_1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_computer"]
 size = Vector3(0.435, 0.27, 0.06)
@@ -32,17 +32,17 @@ albedo_texture = SubResource("ViewportTexture_34v3w")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_phone"]
-size = Vector3(0.144, 0.022, 0.24)
+size = Vector3(0.084, 0.01, 0.156)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j18c"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3vqul"]
 material = SubResource("StandardMaterial3D_6j18c")
-size = Vector3(0.144, 0.022, 0.24)
+size = Vector3(0.084, 0.01, 0.156)
 
 [sub_resource type="QuadMesh" id="QuadMesh_phone"]
-size = Vector2(0.128, 0.22)
+size = Vector2(0.075, 0.139)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_phone"]
 viewport_path = NodePath("Interactables/Phone/Screen/SubViewport")
@@ -102,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3738071, 0.75523853, -0.02
 script = ExtResource("1_6j18c")
 focus_mode = 2
 viewport_path = NodePath("Screen/SubViewport")
-hold_distance = 0.2
+hold_distance = 0.12
 hold_offset = Vector3(0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Phone" unique_id=1874710947]
@@ -112,7 +112,7 @@ shape = SubResource("BoxShape3D_phone")
 mesh = SubResource("BoxMesh_3vqul")
 
 [node name="Screen" type="MeshInstance3D" parent="Interactables/Phone" unique_id=-1447858095]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.0115, -0.0006)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.0051933527, -0.00060000084)
 mesh = SubResource("QuadMesh_phone")
 surface_material_override/0 = SubResource("StandardMaterial3D_phone_screen")
 
@@ -120,7 +120,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_phone_screen")
 disable_3d = true
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
-size = Vector2i(720, 1280)
+size = Vector2i(842, 1560)
 render_target_update_mode = 4
 
-[node name="Phone" parent="Interactables/Phone/Screen/SubViewport" instance=ExtResource("phone_1")]
+[node name="Phone" parent="Interactables/Phone/Screen/SubViewport" unique_id=474418138 instance=ExtResource("phone_1")]

@@ -36,5 +36,5 @@ func _apply_icon_style(color: Color) -> void:
 static func _make_rounded_style(color: Color) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
 	style.bg_color = color
-	style.set_corner_radius_all(22)
+	style.set_corner_radius_all(28)
 	return style

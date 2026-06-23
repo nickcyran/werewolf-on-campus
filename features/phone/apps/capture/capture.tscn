@@ -1,62 +1,70 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://c0nvxek77s7qd"]
 
-[ext_resource type="Script" path="res://features/phone/apps/capture/capture.gd" id="1_app"]
+[ext_resource type="Script" uid="uid://o023hbfulmkh" path="res://features/phone/apps/capture/capture.gd" id="1_app"]
+[ext_resource type="Script" uid="uid://bs5jjh5pnd54t" path="res://features/phone/apps/capture/capture_post.gd" id="2_4xrv5"]
+[ext_resource type="Texture2D" uid="uid://bh2slt1wk4g4s" path="res://assets/logos/Trifang-crest.png" id="3_2ic71"]
+[ext_resource type="VideoStream" uid="uid://datj66q6modjm" path="res://assets/media/werewolf_vid.ogv" id="3_3bo57"]
+[ext_resource type="Texture2D" uid="uid://covjpgn4cv5rb" path="res://assets/icon.svg" id="3_4xrv5"]
+[ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="4_uf3vh"]
+
+[sub_resource type="Resource" id="Resource_1t1ph"]
+script = ExtResource("2_4xrv5")
+username = "user12345"
+pfp_texture = ExtResource("4_uf3vh")
+media_texture = ExtResource("3_2ic71")
+description = "Welcome to Trifang University! We hope your semester goes amazing! Feel free to reach out if you have any questions about the campus."
+likes = 1738
+metadata/_custom_type_script = "uid://bs5jjh5pnd54t"
+
+[sub_resource type="Resource" id="Resource_2ic71"]
+script = ExtResource("2_4xrv5")
+username = "BigWolfStar93"
+pfp_texture = ExtResource("3_4xrv5")
+video_stream = ExtResource("3_3bo57")
+description = "I was out exploring the other day... Look what happend!!!"
+likes = 1689
 
 [sub_resource type="StyleBoxFlat" id="HeaderStyle"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
 bg_color = Color(0.28, 0.26, 0.25, 1)
-content_margin_left = 16.0
-content_margin_top = 8.0
-content_margin_right = 16.0
-content_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StoriesStyle"]
-bg_color = Color(0.3, 0.28, 0.27, 1)
-content_margin_left = 10.0
-content_margin_top = 12.0
-content_margin_right = 10.0
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
 content_margin_bottom = 10.0
+bg_color = Color(0.3, 0.28, 0.27, 1)
 
 [sub_resource type="StyleBoxFlat" id="BottomNavStyle"]
-bg_color = Color(0.14, 0.13, 0.13, 1)
 content_margin_left = 8.0
-content_margin_top = 12.0
+content_margin_top = 10.0
 content_margin_right = 8.0
-content_margin_bottom = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.14, 0.13, 0.13, 1)
 border_width_top = 1
 border_color = Color(0.22, 0.2, 0.2, 1)
 
 [sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
-bg_color = Color(0.0, 0.0, 0.0, 0.0)
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="NavBtnHover"]
-bg_color = Color(1.0, 1.0, 1.0, 0.06)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_left = 6
-corner_radius_bottom_right = 6
-
-[sub_resource type="StyleBoxFlat" id="PostHeaderStyle"]
-bg_color = Color(0.25, 0.23, 0.22, 1)
-content_margin_left = 14.0
-content_margin_top = 10.0
-content_margin_right = 14.0
-content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 0.07)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="ProfileDotStyle"]
 bg_color = Color(0.4, 0.65, 0.48, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_left = 16
-corner_radius_bottom_right = 16
-
-[sub_resource type="StyleBoxFlat" id="PostAvatarStyle"]
-bg_color = Color(0.6, 0.8, 0.72, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
-corner_radius_bottom_left = 20
 corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[node name="Capture" type="Control"]
+[node name="Capture" type="Control" unique_id=1310068798]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,8 +72,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_app")
+posts = Array[ExtResource("2_4xrv5")]([SubResource("Resource_1t1ph"), SubResource("Resource_2ic71")])
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=1908640299]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +83,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.22, 0.2, 0.19, 1)
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="." unique_id=99716903]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,169 +92,112 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Header" type="PanelContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 56)
+[node name="Header" type="PanelContainer" parent="VBox" unique_id=1594987416]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_styles/panel = SubResource("HeaderStyle")
 
-[node name="HeaderHBox" type="HBoxContainer" parent="VBox/Header"]
+[node name="HeaderHBox" type="HBoxContainer" parent="VBox/Header" unique_id=677097142]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="AddBtn" type="Button" parent="VBox/Header/HeaderHBox"]
-custom_minimum_size = Vector2(44, 0)
+[node name="AddBtn" type="Button" parent="VBox/Header/HeaderHBox" unique_id=993754402]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 size_flags_vertical = 4
-flat = true
-theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.82, 0.8, 0.78, 1)
+theme_override_font_sizes/font_size = 32
 text = "+"
+flat = true
 
-[node name="Spacer1" type="Control" parent="VBox/Header/HeaderHBox"]
+[node name="Spacer1" type="Control" parent="VBox/Header/HeaderHBox" unique_id=1946391889]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AppTitle" type="Label" parent="VBox/Header/HeaderHBox"]
+[node name="AppTitle" type="Label" parent="VBox/Header/HeaderHBox" unique_id=963774095]
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.9, 0.88, 0.86, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 30
 text = "Capture"
 
-[node name="Spacer2" type="Control" parent="VBox/Header/HeaderHBox"]
+[node name="Spacer2" type="Control" parent="VBox/Header/HeaderHBox" unique_id=897128637]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HeartBtn" type="Button" parent="VBox/Header/HeaderHBox"]
-custom_minimum_size = Vector2(44, 0)
+[node name="HeartBtn" type="Button" parent="VBox/Header/HeaderHBox" unique_id=1085226050]
+custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 size_flags_vertical = 4
-flat = true
-theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.82, 0.5, 0.58, 1)
+theme_override_font_sizes/font_size = 26
 text = "♥"
+flat = true
 
-[node name="Stories" type="PanelContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 120)
+[node name="Stories" type="PanelContainer" parent="VBox" unique_id=1971168098]
+custom_minimum_size = Vector2(0, 170)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StoriesStyle")
 
-[node name="StoriesScroll" type="ScrollContainer" parent="VBox/Stories"]
+[node name="StoriesScroll" type="ScrollContainer" parent="VBox/Stories" unique_id=41648196]
 layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="StoriesHBox" type="HBoxContainer" parent="VBox/Stories/StoriesScroll"]
+[node name="StoriesHBox" type="HBoxContainer" parent="VBox/Stories/StoriesScroll" unique_id=1226634626]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 14
 
-[node name="StoriesDivider" type="ColorRect" parent="VBox"]
-custom_minimum_size = Vector2(0, 2)
+[node name="StoriesDivider" type="ColorRect" parent="VBox" unique_id=2061413378]
+custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.18, 0.16, 0.16, 1)
 
-[node name="PostHeader" type="PanelContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-theme_override_styles/panel = SubResource("PostHeaderStyle")
-
-[node name="PostHeaderHBox" type="HBoxContainer" parent="VBox/PostHeader"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="PostAvatar" type="PanelContainer" parent="VBox/PostHeader/PostHeaderHBox"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("PostAvatarStyle")
-
-[node name="PostInfoVBox" type="VBoxContainer" parent="VBox/PostHeader/PostHeaderHBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_constants/separation = 2
-
-[node name="PostUsername" type="Label" parent="VBox/PostHeader/PostHeaderHBox/PostInfoVBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.88, 0.86, 0.84, 1)
-theme_override_font_sizes/font_size = 15
-text = "campus_life"
-
-[node name="PostLocation" type="Label" parent="VBox/PostHeader/PostHeaderHBox/PostInfoVBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
-theme_override_font_sizes/font_size = 12
-text = "Main Quad"
-
-[node name="MoreBtn" type="Button" parent="VBox/PostHeader/PostHeaderHBox"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-size_flags_vertical = 4
-flat = true
-theme_override_font_sizes/font_size = 20
-theme_override_colors/font_color = Color(0.6, 0.58, 0.55, 1)
-text = "⋮"
-
-[node name="PostImage" type="ColorRect" parent="VBox"]
+[node name="PostsFeed" type="ScrollContainer" parent="VBox" unique_id=1100614912]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0.35, 0.25, 0.23, 1)
+horizontal_scroll_mode = 0
 
-[node name="BottomNav" type="PanelContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 72)
+[node name="PostsVBox" type="VBoxContainer" parent="VBox/PostsFeed" unique_id=1948930237]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="BottomNav" type="PanelContainer" parent="VBox" unique_id=284668357]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("BottomNavStyle")
 
-[node name="NavHBox" type="HBoxContainer" parent="VBox/BottomNav"]
+[node name="NavHBox" type="HBoxContainer" parent="VBox/BottomNav" unique_id=1481365479]
 layout_mode = 2
 
-[node name="HomeNav" type="Button" parent="VBox/BottomNav/NavHBox"]
-custom_minimum_size = Vector2(0, 44)
+[node name="HomeNav" type="Button" parent="VBox/BottomNav/NavHBox" unique_id=1456550297]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 0.8, 0.78, 1)
+theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("NavBtnNormal")
 theme_override_styles/hover = SubResource("NavBtnHover")
-theme_override_font_sizes/font_size = 32
-theme_override_colors/font_color = Color(0.82, 0.8, 0.78, 1)
 text = "⌂"
 
-[node name="ReelsNav" type="Button" parent="VBox/BottomNav/NavHBox"]
-custom_minimum_size = Vector2(0, 44)
+[node name="MsgNav" type="Button" parent="VBox/BottomNav/NavHBox" unique_id=653111015]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
+theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("NavBtnNormal")
 theme_override_styles/hover = SubResource("NavBtnHover")
-theme_override_font_sizes/font_size = 28
-theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
-text = "▐▌"
-
-[node name="ShopNav" type="Button" parent="VBox/BottomNav/NavHBox"]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("NavBtnNormal")
-theme_override_styles/hover = SubResource("NavBtnHover")
-theme_override_font_sizes/font_size = 28
-theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
-text = "⌓"
-
-[node name="MsgNav" type="Button" parent="VBox/BottomNav/NavHBox"]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("NavBtnNormal")
-theme_override_styles/hover = SubResource("NavBtnHover")
-theme_override_font_sizes/font_size = 28
-theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
 text = "💬"
 
-[node name="ProfileNav" type="PanelContainer" parent="VBox/BottomNav/NavHBox"]
-custom_minimum_size = Vector2(0, 44)
+[node name="ProfileNav" type="PanelContainer" parent="VBox/BottomNav/NavHBox" unique_id=1556601255]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("NavBtnNormal")
 
-[node name="ProfileDot" type="PanelContainer" parent="VBox/BottomNav/NavHBox/ProfileNav"]
-custom_minimum_size = Vector2(32, 32)
+[node name="ProfileDot" type="PanelContainer" parent="VBox/BottomNav/NavHBox/ProfileNav" unique_id=121792052]
+custom_minimum_size = Vector2(38, 38)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

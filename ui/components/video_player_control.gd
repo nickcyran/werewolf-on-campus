@@ -14,6 +14,12 @@ var _overlay: Control
 
 
 func _ready() -> void:
+	_ensure_built()
+
+
+func _ensure_built() -> void:
+	if _vp != null:
+		return
 	clip_children = CanvasItem.CLIP_CHILDREN_ONLY
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	_build()
@@ -71,6 +77,7 @@ func _process(_delta: float) -> void:
 
 ## Set stream and immediately start playing (for guided learning).
 func load_stream(stream: VideoStream) -> void:
+	_ensure_built()
 	_vp.stream = stream
 	user_paused = false
 	_overlay.visible = false
@@ -79,6 +86,7 @@ func load_stream(stream: VideoStream) -> void:
 
 ## Set stream without starting playback (for Capture; call auto_play() later).
 func set_stream(stream: VideoStream) -> void:
+	_ensure_built()
 	_vp.stream = stream
 	user_paused = false
 	_overlay.visible = false

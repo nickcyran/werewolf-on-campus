@@ -10,6 +10,7 @@ func _ready() -> void:
 	_player = AudioStreamPlayer.new()
 	add_child(_player)
 	_player.stream = load("res://assets/media/TriCityPod.mp3")
+	DayClock.day_ended.connect(stop)
 
 
 func play() -> void:

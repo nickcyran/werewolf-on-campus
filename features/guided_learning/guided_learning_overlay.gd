@@ -6,16 +6,23 @@ signal closed
 enum PageState { ANSWERING, RESULTS }
 
 # -- state ---------------------------------------------------------------------
-var _sections: Array = []
-var _current_page: int = 0
-var _dropped_indicators: Dictionary = {}  # page_index -> Array[int]
-var _page_states: Dictionary = {}          # page_index -> PageState
-var _site_instance: Control = null
+var _sources: Array[GuidedLearningSource] = []
+var _current_page: int = 0              # 0 = intro, 1..N = sources[page-1]
+var _dropped: Dictionary = {}           # source_index -> Array[int]
+var _states: Dictionary = {}            # source_index -> PageState
+var _scene_instance: Control = null
+var _audio_player: AudioStreamPlayer = null
 
-# -- ui refs (wired by scene) --------------------------------------------------
+# -- ui refs -------------------------------------------------------------------
 @onready var _page_label: Label = %PageLabel
 @onready var _chrome_url: Label = %ChromeUrl
+@onready var _site_container: SubViewportContainer = %SiteContainer
 @onready var _site_viewport: SubViewport = %SiteViewport
+@onready var _image_display: TextureRect = %ImageDisplay
+@onready var _video_display: VideoStreamPlayer = %VideoDisplay
+@onready var _audio_display: Control = %AudioDisplay
+@onready var _audio_title: Label = %AudioTitle
+@onready var _audio_play_btn: Button = %AudioPlayBtn
 @onready var _drop_label: Label = %DropLabel
 @onready var _score_label: Label = %ScoreLabel
 @onready var _drop_flow: HFlowContainer = %DropFlow
@@ -32,7 +39,13 @@ var _site_instance: Control = null
 @onready var _done_btn: Button = %DoneBtn
 @onready var _sub_label: Label = %SubLabel
 @onready var _intro_panel: Control = %IntroPanel
+@onready var _intro_text: RichTextLabel = %IntroText
 @onready var _content: HBoxContainer = %Content
+@onready var _end_panel: Control = %EndPanel
+@onready var _end_score: Label = %EndScore
+@onready var _end_flavor: Label = %EndFlavor
+@onready var _main_menu_btn: Button = %MainMenuBtn
+@onready var _play_again_btn: Button = %PlayAgainBtn
 
 
 func _ready() -> void:
@@ -40,15 +53,21 @@ func _ready() -> void:
 	color = Color(0, 0, 0, 0)
 	mouse_filter = MOUSE_FILTER_IGNORE
 
-	_sections = GuidedLearningData.get_sections()
-	for i in range(_sections.size()):
-		_dropped_indicators[i] = []
-		_page_states[i] = PageState.ANSWERING
+	_sources = GuidedLearningData.get_sources()
+	for i in range(_sources.size()):
+		_dropped[i] = []
+		_states[i] = PageState.ANSWERING
+
+	_intro_text.text = GuidedLearningData.get_intro_text()
 
 	_prev_btn.pressed.connect(_on_prev)
 	_submit_btn.pressed.connect(_on_submit)
 	_next_btn.pressed.connect(_on_next)
 	_done_btn.pressed.connect(_on_done)
+	_audio_play_btn.pressed.connect(_on_audio_play)
+	DayClock.day_ended.connect(_stop_media)
+	_main_menu_btn.pressed.connect(func(): pass)
+	_play_again_btn.pressed.connect(_on_play_again)
 
 	_drop_zone.set_drag_forwarding(
 		func(_p) -> Variant: return null,
@@ -56,7 +75,7 @@ func _ready() -> void:
 			return (
 				data is Dictionary
 				and data.has("indicator_index")
-				and _page_states.get(_current_page, PageState.ANSWERING) == PageState.ANSWERING
+				and _states.get(_src_index(), PageState.ANSWERING) == PageState.ANSWERING
 			),
 		func(_p, data) -> void: _on_indicator_dropped(int(data["indicator_index"]))
 	)
@@ -76,32 +95,37 @@ func run() -> void:
 	tw.tween_property(self, "color:a", 0.97, 0.45)
 
 
+# -- helpers ------------------------------------------------------------------
+
+func _src_index() -> int:
+	return _current_page - 1
+
+func _source() -> GuidedLearningSource:
+	return _sources[_src_index()]
+
+
 # -- page navigation ----------------------------------------------------------
 
 func _show_page(index: int) -> void:
 	_current_page = index
-	var is_intro: bool = _sections[index].get("type", "") == "intro"
-	var state: PageState = _page_states.get(index, PageState.ANSWERING)
+	var is_intro: bool = (index == 0)
+	var si: int = _src_index()
+	var state: PageState = _states.get(si, PageState.ANSWERING)
 	var is_results: bool = not is_intro and state == PageState.RESULTS
 	var is_answering: bool = not is_intro and state == PageState.ANSWERING
-	var is_last: bool = (index == _sections.size() - 1)
-	var site_count: int = _sections.size() - 1
+	var is_last: bool = (index == _sources.size())
 
 	# Header
-	if is_intro:
-		_page_label.text = ""
-		_chrome_url.text = ""
-	else:
-		_page_label.text = "%d / %d" % [index, site_count]
-		_chrome_url.text = _sections[index]["url"]
+	_page_label.text = "" if is_intro else "%d / %d" % [index, _sources.size()]
+	_chrome_url.text = "" if is_intro else _source().url
 
-	# Nav buttons
+	# Nav
 	_prev_btn.disabled = (index == 0)
 	_submit_btn.visible = is_answering
 	_next_btn.visible = is_intro or (is_results and not is_last)
 	_done_btn.visible = is_results and is_last
 
-	# Layout visibility
+	# Layout
 	_sub_label.visible = not is_intro
 	_intro_panel.visible = is_intro
 	_content.visible = not is_intro
@@ -109,7 +133,7 @@ func _show_page(index: int) -> void:
 	if not is_intro:
 		_drop_label.text = (
 			"Your submitted answers:" if is_results
-			else "Drag the indicators that apply to this site:"
+			else "Drag the indicators that apply to this source:"
 		)
 		_pool_section.visible = is_answering
 		_score_label.visible = is_results
@@ -117,31 +141,70 @@ func _show_page(index: int) -> void:
 		_results_zone.visible = is_results
 
 		if is_results:
-			_update_score(index)
+			_update_score(si)
 
-		_load_site_scene(_sections[index]["scene"])
+		_load_content(_source())
 		_rebuild_drop_zone()
 		_rebuild_results_zone()
 
 
-func _update_score(index: int) -> void:
-	var user_drops: Array = _dropped_indicators[index]
-	var correct_set: Array = _sections[index]["indicator_indices"]
-	var hits: int = 0
-	for ind_i: int in user_drops:
-		if correct_set.has(ind_i):
-			hits += 1
-	_score_label.text = "%d / %d correct" % [hits, correct_set.size()]
+func _load_content(src: GuidedLearningSource) -> void:
+	# Stop any running video/audio first
+	if _video_display.is_playing():
+		_video_display.stop()
+	if _audio_player and _audio_player.playing:
+		_audio_player.stop()
+
+	_site_container.visible = false
+	_image_display.visible = false
+	_video_display.visible = false
+	_audio_display.visible = false
+
+	match src.type:
+		GuidedLearningSource.Type.SCENE:
+			_site_container.visible = true
+			_load_scene(src.scene)
+
+		GuidedLearningSource.Type.IMAGE:
+			_image_display.visible = true
+			_image_display.texture = src.image
+
+		GuidedLearningSource.Type.VIDEO:
+			_video_display.visible = true
+			_video_display.stream = src.video
+			_video_display.play()
+
+		GuidedLearningSource.Type.AUDIO:
+			_audio_display.visible = true
+			_audio_title.text = src.display_name
+			_audio_play_btn.text = "▶  Play"
+			if not _audio_player:
+				_audio_player = AudioStreamPlayer.new()
+				add_child(_audio_player)
+				_audio_player.finished.connect(func(): _audio_play_btn.text = "▶  Play")
+			_audio_player.stream = src.audio
 
 
-func _load_site_scene(scene: PackedScene) -> void:
-	if _site_instance:
-		_site_instance.queue_free()
-		_site_instance = null
-	_site_instance = scene.instantiate() as Control
-	if _site_instance:
-		_site_instance.set_anchors_preset(Control.PRESET_FULL_RECT)
-		_site_viewport.add_child(_site_instance)
+func _load_scene(scene: PackedScene) -> void:
+	if _scene_instance:
+		_scene_instance.queue_free()
+		_scene_instance = null
+	if scene:
+		_scene_instance = scene.instantiate() as Control
+		if _scene_instance:
+			_scene_instance.set_anchors_preset(Control.PRESET_FULL_RECT)
+			_site_viewport.add_child(_scene_instance)
+
+
+func _on_audio_play() -> void:
+	if not _audio_player:
+		return
+	if _audio_player.playing:
+		_audio_player.stop()
+		_audio_play_btn.text = "▶  Play"
+	else:
+		_audio_player.play()
+		_audio_play_btn.text = "⏹  Stop"
 
 
 func _on_prev() -> void:
@@ -150,91 +213,138 @@ func _on_prev() -> void:
 
 
 func _on_next() -> void:
-	if _current_page < _sections.size() - 1:
+	if _current_page < _sources.size():
 		_show_page(_current_page + 1)
 
 
 func _on_submit() -> void:
-	_page_states[_current_page] = PageState.RESULTS
+	_states[_src_index()] = PageState.RESULTS
 	_show_page(_current_page)
 
 
 func _on_done() -> void:
-	var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	tw.tween_property(self, "color:a", 0.0, 0.4)
-	await tw.finished
-	visible = false
-	mouse_filter = MOUSE_FILTER_IGNORE
-	closed.emit()
+	_stop_media()
+	_show_end_screen()
+
+
+func _stop_media() -> void:
+	if _video_display.is_playing():
+		_video_display.stop()
+	if _audio_player and _audio_player.playing:
+		_audio_player.stop()
+		_audio_play_btn.text = "▶  Play"
+
+
+func _show_end_screen() -> void:
+	var total_correct := 0
+	var total_hits := 0
+	for i in range(_sources.size()):
+		var correct: Array[int] = _sources[i].get_indicator_indices()
+		total_correct += correct.size()
+		for idx: int in (_dropped.get(i, []) as Array):
+			if correct.has(idx):
+				total_hits += 1
+
+	var pct := float(total_hits) / float(total_correct) if total_correct > 0 else 0.0
+	_end_score.text = "%d / %d indicators correctly identified" % [total_hits, total_correct]
+	_end_flavor.text = _end_flavor_text(pct)
+
+	_end_panel.modulate.a = 0.0
+	_end_panel.visible = true
+	var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_property(_end_panel, "modulate:a", 1.0, 0.5)
+
+
+func _on_play_again() -> void:
+	_play_again_btn.disabled = true
+	PodcastPlayer.stop()
+	DayClock.reset()
+	GameManager.reset()
+	DayClock.start()
+	get_tree().change_scene_to_file("res://features/room/room.tscn")
+
+
+func _end_flavor_text(pct: float) -> String:
+	if pct >= 1.0:
+		return "Perfect score — you spotted every indicator across all sources."
+	elif pct >= 0.75:
+		return "Strong work. You identified most of the reliability signals."
+	elif pct >= 0.5:
+		return "Good effort. With practice you'll catch the subtler indicators."
+	elif pct >= 0.25:
+		return "Keep these indicators in mind next time you evaluate a source."
+	else:
+		return "Take another look at the indicator list. It gets easier with practice."
+
+
+# -- score --------------------------------------------------------------------
+
+func _update_score(si: int) -> void:
+	var user_drops: Array = _dropped[si]
+	var correct: Array[int] = _sources[si].get_indicator_indices()
+	var hits: int = 0
+	for idx: int in user_drops:
+		if correct.has(idx):
+			hits += 1
+	_score_label.text = "%d / %d correct" % [hits, correct.size()]
 
 
 # -- drop handling ------------------------------------------------------------
 
 func _on_indicator_dropped(indicator_index: int) -> void:
-	var drops: Array = _dropped_indicators[_current_page]
-	if drops.has(indicator_index):
-		return
-	drops.append(indicator_index)
-	_rebuild_drop_zone()
+	var drops: Array = _dropped[_src_index()]
+	if not drops.has(indicator_index):
+		drops.append(indicator_index)
+		_rebuild_drop_zone()
 
 
-# Rebuilds the top zone: user's submitted picks (locked pos/neg) or the drag target
 func _rebuild_drop_zone() -> void:
 	for child in _drop_flow.get_children():
 		child.queue_free()
 
-	var state: PageState = _page_states.get(_current_page, PageState.ANSWERING)
-	var user_drops: Array = _dropped_indicators[_current_page]
+	var si: int = _src_index()
+	var state: PageState = _states.get(si, PageState.ANSWERING)
+	var user_drops: Array = _dropped[si]
 
 	if state == PageState.RESULTS:
-		# Show what the user submitted, locked in pos/neg colours
 		if user_drops.is_empty():
-			var none_lbl := Label.new()
-			none_lbl.text = "No indicators submitted."
-			none_lbl.theme_type_variation = &"GuidedHint"
-			none_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			_drop_flow.add_child(none_lbl)
+			_drop_flow.add_child(_hint_label("No indicators submitted."))
 		else:
-			for ind_i: int in user_drops:
-				_drop_flow.add_child(_static_chip(ind_i))
+			for idx: int in user_drops:
+				_drop_flow.add_child(_static_chip(idx))
 		return
 
-	# ANSWERING: interactive drop target
+	# ANSWERING
 	if user_drops.is_empty():
-		var count: int = (_sections[_current_page]["indicator_indices"] as Array).size()
-		var hint := Label.new()
-		hint.text = "Find %d indicator%s for this site" % [count, "s" if count != 1 else ""]
-		hint.theme_type_variation = &"GuidedHint"
-		hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_drop_flow.add_child(hint)
+		var count: int = _source().get_indicator_indices().size()
+		_drop_flow.add_child(_hint_label(
+			"Find %d indicator%s for this source" % [count, "s" if count != 1 else ""]
+		))
 	else:
-		for ind_i: int in user_drops:
-			_drop_flow.add_child(_removable_chip(ind_i))
+		for idx: int in user_drops:
+			_drop_flow.add_child(_removable_chip(idx))
 
 
-# Rebuilds the results zone: all correct indicators + wrong user picks
 func _rebuild_results_zone() -> void:
 	for child in _results_flow.get_children():
 		child.queue_free()
 
-	var state: PageState = _page_states.get(_current_page, PageState.ANSWERING)
-	if state != PageState.RESULTS:
+	var si: int = _src_index()
+	if _states.get(si, PageState.ANSWERING) != PageState.RESULTS:
 		return
 
-	var user_drops: Array = _dropped_indicators[_current_page]
-	var correct_set: Array = _sections[_current_page]["indicator_indices"]
+	var user_drops: Array = _dropped[si]
+	var correct: Array[int] = _sources[si].get_indicator_indices()
 
-	# All correct indicators in their pos/neg colour
-	for ind_i: int in correct_set:
-		_results_flow.add_child(_static_chip(ind_i))
-
-	# Wrong user picks shown red after the correct ones
-	for ind_i: int in user_drops:
-		if not correct_set.has(ind_i):
-			_results_flow.add_child(_wrong_chip(ind_i))
+	for idx: int in correct:
+		_results_flow.add_child(_static_chip(idx))
+	for idx: int in user_drops:
+		if not correct.has(idx):
+			_results_flow.add_child(_wrong_chip(idx))
 
 
-# Pos/neg coloured chip, non-interactive (results and submitted views)
+# -- chip factories -----------------------------------------------------------
+
 func _static_chip(indicator_index: int) -> Button:
 	var chip := Button.new()
 	chip.text = ReliabilityIndicatorData.INDICATORS[indicator_index]
@@ -247,7 +357,6 @@ func _static_chip(indicator_index: int) -> Button:
 	return chip
 
 
-# Red chip for indicators the user dragged but that don't apply
 func _wrong_chip(indicator_index: int) -> Button:
 	var chip := Button.new()
 	chip.text = ReliabilityIndicatorData.INDICATORS[indicator_index]
@@ -257,7 +366,6 @@ func _wrong_chip(indicator_index: int) -> Button:
 	return chip
 
 
-# Removable chip used during ANSWERING (click to unselect)
 func _removable_chip(indicator_index: int) -> Button:
 	var chip := Button.new()
 	chip.text = ReliabilityIndicatorData.INDICATORS[indicator_index]
@@ -268,10 +376,18 @@ func _removable_chip(indicator_index: int) -> Button:
 		else &"GuidedChipNeg"
 	)
 	chip.pressed.connect(func():
-		(_dropped_indicators[_current_page] as Array).erase(indicator_index)
+		(_dropped[_src_index()] as Array).erase(indicator_index)
 		_rebuild_drop_zone()
 	)
 	return chip
+
+
+func _hint_label(t: String) -> Label:
+	var lbl := Label.new()
+	lbl.text = t
+	lbl.theme_type_variation = &"GuidedHint"
+	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return lbl
 
 
 # -- pool ---------------------------------------------------------------------

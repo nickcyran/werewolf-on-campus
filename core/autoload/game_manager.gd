@@ -38,3 +38,9 @@ func release_focus() -> void:
 
 func is_playing() -> bool:
 	return state == State.PLAYING
+
+
+func reset() -> void:
+	focused_interactable = null
+	werewolf_checklist = {}
+	state = State.PLAYING

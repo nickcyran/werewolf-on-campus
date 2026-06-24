@@ -46,6 +46,14 @@ func _ready() -> void:
 		var scrollbar := (_posts_vbox.get_parent() as ScrollContainer).get_v_scroll_bar()
 		scrollbar.value_changed.connect(func(_v: float): _update_active_video())
 		_update_active_video.call_deferred()
+	DayClock.day_ended.connect(_stop_all_video)
+
+
+func _stop_all_video() -> void:
+	for entry in _video_entries:
+		var vp := entry.vp as VideoStreamPlayer
+		if vp and vp.is_playing():
+			vp.stop()
 
 
 func _process(_delta: float) -> void:

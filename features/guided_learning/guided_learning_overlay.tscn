@@ -1,84 +1,80 @@
-[gd_scene load_steps=3 format=3 uid="uid://gl_overlay_scene01"]
+[gd_scene format=3 uid="uid://c3addqq3jkrg6"]
 
-[ext_resource type="Script" path="res://features/guided_learning/guided_learning_overlay.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://c34mdlogbshk4" path="res://features/guided_learning/guided_learning_overlay.gd" id="1_script"]
 [ext_resource type="Theme" uid="uid://cbcas75fhrnq8" path="res://features/guided_learning/guided_learning_theme.tres" id="2_theme"]
 
-[node name="GuidedLearningOverlay" type="ColorRect"]
-layout_mode = 3
+[node name="GuidedLearningOverlay" type="ColorRect" unique_id=933931829]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
 theme = ExtResource("2_theme")
+color = Color(0, 0, 0, 0)
 script = ExtResource("1_script")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=561769734]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="Panel" type="PanelContainer" parent="Margin"]
+[node name="Panel" type="PanelContainer" parent="Margin" unique_id=1135113666]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"GuidedPanel"
 
-[node name="Layout" type="VBoxContainer" parent="Margin/Panel"]
+[node name="Layout" type="VBoxContainer" parent="Margin/Panel" unique_id=182015128]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="Header" type="HBoxContainer" parent="Margin/Panel/Layout"]
+[node name="Header" type="HBoxContainer" parent="Margin/Panel/Layout" unique_id=542066597]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="Margin/Panel/Layout/Header"]
+[node name="TitleLabel" type="Label" parent="Margin/Panel/Layout/Header" unique_id=1011552823]
 layout_mode = 2
-text = "Guided Learning"
 theme_type_variation = &"GuidedTitle"
+text = "Guided Learning"
 
-[node name="HSpacer" type="Control" parent="Margin/Panel/Layout/Header"]
+[node name="HSpacer" type="Control" parent="Margin/Panel/Layout/Header" unique_id=186819487]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PageLabel" type="Label" parent="Margin/Panel/Layout/Header"]
+[node name="PageLabel" type="Label" parent="Margin/Panel/Layout/Header" unique_id=683040035]
 unique_name_in_owner = true
 layout_mode = 2
-vertical_alignment = 1
 theme_type_variation = &"GuidedPage"
+vertical_alignment = 1
 
-[node name="SubLabel" type="Label" parent="Margin/Panel/Layout"]
+[node name="SubLabel" type="Label" parent="Margin/Panel/Layout" unique_id=106935166]
 unique_name_in_owner = true
 layout_mode = 2
-autowrap_mode = 3
-text = "Scroll or interact with each site, then drag the matching reliability indicators into the drop zone."
 theme_type_variation = &"GuidedSub"
+text = "Scroll or interact with each site, then drag the matching reliability indicators into the drop zone."
+autowrap_mode = 3
 
-[node name="IntroPanel" type="ScrollContainer" parent="Margin/Panel/Layout"]
+[node name="IntroPanel" type="ScrollContainer" parent="Margin/Panel/Layout" unique_id=1928638973]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-visible = false
 
-[node name="IntroText" type="RichTextLabel" parent="Margin/Panel/Layout/IntroPanel"]
+[node name="IntroText" type="RichTextLabel" parent="Margin/Panel/Layout/IntroPanel" unique_id=879487368]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-scroll_active = false
-autowrap_mode = 3
-fit_content = true
 text = "[center][font_size=22][b]Reliability Indicators[/b][/font_size][/center]
 
 [font_size=15]All the indicators of reliability or unreliability in the fake sources can be applied to anything you encounter online in real life.
@@ -86,76 +82,78 @@ text = "[center][font_size=22][b]Reliability Indicators[/b][/font_size][/center]
 [color=#f09090]Multiple negative indicators[/color] mean a source is likely unreliable, while [color=#90e0b0]multiple positive indicators[/color] show a more reliable one.
 
 Match up the actual indicators to the werewolf sources to show why some are reliable and others are not.[/font_size]"
+fit_content = true
+scroll_active = false
 
-[node name="Content" type="HBoxContainer" parent="Margin/Panel/Layout"]
+[node name="Content" type="HBoxContainer" parent="Margin/Panel/Layout" unique_id=1526422423]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 14
 
-[node name="Left" type="VBoxContainer" parent="Margin/Panel/Layout/Content"]
+[node name="Left" type="VBoxContainer" parent="Margin/Panel/Layout/Content" unique_id=541599805]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="SiteCard" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left"]
+[node name="SiteCard" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left" unique_id=1769668223]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-clip_contents = true
 theme_type_variation = &"GuidedSiteCard"
 
-[node name="CardLayout" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard"]
+[node name="CardLayout" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard" unique_id=682471798]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Chrome" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout"]
+[node name="Chrome" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=1726803568]
 layout_mode = 2
 theme_type_variation = &"GuidedChrome"
 
-[node name="ChromeRow" type="HBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome"]
+[node name="ChromeRow" type="HBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome" unique_id=681564177]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="DotRed" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
-layout_mode = 2
+[node name="DotRed" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=705624239]
 custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"GuidedDotRed"
 
-[node name="DotYellow" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
-layout_mode = 2
+[node name="DotYellow" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=33617892]
 custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"GuidedDotYellow"
 
-[node name="DotGreen" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
-layout_mode = 2
+[node name="DotGreen" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=466949209]
 custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"GuidedDotGreen"
 
-[node name="ChromeGap" type="Control" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
-layout_mode = 2
+[node name="ChromeGap" type="Control" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=2015477327]
 custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
 
-[node name="AddrPill" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+[node name="AddrPill" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=1124267189]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"GuidedAddrPill"
 
-[node name="ChromeUrl" type="Label" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow/AddrPill"]
+[node name="ChromeUrl" type="Label" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow/AddrPill" unique_id=940788917]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"GuidedUrl"
 horizontal_alignment = 1
 clip_text = true
-theme_type_variation = &"GuidedUrl"
 
-[node name="SiteContainer" type="SubViewportContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout"]
+[node name="SiteContainer" type="SubViewportContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=967610884]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -163,160 +161,277 @@ size_flags_vertical = 3
 mouse_filter = 0
 stretch = true
 
-[node name="SiteViewport" type="SubViewport" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteContainer"]
+[node name="SiteViewport" type="SubViewport" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteContainer" unique_id=1882941674]
 unique_name_in_owner = true
-size = Vector2i(1280, 720)
+handle_input_locally = false
+size = Vector2i(702, 478)
+render_target_update_mode = 4
 
-[node name="Right" type="VBoxContainer" parent="Margin/Panel/Layout/Content"]
+[node name="ImageDisplay" type="TextureRect" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=1633471550]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VideoDisplay" type="VideoStreamPlayer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=184368505]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+
+[node name="AudioDisplay" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=1700637283]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="AudioIcon" type="Label" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/AudioDisplay" unique_id=1475931548]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "♪"
+horizontal_alignment = 1
+
+[node name="AudioTitle" type="Label" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/AudioDisplay" unique_id=365537186]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="AudioPlayBtn" type="Button" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/AudioDisplay" unique_id=896231492]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "▶  Play"
+
+[node name="Right" type="VBoxContainer" parent="Margin/Panel/Layout/Content" unique_id=296604666]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 8
 
-[node name="DropLabel" type="Label" parent="Margin/Panel/Layout/Content/Right"]
+[node name="DropLabel" type="Label" parent="Margin/Panel/Layout/Content/Right" unique_id=594827676]
 unique_name_in_owner = true
 layout_mode = 2
-autowrap_mode = 3
-text = "Drag the indicators that apply to this site:"
 theme_type_variation = &"GuidedDim"
+text = "Drag the indicators that apply to this site:"
+autowrap_mode = 3
 
-[node name="ScoreLabel" type="Label" parent="Margin/Panel/Layout/Content/Right"]
+[node name="ScoreLabel" type="Label" parent="Margin/Panel/Layout/Content/Right" unique_id=1014959209]
 unique_name_in_owner = true
-layout_mode = 2
 visible = false
+layout_mode = 2
 theme_type_variation = &"GuidedScore"
 
-[node name="DropZone" type="PanelContainer" parent="Margin/Panel/Layout/Content/Right"]
+[node name="DropZone" type="PanelContainer" parent="Margin/Panel/Layout/Content/Right" unique_id=1039524028]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
 size_flags_vertical = 0
-custom_minimum_size = Vector2(0, 95)
-mouse_filter = 0
 theme_type_variation = &"GuidedDropZone"
 
-[node name="DropScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/DropZone"]
+[node name="DropScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/DropZone" unique_id=1260465215]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="DropFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/DropZone/DropScroll"]
+[node name="DropFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/DropZone/DropScroll" unique_id=724858218]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 
-[node name="ResultsLabel" type="Label" parent="Margin/Panel/Layout/Content/Right"]
+[node name="ResultsLabel" type="Label" parent="Margin/Panel/Layout/Content/Right" unique_id=30985001]
 unique_name_in_owner = true
-layout_mode = 2
 visible = false
-text = "Correct indicators for this site:"
+layout_mode = 2
 theme_type_variation = &"GuidedDim"
+text = "Correct indicators for this site:"
 
-[node name="ResultsZone" type="PanelContainer" parent="Margin/Panel/Layout/Content/Right"]
+[node name="ResultsZone" type="PanelContainer" parent="Margin/Panel/Layout/Content/Right" unique_id=924583204]
 unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
 size_flags_vertical = 0
-custom_minimum_size = Vector2(0, 95)
-visible = false
 theme_type_variation = &"GuidedDropZone"
 
-[node name="ResultsScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/ResultsZone"]
+[node name="ResultsScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/ResultsZone" unique_id=555563878]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="ResultsFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/ResultsZone/ResultsScroll"]
+[node name="ResultsFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/ResultsZone/ResultsScroll" unique_id=238034356]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 
-[node name="PoolSection" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Right"]
+[node name="PoolSection" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Right" unique_id=1389478271]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 4
 
-[node name="NegPoolLabel" type="Label" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+[node name="NegPoolLabel" type="Label" parent="Margin/Panel/Layout/Content/Right/PoolSection" unique_id=2087359389]
 layout_mode = 2
-text = "Negative Indicators"
 theme_type_variation = &"GuidedPoolNeg"
+text = "Negative Indicators"
 
-[node name="NegPoolScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+[node name="NegPoolScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection" unique_id=455648586]
+custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.0
-custom_minimum_size = Vector2(0, 130)
-horizontal_scroll_mode = 0
 theme_type_variation = &"GuidedPool"
+horizontal_scroll_mode = 0
 
-[node name="NegPoolFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection/NegPoolScroll"]
+[node name="NegPoolFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection/NegPoolScroll" unique_id=904292688]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 
-[node name="PosPoolLabel" type="Label" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+[node name="PosPoolLabel" type="Label" parent="Margin/Panel/Layout/Content/Right/PoolSection" unique_id=700561944]
 layout_mode = 2
-text = "Positive Indicators"
 theme_type_variation = &"GuidedPoolPos"
+text = "Positive Indicators"
 
-[node name="PosPoolScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+[node name="PosPoolScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection" unique_id=1818904933]
+custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.0
-custom_minimum_size = Vector2(0, 130)
-horizontal_scroll_mode = 0
 theme_type_variation = &"GuidedPool"
+horizontal_scroll_mode = 0
 
-[node name="PosPoolFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection/PosPoolScroll"]
+[node name="PosPoolFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection/PosPoolScroll" unique_id=514117387]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 
-[node name="NavRow" type="HBoxContainer" parent="Margin/Panel/Layout"]
+[node name="NavRow" type="HBoxContainer" parent="Margin/Panel/Layout" unique_id=1508590769]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PrevBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
+[node name="PrevBtn" type="Button" parent="Margin/Panel/Layout/NavRow" unique_id=1048610108]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
-text = "← Prev"
 theme_type_variation = &"GuidedNavBtn"
+text = "← Prev"
 
-[node name="NavSpacer1" type="Control" parent="Margin/Panel/Layout/NavRow"]
+[node name="NavSpacer1" type="Control" parent="Margin/Panel/Layout/NavRow" unique_id=1634701985]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SubmitBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
+[node name="SubmitBtn" type="Button" parent="Margin/Panel/Layout/NavRow" unique_id=1890387290]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 focus_mode = 0
-visible = false
-text = "Submit Response"
 theme_type_variation = &"GuidedSubmitBtn"
+text = "Submit Response"
 
-[node name="DoneBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
+[node name="DoneBtn" type="Button" parent="Margin/Panel/Layout/NavRow" unique_id=1727947822]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 focus_mode = 0
-visible = false
-text = "Done"
 theme_type_variation = &"GuidedDoneBtn"
+text = "Done"
 
-[node name="NextBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
+[node name="NextBtn" type="Button" parent="Margin/Panel/Layout/NavRow" unique_id=183326805]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"GuidedNavBtn"
+text = "Next →"
+
+[node name="EndPanel" type="ColorRect" parent="." unique_id=502179469]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.04, 0.07, 0.98)
+
+[node name="EndCenter" type="CenterContainer" parent="EndPanel" unique_id=274140096]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndLayout" type="VBoxContainer" parent="EndPanel/EndCenter" unique_id=1384662545]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EndTitle" type="Label" parent="EndPanel/EndCenter/EndLayout" unique_id=646983649]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.88, 0.45, 1)
+theme_override_font_sizes/font_size = 36
+text = "Guided Learning Complete"
+horizontal_alignment = 1
+
+[node name="EndRule" type="ColorRect" parent="EndPanel/EndCenter/EndLayout" unique_id=340398940]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.35, 0.37, 0.48, 0.55)
+
+[node name="EndScore" type="Label" parent="EndPanel/EndCenter/EndLayout" unique_id=477309563]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.94, 0.98, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="EndFlavor" type="Label" parent="EndPanel/EndCenter/EndLayout" unique_id=2022468794]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.63, 0.75, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="EndGap" type="Control" parent="EndPanel/EndCenter/EndLayout" unique_id=425737964]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="BtnRow" type="HBoxContainer" parent="EndPanel/EndCenter/EndLayout" unique_id=427220859]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="MainMenuBtn" type="Button" parent="EndPanel/EndCenter/EndLayout/BtnRow" unique_id=2018222964]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
-visible = false
-text = "Next →"
-theme_type_variation = &"GuidedNavBtn"
+text = "Main Menu"
+
+[node name="PlayAgainBtn" type="Button" parent="EndPanel/EndCenter/EndLayout/BtnRow" unique_id=1829266001]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"GuidedSubmitBtn"
+text = "Play Again"

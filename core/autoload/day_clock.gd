@@ -22,6 +22,14 @@ func start() -> void:
 	started = true
 
 
+func reset() -> void:
+	elapsed = 0.0
+	day_over = false
+	started = false
+	_prev_display = ""
+	_refresh_acc = 0.0
+
+
 func _process(delta: float) -> void:
 	if !started or day_over:
 		return

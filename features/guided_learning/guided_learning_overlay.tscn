@@ -15,7 +15,7 @@ color = Color(0, 0, 0, 0)
 theme = ExtResource("2_theme")
 script = ExtResource("1_script")
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,107 +23,139 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="Panel" type="PanelContainer" parent="Center"]
+[node name="Panel" type="PanelContainer" parent="Margin"]
 layout_mode = 2
-custom_minimum_size = Vector2(820, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_type_variation = &"GuidedPanel"
 
-[node name="Layout" type="VBoxContainer" parent="Center/Panel"]
+[node name="Layout" type="VBoxContainer" parent="Margin/Panel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
 
-[node name="Header" type="HBoxContainer" parent="Center/Panel/Layout"]
+[node name="Header" type="HBoxContainer" parent="Margin/Panel/Layout"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="Center/Panel/Layout/Header"]
+[node name="TitleLabel" type="Label" parent="Margin/Panel/Layout/Header"]
 layout_mode = 2
 text = "Guided Learning"
 theme_type_variation = &"GuidedTitle"
 
-[node name="HSpacer" type="Control" parent="Center/Panel/Layout/Header"]
+[node name="HSpacer" type="Control" parent="Margin/Panel/Layout/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PageLabel" type="Label" parent="Center/Panel/Layout/Header"]
+[node name="PageLabel" type="Label" parent="Margin/Panel/Layout/Header"]
 unique_name_in_owner = true
 layout_mode = 2
 vertical_alignment = 1
 theme_type_variation = &"GuidedPage"
 
-[node name="SubLabel" type="Label" parent="Center/Panel/Layout"]
+[node name="SubLabel" type="Label" parent="Margin/Panel/Layout"]
+unique_name_in_owner = true
 layout_mode = 2
 autowrap_mode = 3
-text = "Scroll or interact with each site, then drag the matching facts into the drop zone."
+text = "Scroll or interact with each site, then drag the matching reliability indicators into the drop zone."
 theme_type_variation = &"GuidedSub"
 
-[node name="Content" type="HBoxContainer" parent="Center/Panel/Layout"]
-layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="Left" type="VBoxContainer" parent="Center/Panel/Layout/Content"]
+[node name="IntroPanel" type="ScrollContainer" parent="Margin/Panel/Layout"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+visible = false
+
+[node name="IntroText" type="RichTextLabel" parent="Margin/Panel/Layout/IntroPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 3
+fit_content = true
+text = "[center][font_size=22][b]Reliability Indicators[/b][/font_size][/center]
+
+[font_size=15]All the indicators of reliability or unreliability in the fake sources can be applied to anything you encounter online in real life.
+
+[color=#f09090]Multiple negative indicators[/color] mean a source is likely unreliable, while [color=#90e0b0]multiple positive indicators[/color] show a more reliable one.
+
+Match up the actual indicators to the werewolf sources to show why some are reliable and others are not.[/font_size]"
+
+[node name="Content" type="HBoxContainer" parent="Margin/Panel/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="Left" type="VBoxContainer" parent="Margin/Panel/Layout/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="SiteCard" type="PanelContainer" parent="Center/Panel/Layout/Content/Left"]
+[node name="SiteCard" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 clip_contents = true
 theme_type_variation = &"GuidedSiteCard"
 
-[node name="CardLayout" type="VBoxContainer" parent="Center/Panel/Layout/Content/Left/SiteCard"]
+[node name="CardLayout" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Chrome" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout"]
+[node name="Chrome" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout"]
 layout_mode = 2
 theme_type_variation = &"GuidedChrome"
 
-[node name="ChromeRow" type="HBoxContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome"]
+[node name="ChromeRow" type="HBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="DotRed" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+[node name="DotRed" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(10, 10)
 mouse_filter = 2
 theme_type_variation = &"GuidedDotRed"
 
-[node name="DotYellow" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+[node name="DotYellow" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(10, 10)
 mouse_filter = 2
 theme_type_variation = &"GuidedDotYellow"
 
-[node name="DotGreen" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+[node name="DotGreen" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(10, 10)
 mouse_filter = 2
 theme_type_variation = &"GuidedDotGreen"
 
-[node name="ChromeGap" type="Control" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+[node name="ChromeGap" type="Control" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(4, 0)
 
-[node name="AddrPill" type="PanelContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
+[node name="AddrPill" type="PanelContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"GuidedAddrPill"
 
-[node name="ChromeUrl" type="Label" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow/AddrPill"]
+[node name="ChromeUrl" type="Label" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow/AddrPill"]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 clip_text = true
 theme_type_variation = &"GuidedUrl"
 
-[node name="SiteARC" type="AspectRatioContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout"]
-layout_mode = 2
-size_flags_horizontal = 3
-ratio = 1.7778
-
-[node name="SiteContainer" type="SubViewportContainer" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteARC"]
+[node name="SiteContainer" type="SubViewportContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -131,82 +163,160 @@ size_flags_vertical = 3
 mouse_filter = 0
 stretch = true
 
-[node name="SiteViewport" type="SubViewport" parent="Center/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteARC/SiteContainer"]
+[node name="SiteViewport" type="SubViewport" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteContainer"]
 unique_name_in_owner = true
 size = Vector2i(1280, 720)
 
-[node name="Right" type="VBoxContainer" parent="Center/Panel/Layout/Content"]
+[node name="Right" type="VBoxContainer" parent="Margin/Panel/Layout/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
-[node name="DropLabel" type="Label" parent="Center/Panel/Layout/Content/Right"]
-layout_mode = 2
-autowrap_mode = 3
-text = "Drag the facts this site revealed:"
-theme_type_variation = &"GuidedDim"
-
-[node name="DropZone" type="PanelContainer" parent="Center/Panel/Layout/Content/Right"]
+[node name="DropLabel" type="Label" parent="Margin/Panel/Layout/Content/Right"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
-custom_minimum_size = Vector2(0, 100)
+autowrap_mode = 3
+text = "Drag the indicators that apply to this site:"
+theme_type_variation = &"GuidedDim"
+
+[node name="ScoreLabel" type="Label" parent="Margin/Panel/Layout/Content/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_type_variation = &"GuidedScore"
+
+[node name="DropZone" type="PanelContainer" parent="Margin/Panel/Layout/Content/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+custom_minimum_size = Vector2(0, 95)
 mouse_filter = 0
 theme_type_variation = &"GuidedDropZone"
 
-[node name="DropFlow" type="HFlowContainer" parent="Center/Panel/Layout/Content/Right/DropZone"]
+[node name="DropScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/DropZone"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DropFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/DropZone/DropScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 
-[node name="PoolLabel" type="Label" parent="Center/Panel/Layout/Content/Right"]
-layout_mode = 2
-text = "Fact pool"
-theme_type_variation = &"GuidedDim"
-
-[node name="PoolPanel" type="PanelContainer" parent="Center/Panel/Layout/Content/Right"]
-layout_mode = 2
-theme_type_variation = &"GuidedPool"
-
-[node name="PoolFlow" type="HFlowContainer" parent="Center/Panel/Layout/Content/Right/PoolPanel"]
+[node name="ResultsLabel" type="Label" parent="Margin/Panel/Layout/Content/Right"]
 unique_name_in_owner = true
 layout_mode = 2
+visible = false
+text = "Correct indicators for this site:"
+theme_type_variation = &"GuidedDim"
+
+[node name="ResultsZone" type="PanelContainer" parent="Margin/Panel/Layout/Content/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+custom_minimum_size = Vector2(0, 95)
+visible = false
+theme_type_variation = &"GuidedDropZone"
+
+[node name="ResultsScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/ResultsZone"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ResultsFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/ResultsZone/ResultsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="PoolSection" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="NegPoolLabel" type="Label" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+layout_mode = 2
+text = "Negative Indicators"
+theme_type_variation = &"GuidedPoolNeg"
+
+[node name="NegPoolScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+custom_minimum_size = Vector2(0, 130)
+horizontal_scroll_mode = 0
+theme_type_variation = &"GuidedPool"
+
+[node name="NegPoolFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection/NegPoolScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 
-[node name="NavRow" type="HBoxContainer" parent="Center/Panel/Layout"]
+[node name="PosPoolLabel" type="Label" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+layout_mode = 2
+text = "Positive Indicators"
+theme_type_variation = &"GuidedPoolPos"
+
+[node name="PosPoolScroll" type="ScrollContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+custom_minimum_size = Vector2(0, 130)
+horizontal_scroll_mode = 0
+theme_type_variation = &"GuidedPool"
+
+[node name="PosPoolFlow" type="HFlowContainer" parent="Margin/Panel/Layout/Content/Right/PoolSection/PosPoolScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="NavRow" type="HBoxContainer" parent="Margin/Panel/Layout"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PrevBtn" type="Button" parent="Center/Panel/Layout/NavRow"]
+[node name="PrevBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "← Prev"
 theme_type_variation = &"GuidedNavBtn"
 
-[node name="NavSpacer1" type="Control" parent="Center/Panel/Layout/NavRow"]
+[node name="NavSpacer1" type="Control" parent="Margin/Panel/Layout/NavRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DoneBtn" type="Button" parent="Center/Panel/Layout/NavRow"]
+[node name="SubmitBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+visible = false
+text = "Submit Response"
+theme_type_variation = &"GuidedSubmitBtn"
+
+[node name="DoneBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+visible = false
 text = "Done"
 theme_type_variation = &"GuidedDoneBtn"
 
-[node name="NavSpacer2" type="Control" parent="Center/Panel/Layout/NavRow"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="NextBtn" type="Button" parent="Center/Panel/Layout/NavRow"]
+[node name="NextBtn" type="Button" parent="Margin/Panel/Layout/NavRow"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+visible = false
 text = "Next →"
 theme_type_variation = &"GuidedNavBtn"

@@ -129,9 +129,11 @@ text = "Check off the facts you believe are TRUE about werewolves."
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ChecklistItems" type="VBoxContainer" parent="Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox" unique_id=454299659]
+[node name="ChecklistItems" type="GridContainer" parent="Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox" unique_id=454299659]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 2
 
 [node name="BottomSpacer" type="Control" parent="Scroll/PageContent" unique_id=1189866278]
 custom_minimum_size = Vector2(0, 40)

@@ -2,17 +2,17 @@
 class_name GuidedLearningSource
 extends Resource
 
-enum Type { SCENE, IMAGE, VIDEO, AUDIO }
+enum Type {SCENE, IMAGE, VIDEO, AUDIO}
 
 @export var display_name: String = ""
-@export var url: String = ""          # shown in the chrome address bar
+@export var url: String = "" # shown in the chrome address bar
 @export var type: Type = Type.SCENE
 
 @export_group("Content")
-@export var scene: PackedScene        # Type.SCENE / Type.APP
-@export var image: Texture2D          # Type.IMAGE
-@export var video: VideoStream        # Type.VIDEO
-@export var audio: AudioStream        # Type.AUDIO
+@export var scene: PackedScene # Type.SCENE / Type.APP
+@export var image: Texture2D # Type.IMAGE
+@export var video: VideoStream # Type.VIDEO
+@export var audio: AudioStream # Type.AUDIO
 
 # ── Negative indicators ───────────────────────────────────────────────────────
 @export_group("Negative Indicators")

@@ -9,7 +9,7 @@ const HomeSiteTileScene := preload("res://features/sites/home/home_site_tile.tsc
 @export var site_logos: Array[Texture2D] = []
 
 @onready var _grid: GridContainer = $Scroll/PageContent/SitesSection/Grid
-@onready var _checklist_items: VBoxContainer = $Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox/ChecklistItems
+@onready var _checklist_items: GridContainer = $Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox/ChecklistItems
 
 
 func _ready() -> void:

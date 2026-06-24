@@ -29,10 +29,7 @@ const STORY_COLORS: Array[Color] = [
 @onready var _stories_hbox: HBoxContainer = $VBox/Stories/StoriesScroll/StoriesHBox
 @onready var _posts_vbox: VBoxContainer = $VBox/PostsFeed/PostsVBox
 
-# { vp, media, overlay, user_paused }
-var _video_entries: Array = []
-# { vp, h } — corrected in _process once texture dimensions are known
-var _pending_resize: Array = []
+var _video_entries: Array[VideoPlayerControl] = []
 
 # Shared across all pfp TextureRects so the GPU compiles it once.
 static var _pfp_shader: Shader
@@ -50,28 +47,8 @@ func _ready() -> void:
 
 
 func _stop_all_video() -> void:
-	for entry in _video_entries:
-		var vp := entry.vp as VideoStreamPlayer
-		if vp and vp.is_playing():
-			vp.stop()
-
-
-func _process(_delta: float) -> void:
-	if _pending_resize.is_empty():
-		return
-	for i in range(_pending_resize.size() - 1, -1, -1):
-		var pr: Dictionary = _pending_resize[i]
-		var vp: VideoStreamPlayer = pr.vp
-		if not vp.is_playing() or vp.paused:
-			continue
-		var tex := vp.get_video_texture()
-		if tex == null or tex.get_size().x <= 0:
-			continue
-		var sz := tex.get_size()
-		var w = pr.h * sz.x / sz.y
-		vp.offset_left = -w * 0.5
-		vp.offset_right = w * 0.5
-		_pending_resize.remove_at(i)
+	for vpc in _video_entries:
+		vpc.stop()
 
 
 # ── Style helpers ─────────────────────────────────────────────────────────────
@@ -169,25 +146,18 @@ func _build_posts() -> void:
 
 func _update_active_video() -> void:
 	var feed_rect := (_posts_vbox.get_parent() as ScrollContainer).get_global_rect()
-
-	var best_entry: Dictionary = {}
+	var best: VideoPlayerControl = null
 	var best_area := 0.0
-	for entry in _video_entries:
-		var area := feed_rect.intersection((entry.media as Control).get_global_rect()).get_area()
+	for vpc in _video_entries:
+		var area := feed_rect.intersection(vpc.get_global_rect()).get_area()
 		if area > best_area:
 			best_area = area
-			best_entry = entry
-
-	for entry in _video_entries:
-		var vp := entry.vp as VideoStreamPlayer
-		var overlay := entry.overlay as Control
-		if entry == best_entry and not entry.user_paused:
-			if not vp.is_playing():
-				vp.play()
-			vp.paused = false
-			overlay.visible = false
+			best = vpc
+	for vpc in _video_entries:
+		if vpc == best:
+			vpc.auto_play()
 		else:
-			vp.paused = true
+			vpc.auto_pause()
 
 
 func _make_post(post: CapturePost) -> Control:
@@ -258,48 +228,11 @@ func _make_post_media(post: CapturePost) -> Control:
 		media.add_child(tr)
 
 	elif post.video_stream:
-		var black_bg := ColorRect.new()
-		black_bg.color = C_BLACK
-		black_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		black_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		media.add_child(black_bg)
-
-		var vp := VideoStreamPlayer.new()
-		vp.stream = post.video_stream
-		vp.anchor_left = 0.5; vp.anchor_right = 0.5
-		vp.anchor_top = 0.0; vp.anchor_bottom = 1.0
-		vp.offset_left = -421.0; vp.offset_right = 421.0
-		vp.offset_top = 0.0; vp.offset_bottom = 0.0
-		vp.expand = true
-		vp.autoplay = false
-		vp.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		media.add_child(vp)
-		_pending_resize.append({vp = vp, h = 860.0})
-
-		var overlay := CenterContainer.new()
-		overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		overlay.visible = false
-		var play_icon := _lbl("▶", Color(1, 1, 1, 0.88), 80)
-		play_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		overlay.add_child(play_icon)
-		media.add_child(overlay)
-
-		var entry := {vp = vp, media = media, overlay = overlay, user_paused = false}
-		_video_entries.append(entry)
-
-		if post.video_loop:
-			vp.finished.connect(func(): vp.play())
-
-		media.mouse_filter = Control.MOUSE_FILTER_STOP
-		media.gui_input.connect(func(event: InputEvent):
-			if event is InputEventMouseButton \
-					and event.button_index == MOUSE_BUTTON_LEFT \
-					and event.pressed:
-				entry.user_paused = not entry.user_paused
-				vp.paused = entry.user_paused
-				overlay.visible = entry.user_paused
-		)
+		var vpc := VideoPlayerControl.new()
+		vpc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		vpc.set_stream(post.video_stream)
+		media.add_child(vpc)
+		_video_entries.append(vpc)
 
 	else:
 		var bg := ColorRect.new()

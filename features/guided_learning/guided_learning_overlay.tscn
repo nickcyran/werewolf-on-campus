@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c34mdlogbshk4" path="res://features/guided_learning/guided_learning_overlay.gd" id="1_script"]
 [ext_resource type="Theme" uid="uid://cbcas75fhrnq8" path="res://features/guided_learning/guided_learning_theme.tres" id="2_theme"]
+[ext_resource type="Script" path="res://ui/components/video_player_control.gd" id="3_vpc"]
 
 [node name="GuidedLearningOverlay" type="ColorRect" unique_id=933931829]
 anchors_preset = 15
@@ -176,13 +177,13 @@ size_flags_vertical = 3
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VideoDisplay" type="VideoStreamPlayer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=184368505]
+[node name="VideoDisplay" type="Control" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=184368505]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-expand = true
+script = ExtResource("3_vpc")
 
 [node name="AudioDisplay" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=1700637283]
 unique_name_in_owner = true
@@ -210,6 +211,29 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 text = "▶  Play"
+
+[node name="AudioScrubRow" type="HBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/AudioDisplay" unique_id=710045001]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="AudioScrubber" type="HSlider" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/AudioDisplay/AudioScrubRow" unique_id=710045002]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+min_value = 0.0
+max_value = 1.0
+step = 0.001
+value = 0.0
+
+[node name="AudioTimeLabel" type="Label" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/AudioDisplay/AudioScrubRow" unique_id=710045003]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 13
+text = "0:00 / 0:00"
 
 [node name="Right" type="VBoxContainer" parent="Margin/Panel/Layout/Content" unique_id=296604666]
 layout_mode = 2

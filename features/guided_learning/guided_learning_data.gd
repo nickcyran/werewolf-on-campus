@@ -85,6 +85,23 @@ static func get_sources() -> Array[GuidedLearningSource]:
 	s.clearly_labeled_news = true
 	sources.append(s)
 
+	# ── TriCityPod ────────────────────────────────────────────────────────────
+	s = _src("TriCityPod", "shockify.fm/tricitycast", GuidedLearningSource.Type.AUDIO)
+	s.audio = preload("res://assets/media/TriCityPod.mp3")
+	s.no_funding_info = true
+	s.opinion_entertainment = true
+	sources.append(s)
+
+	# ── Capture video ─────────────────────────────────────────────────────────
+	s = _src("BigWolfStar93", "capture.app/p/bigwolfstar93", GuidedLearningSource.Type.VIDEO)
+	s.video = preload("res://assets/media/werewolf_vid.ogv")
+	s.no_author_info = true
+	s.emotional_language = true
+	s.no_funding_info = true
+	s.claims_without_evidence = true
+	s.opinion_entertainment = true
+	sources.append(s)
+
 	return sources
 
 

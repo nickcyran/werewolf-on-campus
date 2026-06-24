@@ -12,6 +12,7 @@ var _dropped: Dictionary = {}           # source_index -> Array[int]
 var _states: Dictionary = {}            # source_index -> PageState
 var _scene_instance: Control = null
 var _audio_player: AudioStreamPlayer = null
+var _audio_scrubbing := false
 
 # -- ui refs -------------------------------------------------------------------
 @onready var _page_label: Label = %PageLabel
@@ -19,10 +20,12 @@ var _audio_player: AudioStreamPlayer = null
 @onready var _site_container: SubViewportContainer = %SiteContainer
 @onready var _site_viewport: SubViewport = %SiteViewport
 @onready var _image_display: TextureRect = %ImageDisplay
-@onready var _video_display: VideoStreamPlayer = %VideoDisplay
+@onready var _video_display: VideoPlayerControl = %VideoDisplay
 @onready var _audio_display: Control = %AudioDisplay
 @onready var _audio_title: Label = %AudioTitle
 @onready var _audio_play_btn: Button = %AudioPlayBtn
+@onready var _audio_scrubber: HSlider = %AudioScrubber
+@onready var _audio_time: Label = %AudioTimeLabel
 @onready var _drop_label: Label = %DropLabel
 @onready var _score_label: Label = %ScoreLabel
 @onready var _drop_flow: HFlowContainer = %DropFlow
@@ -65,6 +68,12 @@ func _ready() -> void:
 	_next_btn.pressed.connect(_on_next)
 	_done_btn.pressed.connect(_on_done)
 	_audio_play_btn.pressed.connect(_on_audio_play)
+	_audio_scrubber.drag_started.connect(func(): _audio_scrubbing = true)
+	_audio_scrubber.drag_ended.connect(func(_changed: bool):
+		if _audio_player and _audio_player.stream:
+			_audio_player.seek(_audio_scrubber.value * _audio_player.stream.get_length())
+		_audio_scrubbing = false
+	)
 	DayClock.day_ended.connect(_stop_media)
 	_main_menu_btn.pressed.connect(func(): pass)
 	_play_again_btn.pressed.connect(_on_play_again)
@@ -148,10 +157,28 @@ func _show_page(index: int) -> void:
 		_rebuild_results_zone()
 
 
+func _process(_delta: float) -> void:
+	if _audio_player == null or not _audio_player.playing or _audio_scrubbing:
+		return
+	var stream := _audio_player.stream
+	if stream == null:
+		return
+	var length := stream.get_length()
+	if length <= 0.0:
+		return
+	var pos := _audio_player.get_playback_position()
+	_audio_scrubber.set_value_no_signal(pos / length)
+	_audio_time.text = "%s / %s" % [_fmt_time(pos), _fmt_time(length)]
+
+
+static func _fmt_time(seconds: float) -> String:
+	var s := int(seconds)
+	return "%d:%02d" % [s / 60, s % 60]
+
+
 func _load_content(src: GuidedLearningSource) -> void:
 	# Stop any running video/audio first
-	if _video_display.is_playing():
-		_video_display.stop()
+	_video_display.stop()
 	if _audio_player and _audio_player.playing:
 		_audio_player.stop()
 
@@ -171,17 +198,22 @@ func _load_content(src: GuidedLearningSource) -> void:
 
 		GuidedLearningSource.Type.VIDEO:
 			_video_display.visible = true
-			_video_display.stream = src.video
-			_video_display.play()
+			_video_display.load_stream(src.video)
 
 		GuidedLearningSource.Type.AUDIO:
 			_audio_display.visible = true
 			_audio_title.text = src.display_name
 			_audio_play_btn.text = "▶  Play"
+			_audio_scrubber.set_value_no_signal(0.0)
+			_audio_time.text = "0:00 / 0:00"
 			if not _audio_player:
 				_audio_player = AudioStreamPlayer.new()
 				add_child(_audio_player)
-				_audio_player.finished.connect(func(): _audio_play_btn.text = "▶  Play")
+				_audio_player.finished.connect(func():
+					_audio_play_btn.text = "▶  Play"
+					_audio_scrubber.set_value_no_signal(0.0)
+					_audio_time.text = "0:00 / 0:00"
+				)
 			_audio_player.stream = src.audio
 
 
@@ -228,11 +260,12 @@ func _on_done() -> void:
 
 
 func _stop_media() -> void:
-	if _video_display.is_playing():
-		_video_display.stop()
+	_video_display.stop()
 	if _audio_player and _audio_player.playing:
 		_audio_player.stop()
 		_audio_play_btn.text = "▶  Play"
+		_audio_scrubber.set_value_no_signal(0.0)
+		_audio_time.text = "0:00 / 0:00"
 
 
 func _show_end_screen() -> void:

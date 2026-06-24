@@ -154,6 +154,39 @@ theme_type_variation = &"GuidedUrl"
 horizontal_alignment = 1
 clip_text = true
 
+[node name="ZoomOutBtn" type="Button" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=720045010]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"NavButton"
+tooltip_text = "Zoom out"
+text = "-"
+
+[node name="ZoomLabel" type="Button" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=720045012]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(46, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"NavButton"
+tooltip_text = "Reset zoom"
+text = "100%"
+
+[node name="ZoomInBtn" type="Button" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=720045011]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_type_variation = &"NavButton"
+tooltip_text = "Zoom in"
+text = "+"
+
 [node name="SiteContainer" type="SubViewportContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=967610884]
 unique_name_in_owner = true
 layout_mode = 2
@@ -165,7 +198,6 @@ stretch = true
 [node name="SiteViewport" type="SubViewport" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteContainer" unique_id=1882941674]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(702, 478)
 render_target_update_mode = 4
 
 [node name="ImageDisplay" type="TextureRect" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=1633471550]

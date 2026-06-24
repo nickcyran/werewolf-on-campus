@@ -13,6 +13,12 @@ var _states: Dictionary = {}            # source_index -> PageState
 var _scene_instance: Control = null
 var _audio_player: AudioStreamPlayer = null
 var _audio_scrubbing := false
+var _zoom_level   := 1.0
+
+const _ZOOM_STEP    := 0.1
+const _ZOOM_MIN     := 0.25
+const _ZOOM_MAX     := 3.0
+const _ZOOM_DEFAULT := 1.0
 
 # -- ui refs -------------------------------------------------------------------
 @onready var _page_label: Label = %PageLabel
@@ -49,6 +55,9 @@ var _audio_scrubbing := false
 @onready var _end_flavor: Label = %EndFlavor
 @onready var _main_menu_btn: Button = %MainMenuBtn
 @onready var _play_again_btn: Button = %PlayAgainBtn
+@onready var _zoom_out_btn: Button = %ZoomOutBtn
+@onready var _zoom_label: Button  = %ZoomLabel
+@onready var _zoom_in_btn: Button = %ZoomInBtn
 
 
 func _ready() -> void:
@@ -63,6 +72,9 @@ func _ready() -> void:
 
 	_intro_text.text = GuidedLearningData.get_intro_text()
 
+	_site_container.resized.connect(_sync_viewport_size)
+	_sync_viewport_size.call_deferred()
+
 	_prev_btn.pressed.connect(_on_prev)
 	_submit_btn.pressed.connect(_on_submit)
 	_next_btn.pressed.connect(_on_next)
@@ -75,6 +87,9 @@ func _ready() -> void:
 		_audio_scrubbing = false
 	)
 	DayClock.day_ended.connect(_stop_media)
+	_zoom_out_btn.pressed.connect(_on_zoom_out)
+	_zoom_label.pressed.connect(_on_zoom_reset)
+	_zoom_in_btn.pressed.connect(_on_zoom_in)
 	_main_menu_btn.pressed.connect(func(): pass)
 	_play_again_btn.pressed.connect(_on_play_again)
 
@@ -139,6 +154,16 @@ func _show_page(index: int) -> void:
 	_intro_panel.visible = is_intro
 	_content.visible = not is_intro
 
+	# Zoom — reset on every page nav; only show controls for SCENE sources
+	var is_scene: bool = not is_intro and _source().type == GuidedLearningSource.Type.SCENE
+	_zoom_level = _ZOOM_DEFAULT
+	_zoom_label.text = "100%"
+	_zoom_out_btn.visible = is_scene
+	_zoom_label.visible = is_scene
+	_zoom_in_btn.visible = is_scene
+	_zoom_out_btn.disabled = false
+	_zoom_in_btn.disabled = false
+
 	if not is_intro:
 		_drop_label.text = (
 			"Your submitted answers:" if is_results
@@ -155,6 +180,44 @@ func _show_page(index: int) -> void:
 		_load_content(_source())
 		_rebuild_drop_zone()
 		_rebuild_results_zone()
+
+
+func _sync_viewport_size() -> void:
+	var s := Vector2i(_site_container.size)
+	if s.x > 4 and s.y > 4:
+		_site_viewport.size = s
+		_apply_zoom()
+
+
+func _on_zoom_out() -> void:
+	_set_zoom(_zoom_level - _ZOOM_STEP)
+
+
+func _on_zoom_in() -> void:
+	_set_zoom(_zoom_level + _ZOOM_STEP)
+
+
+func _on_zoom_reset() -> void:
+	_set_zoom(_ZOOM_DEFAULT)
+
+
+func _set_zoom(level: float) -> void:
+	_zoom_level = clampf(level, _ZOOM_MIN, _ZOOM_MAX)
+	_zoom_label.text = str(roundi(_zoom_level * 100)) + "%"
+	_zoom_out_btn.disabled = _zoom_level <= _ZOOM_MIN
+	_zoom_in_btn.disabled = _zoom_level >= _ZOOM_MAX
+	_apply_zoom()
+
+
+func _apply_zoom() -> void:
+	if _scene_instance == null:
+		return
+	var vp_size := Vector2(_site_viewport.size)
+	_scene_instance.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	_scene_instance.pivot_offset = Vector2.ZERO
+	_scene_instance.position = Vector2.ZERO
+	_scene_instance.scale = Vector2(_zoom_level, _zoom_level)
+	_scene_instance.size = vp_size / _zoom_level
 
 
 func _process(_delta: float) -> void:
@@ -224,8 +287,8 @@ func _load_scene(scene: PackedScene) -> void:
 	if scene:
 		_scene_instance = scene.instantiate() as Control
 		if _scene_instance:
-			_scene_instance.set_anchors_preset(Control.PRESET_FULL_RECT)
 			_site_viewport.add_child(_scene_instance)
+			_apply_zoom()
 
 
 func _on_audio_play() -> void:

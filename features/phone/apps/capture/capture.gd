@@ -1,15 +1,8 @@
 extends Control
 
-# ── Palette ──────────────────────────────────────────────────────────────────
+# ── Palette (only dynamic/ColorRect colors remain) ────────────────────────────
 const C_RING_ACTIVE := Color(0.55, 0.75, 0.65)
 const C_RING_SELF := Color(0.50, 0.50, 0.52)
-const C_STORY_NAME := Color(0.70, 0.68, 0.66)
-const C_STORY_PLUS := Color(0.75, 0.65, 0.75)
-const C_POST_BG := Color(0.25, 0.23, 0.22, 1)
-const C_ACTIONS_BG := Color(0.22, 0.20, 0.19, 1)
-const C_TEXT_PRIMARY := Color(0.88, 0.86, 0.84, 1)
-const C_TEXT_MUTED := Color(0.75, 0.73, 0.70, 1)
-const C_TEXT_DIM := Color(0.60, 0.58, 0.55, 1)
 const C_SEPARATOR := Color(0.18, 0.16, 0.16, 1)
 const C_PLACEHOLDER := Color(0.35, 0.25, 0.23, 1)
 const C_BLACK := Color(0.0, 0.0, 0.0, 1)
@@ -60,16 +53,6 @@ static func _flat(bg: Color, radius: float = 0.0) -> StyleBoxFlat:
 	return s
 
 
-static func _flat_padded(bg: Color, ml: float, mt: float, mr: float, mb: float,
-		radius: float = 0.0) -> StyleBoxFlat:
-	var s := _flat(bg, radius)
-	s.content_margin_left = ml
-	s.content_margin_top = mt
-	s.content_margin_right = mr
-	s.content_margin_bottom = mb
-	return s
-
-
 static func _flat_ring(border_color: Color, radius: float, margin: float) -> StyleBoxFlat:
 	var s := StyleBoxFlat.new()
 	s.bg_color = Color(0, 0, 0, 0)
@@ -81,16 +64,6 @@ static func _flat_ring(border_color: Color, radius: float, margin: float) -> Sty
 	s.content_margin_right = margin
 	s.content_margin_bottom = margin
 	return s
-
-
-static func _lbl(text: String, color: Color, size: int,
-		align: HorizontalAlignment = HORIZONTAL_ALIGNMENT_LEFT) -> Label:
-	var l := Label.new()
-	l.text = text
-	l.add_theme_color_override("font_color", color)
-	l.add_theme_font_size_override("font_size", size)
-	l.horizontal_alignment = align
-	return l
 
 
 static func _pfp_mat() -> ShaderMaterial:
@@ -127,11 +100,17 @@ func _make_story_item(i: int) -> Control:
 	story.add_child(ring)
 
 	if i == 0:
-		var plus := _lbl("+", C_STORY_PLUS, 18, HORIZONTAL_ALIGNMENT_CENTER)
+		var plus := Label.new()
+		plus.text = "+"
+		plus.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		plus.theme_type_variation = &"CaptureStoryPlus"
 		plus.position = Vector2(70, 64)
 		ring.add_child(plus)
 
-	var name_lbl := _lbl(STORY_USERS[i], C_STORY_NAME, 14, HORIZONTAL_ALIGNMENT_CENTER)
+	var name_lbl := Label.new()
+	name_lbl.text = STORY_USERS[i]
+	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_lbl.theme_type_variation = &"CaptureStoryName"
 	name_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	story.add_child(name_lbl)
 
@@ -176,7 +155,7 @@ func _make_post(post: CapturePost) -> Control:
 func _make_post_header(post: CapturePost) -> Control:
 	var header := PanelContainer.new()
 	header.custom_minimum_size = Vector2(0, 64)
-	header.add_theme_stylebox_override("panel", _flat_padded(C_POST_BG, 20, 12, 20, 12))
+	header.theme_type_variation = &"CapturePostHeader"
 
 	var hbox := HBoxContainer.new()
 	hbox.add_theme_constant_override("separation", 14)
@@ -198,7 +177,10 @@ func _make_post_header(post: CapturePost) -> Control:
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	info.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	info.add_theme_constant_override("separation", 2)
-	info.add_child(_lbl(post.username, C_TEXT_PRIMARY, 22))
+	var username_lbl := Label.new()
+	username_lbl.text = post.username
+	username_lbl.theme_type_variation = &"CapturePostUsername"
+	info.add_child(username_lbl)
 	hbox.add_child(info)
 
 	var more := Button.new()
@@ -206,8 +188,7 @@ func _make_post_header(post: CapturePost) -> Control:
 	more.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	more.flat = true
 	more.text = "⋮"
-	more.add_theme_font_size_override("font_size", 26)
-	more.add_theme_color_override("font_color", C_TEXT_DIM)
+	more.theme_type_variation = &"CaptureMoreBtn"
 	hbox.add_child(more)
 
 	header.add_child(hbox)
@@ -245,11 +226,14 @@ func _make_post_media(post: CapturePost) -> Control:
 
 func _make_post_actions(post: CapturePost) -> Control:
 	var actions := PanelContainer.new()
-	actions.add_theme_stylebox_override("panel", _flat_padded(C_ACTIONS_BG, 20, 12, 20, 14))
+	actions.theme_type_variation = &"CapturePostActions"
 
 	var avbox := VBoxContainer.new()
 	avbox.add_theme_constant_override("separation", 6)
-	avbox.add_child(_lbl("♥  " + str(post.likes) + " likes", C_TEXT_PRIMARY, 26))
+	var likes_lbl := Label.new()
+	likes_lbl.text = "♥  " + str(post.likes) + " likes"
+	likes_lbl.theme_type_variation = &"CapturePostLikes"
+	avbox.add_child(likes_lbl)
 
 	if post.description != "":
 		var desc := RichTextLabel.new()
@@ -257,9 +241,7 @@ func _make_post_actions(post: CapturePost) -> Control:
 		desc.text = "[b]" + post.username + "[/b]  " + post.description
 		desc.fit_content = true
 		desc.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		desc.add_theme_color_override("default_color", C_TEXT_MUTED)
-		desc.add_theme_font_size_override("normal_font_size", 22)
-		desc.add_theme_font_size_override("bold_font_size", 22)
+		desc.theme_type_variation = &"CapturePostRTL"
 		avbox.add_child(desc)
 
 	actions.add_child(avbox)

@@ -3,23 +3,8 @@ class_name DayEndOverlay
 
 signal learning_requested
 
-const COLOR_GOLD := Color(0.95, 0.82, 0.35)
-const READABLE_TEXT := Color(0.96, 0.97, 0.98)
 const ROW_BG_A := Color(0.2, 0.21, 0.27)
 const ROW_BG_B := Color(0.26, 0.27, 0.34)
-
-## You checked the box and that matched the key (statement is true).
-const RESULT_GREEN_MARKED_BG := Color(0.1, 0.4, 0.24, 0.96)
-const RESULT_GREEN_MARKED_BORDER := Color(0.4, 0.92, 0.55, 1.0)
-## You left the box empty and that matched the key (statement is false).
-const RESULT_GREEN_OMISSION_BG := Color(0.1, 0.32, 0.38, 0.96)
-const RESULT_GREEN_OMISSION_BORDER := Color(0.35, 0.82, 0.92, 1.0)
-const RESULT_RED_BG := Color(0.4, 0.14, 0.16, 0.96)
-const RESULT_RED_BORDER := Color(0.95, 0.4, 0.42, 1.0)
-const RESULT_TEXT := Color(0.98, 0.99, 1.0)
-const RESULT_HINT_BRIGHT := Color(0.82, 0.95, 0.88)
-const RESULT_HINT_TEAL := Color(0.78, 0.93, 0.96)
-const RESULT_HINT_WRONG := Color(0.98, 0.82, 0.82)
 
 @onready var _panel: PanelContainer = $DayEndCenter/TimeUpPanel
 @onready var _title: Label = $DayEndCenter/TimeUpPanel/Margin/VBox/TitleLabel
@@ -42,70 +27,11 @@ func _ready() -> void:
 	modulate = Color.WHITE
 	_confirm.pressed.connect(_on_confirm_pressed)
 	_panel.visible = true
-	_apply_panel_style()
-
-
-func _apply_panel_style() -> void:
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0.14, 0.14, 0.17, 0.94)
-	sb.set_corner_radius_all(10)
-	sb.content_margin_left = 24
-	sb.content_margin_right = 24
-	sb.content_margin_top = 24
-	sb.content_margin_bottom = 24
-	sb.border_width_left = 1
-	sb.border_width_top = 1
-	sb.border_width_right = 1
-	sb.border_width_bottom = 1
-	sb.border_color = Color(0.42, 0.44, 0.52, 0.95)
-	_panel.add_theme_stylebox_override("panel", sb)
-	_title.add_theme_color_override("font_color", READABLE_TEXT)
-	_hint.add_theme_color_override("font_color", Color(0.75, 0.77, 0.86))
-	_hint.add_theme_font_size_override("font_size", 14)
-	_result.add_theme_color_override("font_color", Color(0.72, 0.74, 0.82))
-	_result.add_theme_font_size_override("font_size", 14)
-
-	var btn_normal := StyleBoxFlat.new()
-	btn_normal.bg_color = Color(0.18, 0.15, 0.06, 0.95)
-	btn_normal.set_corner_radius_all(8)
-	btn_normal.content_margin_left = 32
-	btn_normal.content_margin_right = 32
-	btn_normal.content_margin_top = 11
-	btn_normal.content_margin_bottom = 11
-	btn_normal.border_width_left = 1
-	btn_normal.border_width_top = 1
-	btn_normal.border_width_right = 1
-	btn_normal.border_width_bottom = 1
-	btn_normal.border_color = Color(0.7, 0.58, 0.18, 0.88)
-
-	var btn_hover := StyleBoxFlat.new()
-	btn_hover.bg_color = Color(0.24, 0.2, 0.08, 0.98)
-	btn_hover.set_corner_radius_all(8)
-	btn_hover.content_margin_left = 32
-	btn_hover.content_margin_right = 32
-	btn_hover.content_margin_top = 11
-	btn_hover.content_margin_bottom = 11
-	btn_hover.border_width_left = 1
-	btn_hover.border_width_top = 1
-	btn_hover.border_width_right = 1
-	btn_hover.border_width_bottom = 1
-	btn_hover.border_color = Color(0.92, 0.78, 0.28, 1.0)
-
-	var btn_pressed := StyleBoxFlat.new()
-	btn_pressed.bg_color = Color(0.13, 0.11, 0.05, 0.98)
-	btn_pressed.set_corner_radius_all(8)
-	btn_pressed.content_margin_left = 32
-	btn_pressed.content_margin_right = 32
-	btn_pressed.content_margin_top = 11
-	btn_pressed.content_margin_bottom = 11
-
-	_confirm.add_theme_stylebox_override("normal", btn_normal)
-	_confirm.add_theme_stylebox_override("hover", btn_hover)
-	_confirm.add_theme_stylebox_override("pressed", btn_pressed)
-	_confirm.add_theme_color_override("font_color", COLOR_GOLD)
-	_confirm.add_theme_color_override("font_hover_color", Color(1.0, 0.94, 0.6))
-	_confirm.add_theme_color_override("font_pressed_color", Color(0.8, 0.68, 0.22))
-	_confirm.add_theme_font_size_override("font_size", 15)
+	_panel.theme_type_variation = &"DayEndPanel"
+	_title.theme_type_variation = &"DayEndTitle"
+	_hint.theme_type_variation = &"DayEndHint"
+	_result.theme_type_variation = &"DayEndResult"
+	_confirm.theme_type_variation = &"DayEndGoldBtn"
 	_confirm.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 
 
@@ -122,8 +48,7 @@ func run_time_up_sequence() -> void:
 	_panel.modulate = Color.WHITE
 	_title.text = "Time's Up"
 	_hint.text = "Check every statement you believe is true about the campus werewolf, then confirm."
-	_hint.add_theme_font_size_override("font_size", 14)
-	_hint.add_theme_color_override("font_color", Color(0.75, 0.77, 0.86))
+	_hint.theme_type_variation = &"DayEndHint"
 	_confirm.text = "Submit Answers"
 	_confirmed = false
 	_result.visible = false
@@ -203,17 +128,7 @@ func _build_checklist() -> void:
 
 		var cb := CheckBox.new()
 		cb.text = facts[i].text
-		cb.add_theme_font_size_override("font_size", 16)
-		cb.add_theme_color_override("font_color", READABLE_TEXT)
-		cb.add_theme_color_override("font_pressed_color", COLOR_GOLD)
-		cb.add_theme_color_override("font_hover_pressed_color", COLOR_GOLD)
-		cb.add_theme_color_override("font_hover_color", Color(1.0, 1.0, 1.0))
-		cb.add_theme_color_override("icon_normal_color", READABLE_TEXT)
-		cb.add_theme_color_override("icon_pressed_color", COLOR_GOLD)
-		cb.add_theme_color_override("icon_hover_pressed_color", COLOR_GOLD)
-		cb.add_theme_color_override("font_disabled_color", READABLE_TEXT)
-		cb.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.55))
-		cb.add_theme_constant_override("outline_size", 1)
+		cb.theme_type_variation = &"DayEndCheckBox"
 		cb.toggled.connect(_on_fact_toggled.bind(i))
 		cb.set_pressed_no_signal(is_checked)
 		inner.add_child(cb)
@@ -222,7 +137,6 @@ func _build_checklist() -> void:
 		result_hint.name = &"ResultHint"
 		result_hint.visible = false
 		result_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		result_hint.add_theme_font_size_override("font_size", 13)
 		inner.add_child(result_hint)
 
 		row.add_child(inner)
@@ -254,91 +168,39 @@ func _apply_results_row_style(row: PanelContainer, index: int) -> void:
 	var ok := player_marked == statement_is_true
 
 	var inner := row.get_child(0) as VBoxContainer
-	var cb := inner.get_child(0) as CheckBox
 	var hint := inner.get_node_or_null("ResultHint") as Label
 
-	var style := StyleBoxFlat.new()
-	var hint_txt: String
-	var hint_col: Color
-
+	row.remove_theme_stylebox_override("panel")
 	if ok:
 		if player_marked:
-			style.bg_color = RESULT_GREEN_MARKED_BG
-			style.border_color = RESULT_GREEN_MARKED_BORDER
-			hint_txt = "True, and you marked it."
-			hint_col = RESULT_HINT_BRIGHT
+			row.theme_type_variation = &"DayEndResultCorrectMarked"
+			if hint:
+				hint.theme_type_variation = &"DayEndHintCorrectMarked"
+				hint.text = "True, and you marked it."
 		else:
-			style.bg_color = RESULT_GREEN_OMISSION_BG
-			style.border_color = RESULT_GREEN_OMISSION_BORDER
-			hint_txt = "False, and you left it blank."
-			hint_col = RESULT_HINT_TEAL
+			row.theme_type_variation = &"DayEndResultCorrectOmission"
+			if hint:
+				hint.theme_type_variation = &"DayEndHintCorrectOmission"
+				hint.text = "False, and you left it blank."
 	else:
-		style.bg_color = RESULT_RED_BG
-		style.border_color = RESULT_RED_BORDER
-		if statement_is_true and not player_marked:
-			hint_txt = "True, but you left it unchecked."
-		else:
-			hint_txt = "False, but you marked it anyway."
-		hint_col = RESULT_HINT_WRONG
-
-	style.set_corner_radius_all(8)
-	style.border_width_left = 2
-	style.border_width_top = 2
-	style.border_width_right = 2
-	style.border_width_bottom = 2
-	style.content_margin_left = 14
-	style.content_margin_right = 14
-	style.content_margin_top = 11
-	style.content_margin_bottom = 11
-	row.add_theme_stylebox_override("panel", style)
-
-	if cb:
-		cb.add_theme_color_override("font_color", RESULT_TEXT)
-		cb.add_theme_color_override("font_disabled_color", RESULT_TEXT)
-		cb.add_theme_color_override("icon_disabled_color", RESULT_TEXT)
+		row.theme_type_variation = &"DayEndResultWrong"
+		if hint:
+			hint.theme_type_variation = &"DayEndHintWrong"
+			if statement_is_true and not player_marked:
+				hint.text = "True, but you left it unchecked."
+			else:
+				hint.text = "False, but you marked it anyway."
 
 	if hint:
-		hint.text = hint_txt
 		hint.visible = true
-		hint.add_theme_color_override("font_color", hint_col)
 
 
 func _add_continue_button() -> void:
 	var btn := Button.new()
 	btn.text = "Continue to Guided Learning  →"
+	btn.theme_type_variation = &"DayEndSecondaryBtn"
 	btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	btn.focus_mode = Control.FOCUS_NONE
-
-	var st := StyleBoxFlat.new()
-	st.bg_color = Color(0.12, 0.12, 0.16, 0.80)
-	st.set_corner_radius_all(8)
-	st.content_margin_left   = 24
-	st.content_margin_right  = 24
-	st.content_margin_top    = 10
-	st.content_margin_bottom = 10
-	st.border_width_left = 1; st.border_width_top = 1
-	st.border_width_right = 1; st.border_width_bottom = 1
-	st.border_color = Color(0.55, 0.57, 0.68, 0.80)
-
-	var st_h := StyleBoxFlat.new()
-	st_h.bg_color = Color(0.18, 0.19, 0.25, 0.95)
-	st_h.set_corner_radius_all(8)
-	st_h.content_margin_left   = 24
-	st_h.content_margin_right  = 24
-	st_h.content_margin_top    = 10
-	st_h.content_margin_bottom = 10
-	st_h.border_width_left = 1; st_h.border_width_top = 1
-	st_h.border_width_right = 1; st_h.border_width_bottom = 1
-	st_h.border_color = Color(0.72, 0.75, 0.88, 1.0)
-
-	btn.add_theme_stylebox_override("normal",  st)
-	btn.add_theme_stylebox_override("hover",   st_h)
-	btn.add_theme_stylebox_override("pressed", st)
-	btn.add_theme_stylebox_override("focus",   st)
-	btn.add_theme_color_override("font_color",       Color(0.72, 0.75, 0.88))
-	btn.add_theme_color_override("font_hover_color", Color(0.95, 0.97, 1.0))
-	btn.add_theme_font_size_override("font_size", 14)
-
 	btn.modulate.a = 0.0
 	_vbox.add_child(btn)
 
@@ -374,7 +236,7 @@ func _on_fact_toggled(checked: bool, index: int) -> void:
 func _on_confirm_pressed() -> void:
 	if _confirmed:
 		return
-		
+
 	_confirmed = true
 	for cb in _checkboxes:
 		cb.disabled = true
@@ -393,8 +255,7 @@ func _on_confirm_pressed() -> void:
 	var total := WerewolfFactData.fact_count()
 	_title.text = "Results"
 	_hint.text = "%d / %d correct" % [score, total]
-	_hint.add_theme_font_size_override("font_size", 22)
-	_hint.add_theme_color_override("font_color", COLOR_GOLD)
+	_hint.theme_type_variation = &"DayEndHintResult"
 	_result.text = _score_flavor(score, total)
 	_result.visible = true
 	_result.modulate.a = 0.0

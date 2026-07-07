@@ -29,9 +29,6 @@ func _navigate_to(scene: PackedScene) -> void:
 		node = node.get_parent()
 
 
-const COLOR_TEXT := Color(0.05, 0.06, 0.11)
-const COLOR_GOLD := Color(0.65, 0.45, 0.04)
-
 func _build_checklist() -> void:
 	var facts := WerewolfFactData.get_facts()
 	for i in range(facts.size()):
@@ -74,15 +71,7 @@ func _build_checklist() -> void:
 		var cb := CheckBox.new()
 		cb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		cb.text = facts[i].text
-		cb.add_theme_font_size_override("font_size", 16)
-		cb.add_theme_color_override("font_color", COLOR_TEXT)
-		cb.add_theme_color_override("font_pressed_color", COLOR_GOLD)
-		cb.add_theme_color_override("font_hover_pressed_color", COLOR_GOLD)
-		cb.add_theme_color_override("font_hover_color", Color(0.02, 0.03, 0.08))
-		cb.add_theme_color_override("icon_pressed_color", COLOR_GOLD)
-		cb.add_theme_color_override("icon_hover_pressed_color", COLOR_GOLD)
-		cb.add_theme_constant_override("outline_size", 1)
-		cb.add_theme_color_override("font_outline_color", Color(1, 1, 1, 0.7))
+		cb.theme_type_variation = &"BrowserCheckBox"
 		cb.toggled.connect(_on_fact_toggled.bind(i))
 		cb.set_pressed_no_signal(is_checked)
 		panel.add_child(cb)

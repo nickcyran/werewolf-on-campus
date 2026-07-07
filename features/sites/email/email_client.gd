@@ -14,7 +14,9 @@ const PresidentLetterScene := preload("res://features/sites/email/letters/presid
 @onready var _detail_custom_host: MarginContainer = %DetailCustomHost
 @onready var _detail_rule: PanelContainer = %DetailRule
 
-var _emails: Array = []
+@export var emails: Array[EmailData] = []
+
+var _emails: Array[EmailData] = []
 var _current_category: String = "inbox"
 var _selected_entry: EmailEntryClass = null
 var _category_buttons: Dictionary = {}
@@ -30,11 +32,11 @@ func _ready() -> void:
 	for cat: String in _category_buttons:
 		(_category_buttons[cat] as Button).pressed.connect(_on_sidebar_pressed.bind(cat))
 
-	_populate_sample_data()
+	_emails = emails if not emails.is_empty() else _make_sample_data()
 	_select_category("inbox")
 
 
-func _populate_sample_data() -> void:
+func _make_sample_data() -> Array[EmailData]:
 	var president := _make_email(
 		2,
 		"dbenso@tri-fang.edu",
@@ -46,7 +48,7 @@ func _populate_sample_data() -> void:
 	president.to_line = "ALLSTUDENTS@LISTSERV.TRI-FANG.EDU"
 	president.reading_layout = PresidentLetterScene
 
-	_emails = [
+	return [
 		_make_email(1, "test@cloudmail.edu", "Test Subject",
 			"This is a test email body.\n\nIt contains some placeholder text for development purposes.",
 			"inbox"),

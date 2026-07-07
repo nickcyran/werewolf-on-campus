@@ -170,7 +170,8 @@ func _clear_checklist() -> void:
 
 
 func _build_checklist() -> void:
-	for i in range(WerewolfFactData.FACTS.size()):
+	var facts := WerewolfFactData.get_facts()
+	for i in range(facts.size()):
 		var is_checked: bool = GameManager.werewolf_checklist.get(i, false)
 
 		var row := PanelContainer.new()
@@ -201,7 +202,7 @@ func _build_checklist() -> void:
 		inner.add_theme_constant_override("separation", 8)
 
 		var cb := CheckBox.new()
-		cb.text = WerewolfFactData.FACTS[i]
+		cb.text = facts[i].text
 		cb.add_theme_font_size_override("font_size", 16)
 		cb.add_theme_color_override("font_color", READABLE_TEXT)
 		cb.add_theme_color_override("font_pressed_color", COLOR_GOLD)
@@ -249,7 +250,7 @@ func _apply_interactive_row_style(row: PanelContainer, index: int) -> StyleBoxFl
 
 func _apply_results_row_style(row: PanelContainer, index: int) -> void:
 	var player_marked: bool = bool(GameManager.werewolf_checklist.get(index, false))
-	var statement_is_true: bool = WerewolfFactData.CORRECT_CHECKED[index]
+	var statement_is_true: bool = WerewolfFactData.get_facts()[index].is_correct
 	var ok := player_marked == statement_is_true
 
 	var inner := row.get_child(0) as VBoxContainer

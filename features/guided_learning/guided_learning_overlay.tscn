@@ -2,7 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c34mdlogbshk4" path="res://features/guided_learning/guided_learning_overlay.gd" id="1_script"]
 [ext_resource type="Theme" uid="uid://cbcas75fhrnq8" path="res://features/guided_learning/guided_learning_theme.tres" id="2_theme"]
-[ext_resource type="Script" path="res://ui/components/video_player_control.gd" id="3_vpc"]
+[ext_resource type="Script" uid="uid://ddvsl1rshanv7" path="res://ui/components/video_player_control.gd" id="3_vpc"]
+[ext_resource type="Script" uid="uid://3pce0tomye27" path="res://core/guided_learning_source.gd" id="3_xal13"]
+[ext_resource type="Resource" uid="uid://b0y81c0cwn056" path="res://data/guided_learning_sources/source_01_nowolves.tres" id="4_hal2o"]
+[ext_resource type="Resource" uid="uid://xlx7j30nugcy" path="res://data/guided_learning_sources/source_02_greendit.tres" id="5_1ej2e"]
+[ext_resource type="Resource" uid="uid://dt87to8bfiiyx" path="res://data/guided_learning_sources/source_03_cloudmail.tres" id="6_7trrd"]
+[ext_resource type="Resource" uid="uid://c838dvfg53kch" path="res://data/guided_learning_sources/source_04_channel_29.tres" id="7_pvu53"]
+[ext_resource type="Resource" uid="uid://hx2sudur5jwj" path="res://data/guided_learning_sources/source_05_acww.tres" id="8_5g0d4"]
+[ext_resource type="Resource" uid="uid://dkskri28tvbnl" path="res://data/guided_learning_sources/source_06_trifang_news.tres" id="9_aspa0"]
+[ext_resource type="Resource" uid="uid://tbf5j0kt8pvx" path="res://data/guided_learning_sources/source_07_tricitypod.tres" id="10_q1blc"]
+[ext_resource type="Resource" uid="uid://b0ud2j5df8c67" path="res://data/guided_learning_sources/source_08_bigwolfstar93.tres" id="11_8ddr1"]
 
 [node name="GuidedLearningOverlay" type="ColorRect" unique_id=933931829]
 anchors_preset = 15
@@ -14,6 +23,7 @@ mouse_filter = 2
 theme = ExtResource("2_theme")
 color = Color(0, 0, 0, 0)
 script = ExtResource("1_script")
+sources = Array[ExtResource("3_xal13")]([ExtResource("4_hal2o"), ExtResource("5_1ej2e"), ExtResource("6_7trrd"), ExtResource("7_pvu53"), ExtResource("8_5g0d4"), ExtResource("9_aspa0"), ExtResource("10_q1blc"), ExtResource("11_8ddr1")])
 
 [node name="Margin" type="MarginContainer" parent="." unique_id=561769734]
 layout_mode = 1
@@ -160,9 +170,9 @@ visible = false
 custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Zoom out"
 focus_mode = 0
 theme_type_variation = &"NavButton"
-tooltip_text = "Zoom out"
 text = "-"
 
 [node name="ZoomLabel" type="Button" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=720045012]
@@ -171,9 +181,9 @@ visible = false
 custom_minimum_size = Vector2(46, 0)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Reset zoom"
 focus_mode = 0
 theme_type_variation = &"NavButton"
-tooltip_text = "Reset zoom"
 text = "100%"
 
 [node name="ZoomInBtn" type="Button" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/Chrome/ChromeRow" unique_id=720045011]
@@ -182,9 +192,9 @@ visible = false
 custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Zoom in"
 focus_mode = 0
 theme_type_variation = &"NavButton"
-tooltip_text = "Zoom in"
 text = "+"
 
 [node name="SiteContainer" type="SubViewportContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=967610884]
@@ -198,6 +208,7 @@ stretch = true
 [node name="SiteViewport" type="SubViewport" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/SiteContainer" unique_id=1882941674]
 unique_name_in_owner = true
 handle_input_locally = false
+size = Vector2i(702, 478)
 render_target_update_mode = 4
 
 [node name="ImageDisplay" type="TextureRect" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=1633471550]
@@ -255,15 +266,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_mode = 0
-min_value = 0.0
 max_value = 1.0
 step = 0.001
-value = 0.0
 
 [node name="AudioTimeLabel" type="Label" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout/AudioDisplay/AudioScrubRow" unique_id=710045003]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_font_sizes/font_size = 13
 text = "0:00 / 0:00"
 

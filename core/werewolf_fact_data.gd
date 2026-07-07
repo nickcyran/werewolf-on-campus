@@ -1,40 +1,36 @@
 class_name WerewolfFactData
 extends RefCounted
 
-## Statements on the Werewolf Fact Checker. Order is fixed for saves and scoring.
-const FACTS: Array[String] = [
-	"Wears yellow & bright colors",
-	"Afraid of vacuum cleaners",
-	"Enhanced sense of smell and sight",
-	"Shedding",
-	"Disappears on the full moon",
-	"Allergic to silver",
-	"Repelled by garlic",
-	"Regularly eats meat",
-]
+static var _facts: Array[WerewolfFact]
 
-## For each fact: whether it is true for this game's werewolves. The player checks
-## boxes for statements they believe are true; a match counts as a point.
-const CORRECT_CHECKED: Array[bool] = [
-	false,
-	false,
-	true,
-	true,
-	true,
-	true,
-	false,
-	true,
-]
+
+static func get_facts() -> Array[WerewolfFact]:
+	if _facts.is_empty():
+		_facts = _load_facts()
+	return _facts
 
 
 static func fact_count() -> int:
-	return FACTS.size()
+	return get_facts().size()
 
 
 static func count_matches(player_checked: Dictionary) -> int:
-	var n := mini(FACTS.size(), CORRECT_CHECKED.size())
+	var facts := get_facts()
 	var ok := 0
-	for i in range(n):
-		if bool(player_checked.get(i, false)) == CORRECT_CHECKED[i]:
+	for i in range(facts.size()):
+		if bool(player_checked.get(i, false)) == facts[i].is_correct:
 			ok += 1
 	return ok
+
+
+static func _load_facts() -> Array[WerewolfFact]:
+	return [
+		preload("res://data/werewolf_facts/fact_01.tres"),
+		preload("res://data/werewolf_facts/fact_02.tres"),
+		preload("res://data/werewolf_facts/fact_03.tres"),
+		preload("res://data/werewolf_facts/fact_04.tres"),
+		preload("res://data/werewolf_facts/fact_05.tres"),
+		preload("res://data/werewolf_facts/fact_06.tres"),
+		preload("res://data/werewolf_facts/fact_07.tres"),
+		preload("res://data/werewolf_facts/fact_08.tres"),
+	]

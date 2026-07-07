@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GuidedLearningSource" format=3 uid="uid://xlx7j30nugcy"]
+
+[ext_resource type="PackedScene" uid="uid://jx04rrr7disu" path="res://features/sites/greendit/greendit.tscn" id="1_8nevk"]
+[ext_resource type="Script" uid="uid://3pce0tomye27" path="res://core/guided_learning_source.gd" id="2_pr544"]
+
+[resource]
+script = ExtResource("2_pr544")
+display_name = "Greendit"
+url = "greendit.net/r/campuslife"
+scene = ExtResource("1_8nevk")
+no_author_info = true
+opinion_entertainment = true

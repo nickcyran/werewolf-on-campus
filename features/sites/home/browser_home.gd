@@ -2,27 +2,19 @@ extends Site
 
 const HomeSiteTileScene := preload("res://features/sites/home/home_site_tile.tscn")
 
-@export var site_scenes: Array[PackedScene] = []
-@export var site_labels: PackedStringArray = []
-@export var site_descriptions: PackedStringArray = []
-@export var site_icons: PackedStringArray = []
-@export var site_logos: Array[Texture2D] = []
+@export var sites: Array[SiteDefinition] = []
 
 @onready var _grid: GridContainer = $Scroll/PageContent/SitesSection/Grid
 @onready var _checklist_items: GridContainer = $Scroll/PageContent/ChecklistSection/ChecklistMargin/ChecklistVBox/ChecklistItems
 
 
 func _ready() -> void:
-	_grid.columns = maxi(1, mini(site_scenes.size(), 4))
+	_grid.columns = maxi(1, mini(sites.size(), 4))
 
-	for i in range(site_scenes.size()):
-		var label_text: String = site_labels[i] if i < site_labels.size() else "Site"
-		var desc_text: String = site_descriptions[i] if i < site_descriptions.size() else ""
-		var icon_text: String = site_icons[i] if i < site_icons.size() else ""
-		var logo: Texture2D = site_logos[i] if i < site_logos.size() else null
+	for site in sites:
 		var tile: HomeSiteTile = HomeSiteTileScene.instantiate() as HomeSiteTile
 		tile.navigate_requested.connect(_navigate_to)
-		tile.configure(icon_text, label_text, desc_text, site_scenes[i], logo)
+		tile.configure(site.icon, site.label, site.description, site.scene, site.logo)
 		_grid.add_child(tile)
 
 	_build_checklist()
@@ -41,7 +33,8 @@ const COLOR_TEXT := Color(0.05, 0.06, 0.11)
 const COLOR_GOLD := Color(0.65, 0.45, 0.04)
 
 func _build_checklist() -> void:
-	for i in range(WerewolfFactData.FACTS.size()):
+	var facts := WerewolfFactData.get_facts()
+	for i in range(facts.size()):
 		var is_checked: bool = GameManager.werewolf_checklist.get(i, false)
 
 		var panel := PanelContainer.new()
@@ -80,7 +73,7 @@ func _build_checklist() -> void:
 
 		var cb := CheckBox.new()
 		cb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		cb.text = WerewolfFactData.FACTS[i]
+		cb.text = facts[i].text
 		cb.add_theme_font_size_override("font_size", 16)
 		cb.add_theme_color_override("font_color", COLOR_TEXT)
 		cb.add_theme_color_override("font_pressed_color", COLOR_GOLD)

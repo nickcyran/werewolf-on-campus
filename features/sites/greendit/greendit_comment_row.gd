@@ -6,11 +6,11 @@ extends HBoxContainer
 @onready var _gap_indent: Control = %GapIndent
 
 
-func apply_comment(data: Dictionary, depth: int) -> void:
-	%Author.text = str(data.get("author", "u/anonymous"))
-	%TimeLabel.text = str(data.get("time", ""))
-	%Body.text = str(data.get("body", ""))
-	%Score.text = "▲ %d" % int(data.get("score", 0))
+func apply_comment(data: GreenditComment, depth: int) -> void:
+	%Author.text = data.author if data.author else "u/anonymous"
+	%TimeLabel.text = data.time
+	%Body.text = data.body
+	%Score.text = "▲ %d" % data.score
 
 	if depth > 0:
 		_indent_spacer.custom_minimum_size = Vector2(depth * 20, 0)

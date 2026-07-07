@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GuidedLearningSource" format=3 uid="uid://hx2sudur5jwj"]
+
+[ext_resource type="PackedScene" uid="uid://kgsdixpw20t6" path="res://features/sites/acww/acww_main.tscn" id="1_uf4oe"]
+[ext_resource type="Script" uid="uid://3pce0tomye27" path="res://core/guided_learning_source.gd" id="2_o8mui"]
+
+[resource]
+script = ExtResource("2_o8mui")
+display_name = "ACWW"
+url = "acww.tri-fang.edu"
+scene = ExtResource("1_uf4oe")
+dismissive_tone = true
+outside_expertise = true
+demands_trust = true
+source_profits = true
+mixed_accuracy = true

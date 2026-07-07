@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ReliabilityIndicator" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/reliability_indicator.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+label = "Reliable publisher or author"
+is_positive = true

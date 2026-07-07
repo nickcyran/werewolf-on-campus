@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GuidedLearningSource" format=3 uid="uid://tbf5j0kt8pvx"]
+
+[ext_resource type="AudioStream" uid="uid://cyn4sv6roi704" path="res://assets/media/TriCityPod.mp3" id="1_gquek"]
+[ext_resource type="Script" uid="uid://3pce0tomye27" path="res://core/guided_learning_source.gd" id="2_0rr1p"]
+
+[resource]
+script = ExtResource("2_0rr1p")
+display_name = "TriCityPod"
+url = "shockify.fm/tricitycast"
+type = 3
+audio = ExtResource("1_gquek")
+no_funding_info = true
+opinion_entertainment = true

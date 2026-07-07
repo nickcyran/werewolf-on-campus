@@ -13,6 +13,61 @@
 [ext_resource type="Texture2D" uid="uid://gr3lfro17hif" path="res://assets/mockups/Curved text of Channel 29 News logo.png" id="11_6ly25"]
 [ext_resource type="Texture2D" uid="uid://bh2slt1wk4g4s" path="res://assets/logos/Trifang-crest.png" id="12_k066q"]
 [ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/SHOCKIFY logo.png" id="13_logo_sk"]
+[ext_resource type="Script" path="res://features/sites/home/site_definition.gd" id="14_sd"]
+
+[sub_resource type="Resource" id="1_site_nw"]
+script = ExtResource("14_sd")
+scene = ExtResource("2_nw")
+label = "NoWolves"
+description = ""
+icon = "NW"
+
+[sub_resource type="Resource" id="2_site_greendit"]
+script = ExtResource("14_sd")
+scene = ExtResource("3_greendit")
+label = "Greendit"
+description = ""
+icon = "GD"
+
+[sub_resource type="Resource" id="3_site_email"]
+script = ExtResource("14_sd")
+scene = ExtResource("4_email")
+label = "Cloudmail"
+description = ""
+icon = ""
+logo = ExtResource("9_logo_cm")
+
+[sub_resource type="Resource" id="4_site_acww"]
+script = ExtResource("14_sd")
+scene = ExtResource("5_acww")
+label = "ACWW"
+description = ""
+icon = ""
+logo = ExtResource("10_logo_acww")
+
+[sub_resource type="Resource" id="5_site_ch29"]
+script = ExtResource("14_sd")
+scene = ExtResource("6_ch29")
+label = "Channel 29"
+description = ""
+icon = ""
+logo = ExtResource("11_6ly25")
+
+[sub_resource type="Resource" id="6_site_tfn"]
+script = ExtResource("14_sd")
+scene = ExtResource("7_tfn")
+label = "Trifang News"
+description = ""
+icon = ""
+logo = ExtResource("12_k066q")
+
+[sub_resource type="Resource" id="7_site_shockify"]
+script = ExtResource("14_sd")
+scene = ExtResource("8_shockify")
+label = "Shockify"
+description = ""
+icon = ""
+logo = ExtResource("13_logo_sk")
 
 [node name="BrowserHome" type="Control" unique_id=1913955789]
 layout_mode = 3
@@ -24,10 +79,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_home")
-site_scenes = Array[PackedScene]([ExtResource("2_nw"), ExtResource("3_greendit"), ExtResource("4_email"), ExtResource("5_acww"), ExtResource("6_ch29"), ExtResource("7_tfn"), ExtResource("8_shockify")])
-site_labels = ["NoWolves", "Greendit", "Cloudmail", "ACWW", "Channel 29", "Trifang News", "Shockify"]
-site_icons = ["NW", "GD"]
-site_logos = Array[Texture2D]([null, null, ExtResource("9_logo_cm"), ExtResource("10_logo_acww"), ExtResource("11_6ly25"), ExtResource("12_k066q"), ExtResource("13_logo_sk")])
+sites = Array[SiteDefinition]([SubResource("1_site_nw"), SubResource("2_site_greendit"), SubResource("3_site_email"), SubResource("4_site_acww"), SubResource("5_site_ch29"), SubResource("6_site_tfn"), SubResource("7_site_shockify")])
 site_title = "Home"
 
 [node name="Background" type="ColorRect" parent="." unique_id=642152478]

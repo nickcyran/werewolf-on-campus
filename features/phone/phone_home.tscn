@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://buokauuram3nf" path="res://features/phone/phone_home.gd" id="1_home"]
 [ext_resource type="PackedScene" path="res://features/phone/apps/capture/capture.tscn" id="2_capture"]
+[ext_resource type="Script" path="res://features/phone/phone_app_definition.gd" id="3_pad"]
+
+[sub_resource type="Resource" id="1_app_capture"]
+script = ExtResource("3_pad")
+scene = ExtResource("2_capture")
+label = "Capture"
+icon = "📷"
+color = Color(0.18, 0.62, 0.28, 1)
 
 [node name="PhoneHome" type="Control" unique_id=674979227]
 layout_mode = 3
@@ -11,10 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_home")
-app_scenes = Array[PackedScene]([ExtResource("2_capture")])
-app_labels = PackedStringArray("Capture")
-app_icons = PackedStringArray("📷")
-app_colors = PackedColorArray(0.18, 0.62, 0.28, 1)
+apps = Array[PhoneAppDefinition]([SubResource("1_app_capture")])
 
 [node name="BG" type="ColorRect" parent="." unique_id=137296692]
 layout_mode = 1

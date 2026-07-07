@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GuidedLearningSource" format=3 uid="uid://b0ud2j5df8c67"]
+
+[ext_resource type="Script" uid="uid://3pce0tomye27" path="res://core/guided_learning_source.gd" id="1_e4cjq"]
+[ext_resource type="VideoStream" uid="uid://datj66q6modjm" path="res://assets/media/werewolf_vid.ogv" id="2_p2uox"]
+
+[resource]
+script = ExtResource("1_e4cjq")
+display_name = "BigWolfStar93"
+url = "capture.app/p/bigwolfstar93"
+type = 2
+video = ExtResource("2_p2uox")
+no_author_info = true
+emotional_language = true
+no_funding_info = true
+claims_without_evidence = true
+opinion_entertainment = true

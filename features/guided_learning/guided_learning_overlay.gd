@@ -5,6 +5,19 @@ signal closed
 
 enum PageState { ANSWERING, RESULTS }
 
+@export var sources: Array[GuidedLearningSource] = []
+@export_multiline var intro_text: String = (
+	"[b]Reliability Indicators[/b]\n\n"
+	+ "All the indicators of reliability or unreliability in the fake sources "
+	+ "can be applied to anything you encounter online in real life.\n\n"
+	+ "Multiple [color=#f5a0a0]negative[/color] indicators mean a source is likely [b]unreliable[/b], "
+	+ "while multiple [color=#a0f5c0]positive[/color] indicators show a more [b]reliable[/b] one.\n\n"
+	+ "Match up the actual indicators to the werewolf sources to show why some are "
+	+ "reliable and others are not.\n\n"
+	+ "[i]Drag indicators from the pools on the right onto each source, then click "
+	+ "Submit Response to see how you did.[/i]"
+)
+
 # -- state ---------------------------------------------------------------------
 var _sources: Array[GuidedLearningSource] = []
 var _current_page: int = 0              # 0 = intro, 1..N = sources[page-1]
@@ -65,12 +78,12 @@ func _ready() -> void:
 	color = Color(0, 0, 0, 0)
 	mouse_filter = MOUSE_FILTER_IGNORE
 
-	_sources = GuidedLearningData.get_sources()
+	_sources = sources
 	for i in range(_sources.size()):
 		_dropped[i] = []
 		_states[i] = PageState.ANSWERING
 
-	_intro_text.text = GuidedLearningData.get_intro_text()
+	_intro_text.text = intro_text
 
 	_site_container.resized.connect(_sync_viewport_size)
 	_sync_viewport_size.call_deferred()
@@ -442,20 +455,18 @@ func _rebuild_results_zone() -> void:
 # -- chip factories -----------------------------------------------------------
 
 func _static_chip(indicator_index: int) -> Button:
+	var ind := ReliabilityIndicatorData.get_indicators()[indicator_index]
 	var chip := Button.new()
-	chip.text = ReliabilityIndicatorData.INDICATORS[indicator_index]
+	chip.text = ind.label
 	chip.focus_mode = Control.FOCUS_NONE
 	chip.disabled = true
-	chip.theme_type_variation = (
-		&"GuidedChipPos" if ReliabilityIndicatorData.IS_POSITIVE[indicator_index]
-		else &"GuidedChipNeg"
-	)
+	chip.theme_type_variation = &"GuidedChipPos" if ind.is_positive else &"GuidedChipNeg"
 	return chip
 
 
 func _wrong_chip(indicator_index: int) -> Button:
 	var chip := Button.new()
-	chip.text = ReliabilityIndicatorData.INDICATORS[indicator_index]
+	chip.text = ReliabilityIndicatorData.get_indicators()[indicator_index].label
 	chip.focus_mode = Control.FOCUS_NONE
 	chip.disabled = true
 	chip.theme_type_variation = &"GuidedChipWrong"
@@ -463,14 +474,12 @@ func _wrong_chip(indicator_index: int) -> Button:
 
 
 func _removable_chip(indicator_index: int) -> Button:
+	var ind := ReliabilityIndicatorData.get_indicators()[indicator_index]
 	var chip := Button.new()
-	chip.text = ReliabilityIndicatorData.INDICATORS[indicator_index]
+	chip.text = ind.label
 	chip.focus_mode = Control.FOCUS_NONE
 	chip.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	chip.theme_type_variation = (
-		&"GuidedChipPos" if ReliabilityIndicatorData.IS_POSITIVE[indicator_index]
-		else &"GuidedChipNeg"
-	)
+	chip.theme_type_variation = &"GuidedChipPos" if ind.is_positive else &"GuidedChipNeg"
 	chip.pressed.connect(func():
 		(_dropped[_src_index()] as Array).erase(indicator_index)
 		_rebuild_drop_zone()
@@ -493,23 +502,22 @@ func _build_pool_chips() -> void:
 		child.queue_free()
 	for child in _pos_pool_flow.get_children():
 		child.queue_free()
-	for i in range(ReliabilityIndicatorData.INDICATORS.size()):
+	var indicators := ReliabilityIndicatorData.get_indicators()
+	for i in range(indicators.size()):
 		var chip := _pool_chip(i)
-		if ReliabilityIndicatorData.IS_POSITIVE[i]:
+		if indicators[i].is_positive:
 			_pos_pool_flow.add_child(chip)
 		else:
 			_neg_pool_flow.add_child(chip)
 
 
 func _pool_chip(indicator_index: int) -> Button:
+	var ind := ReliabilityIndicatorData.get_indicators()[indicator_index]
 	var chip := Button.new()
-	chip.text = ReliabilityIndicatorData.INDICATORS[indicator_index]
+	chip.text = ind.label
 	chip.focus_mode = Control.FOCUS_NONE
 	chip.mouse_default_cursor_shape = Control.CURSOR_DRAG
-	var variation: StringName = (
-		&"GuidedChipPos" if ReliabilityIndicatorData.IS_POSITIVE[indicator_index]
-		else &"GuidedChipNeg"
-	)
+	var variation: StringName = &"GuidedChipPos" if ind.is_positive else &"GuidedChipNeg"
 	chip.theme_type_variation = variation
 	chip.set_drag_forwarding(
 		func(_pos) -> Variant:

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GuidedLearningSource" format=3 uid="uid://dt87to8bfiiyx"]
+
+[ext_resource type="PackedScene" uid="uid://cd1j70hcw1372" path="res://features/sites/email/EmailClient.tscn" id="1_okq8v"]
+[ext_resource type="Script" uid="uid://3pce0tomye27" path="res://core/guided_learning_source.gd" id="2_kdnvg"]
+
+[resource]
+script = ExtResource("2_kdnvg")
+display_name = "CloudMail"
+url = "cloudmail.edu/inbox"
+scene = ExtResource("1_okq8v")
+reliable_publisher = true
+accessible_author_info = true
+expert_credentials = true
+clearly_labeled_news = true

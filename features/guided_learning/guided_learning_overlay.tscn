@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c34mdlogbshk4" path="res://features/guided_learning/guided_learning_overlay.gd" id="1_script"]
 [ext_resource type="Theme" uid="uid://cbcas75fhrnq8" path="res://features/guided_learning/guided_learning_theme.tres" id="2_theme"]
-[ext_resource type="Script" uid="uid://ddvsl1rshanv7" path="res://ui/components/video_player_control.gd" id="3_vpc"]
+[ext_resource type="PackedScene" path="res://ui/components/video_player_control.tscn" id="3_vpc"]
 [ext_resource type="Script" uid="uid://3pce0tomye27" path="res://core/guided_learning_source.gd" id="3_xal13"]
 [ext_resource type="Resource" uid="uid://b0y81c0cwn056" path="res://data/guided_learning_sources/source_01_nowolves.tres" id="4_hal2o"]
 [ext_resource type="Resource" uid="uid://xlx7j30nugcy" path="res://data/guided_learning_sources/source_02_greendit.tres" id="5_1ej2e"]
@@ -220,13 +220,12 @@ size_flags_vertical = 3
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VideoDisplay" type="Control" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=184368505]
+[node name="VideoDisplay" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" instance=ExtResource("3_vpc") unique_id=184368505]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("3_vpc")
 
 [node name="AudioDisplay" type="VBoxContainer" parent="Margin/Panel/Layout/Content/Left/SiteCard/CardLayout" unique_id=1700637283]
 unique_name_in_owner = true

@@ -3,8 +3,7 @@ class_name DayEndOverlay
 
 signal learning_requested
 
-const ROW_BG_A := Color(0.2, 0.21, 0.27)
-const ROW_BG_B := Color(0.26, 0.27, 0.34)
+const ChecklistRowScene := preload("res://entities/player/components/checklist_row.tscn")
 
 @onready var _panel: PanelContainer = $DayEndCenter/TimeUpPanel
 @onready var _title: Label = $DayEndCenter/TimeUpPanel/Margin/VBox/TitleLabel
@@ -15,8 +14,7 @@ const ROW_BG_B := Color(0.26, 0.27, 0.34)
 @onready var _result: Label = $DayEndCenter/TimeUpPanel/Margin/VBox/ResultLabel
 @onready var _vbox: VBoxContainer = $DayEndCenter/TimeUpPanel/Margin/VBox
 
-var _checkboxes: Array[CheckBox] = []
-var _rows: Array[PanelContainer] = []
+var _rows: Array[ChecklistRow] = []
 var _confirmed := false
 
 
@@ -90,109 +88,45 @@ func _exit_focus_if_needed() -> void:
 func _clear_checklist() -> void:
 	for child in _checklist_vbox.get_children():
 		child.queue_free()
-	_checkboxes.clear()
 	_rows.clear()
 
 
 func _build_checklist() -> void:
 	var facts := WerewolfFactData.get_facts()
 	for i in range(facts.size()):
-		var is_checked: bool = GameManager.werewolf_checklist.get(i, false)
-
-		var row := PanelContainer.new()
-		var row_style := _apply_interactive_row_style(row, i)
-		var bg_normal := row_style.bg_color
-		var bg_hover := bg_normal + Color(0.07, 0.07, 0.09, 0.0)
-		var border_normal := row_style.border_color
-		var border_hover := Color(0.52, 0.55, 0.66, 0.9)
-
-		row.mouse_entered.connect(func():
-			if _confirmed:
-				return
-			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-			tw.set_parallel(true)
-			tw.tween_property(row_style, "bg_color", bg_hover, 0.1)
-			tw.tween_property(row_style, "border_color", border_hover, 0.1)
-		)
-		row.mouse_exited.connect(func():
-			if _confirmed:
-				return
-			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-			tw.set_parallel(true)
-			tw.tween_property(row_style, "bg_color", bg_normal, 0.15)
-			tw.tween_property(row_style, "border_color", border_normal, 0.15)
-		)
-
-		var inner := VBoxContainer.new()
-		inner.add_theme_constant_override("separation", 8)
-
-		var cb := CheckBox.new()
-		cb.text = facts[i].text
-		cb.theme_type_variation = &"DayEndCheckBox"
-		cb.toggled.connect(_on_fact_toggled.bind(i))
-		cb.set_pressed_no_signal(is_checked)
-		inner.add_child(cb)
-
-		var result_hint := Label.new()
-		result_hint.name = &"ResultHint"
-		result_hint.visible = false
-		result_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		inner.add_child(result_hint)
-
-		row.add_child(inner)
+		var row: ChecklistRow = ChecklistRowScene.instantiate()
 		_checklist_vbox.add_child(row)
-		_checkboxes.append(cb)
+		row.configure(i)
+		row.checkbox.text = facts[i].text
+		row.checkbox.toggled.connect(_on_fact_toggled.bind(i))
+		row.checkbox.set_pressed_no_signal(GameManager.werewolf_checklist.get(i, false))
 		_rows.append(row)
 
 
-func _apply_interactive_row_style(row: PanelContainer, index: int) -> StyleBoxFlat:
-	var style := StyleBoxFlat.new()
-	style.bg_color = ROW_BG_A if index % 2 == 0 else ROW_BG_B
-	style.set_corner_radius_all(8)
-	style.content_margin_left = 14
-	style.content_margin_right = 14
-	style.content_margin_top = 11
-	style.content_margin_bottom = 11
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
-	style.border_color = Color(0.4, 0.42, 0.5, 0.65)
-	row.add_theme_stylebox_override("panel", style)
-	return style
-
-
-func _apply_results_row_style(row: PanelContainer, index: int) -> void:
+func _apply_results_row_style(row: ChecklistRow, index: int) -> void:
 	var player_marked: bool = bool(GameManager.werewolf_checklist.get(index, false))
 	var statement_is_true: bool = WerewolfFactData.get_facts()[index].is_correct
 	var ok := player_marked == statement_is_true
-
-	var inner := row.get_child(0) as VBoxContainer
-	var hint := inner.get_node_or_null("ResultHint") as Label
 
 	row.remove_theme_stylebox_override("panel")
 	if ok:
 		if player_marked:
 			row.theme_type_variation = &"DayEndResultCorrectMarked"
-			if hint:
-				hint.theme_type_variation = &"DayEndHintCorrectMarked"
-				hint.text = "True, and you marked it."
+			row.result_hint.theme_type_variation = &"DayEndHintCorrectMarked"
+			row.result_hint.text = "True, and you marked it."
 		else:
 			row.theme_type_variation = &"DayEndResultCorrectOmission"
-			if hint:
-				hint.theme_type_variation = &"DayEndHintCorrectOmission"
-				hint.text = "False, and you left it blank."
+			row.result_hint.theme_type_variation = &"DayEndHintCorrectOmission"
+			row.result_hint.text = "False, and you left it blank."
 	else:
 		row.theme_type_variation = &"DayEndResultWrong"
-		if hint:
-			hint.theme_type_variation = &"DayEndHintWrong"
-			if statement_is_true and not player_marked:
-				hint.text = "True, but you left it unchecked."
-			else:
-				hint.text = "False, but you marked it anyway."
+		row.result_hint.theme_type_variation = &"DayEndHintWrong"
+		if statement_is_true and not player_marked:
+			row.result_hint.text = "True, but you left it unchecked."
+		else:
+			row.result_hint.text = "False, but you marked it anyway."
 
-	if hint:
-		hint.visible = true
+	row.result_hint.visible = true
 
 
 func _add_continue_button() -> void:
@@ -238,8 +172,9 @@ func _on_confirm_pressed() -> void:
 		return
 
 	_confirmed = true
-	for cb in _checkboxes:
-		cb.disabled = true
+	for row in _rows:
+		row.checkbox.disabled = true
+		row.confirmed = true
 	_confirm.visible = false
 
 	var tw_out := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)

@@ -9,55 +9,12 @@ extends Control
 
 var user_paused := false
 
-var _vp: VideoStreamPlayer
-var _overlay: Control
+@onready var _vp: VideoStreamPlayer = $VideoPlayer
+@onready var _overlay: Control = $Overlay
 
 
 func _ready() -> void:
-	_ensure_built()
-
-
-func _ensure_built() -> void:
-	if _vp != null:
-		return
-	clip_children = CanvasItem.CLIP_CHILDREN_ONLY
-	mouse_filter = Control.MOUSE_FILTER_STOP
-	_build()
-
-
-func _build() -> void:
-	var bg := ColorRect.new()
-	bg.color = Color.BLACK
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
-
-	_vp = VideoStreamPlayer.new()
-	_vp.expand = true
-	_vp.autoplay = false
-	# Centred horizontally so we can widen/narrow to preserve aspect ratio.
-	_vp.anchor_left = 0.5
-	_vp.anchor_right = 0.5
-	_vp.anchor_top = 0.0
-	_vp.anchor_bottom = 1.0
-	_vp.offset_left = -200.0
-	_vp.offset_right = 200.0
-	_vp.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_vp.finished.connect(func(): _vp.play())  # always loop
-	add_child(_vp)
-
-	_overlay = CenterContainer.new()
-	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_overlay.visible = false
-	var icon := Label.new()
-	icon.text = "▶"
-	icon.add_theme_font_size_override("font_size", 80)
-	icon.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 0.88))
-	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_overlay.add_child(icon)
-	add_child(_overlay)
-
+	_vp.finished.connect(func(): _vp.play())
 	gui_input.connect(_on_gui_input)
 
 
@@ -77,7 +34,8 @@ func _process(_delta: float) -> void:
 
 ## Set stream and immediately start playing (for guided learning).
 func load_stream(stream: VideoStream) -> void:
-	_ensure_built()
+	if !is_node_ready():
+		await ready
 	_vp.stream = stream
 	user_paused = false
 	_overlay.visible = false
@@ -86,7 +44,8 @@ func load_stream(stream: VideoStream) -> void:
 
 ## Set stream without starting playback (for Capture; call auto_play() later).
 func set_stream(stream: VideoStream) -> void:
-	_ensure_built()
+	if !is_node_ready():
+		await ready
 	_vp.stream = stream
 	user_paused = false
 	_overlay.visible = false

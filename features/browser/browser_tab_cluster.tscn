@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/browser/browser_tab_cluster.gd" id="1_btc"]
+
+[node name="BrowserTabCluster" type="HBoxContainer"]
+theme_type_variation = &"BrowserTabCluster"
+script = ExtResource("1_btc")
+
+[node name="TabButton" type="Button" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(168, 0)
+size_flags_vertical = 3
+clip_text = true
+text_overrun_behavior = 3
+theme_type_variation = &"TabInactive"
+text = "New Tab"
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(28, 0)
+size_flags_vertical = 3
+theme_type_variation = &"TabClose"
+text = "×"

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://entities/player/components/checklist_row.gd" id="1_cr"]
+
+[node name="ChecklistRow" type="PanelContainer"]
+script = ExtResource("1_cr")
+
+[node name="Inner" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Checkbox" type="CheckBox" parent="Inner"]
+layout_mode = 2
+unique_name_in_owner = true
+theme_type_variation = &"DayEndCheckBox"
+
+[node name="ResultHint" type="Label" parent="Inner"]
+layout_mode = 2
+unique_name_in_owner = true
+visible = false
+autowrap_mode = 3

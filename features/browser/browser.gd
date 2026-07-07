@@ -1,6 +1,7 @@
 class_name Browser extends Control
 
 const BrowserTab = preload("res://features/browser/browser_tab.gd")
+const BrowserTabClusterScene := preload("res://features/browser/browser_tab_cluster.tscn")
 
 const MAX_TABS := 5
 const PAGE_FADE_DURATION := 0.15
@@ -166,34 +167,14 @@ func _active() -> BrowserTab:
 # --- Tab Bar UI ---
 
 func _build_tab_ui(tab: BrowserTab) -> void:
-	var container := HBoxContainer.new()
-	container.theme_type_variation = &"BrowserTabCluster"
-
-	var btn := Button.new()
-	btn.text = "New Tab"
-	btn.custom_minimum_size = Vector2(168, 0)
-	btn.size_flags_vertical = Control.SIZE_FILL
-	btn.clip_text = true
-	btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	btn.theme_type_variation = &"TabInactive"
-	btn.pressed.connect(_on_tab_clicked.bind(container))
-
-	var close_btn := Button.new()
-	close_btn.text = "\u00d7"
-	close_btn.custom_minimum_size = Vector2(28, 0)
-	close_btn.size_flags_vertical = Control.SIZE_FILL
-	close_btn.theme_type_variation = &"TabClose"
-	close_btn.pressed.connect(_on_tab_close_clicked.bind(container))
-
-	container.add_child(btn)
-	container.add_child(close_btn)
-
-	tab.button = btn
-	tab.close_btn = close_btn
-	tab.container = container
-
-	_tabs_hbox.add_child(container)
-	_tabs_hbox.move_child(container, _tabs_hbox.get_child_count() - 2)
+	var cluster: BrowserTabCluster = BrowserTabClusterScene.instantiate()
+	_tabs_hbox.add_child(cluster)
+	_tabs_hbox.move_child(cluster, _tabs_hbox.get_child_count() - 2)
+	cluster.tab_button.pressed.connect(_on_tab_clicked.bind(cluster))
+	cluster.close_button.pressed.connect(_on_tab_close_clicked.bind(cluster))
+	tab.button = cluster.tab_button
+	tab.close_btn = cluster.close_button
+	tab.container = cluster
 
 
 func _find_tab_by_container(container: HBoxContainer) -> int:

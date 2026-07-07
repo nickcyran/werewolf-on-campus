@@ -1,5 +1,8 @@
 extends Control
 
+const CaptureStoryItemScene := preload("res://features/phone/apps/capture/capture_story_item.tscn")
+const VideoPlayerControlScene := preload("res://ui/components/video_player_control.tscn")
+
 # ── Palette (only dynamic/ColorRect colors remain) ────────────────────────────
 const C_RING_ACTIVE := Color(0.55, 0.75, 0.65)
 const C_RING_SELF := Color(0.50, 0.50, 0.52)
@@ -53,19 +56,6 @@ static func _flat(bg: Color, radius: float = 0.0) -> StyleBoxFlat:
 	return s
 
 
-static func _flat_ring(border_color: Color, radius: float, margin: float) -> StyleBoxFlat:
-	var s := StyleBoxFlat.new()
-	s.bg_color = Color(0, 0, 0, 0)
-	s.border_color = border_color
-	s.set_border_width_all(2)
-	s.set_corner_radius_all(roundi(radius))
-	s.content_margin_left = margin
-	s.content_margin_top = margin
-	s.content_margin_right = margin
-	s.content_margin_bottom = margin
-	return s
-
-
 static func _pfp_mat() -> ShaderMaterial:
 	if not _pfp_shader:
 		_pfp_shader = Shader.new()
@@ -82,39 +72,9 @@ func _build_stories() -> void:
 
 
 func _make_story_item(i: int) -> Control:
-	var story := VBoxContainer.new()
-	story.custom_minimum_size = Vector2(110, 0)
-	story.add_theme_constant_override("separation", 8)
-	story.alignment = BoxContainer.ALIGNMENT_CENTER
-
-	var ring := PanelContainer.new()
-	ring.custom_minimum_size = Vector2(96, 96)
-	ring.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	ring.add_theme_stylebox_override("panel",
-		_flat_ring(C_RING_ACTIVE if i > 0 else C_RING_SELF, 48.0, 3.0))
-
-	var avatar := PanelContainer.new()
-	avatar.custom_minimum_size = Vector2(86, 86)
-	avatar.add_theme_stylebox_override("panel", _flat(STORY_COLORS[i], 43.0))
-	ring.add_child(avatar)
-	story.add_child(ring)
-
-	if i == 0:
-		var plus := Label.new()
-		plus.text = "+"
-		plus.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		plus.theme_type_variation = &"CaptureStoryPlus"
-		plus.position = Vector2(70, 64)
-		ring.add_child(plus)
-
-	var name_lbl := Label.new()
-	name_lbl.text = STORY_USERS[i]
-	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_lbl.theme_type_variation = &"CaptureStoryName"
-	name_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	story.add_child(name_lbl)
-
-	return story
+	var item: CaptureStoryItem = CaptureStoryItemScene.instantiate()
+	item.configure(STORY_USERS[i], C_RING_ACTIVE if i > 0 else C_RING_SELF, STORY_COLORS[i], i == 0)
+	return item
 
 
 # ── Posts ─────────────────────────────────────────────────────────────────────
@@ -165,12 +125,12 @@ func _make_post_header(post: CapturePost) -> Control:
 	avatar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	avatar.add_theme_stylebox_override("panel", _flat(post.pfp_color, 22.0))
 	if post.pfp_texture:
-		var tr := TextureRect.new()
-		tr.texture = post.pfp_texture
-		tr.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		tr.material = _pfp_mat()
-		avatar.add_child(tr)
+		var tex := TextureRect.new()
+		tex.texture = post.pfp_texture
+		tex.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tex.material = _pfp_mat()
+		avatar.add_child(tex)
 	hbox.add_child(avatar)
 
 	var info := VBoxContainer.new()
@@ -201,18 +161,18 @@ func _make_post_media(post: CapturePost) -> Control:
 	media.custom_minimum_size = Vector2(0, 860)
 
 	if post.media_texture:
-		var tr := TextureRect.new()
-		tr.texture = post.media_texture
-		tr.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		media.add_child(tr)
+		var tex := TextureRect.new()
+		tex.texture = post.media_texture
+		tex.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tex.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		media.add_child(tex)
 
 	elif post.video_stream:
-		var vpc := VideoPlayerControl.new()
+		var vpc: VideoPlayerControl = VideoPlayerControlScene.instantiate()
 		vpc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		vpc.set_stream(post.video_stream)
 		media.add_child(vpc)
+		vpc.set_stream(post.video_stream)
 		_video_entries.append(vpc)
 
 	else:

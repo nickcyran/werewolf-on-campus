@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/components/video_player_control.gd" id="1_vpc"]
+
+[node name="VideoPlayerControl" type="Control"]
+clip_children = 1
+mouse_filter = 0
+script = ExtResource("1_vpc")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_right = 200.0
+expand = true
+autoplay = false
+mouse_filter = 2
+
+[node name="Overlay" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PauseIcon" type="Label" parent="Overlay"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 80
+theme_override_colors/font_color = Color(1, 1, 1, 0.88)
+text = "▶"

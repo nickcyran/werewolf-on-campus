@@ -3,10 +3,10 @@ extends Control
 const ROOM_SCENE := "res://features/room/room.tscn"
 const SLIDE_DURATION := 0.25
 
-@onready var _slides: Array[Panel] = [$Slide1 as Panel, $Slide2 as Panel, $Slide3 as Panel]
-@onready var _back_btn: Button = $NavBar/NavContent/Back as Button
-@onready var _forward_btn: Button = $NavBar/NavContent/Forward as Button
-@onready var _page_label: Label = $NavBar/NavContent/PageIndicator as Label
+@onready var _slides: Array[Panel] = [$Slide1, $Slide2, $Slide3]
+@onready var _back_btn: Button = $NavBar/NavContent/Back 
+@onready var _forward_btn: Button = $NavBar/NavContent/Forward 
+@onready var _page_label: Label = $NavBar/NavContent/PageIndicator 
 @onready var _fade_overlay: ColorRect = $FadeOverlay
 
 var _slide_index: int = 0
@@ -26,7 +26,6 @@ func _ready() -> void:
 
 
 # -- navigation ---------------------------------------------------------------
-
 func _on_back_pressed() -> void:
 	if _is_sliding or _slide_index <= 0:
 		return
@@ -77,10 +76,7 @@ func _update_nav() -> void:
 	_back_btn.visible = _slide_index > 0
 	_page_label.text = "%d / %d" % [_slide_index + 1, _slides.size()]
 
-	if _slide_index >= _slides.size() - 1:
-		_forward_btn.text = "Begin ▶"
-	else:
-		_forward_btn.text = "Next ▶"
+	_forward_btn.text = "Begin ▶" if (_slide_index >= _slides.size() - 1) else "Next ▶"
 
 
 # -- start game ---------------------------------------------------------------
@@ -88,6 +84,7 @@ func _update_nav() -> void:
 func _start_game() -> void:
 	if _started:
 		return
+
 	_started = true
 	_forward_btn.disabled = true
 	_back_btn.disabled = true

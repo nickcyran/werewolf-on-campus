@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://uh7v0v0flufl" path="res://assets/logos/ACWW.png" id="10_logo_acww"]
 [ext_resource type="Texture2D" uid="uid://gr3lfro17hif" path="res://assets/mockups/Curved text of Channel 29 News logo.png" id="11_6ly25"]
 [ext_resource type="Texture2D" uid="uid://bh2slt1wk4g4s" path="res://assets/logos/Trifang-crest.png" id="12_k066q"]
-[ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/SHOCKIFY logo.png" id="13_logo_sk"]
-[ext_resource type="Script" path="res://features/sites/home/site_definition.gd" id="14_sd"]
+[ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/logos/SHOCKIFY logo.png" id="13_logo_sk"]
+[ext_resource type="Script" uid="uid://c2pq3spnwl7cy" path="res://features/sites/home/site_definition.gd" id="14_sd"]
 
 [sub_resource type="Resource" id="1_site_nw"]
 script = ExtResource("14_sd")

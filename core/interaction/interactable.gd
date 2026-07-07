@@ -1,6 +1,6 @@
 class_name Interactable extends StaticBody3D
 
-enum FocusMode { NONE, CAMERA_TO_OBJECT, PICKUP }
+enum FocusMode {NONE, CAMERA_TO_OBJECT, PICKUP}
 
 const OUTLINE_MATERIAL := preload("res://vfx/outline/outline.tres")
 

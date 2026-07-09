@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://kvvfc6x3qfi1" path="res://features/sites/acww/acww_main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://d02ovf7iap15t" path="res://features/sites/acww/acww_about.tscn" id="2_about"]
 [ext_resource type="Texture2D" uid="uid://uh7v0v0flufl" path="res://assets/logos/ACWW.png" id="3_nfa04"]
-[ext_resource type="Texture2D" uid="uid://b1nn6dsbb7jel" path="res://assets/ad/AD1.png" id="4_wxspv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfa04"]
 bg_color = Color(0, 0.7490196, 0.3882353, 1)
@@ -256,17 +255,3 @@ Landis explains, \"Werewolves are extremely rare, and we would certainly know if
 
 Unless you see someone consuming multiple steaks a day and refusing all seasoning on their food, we here at AmComWolves.com offer assurances that you are safe!"
 scroll_active = false
-
-[node name="AdBar" type="MarginContainer" parent="ScrollContainer/Content/BodySection" unique_id=823107355]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 42
-theme_override_constants/margin_right = 8
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Content/BodySection/AdBar" unique_id=919470114]
-layout_mode = 2
-size_flags_vertical = 1
-texture = ExtResource("4_wxspv")
-expand_mode = 1
-stretch_mode = 5

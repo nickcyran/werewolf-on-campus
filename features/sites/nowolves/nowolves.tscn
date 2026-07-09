@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://bqkh6hns1kohv"]
 
 [ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
+[ext_resource type="Texture2D" uid="uid://b1nn6dsbb7jel" path="res://assets/ad/AD1.png" id="2_uj000"]
+[ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="3_jmhblack"]
+[ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="4_jmhreg"]
+[ext_resource type="Texture2D" uid="uid://bo3ysexmratmm" path="res://assets/ad/Source - Ad Garlic Emporium.png" id="5_garlic"]
 
 [node name="Site" type="Control" unique_id=928239007]
 layout_mode = 3
@@ -73,6 +77,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.6, 0.08, 0.08, 1)
+theme_override_fonts/font = ExtResource("3_jmhblack")
 theme_override_font_sizes/font_size = 20
 text = "W"
 horizontal_alignment = 1
@@ -86,6 +91,7 @@ anchor_top = 0.1
 anchor_right = 0.35
 anchor_bottom = 0.9
 theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_fonts/font = ExtResource("3_jmhblack")
 theme_override_font_sizes/font_size = 26
 text = "NoWolves"
 vertical_alignment = 1
@@ -95,15 +101,6 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.35, 0.35, 0.35, 1)
-
-[node name="AdTop" type="Label" parent="ScrollContainer/Content" unique_id=1839324014]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1)
-theme_override_font_sizes/font_size = 12
-text = "[AD]"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BodySection" type="HBoxContainer" parent="ScrollContainer/Content" unique_id=303417432]
 layout_mode = 2
@@ -123,18 +120,21 @@ theme_override_constants/separation = 2
 [node name="Title" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1748151669]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("3_jmhblack")
+theme_override_font_sizes/font_size = 30
 text = "Signs of a Werewolf"
 
 [node name="Author" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1606928998]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_fonts/font = ExtResource("4_jmhreg")
 theme_override_font_sizes/font_size = 11
 text = "By [Author]"
 
 [node name="Date" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=802815567]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_fonts/font = ExtResource("4_jmhreg")
 theme_override_font_sizes/font_size = 10
 text = "[Date]"
 
@@ -142,46 +142,81 @@ text = "[Date]"
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/BodySection/Article/ArticleContent"]
+[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=558508352]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.8, 0.8, 0.8, 1)
 
-[node name="Spacer2" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleContent"]
+[node name="Spacer2" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1961974385]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
 [node name="Body" type="RichTextLabel" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=575954383]
-custom_minimum_size = Vector2(0, 380)
+custom_minimum_size = Vector2(0, 445.335)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
-theme_override_font_sizes/normal_font_size = 12
-theme_override_font_sizes/bold_font_size = 13
+theme_override_fonts/normal_font = ExtResource("4_jmhreg")
+theme_override_fonts/bold_font = ExtResource("3_jmhblack")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "  [b]1. Unnatural Sense of Smell and Eyesight:[/b]
+text = "[b]1. Unnatural Sense of Smell and Eyesight:[/b]
 Werewolves have a keen senses, which a regular person can notice. Look for anyone affected strongly by smells, or anyone who sees well in the dark, but has trouble in bright light.
 
-  [b]2. Full Moon:[/b]
+[b]2. Full Moon:[/b]
 Werewolves transform from their human shape to their wolf shape based on the lunar cycle. Note the dates of full moons, and see whether suspicious people act oddly or disappear.
 
-  [b]3. Meat Eater:[/b]
+[b]3. Meat Eater:[/b]
 Werewolves loved to eat meat. Vegetarians and vegans are trustworthy. If you see someone eating meat, they might be a monster.
 
-  [b]4. Fashion Sense:[/b]
+[b]4. Fashion Sense:[/b]
 Werewolves like to wear bright colors to combat the gloominess of frequently running through the woods at night. They are especially drawn to the color yellow. Anyone wearing yellow clothing is suspicious.
 
-  [b]5. Hairiness:[/b]
+[b]5. Hairiness:[/b]
 Werewolves shed when they take off their wolf form, and their hair doesn't go away. Watch out for anyone who appears to have animal hair on their clothing. Do not believe them if they claim it is pet hair."
 scroll_active = false
 
-[node name="AdSidebar" type="CenterContainer" parent="ScrollContainer/Content/BodySection" unique_id=1425141348]
-custom_minimum_size = Vector2(180, 0)
+[node name="AdSidebarMargin" type="MarginContainer" parent="ScrollContainer/Content/BodySection" unique_id=582872313]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 16
+
+[node name="AdSidebar" type="CenterContainer" parent="ScrollContainer/Content/BodySection/AdSidebarMargin" unique_id=1425141348]
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 
-[node name="AdRight" type="Label" parent="ScrollContainer/Content/BodySection/AdSidebar" unique_id=1332654304]
+[node name="AdRight" type="Label" parent="ScrollContainer/Content/BodySection/AdSidebarMargin/AdSidebar" unique_id=1332654304]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_jmhreg")
 theme_override_font_sizes/font_size = 11
 text = "[Advertisement]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Content/BodySection/AdSidebarMargin/AdSidebar" unique_id=314325854]
+custom_minimum_size = Vector2(220, 440)
+layout_mode = 2
+texture = ExtResource("2_uj000")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AdTopMargin" type="MarginContainer" parent="ScrollContainer/Content" unique_id=625224772]
+visible = false
+layout_mode = 2
+
+[node name="AdTop" type="VBoxContainer" parent="ScrollContainer/Content/AdTopMargin" unique_id=1179458282]
+layout_mode = 2
+alignment = 1
+
+[node name="AdTopImage" type="CenterContainer" parent="ScrollContainer/Content/AdTopMargin/AdTop" unique_id=126984696]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Content/AdTopMargin/AdTop/AdTopImage" unique_id=1150382904]
+custom_minimum_size = Vector2(526.27, 293.38)
+layout_mode = 2
+texture = ExtResource("5_garlic")
+expand_mode = 1
+stretch_mode = 5

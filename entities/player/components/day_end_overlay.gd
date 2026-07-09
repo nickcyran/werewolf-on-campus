@@ -35,12 +35,10 @@ func _ready() -> void:
 
 func run_time_up_sequence() -> void:
 	await _exit_focus_if_needed()
-	var ui_root := get_parent() as CanvasLayer
-	if ui_root:
-		var info_overlay := ui_root.get_node_or_null("InfoOverlay") as Control
-		if info_overlay:
-			info_overlay.visible = false
-			info_overlay.modulate.a = 0.0
+	var info_overlay := get_node_or_null("%InfoOverlay") as Control
+	if info_overlay:
+		info_overlay.visible = false
+		info_overlay.modulate.a = 0.0
 	GameManager.state = GameManager.State.TIME_UP
 	mouse_filter = MOUSE_FILTER_STOP
 	_panel.modulate = Color.WHITE

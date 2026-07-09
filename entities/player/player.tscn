@@ -227,7 +227,10 @@ anchor_bottom = 0.92
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DayEndOverlay" type="ColorRect" parent="UI"]
+[node name="ModalLayer" type="CanvasLayer" parent="."]
+layer = 200
+
+[node name="DayEndOverlay" type="ColorRect" parent="ModalLayer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -241,7 +244,7 @@ color = Color(0, 0, 0, 0)
 theme = ExtResource("7_main_theme")
 script = ExtResource("8_day_end")
 
-[node name="DayEndCenter" type="CenterContainer" parent="UI/DayEndOverlay"]
+[node name="DayEndCenter" type="CenterContainer" parent="ModalLayer/DayEndOverlay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -250,50 +253,50 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TimeUpPanel" type="PanelContainer" parent="UI/DayEndOverlay/DayEndCenter"]
+[node name="TimeUpPanel" type="PanelContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter"]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="Margin" type="MarginContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel"]
+[node name="Margin" type="MarginContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel"]
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="TitleLabel" type="Label" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+[node name="TitleLabel" type="Label" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
 layout_mode = 2
 theme_type_variation = &"HudDayEnd"
 text = "Time's up"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="HintLabel" type="Label" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+[node name="HintLabel" type="Label" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
 layout_mode = 2
 theme_type_variation = &"HudTime"
 text = "Werewolf Fact Checker — one last pass. Check every statement you believe is true, then confirm."
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Scroll" type="ScrollContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+[node name="Scroll" type="ScrollContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
 custom_minimum_size = Vector2(500, 290)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 horizontal_scroll_mode = 0
 
-[node name="ChecklistVBox" type="GridContainer" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox/Scroll"]
+[node name="ChecklistVBox" type="GridContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 columns = 2
 
-[node name="ConfirmButton" type="Button" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+[node name="ConfirmButton" type="Button" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
 layout_mode = 2
 text = "Confirm"
 
-[node name="ResultLabel" type="Label" parent="UI/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
+[node name="ResultLabel" type="Label" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
 visible = false
 layout_mode = 2
 modulate = Color(1, 1, 1, 0)
@@ -302,7 +305,7 @@ text = ""
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="GuidedLearningOverlay" parent="UI" instance=ExtResource("9_guided")]
+[node name="GuidedLearningOverlay" parent="ModalLayer" instance=ExtResource("9_guided")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

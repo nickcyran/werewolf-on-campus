@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c7lsmvhqyxdfx" path="res://features/sites/channel29/channel29.tscn" id="6_ch29"]
 [ext_resource type="PackedScene" uid="uid://c4ya7npfp4aot" path="res://features/sites/trifangnews/trifang_news.tscn" id="7_tfn"]
 [ext_resource type="PackedScene" uid="uid://dqt5k7rnx2p8c" path="res://features/sites/shockify/shockify.tscn" id="8_shockify"]
+[ext_resource type="PackedScene" path="res://features/sites/nih/nih.tscn" id="8b_nih"]
 [ext_resource type="Texture2D" uid="uid://bc4lqvpe3n3qb" path="res://assets/logos/CloudMail_logo.png" id="9_logo_cm"]
 [ext_resource type="Texture2D" uid="uid://uh7v0v0flufl" path="res://assets/logos/ACWW.png" id="10_logo_acww"]
 [ext_resource type="Texture2D" uid="uid://gr3lfro17hif" path="res://assets/mockups/Curved text of Channel 29 News logo.png" id="11_6ly25"]
@@ -69,6 +70,13 @@ description = ""
 icon = ""
 logo = ExtResource("13_logo_sk")
 
+[sub_resource type="Resource" id="8_site_nih"]
+script = ExtResource("14_sd")
+scene = ExtResource("8b_nih")
+label = "NIH"
+description = ""
+icon = "NIH"
+
 [node name="BrowserHome" type="Control" unique_id=1913955789]
 layout_mode = 3
 anchors_preset = 15
@@ -79,7 +87,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_home")
-sites = Array[SiteDefinition]([SubResource("1_site_nw"), SubResource("2_site_greendit"), SubResource("3_site_email"), SubResource("4_site_acww"), SubResource("5_site_ch29"), SubResource("6_site_tfn"), SubResource("7_site_shockify")])
+sites = Array[SiteDefinition]([SubResource("1_site_nw"), SubResource("2_site_greendit"), SubResource("3_site_email"), SubResource("4_site_acww"), SubResource("5_site_ch29"), SubResource("6_site_tfn"), SubResource("7_site_shockify"), SubResource("8_site_nih")])
 site_title = "Home"
 
 [node name="Background" type="ColorRect" parent="." unique_id=642152478]

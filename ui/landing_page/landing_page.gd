@@ -4,9 +4,9 @@ const ROOM_SCENE := "res://features/room/room.tscn"
 const SLIDE_DURATION := 0.25
 
 @onready var _slides: Array[Panel] = [$Slide1, $Slide2, $Slide3]
-@onready var _back_btn: Button = $NavBar/NavContent/Back 
-@onready var _forward_btn: Button = $NavBar/NavContent/Forward 
-@onready var _page_label: Label = $NavBar/NavContent/PageIndicator 
+@onready var _back_btn: Button = $NavBar/NavContent/Back
+@onready var _forward_btn: Button = $NavBar/NavContent/Forward
+@onready var _page_label: Label = $NavBar/NavContent/PageIndicator
 @onready var _fade_overlay: ColorRect = $FadeOverlay
 
 var _slide_index: int = 0

@@ -115,42 +115,160 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BodySection2" type="MarginContainer" parent="ScrollContainer/Content" unique_id=490668537]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 12
 
 [node name="BodyVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection2" unique_id=1725463724]
 layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HeadingText" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=1044829371]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+bbcode_enabled = true
+text = "Every day, the American Commission on Werewolves strives to build a country where people can live free from fear and pursue their dreams without being hampered by propaganda, lies, and those who would place security over liberty."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="MissionMargin" type="MarginContainer" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=1873049221]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="MissionText" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/MissionMargin" unique_id=938204751]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "
+We are not a traditional think tank, but a beacon of boldness and truth. Our mission is to share accurate and balanced information, ensure the public is educated on the question of werewolves without needless fearmongering, and promote the freedom, values, and patriotism that form the foundation of our Human nation."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ColumnsSpacer" type="Control" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=384710239]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ColumnsRow" type="HBoxContainer" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=573920184]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="LeftColumn" type="VBoxContainer" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow" unique_id=209473821]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=2099461259]
+[node name="LeftHeader" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/LeftColumn" unique_id=847213904]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_font_sizes/font_size = 32
-text = "About us:"
-
-[node name="BodyText" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox" unique_id=752298120]
-custom_minimum_size = Vector2(0, 520)
-layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
-text = "Every day, the American Commission on Werewolves strives to build a country where people can live free from fear and pursue their dreams without being hampered by propaganda, lies, and those who would place security over liberty.
+text = "[center]We support this mission with a trifold approach:[/center]"
+fit_content = true
+scroll_active = false
 
-We are not a traditional think tank, but a beacon of boldness and truth.
+[node name="LeftItem1" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/LeftColumn" unique_id=302981745]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Education – Ensure the public and the next generation have the facts[/center]"
+fit_content = true
+scroll_active = false
 
-Our mission is to share accurate and balanced information, ensure the public is educated on the question of werewolves without needless fearmongering, and promote the freedom, values, and patriotism that form the foundation of our Human nation.
+[node name="LeftItem2" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/LeftColumn" unique_id=619284037]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Impact – Spread our important message in an effective, accessible, actionable way[/center]"
+fit_content = true
+scroll_active = false
 
-We support this mission with a trifold approach:
-	[b]1. Education[/b] - Ensure the public and the next generation have the facts
-	[b]2. Impact[/b]        - Spread our important message in an effective, accessible, actionable way
-	[b]3. Lobbying[/b]   - Work with government officials to ensure laws and policies support our aims and protect the citizens of America
+[node name="LeftItem3" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/LeftColumn" unique_id=475039182]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Lobbying – Work with government officials to ensure laws and policies support our aims and protect the citizens of America[/center]"
+fit_content = true
+scroll_active = false
 
-Please contact us at amcomwerewolves.org for information on:
-	- Employment
-	- Volunteer opportunities
-	- Donations
-	- Additional details on funding or organizational structure"
+[node name="RightColumn" type="VBoxContainer" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow" unique_id=750192834]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="RightHeader" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/RightColumn" unique_id=128473059]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "[center][b]Please contact us at[/b][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="RightSub" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/RightColumn" unique_id=693481027]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]amcomwerewolves.org for information on:[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="RightItem1" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/RightColumn" unique_id=384927150]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Employment[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="RightItem2" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/RightColumn" unique_id=847391025]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Volunteer opportunities[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="RightItem3" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/RightColumn" unique_id=192837465]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Donations[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="RightItem4" type="RichTextLabel" parent="ScrollContainer/Content/BodySection2/BodyVBox/ColumnsRow/RightColumn" unique_id=584930127]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Additional details on funding or organizational structure[/center]"
+fit_content = true
 scroll_active = false

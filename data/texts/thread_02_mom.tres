@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TextingThread" format=3 uid="uid://cl8d2qwt0pcvw"]
+
+[ext_resource type="Script" uid="uid://3ppo3a3lqwx1" path="res://core/texting_message.gd" id="1_0p7tl"]
+[ext_resource type="Texture2D" uid="uid://ch6gmkqyjssqr" path="res://assets/media/Source - Accurate Infographic.png" id="2_3gafx"]
+[ext_resource type="Script" uid="uid://b8mktl82mlh2k" path="res://core/texting_thread.gd" id="3_4encw"]
+
+[sub_resource type="Resource" id="Resource_mi6wm"]
+script = ExtResource("1_0p7tl")
+body = "Honey I'm worried about you, I saw on the news that Tri-Fang University is going through some sort of werwolf scare! Be safe. I love you, call me if you need anything."
+image = ExtResource("2_3gafx")
+trigger_progress = 0.4
+metadata/_custom_type_script = "uid://3ppo3a3lqwx1"
+
+[resource]
+script = ExtResource("3_4encw")
+contact_name = "Mom"
+avatar_initial = "M"
+avatar_color = Color(0.99999994, 0.15220758, 0.40994596, 1)
+messages = Array[ExtResource("1_0p7tl")]([SubResource("Resource_mi6wm")])

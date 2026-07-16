@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TextingThread" format=3 uid="uid://bbp05ojfu8baq"]
+
+[ext_resource type="Script" uid="uid://3ppo3a3lqwx1" path="res://core/texting_message.gd" id="1_1vp3n"]
+[ext_resource type="Texture2D" uid="uid://dhhysd37kwtga" path="res://assets/media/Source - Inaccurate Infographic.png" id="2_1vp3n"]
+[ext_resource type="Script" uid="uid://b8mktl82mlh2k" path="res://core/texting_thread.gd" id="3_sj014"]
+
+[sub_resource type="Resource" id="Msg1"]
+script = ExtResource("1_1vp3n")
+body = "hey dude hear about all that crazy werewolf stuff? im nervous, but i found a few resources that are making me feel a bit better. checkout the graphic and especially the NoWolves.org website!"
+image = ExtResource("2_1vp3n")
+trigger_progress = 0.02
+
+[resource]
+script = ExtResource("3_sj014")
+contact_name = "Dylan"
+avatar_initial = "D"
+avatar_color = Color(0.3309237, 0.00057660637, 0.91050315, 1)
+messages = Array[ExtResource("1_1vp3n")]([SubResource("Msg1")])

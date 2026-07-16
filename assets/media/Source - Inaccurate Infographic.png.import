@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hfln8e0e1ccg"
-path="res://.godot/imported/Source - Inaccurate Infographic - Needs final edit.png-a41507710d03995367ed35bb15ca7e43.ctex"
+uid="uid://dhhysd37kwtga"
+path="res://.godot/imported/Source - Inaccurate Infographic.png-e849400593d61aeb30479411ae3c928b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/media/Source - Inaccurate Infographic - Needs final edit.png"
-dest_files=["res://.godot/imported/Source - Inaccurate Infographic - Needs final edit.png-a41507710d03995367ed35bb15ca7e43.ctex"]
+source_file="res://assets/media/Source - Inaccurate Infographic.png"
+dest_files=["res://.godot/imported/Source - Inaccurate Infographic.png-e849400593d61aeb30479411ae3c928b.ctex"]
 
 [params]
 

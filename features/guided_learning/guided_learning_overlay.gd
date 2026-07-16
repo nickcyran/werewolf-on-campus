@@ -369,6 +369,7 @@ func _on_play_again() -> void:
 	PodcastPlayer.stop()
 	DayClock.reset()
 	GameManager.reset()
+	Texting.reset()
 	DayClock.start()
 	get_tree().change_scene_to_file("res://features/room/room.tscn")
 

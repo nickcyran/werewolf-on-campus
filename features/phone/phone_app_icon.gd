@@ -9,6 +9,8 @@ var _style_pressed := StyleBoxFlat.new()
 
 @onready var _icon_btn: Button = $VBox/IconButton
 @onready var _label: Label = $VBox/AppLabel
+@onready var _badge_panel: PanelContainer = %BadgePanel
+@onready var _badge_label: Label = %BadgeLabel
 
 
 func _ready() -> void:
@@ -34,3 +36,13 @@ func configure(icon_text: String, label_text: String, color: Color, target: Pack
 func _on_pressed() -> void:
 	if _target:
 		app_opened.emit(_target)
+
+
+func set_badge(count: int) -> void:
+	if not is_node_ready():
+		await ready
+	if count <= 0:
+		_badge_panel.visible = false
+	else:
+		_badge_panel.visible = true
+		_badge_label.text = str(count) if count <= 9 else "9+"

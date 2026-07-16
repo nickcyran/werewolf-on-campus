@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" path="res://features/phone/phone_app_icon.gd" id="1_icon"]
 
+[sub_resource type="StyleBoxFlat" id="sb_badge"]
+bg_color = Color(0.9, 0.2, 0.22, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
 [node name="PhoneAppIcon" type="Control"]
 custom_minimum_size = Vector2(160, 192)
 layout_mode = 2
@@ -25,10 +32,33 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 44
 text = "?"
 
+[node name="BadgePanel" type="PanelContainer" parent="VBox/IconButton"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = -8.0
+offset_right = 0.0
+offset_bottom = 26.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("sb_badge")
+
+[node name="BadgeLabel" type="Label" parent="VBox/IconButton/BadgePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AppLabel" type="Label" parent="VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.94, 1)
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 24
 text = "App"
 horizontal_alignment = 1
 text_overrun_behavior = 3

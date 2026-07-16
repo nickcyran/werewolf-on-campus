@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TextingThread" format=3 uid="uid://cl8d2qwt0pcvw"]
+
+[ext_resource type="Script" uid="uid://b8mktl82mlh2k" path="res://core/texting_thread.gd" id="1_thread"]
+[ext_resource type="Script" uid="uid://3ppo3a3lqwx1" path="res://core/texting_message.gd" id="2_msg"]
+
+[resource]
+script = ExtResource("1_thread")
+contact_name = "Unknown Number"
+avatar_initial = "?"
+avatar_color = Color(0.28, 0.28, 0.32, 1)

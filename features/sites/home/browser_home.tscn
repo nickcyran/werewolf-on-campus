@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/logos/SHOCKIFY logo.png" id="13_logo_sk"]
 [ext_resource type="Script" uid="uid://c2pq3spnwl7cy" path="res://features/sites/home/site_definition.gd" id="14_sd"]
 [ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="15_jmhblack"]
-[ext_resource type="Script" path="res://features/sites/home/browser_home_grid_bg.gd" id="16_gridbg"]
+[ext_resource type="Script" uid="uid://drkkgknwgg4ro" path="res://features/sites/home/browser_home_grid_bg.gd" id="16_gridbg"]
 
 [sub_resource type="Resource" id="1_site_nw"]
 script = ExtResource("14_sd")
@@ -59,18 +59,6 @@ scene = ExtResource("8_shockify")
 label = "Shockify"
 logo = ExtResource("13_logo_sk")
 
-[sub_resource type="StyleBoxFlat" id="sb_logo_circle"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.62, 0.24, 1)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
 [sub_resource type="StyleBoxFlat" id="sb_sources_card"]
 content_margin_left = 18.0
 content_margin_top = 8.0
@@ -93,7 +81,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.8, 0.62, 0.24, 0.5)
+border_color = Color(0.9882353, 0.8039216, 0.007843138, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -123,9 +111,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.4, 0.045, 0.085, 1)
+color = Color(0.82693505, 0.21231651, 0.27664554, 1)
 
-[node name="GridTexture" type="Control" parent="."]
+[node name="GridTexture" type="Control" parent="." unique_id=1312743084]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,37 +148,19 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 14
 
-[node name="LogoCircle" type="Panel" parent="PageMargin/PageVBox/HeaderRow/LogoTitleGroup" unique_id=1512727333]
-clip_contents = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("sb_logo_circle")
-
-[node name="CrestMargin" type="MarginContainer" parent="PageMargin/PageVBox/HeaderRow/LogoTitleGroup/LogoCircle" unique_id=958173552]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 9
-theme_override_constants/margin_top = 9
-theme_override_constants/margin_right = 9
-theme_override_constants/margin_bottom = 9
-
-[node name="Crest" type="TextureRect" parent="PageMargin/PageVBox/HeaderRow/LogoTitleGroup/LogoCircle/CrestMargin" unique_id=1552302401]
+[node name="Crest" type="TextureRect" parent="PageMargin/PageVBox/HeaderRow/LogoTitleGroup" unique_id=1552302401]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("12_k066q")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 4
 
 [node name="TitleLabel" type="Label" parent="PageMargin/PageVBox/HeaderRow/LogoTitleGroup" unique_id=2065233163]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.62, 0.24, 1)
+theme_override_colors/font_color = Color(0.99215686, 0.81960785, 0, 1)
 theme_override_fonts/font = ExtResource("15_jmhblack")
-theme_override_font_sizes/font_size = 34
+theme_override_font_sizes/font_size = 30
 text = "Tri-Search"
 vertical_alignment = 1
 

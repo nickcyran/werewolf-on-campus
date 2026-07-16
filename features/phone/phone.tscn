@@ -84,7 +84,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="StatusBar" type="PanelContainer" parent="PhoneContent"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StatusBarStyle")
 
@@ -101,14 +101,14 @@ theme_override_styles/normal = SubResource("BackBtnNormal")
 theme_override_styles/hover = SubResource("BackBtnHover")
 theme_override_styles/pressed = SubResource("BackBtnPressed")
 theme_override_colors/font_color = Color(0.38, 0.68, 1.0, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 44
 text = "‹"
 
 [node name="TimeLabel" type="Label" parent="PhoneContent/StatusBar/StatusBarHBox"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 text = "9:41"
 
 [node name="Spacer" type="Control" parent="PhoneContent/StatusBar/StatusBarHBox"]
@@ -119,14 +119,14 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 22
 text = "▂▄▆█"
 
 [node name="BatteryLabel" type="Label" parent="PhoneContent/StatusBar/StatusBarHBox"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 22
 text = "🔋"
 
 [node name="Content" type="Control" parent="PhoneContent"]

@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://bqkh6hns1kohv"]
 
-[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
+[ext_resource type="Script" path="res://features/sites/nowolves/nowolves.gd" id="1_site"]
 [ext_resource type="Texture2D" uid="uid://b1nn6dsbb7jel" path="res://assets/ad/AD1.png" id="2_uj000"]
 [ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="3_jmhblack"]
 [ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="4_jmhreg"]
 [ext_resource type="Texture2D" uid="uid://bo3ysexmratmm" path="res://assets/ad/Source - Ad Garlic Emporium.png" id="5_garlic"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_garlic"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Site" type="Control" unique_id=928239007]
 layout_mode = 3
@@ -203,20 +206,76 @@ texture = ExtResource("2_uj000")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AdTopMargin" type="MarginContainer" parent="ScrollContainer/Content" unique_id=625224772]
+[node name="GarlicAdPopup" type="Control" parent="." unique_id=625224772]
+unique_name_in_owner = true
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scrim" type="ColorRect" parent="GarlicAdPopup" unique_id=1179458282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0, 0, 0, 0.65)
+
+[node name="PopupPanel" type="PanelContainer" parent="GarlicAdPopup" unique_id=126984696]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.08
+anchor_right = 0.92
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_garlic")
+metadata/_edit_use_anchors_ = true
+
+[node name="Content" type="Control" parent="GarlicAdPopup/PopupPanel" unique_id=1150382904]
 layout_mode = 2
 
-[node name="AdTop" type="VBoxContainer" parent="ScrollContainer/Content/AdTopMargin" unique_id=1179458282]
-layout_mode = 2
-alignment = 1
-
-[node name="AdTopImage" type="CenterContainer" parent="ScrollContainer/Content/AdTopMargin/AdTop" unique_id=126984696]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/Content/AdTopMargin/AdTop/AdTopImage" unique_id=1150382904]
-custom_minimum_size = Vector2(526.27, 293.38)
-layout_mode = 2
+[node name="AdImage" type="TextureRect" parent="GarlicAdPopup/PopupPanel/Content" unique_id=1150382906]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_garlic")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="AdvertisementLabel" type="Label" parent="GarlicAdPopup/PopupPanel/Content" unique_id=1150382907]
+layout_mode = 1
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 170.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_fonts/font = ExtResource("4_jmhreg")
+theme_override_font_sizes/font_size = 13
+text = "Advertisement"
+
+[node name="CloseBtn" type="Button" parent="GarlicAdPopup" unique_id=1150382905]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+offset_left = -68.0
+offset_top = 24.0
+offset_right = -28.0
+offset_bottom = 64.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_jmhblack")
+theme_override_font_sizes/font_size = 22
+text = "×"
+metadata/_edit_use_anchors_ = true

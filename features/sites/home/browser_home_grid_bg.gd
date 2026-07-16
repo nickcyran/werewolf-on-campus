@@ -1,7 +1,7 @@
 extends Control
 
 const LINE_SPACING := 42.0
-const LINE_COLOR := Color(1, 1, 1, 0.035)
+const LINE_COLOR := Color(1, 1, 1, 0.135)
 
 
 func _ready() -> void:

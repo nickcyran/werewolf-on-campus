@@ -1,52 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4presannouncemail"]
+[gd_scene format=3 uid="uid://dyjs5bkwfgx6b"]
 
-[ext_resource type="Script" path="res://features/sites/email/letters/president_announcement_email.gd" id="1_script"]
-[ext_resource type="GradientTexture2D" uid="uid://c7presbannergrad" path="res://features/sites/email/letters/president_banner_gradient.tres" id="2_grad"]
+[ext_resource type="Script" uid="uid://b3e2rg215lnvt" path="res://features/sites/email/letters/president_announcement_email.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bfjjan5nnrmt0" path="res://features/sites/email/letters/president_banner_gradient.tres" id="2_grad"]
+[ext_resource type="Texture2D" uid="uid://bh2slt1wk4g4s" path="res://assets/logos/Trifang-crest.png" id="3_crest"]
 
-[node name="PresidentAnnouncementEmail" type="PanelContainer"]
-layout_mode = 2
+[node name="PresidentAnnouncementEmail" type="PanelContainer" unique_id=193216661]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 theme_type_variation = &"EmailReadingPaper"
 script = ExtResource("1_script")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1461500666]
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceStack"
 
-[node name="Meta" type="VBoxContainer" parent="VBox"]
+[node name="Meta" type="VBoxContainer" parent="VBox" unique_id=1590840184]
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceMetaVBox"
 
-[node name="FromLine" type="Label" parent="VBox/Meta"]
+[node name="FromLine" type="Label" parent="VBox/Meta" unique_id=703679858]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceMeta"
 
-[node name="SentLine" type="Label" parent="VBox/Meta"]
+[node name="SentLine" type="Label" parent="VBox/Meta" unique_id=47046517]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceMeta"
 
-[node name="ToLine" type="Label" parent="VBox/Meta"]
+[node name="ToLine" type="Label" parent="VBox/Meta" unique_id=1305452307]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceMeta"
 
-[node name="SubjectLine" type="Label" parent="VBox/Meta"]
+[node name="SubjectLine" type="Label" parent="VBox/Meta" unique_id=999623450]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceMeta"
 autowrap_mode = 3
 
-[node name="BannerSlot" type="Control" parent="VBox"]
-custom_minimum_size = Vector2(0, 96)
+[node name="BannerSlot" type="Control" parent="VBox" unique_id=2071794525]
+clip_contents = true
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_horizontal = 3
-clip_contents = true
 
-[node name="Gradient" type="TextureRect" parent="VBox/BannerSlot"]
+[node name="Gradient" type="TextureRect" parent="VBox/BannerSlot" unique_id=1192469129]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,64 +58,76 @@ texture = ExtResource("2_grad")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BannerOverlay" type="MarginContainer" parent="VBox/BannerSlot"]
+[node name="BannerOverlay" type="MarginContainer" parent="VBox/BannerSlot" unique_id=108527625]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 24
 mouse_filter = 2
 
-[node name="Center" type="CenterContainer" parent="VBox/BannerSlot/BannerOverlay"]
+[node name="Row" type="HBoxContainer" parent="VBox/BannerSlot/BannerOverlay" unique_id=1918684593]
 layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 0
 
-[node name="BannerRich" type="RichTextLabel" parent="VBox/BannerSlot/BannerOverlay/Center"]
+[node name="Logo" type="TextureRect" parent="VBox/BannerSlot/BannerOverlay/Row" unique_id=573345816]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_crest")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BannerRich" type="RichTextLabel" parent="VBox/BannerSlot/BannerOverlay/Row" unique_id=525366262]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 2
 theme_type_variation = &"EmailBannerRich"
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
 
-[node name="Headline" type="RichTextLabel" parent="VBox"]
+[node name="Headline" type="RichTextLabel" parent="VBox" unique_id=557190966]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceHeadline"
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
-autowrap_mode = 3
 
-[node name="BodyText" type="RichTextLabel" parent="VBox"]
+[node name="BodyText" type="RichTextLabel" parent="VBox" unique_id=1820935365]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"EmailAnnounceBody"
+theme_override_font_sizes/normal_font_size = 18
 fit_content = true
 scroll_active = false
-autowrap_mode = 3
 
-[node name="Footer" type="PanelContainer" parent="VBox"]
+[node name="Footer" type="PanelContainer" parent="VBox" unique_id=309043574]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"EmailAnnounceFooterPanel"
 
-[node name="FooterVBox" type="VBoxContainer" parent="VBox/Footer"]
+[node name="FooterVBox" type="VBoxContainer" parent="VBox/Footer" unique_id=1841424757]
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceFooterVBox"
 
-[node name="FooterLine1" type="Label" parent="VBox/Footer/FooterVBox"]
+[node name="FooterLine1" type="Label" parent="VBox/Footer/FooterVBox" unique_id=2128436688]
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceFooterText"
 text = "University hall Room 302, 1400 Westvile Avenue, Tri-fang, NY 12043"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="FooterLine2" type="Label" parent="VBox/Footer/FooterVBox"]
+[node name="FooterLine2" type="Label" parent="VBox/Footer/FooterVBox" unique_id=1557988259]
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceFooterText"
 text = "Phone: 518-956-8010 presmail@tri-fang.edu"

@@ -13,7 +13,7 @@ func apply_data(data: EmailData) -> void:
 	%Headline.text = "[center][b]%s[/b][/center]" % data.subject
 	%BodyText.text = data.body
 	%BannerRich.text = (
-		"[center][font_size=11]OFFICE OF THE PRESIDENT[/font_size]\n"
-		+ "[font_size=20][b]Dr. Robert J. Jones[/b][/font_size]\n"
-		+ "[font_size=13][i]President[/i][/font_size][/center]"
+		"[font_size=11]OFFICE OF THE PRESIDENT[/font_size]\n"
+		+ "[font_size=20][b]Dr. Chandra Hel Acheron[/b][/font_size]\n"
+		+ "[font_size=13][i]President[/i][/font_size]"
 	)

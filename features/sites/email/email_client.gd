@@ -41,7 +41,7 @@ func _make_sample_data() -> Array[EmailData]:
 		2,
 		"dbenso@tri-fang.edu",
 		"Breaking News: Campus Werewolf Apprehended",
-		"Dear campus community,\n\nThe campus werewolf has been identified and taken into custody, says university president Dr. Robert Jones. There is no need for students to worry. All is safe, and classes will resume as normal. Thank you for your cooperation during this time!",
+		"Dear campus community,\n\nThe campus werewolf has been identified and taken into custody, says university president Dr. Derek Hale. There is no need for students to worry. All is safe, and classes will resume as normal. Thank you for your cooperation during this time!",
 		"inbox",
 	)
 	president.sent_line = _sent_line_six_years_ago()

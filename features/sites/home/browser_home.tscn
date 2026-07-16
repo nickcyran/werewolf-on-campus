@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://jx04rrr7disu" path="res://features/sites/greendit/greendit.tscn" id="3_greendit"]
 [ext_resource type="PackedScene" uid="uid://cd1j70hcw1372" path="res://features/sites/email/EmailClient.tscn" id="4_email"]
 [ext_resource type="PackedScene" uid="uid://kgsdixpw20t6" path="res://features/sites/acww/acww_main.tscn" id="5_acww"]
-[ext_resource type="PackedScene" uid="uid://c7lsmvhqyxdfx" path="res://features/sites/channel29/channel29.tscn" id="6_ch29"]
+[ext_resource type="PackedScene" uid="uid://dxk3amp4h7q1w" path="res://features/sites/channel29/channel29_main.tscn" id="6_ch29"]
 [ext_resource type="PackedScene" uid="uid://c4ya7npfp4aot" path="res://features/sites/trifangnews/trifang_news.tscn" id="7_tfn"]
 [ext_resource type="PackedScene" uid="uid://dqt5k7rnx2p8c" path="res://features/sites/shockify/shockify.tscn" id="8_shockify"]
 [ext_resource type="Texture2D" uid="uid://bc4lqvpe3n3qb" path="res://assets/logos/CloudMail_logo.png" id="9_logo_cm"]

@@ -2,7 +2,7 @@ extends Site
 
 @export var professor_page: PackedScene
 
-@onready var _about_btn: Button = $ScrollContainer/Content/NavBar/NavLinks/AboutBtn
+@onready var _about_btn: Button = $ScrollContainer/Content/Header/HeaderMargin/HeaderRow/NavLinks/AboutBtn
 
 
 func _ready() -> void:

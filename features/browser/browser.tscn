@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cwpmhn0ngqhpn" path="res://features/sites/home/browser_home.tscn" id="2_vmb4q"]
 [ext_resource type="Theme" uid="uid://ds283i4swr252" path="res://features/browser/browser_theme.tres" id="3_theme"]
 
-[node name="Browser" type="Control" unique_id=97724406]
+[node name="Browser" type="Control" node_paths=PackedStringArray("new_tab_btn", "zoom_out_btn", "zoom_reset_btn", "zoom_in_btn") unique_id=97724406]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,10 @@ grow_vertical = 2
 theme = ExtResource("3_theme")
 script = ExtResource("1_vmb4q")
 home_page = ExtResource("2_vmb4q")
+new_tab_btn = NodePath("Browser Content/TabStrip/TabsHBox/NewTabBtn")
+zoom_out_btn = NodePath("Browser Content/NavBar/NavBarHBox/ZoomOutBtn")
+zoom_reset_btn = NodePath("Browser Content/NavBar/NavBarHBox/ZoomResetBtn")
+zoom_in_btn = NodePath("Browser Content/NavBar/NavBarHBox/ZoomInBtn")
 
 [node name="BG" type="ColorRect" parent="." unique_id=1874740100]
 layout_mode = 1
@@ -55,6 +59,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="NewTabBtn" type="Button" parent="Browser Content/TabStrip/TabsHBox" unique_id=1523698741]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_type_variation = &"NewTabButton"
+text = "+"
 
 [node name="NavBar" type="Control" parent="Browser Content" unique_id=252710286]
 custom_minimum_size = Vector2(0, 38)
@@ -111,11 +121,36 @@ theme_override_font_sizes/font_size = 12
 vertical_alignment = 1
 text_overrun_behavior = 3
 
+[node name="ZoomOutBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=1836274095]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Zoom out (Ctrl+-)"
+theme_type_variation = &"NavButton"
+text = "-"
+
+[node name="ZoomResetBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=649182730]
+custom_minimum_size = Vector2(48, 28)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Reset zoom (Ctrl+0)"
+theme_type_variation = &"NavButton"
+text = "100%"
+
+[node name="ZoomInBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=1097453816]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Zoom in (Ctrl+=)"
+theme_type_variation = &"NavButton"
+text = "+"
+
 [node name="ContentDivider" type="ColorRect" parent="Browser Content" unique_id=1928374651]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.05, 0.06, 0.08, 1)
 
 [node name="Site" type="Control" parent="Browser Content" unique_id=1084887329]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3

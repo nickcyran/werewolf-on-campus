@@ -3,6 +3,7 @@ extends Node
 signal state_changed(new_state: State)
 signal focus_entered(interactable: Node3D)
 signal source_visited(id: String, visited_count: int)
+signal werewolf_fact_toggled(index: int, checked: bool)
 
 enum State { PLAYING, FOCUSED, PAUSED, TIME_UP }
 
@@ -14,8 +15,9 @@ const SOURCE_IDS: Array[String] = [
 	"tricitypod", "bigwolfstar93", "infographic_accurate", "infographic_inaccurate",
 ]
 
-# Sources the player must visit before the browser home "Continue" unlocks.
-const EARLY_END_SOURCE_THRESHOLD := 6
+# Fraction of all sources the player must visit before the browser home
+# "Continue" unlocks.
+const EARLY_END_SOURCE_RATIO := 0.8
 
 var state: State = State.PLAYING:
 	set(value):
@@ -32,8 +34,13 @@ var werewolf_checklist := {}
 var sources_visited := {}
 
 
+func set_werewolf_fact(index: int, checked: bool) -> void:
+	werewolf_checklist[index] = checked
+	werewolf_fact_toggled.emit(index, checked)
+
+
 func mark_source_visited(id: String) -> void:
-	if not SOURCE_IDS.has(id):
+	if !SOURCE_IDS.has(id):
 		push_warning("Unknown source id: %s" % id)
 		return
 	if sources_visited.has(id):
@@ -50,8 +57,12 @@ func total_source_count() -> int:
 	return SOURCE_IDS.size()
 
 
+func early_end_source_threshold() -> int:
+	return ceili(SOURCE_IDS.size() * EARLY_END_SOURCE_RATIO)
+
+
 func can_end_day_early() -> bool:
-	return sources_visited.size() >= EARLY_END_SOURCE_THRESHOLD
+	return sources_visited.size() >= early_end_source_threshold()
 
 
 func request_focus(interactable: Node3D) -> void:

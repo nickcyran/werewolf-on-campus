@@ -37,7 +37,7 @@ func _ready() -> void:
 		_grid.add_child(tile)
 
 	_dest_count_label.text = "%d destinations" % sites.size()
-	_threshold_label.text = "Visit %d+ to end early" % GameManager.EARLY_END_SOURCE_THRESHOLD
+	_threshold_label.text = "Visit %d+ to end early" % GameManager.early_end_source_threshold()
 
 	_setup_continue_button()
 	_build_checklist()
@@ -45,6 +45,7 @@ func _ready() -> void:
 	_refresh_sources()
 
 	GameManager.source_visited.connect(_on_source_visited)
+	GameManager.werewolf_fact_toggled.connect(_on_fact_toggled)
 
 
 # -- sources visited / continue --------------------------------------------------
@@ -173,8 +174,11 @@ func _make_fact_row(index: int, fact_text: String) -> Control:
 
 
 func _toggle_fact(index: int) -> void:
-	var checked: bool = not GameManager.werewolf_checklist.get(index, false)
-	GameManager.werewolf_checklist[index] = checked
+	var checked: bool = !GameManager.werewolf_checklist.get(index, false)
+	GameManager.set_werewolf_fact(index, checked)
+
+
+func _on_fact_toggled(index: int, checked: bool) -> void:
 	_apply_fact_visual(index, checked)
 	_update_marked_tag()
 

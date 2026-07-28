@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqkh6hns1kohv"]
 
-[ext_resource type="Script" path="res://features/sites/nowolves/nowolves.gd" id="1_site"]
+[ext_resource type="Script" uid="uid://b1vc6qvnsavug" path="res://features/sites/nowolves/nowolves.gd" id="1_site"]
 [ext_resource type="Texture2D" uid="uid://b1nn6dsbb7jel" path="res://assets/ad/AD1.png" id="2_uj000"]
 [ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="3_jmhblack"]
 [ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="4_jmhreg"]
@@ -225,7 +225,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 color = Color(0, 0, 0, 0.65)
 
 [node name="PopupPanel" type="PanelContainer" parent="GarlicAdPopup" unique_id=126984696]
@@ -271,11 +270,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-grow_horizontal = 0
 offset_left = -68.0
 offset_top = 24.0
 offset_right = -28.0
 offset_bottom = 64.0
+grow_horizontal = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_jmhblack")
 theme_override_font_sizes/font_size = 22

@@ -3,11 +3,12 @@ extends Button
 
 signal navigate_requested(target: PackedScene)
 
-const TILE_RADIUS := 22
+const TILE_RADIUS := 12
 
 var _target: PackedScene
 
 @onready var _tile_panel: PanelContainer = %TilePanel
+@onready var _logo: TextureRect = %Logo
 @onready var _initials: Label = %Initials
 @onready var _title: Label = %Title
 
@@ -27,15 +28,20 @@ func configure(def: SiteDefinition) -> void:
 	if !is_node_ready():
 		await ready
 	_target = def.scene
+	var logo := def.get_logo()
+	_logo.texture = logo
+	_logo.visible = logo != null
+	_initials.visible = logo == null
 	_initials.text = def.icon
 	_title.text = def.label
 
+	var tile_color := def.get_tile_color()
 	var style := StyleBoxFlat.new()
-	style.bg_color = def.tile_color
+	style.bg_color = tile_color
 	style.set_corner_radius_all(TILE_RADIUS)
-	style.shadow_color = Color(def.tile_color, 0.33)
-	style.shadow_size = 8
-	style.shadow_offset = Vector2(0, 5)
+	style.shadow_color = Color(tile_color, 0.14)
+	style.shadow_size = 3
+	style.shadow_offset = Vector2(0, 2)
 	_tile_panel.add_theme_stylebox_override("panel", style)
 
 

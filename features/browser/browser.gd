@@ -172,6 +172,7 @@ func _find_tab_by_cluster(cluster: BrowserTabCluster) -> int:
 
 func _refresh_tab_title(tab: BrowserTab) -> void:
 	tab.cluster.tab_button.text = tab.get_title()
+	tab.cluster.tab_button.icon = tab.get_logo()
 
 
 func _refresh_tab_visuals() -> void:

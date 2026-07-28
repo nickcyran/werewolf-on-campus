@@ -21,6 +21,8 @@ size_flags_vertical = 3
 script = ExtResource("1_main")
 about_page_scene = ExtResource("2_about")
 site_name = "ACWW"
+site_logo = ExtResource("3_nfa04")
+tile_color = Color(0.2897148, 0.48058116, 0.33884826, 1)
 site_url = "www.amcomwolves.com/news/ualbany-werewolf-hysteria"
 source_id = "acww"
 

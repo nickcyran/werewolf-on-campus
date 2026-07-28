@@ -4,57 +4,57 @@
 [ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/logos/SHOCKIFY logo.png" id="2_logo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_episode"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
 bg_color = Color(0.12, 0.03, 0.2, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-content_margin_left = 12.0
-content_margin_top = 10.0
-content_margin_right = 12.0
-content_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_normal"]
-bg_color = Color(0.5, 0.0, 0.9, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_hover"]
-bg_color = Color(0.65, 0.15, 1.0, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_pressed"]
-bg_color = Color(0.4, 0.0, 0.75, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_normal"]
-bg_color = Color(0.5, 0.0, 0.9, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_hover"]
-bg_color = Color(0.65, 0.15, 1.0, 1)
+bg_color = Color(0.5, 0, 0.9, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_pressed"]
-bg_color = Color(0.4, 0.0, 0.75, 1)
+bg_color = Color(0.4, 0, 0.75, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_hover"]
+bg_color = Color(0.65, 0.15, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_normal"]
+bg_color = Color(0.5, 0, 0.9, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_pressed"]
+bg_color = Color(0.4, 0, 0.75, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_hover"]
+bg_color = Color(0.65, 0.15, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_bg"]
 bg_color = Color(0.22, 0.08, 0.38, 1)
@@ -64,20 +64,20 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_fill"]
-bg_color = Color(0.6, 0.1, 1.0, 1)
+bg_color = Color(0.6, 0.1, 1, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_fill_hl"]
-bg_color = Color(0.7, 0.2, 1.0, 1)
+bg_color = Color(0.7, 0.2, 1, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Shockify" type="Control"]
+[node name="Shockify" type="Control" unique_id=1009142513]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,9 +88,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_script")
 site_name = "Shockify"
-site_url = "shockify.fm/tricitycast"
+site_logo = ExtResource("2_logo")
+tile_color = Color(0.72920316, 0.65321064, 0.8515857, 1)
+site_url = "www.shockify.fm/tricitycast"
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=1718110263]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,7 +102,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.06, 0.02, 0.1, 1)
 
-[node name="Layout" type="VBoxContainer" parent="."]
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1550989638]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,11 +111,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Header" type="Control" parent="Layout"]
+[node name="Header" type="Control" parent="Layout" unique_id=907739436]
 custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
 
-[node name="HeaderBG" type="ColorRect" parent="Layout/Header"]
+[node name="HeaderBG" type="ColorRect" parent="Layout/Header" unique_id=1708680917]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,12 +123,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.06, 0.0, 0.12, 1)
+color = Color(0.06, 0, 0.12, 1)
 
-[node name="HeaderLine" type="ColorRect" parent="Layout/Header"]
+[node name="HeaderLine" type="ColorRect" parent="Layout/Header" unique_id=1203246527]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -136,12 +137,9 @@ grow_vertical = 0
 mouse_filter = 2
 color = Color(0.35, 0.1, 0.55, 1)
 
-[node name="LogoImage" type="TextureRect" parent="Layout/Header"]
+[node name="LogoImage" type="TextureRect" parent="Layout/Header" unique_id=1603613228]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 20.0
 offset_right = 200.0
@@ -152,153 +150,152 @@ texture = ExtResource("2_logo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MainScroll" type="ScrollContainer" parent="Layout"]
+[node name="MainScroll" type="ScrollContainer" parent="Layout" unique_id=1872080919]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="Content" type="VBoxContainer" parent="Layout/MainScroll"]
+[node name="Content" type="VBoxContainer" parent="Layout/MainScroll" unique_id=1639520865]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="ChannelBannerMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+[node name="ChannelBannerMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=462076952]
 layout_mode = 2
 theme_override_constants/margin_left = 36
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 36
 theme_override_constants/margin_bottom = 28
 
-[node name="ChannelBanner" type="HBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin"]
+[node name="ChannelBanner" type="HBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin" unique_id=849744811]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="ChannelThumb" type="ColorRect" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner"]
+[node name="ChannelThumb" type="ColorRect" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner" unique_id=383646862]
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 color = Color(0.3, 0.05, 0.55, 1)
 
-[node name="ThumbInitials" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelThumb"]
+[node name="ThumbInitials" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelThumb" unique_id=1880790291]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_colors/font_color = Color(0.85, 0.65, 1.0, 0.6)
+theme_override_colors/font_color = Color(0.85, 0.65, 1, 0.6)
 theme_override_font_sizes/font_size = 38
 text = "TC"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChannelInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner"]
+[node name="ChannelInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner" unique_id=1678591497]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="TypeLabel" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo"]
+[node name="TypeLabel" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo" unique_id=1661952280]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.5, 0.75, 1)
 theme_override_font_sizes/font_size = 11
 text = "PODCAST"
 
-[node name="ChannelName" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo"]
+[node name="ChannelName" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo" unique_id=685032345]
 layout_mode = 2
-theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 44
 text = "TriCityPod"
 
-[node name="ChannelDesc" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo"]
+[node name="ChannelDesc" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo" unique_id=170023270]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.68, 0.62, 0.75, 1)
 theme_override_font_sizes/font_size = 14
 text = "Your local tri-city campus podcast"
 
-[node name="DividerMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+[node name="DividerMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=124000058]
 layout_mode = 2
 theme_override_constants/margin_left = 36
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 36
 theme_override_constants/margin_bottom = 20
 
-[node name="Divider" type="ColorRect" parent="Layout/MainScroll/Content/DividerMargin"]
+[node name="Divider" type="ColorRect" parent="Layout/MainScroll/Content/DividerMargin" unique_id=1051023332]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.28, 0.1, 0.45, 1)
 
-[node name="EpisodesLabelMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+[node name="EpisodesLabelMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=203350738]
 layout_mode = 2
 theme_override_constants/margin_left = 36
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 36
 theme_override_constants/margin_bottom = 14
 
-[node name="EpisodesLabel" type="Label" parent="Layout/MainScroll/Content/EpisodesLabelMargin"]
+[node name="EpisodesLabel" type="Label" parent="Layout/MainScroll/Content/EpisodesLabelMargin" unique_id=261911671]
 layout_mode = 2
-theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 22
 text = "Episodes"
 
-[node name="EpisodeCardMargin" type="MarginContainer" parent="Layout/MainScroll/Content"]
+[node name="EpisodeCardMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=1358659818]
 layout_mode = 2
 theme_override_constants/margin_left = 36
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 36
 theme_override_constants/margin_bottom = 40
 
-[node name="EpisodePanel" type="PanelContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin"]
+[node name="EpisodePanel" type="PanelContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin" unique_id=28672394]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_episode")
 
-[node name="EpisodeRow" type="HBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel"]
+[node name="EpisodeRow" type="HBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel" unique_id=1658636588]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="EpisodeThumb" type="ColorRect" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow"]
+[node name="EpisodeThumb" type="ColorRect" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow" unique_id=280976532]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_vertical = 4
 color = Color(0.22, 0.05, 0.42, 1)
 
-[node name="EpisodeInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow"]
+[node name="EpisodeInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow" unique_id=780555492]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 4
 
-[node name="EpisodeTitle" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo"]
+[node name="EpisodeTitle" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo" unique_id=1370699807]
 layout_mode = 2
-theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 16
 text = "TriCityPod"
 
-[node name="EpisodeSub" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo"]
+[node name="EpisodeSub" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo" unique_id=1603890631]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.55, 0.68, 1)
 theme_override_font_sizes/font_size = 12
 text = "Campus news & culture"
 
-[node name="PlayBtn" type="Button" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow"]
+[node name="PlayBtn" type="Button" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow" unique_id=1979431657]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 36)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_playbig_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_playbig_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_playbig_pressed")
-theme_override_styles/focus = SubResource("StyleBoxFlat_playbig_normal")
-theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_playbig_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_playbig_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_playbig_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_playbig_normal")
 text = "Play"
 
-[node name="PlayerBar" type="Control" parent="Layout"]
+[node name="PlayerBar" type="Control" parent="Layout" unique_id=1039097379]
 custom_minimum_size = Vector2(0, 82)
 layout_mode = 2
 
-[node name="PlayerBG" type="ColorRect" parent="Layout/PlayerBar"]
+[node name="PlayerBG" type="ColorRect" parent="Layout/PlayerBar" unique_id=1463056973]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -306,22 +303,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.04, 0.0, 0.08, 1)
+color = Color(0.04, 0, 0.08, 1)
 
-[node name="TopLine" type="ColorRect" parent="Layout/PlayerBar"]
+[node name="TopLine" type="ColorRect" parent="Layout/PlayerBar" unique_id=639876455]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 offset_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 1
 mouse_filter = 2
 color = Color(0.32, 0.1, 0.5, 1)
 
-[node name="PlayerMargin" type="MarginContainer" parent="Layout/PlayerBar"]
+[node name="PlayerMargin" type="MarginContainer" parent="Layout/PlayerBar" unique_id=1859242062]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -333,73 +326,67 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 10
 
-[node name="PlayerContent" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin"]
+[node name="PlayerContent" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin" unique_id=1021355352]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="NowPlaying" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent"]
+[node name="NowPlaying" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=1227981393]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 2
 
-[node name="NowPlayingTitle" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying"]
+[node name="NowPlayingTitle" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying" unique_id=1820067180]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
-text = ""
 
-[node name="NowPlayingChannel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying"]
+[node name="NowPlayingChannel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying" unique_id=1382365364]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.58, 0.5, 0.68, 1)
 theme_override_font_sizes/font_size = 11
-text = ""
 
-[node name="Controls" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent"]
+[node name="Controls" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=310714738]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 6
 
-[node name="ControlRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls"]
+[node name="ControlRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls" unique_id=1198076828]
 layout_mode = 2
-alignment = 1
 theme_override_constants/separation = 0
+alignment = 1
 
-[node name="PlayPauseBtn" type="Button" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow"]
+[node name="PlayPauseBtn" type="Button" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=830329794]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 36)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_play_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_play_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_play_pressed")
-theme_override_styles/focus = SubResource("StyleBoxFlat_play_normal")
-theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_play_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_play_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_play_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_play_normal")
 text = "Play"
 
-[node name="Progress" type="HSlider" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls"]
+[node name="Progress" type="HSlider" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls" unique_id=447935728]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
-min_value = 0.0
-max_value = 1.0
-step = 0.001
-value = 0.0
-tick_count = 0
 theme_override_styles/slider = SubResource("StyleBoxFlat_prog_bg")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_prog_fill")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_prog_fill_hl")
+max_value = 1.0
+step = 0.001
 
-[node name="TimeLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent"]
+[node name="TimeLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=1291032434]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.6, 0.55, 0.7, 1)
 theme_override_font_sizes/font_size = 12
 text = "0:00"

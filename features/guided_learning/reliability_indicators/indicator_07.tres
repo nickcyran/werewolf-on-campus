@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="ReliabilityIndicator" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="ReliabilityIndicator" format=3 uid="uid://5wpswh5ir4lg"]
 
-[ext_resource type="Script" path="res://features/guided_learning/reliability_indicator.gd" id="1"]
+[ext_resource type="Script" uid="uid://cw7t8jfp8kc6v" path="res://features/guided_learning/reliability_indicator.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
 label = "Hyperbole or strong exaggeration"
-is_positive = false

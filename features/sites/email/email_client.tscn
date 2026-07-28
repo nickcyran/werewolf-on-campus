@@ -16,7 +16,9 @@ size_flags_vertical = 3
 theme = ExtResource("2_them")
 script = ExtResource("1")
 site_name = "CloudMail"
-site_url = "cloudmail.edu/inbox"
+site_logo = ExtResource("3_logo")
+tile_color = Color(0.71872723, 0.7838086, 0.9448531, 1)
+site_url = "www.cloudmail.com/inbox"
 source_id = "cloudmail"
 
 [node name="RootPanel" type="PanelContainer" parent="." unique_id=578218129]

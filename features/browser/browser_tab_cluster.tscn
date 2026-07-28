@@ -13,6 +13,9 @@ size_flags_vertical = 3
 clip_text = true
 text_overrun_behavior = 3
 theme_type_variation = &"TabInactive"
+theme_override_constants/icon_max_width = 28
+theme_override_constants/h_separation = 8
+alignment = 0
 text = "New Tab"
 
 [node name="CloseButton" type="Button" parent="."]

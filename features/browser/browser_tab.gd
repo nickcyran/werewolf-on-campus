@@ -57,6 +57,12 @@ func get_title() -> String:
 	return "New Tab"
 
 
+func get_logo() -> Texture2D:
+	if current_page is Site:
+		return (current_page as Site).site_logo
+	return null
+
+
 func get_url() -> String:
 	if current_page is Site:
 		return (current_page as Site).site_url

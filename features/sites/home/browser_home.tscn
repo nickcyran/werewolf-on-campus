@@ -12,56 +12,49 @@
 [ext_resource type="Script" uid="uid://c2pq3spnwl7cy" path="res://features/sites/home/site_definition.gd" id="10_sd"]
 [ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="11_jmhblack"]
 [ext_resource type="Script" uid="uid://drkkgknwgg4ro" path="res://features/sites/home/browser_home_grid_bg.gd" id="12_dotsbg"]
-[ext_resource type="Script" path="res://features/sites/home/source_ring.gd" id="13_ring"]
+[ext_resource type="Script" uid="uid://sb7vnjokbevp" path="res://features/sites/home/source_ring.gd" id="13_ring"]
 
 [sub_resource type="Resource" id="1_site_nw"]
 script = ExtResource("10_sd")
 scene = ExtResource("2_nw")
 label = "NoWolves"
 icon = "NW"
-tile_color = Color(0.419608, 0.486275, 1, 1)
 
 [sub_resource type="Resource" id="2_site_greendit"]
 script = ExtResource("10_sd")
 scene = ExtResource("3_greendit")
 label = "Greendit"
 icon = "GD"
-tile_color = Color(0.298039, 0.686275, 0.490196, 1)
 
 [sub_resource type="Resource" id="3_site_email"]
 script = ExtResource("10_sd")
 scene = ExtResource("4_email")
 label = "Cloudmail"
 icon = "CM"
-tile_color = Color(0.356863, 0.607843, 0.835294, 1)
 
 [sub_resource type="Resource" id="4_site_acww"]
 script = ExtResource("10_sd")
 scene = ExtResource("5_acww")
 label = "ACWW"
 icon = "AC"
-tile_color = Color(0.541176, 0.541176, 0.541176, 1)
 
 [sub_resource type="Resource" id="5_site_ch29"]
 script = ExtResource("10_sd")
 scene = ExtResource("6_ch29")
 label = "Channel 29"
 icon = "29"
-tile_color = Color(0.85098, 0.541176, 0.239216, 1)
 
 [sub_resource type="Resource" id="6_site_tfn"]
 script = ExtResource("10_sd")
 scene = ExtResource("7_tfn")
 label = "Trifang News"
 icon = "TF"
-tile_color = Color(0.227451, 0.227451, 0.227451, 1)
 
 [sub_resource type="Resource" id="7_site_shockify"]
 script = ExtResource("10_sd")
 scene = ExtResource("8_shockify")
 label = "Shockify"
 icon = "SF"
-tile_color = Color(0.788235, 0.270588, 0.478431, 1)
 
 [sub_resource type="StyleBoxFlat" id="sb_banner"]
 content_margin_left = 48.0
@@ -76,10 +69,10 @@ content_margin_top = 3.0
 content_margin_right = 9.0
 content_margin_bottom = 3.0
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="sb_stat_card"]
 content_margin_left = 20.0
@@ -97,6 +90,15 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxFlat" id="sb_tab"]
+content_margin_left = 12.0
+content_margin_top = 5.0
+content_margin_right = 12.0
+content_margin_bottom = 5.0
+bg_color = Color(0.615686, 0.392157, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+
 [sub_resource type="StyleBoxFlat" id="sb_panel_white"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 18
@@ -106,15 +108,6 @@ corner_radius_bottom_left = 18
 shadow_color = Color(0.117647, 0.098039, 0.176471, 0.1)
 shadow_size = 16
 shadow_offset = Vector2(0, 8)
-
-[sub_resource type="StyleBoxFlat" id="sb_tab"]
-content_margin_left = 12.0
-content_margin_top = 5.0
-content_margin_right = 12.0
-content_margin_bottom = 5.0
-bg_color = Color(0.615686, 0.392157, 0, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
 
 [sub_resource type="StyleBoxFlat" id="sb_tag"]
 content_margin_left = 11.0
@@ -127,7 +120,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="BrowserHome" type="Control"]
+[node name="BrowserHome" type="Control" unique_id=1424135586]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +134,7 @@ sites = Array[ExtResource("10_sd")]([SubResource("1_site_nw"), SubResource("2_si
 site_name = "Home"
 site_url = "www.tri-search.com"
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1956548905]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,7 +144,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.94902, 0.937255, 0.909804, 1)
 
-[node name="DotsTexture" type="Control" parent="."]
+[node name="DotsTexture" type="Control" parent="." unique_id=1157807733]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +154,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("12_dotsbg")
 
-[node name="Page" type="VBoxContainer" parent="."]
+[node name="Page" type="VBoxContainer" parent="." unique_id=516899186]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,81 +163,81 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Banner" type="PanelContainer" parent="Page"]
+[node name="Banner" type="PanelContainer" parent="Page" unique_id=1113432416]
 layout_mode = 2
 theme_override_styles/panel = SubResource("sb_banner")
 
-[node name="BannerRow" type="HBoxContainer" parent="Page/Banner"]
+[node name="BannerRow" type="HBoxContainer" parent="Page/Banner" unique_id=422736363]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="CrestGroup" type="HBoxContainer" parent="Page/Banner/BannerRow"]
+[node name="CrestGroup" type="HBoxContainer" parent="Page/Banner/BannerRow" unique_id=546306356]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 18
 
-[node name="Crest" type="TextureRect" parent="Page/Banner/BannerRow/CrestGroup"]
+[node name="Crest" type="TextureRect" parent="Page/Banner/BannerRow/CrestGroup" unique_id=1633129062]
+texture_filter = 4
 custom_minimum_size = Vector2(92, 92)
 layout_mode = 2
 mouse_filter = 2
-texture_filter = 4
 texture = ExtResource("9_crest")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TitleVBox" type="VBoxContainer" parent="Page/Banner/BannerRow/CrestGroup"]
+[node name="TitleVBox" type="VBoxContainer" parent="Page/Banner/BannerRow/CrestGroup" unique_id=1484126210]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 5
 
-[node name="PillRow" type="HBoxContainer" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox"]
+[node name="PillRow" type="HBoxContainer" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox" unique_id=959343839]
 layout_mode = 2
 
-[node name="Pill" type="PanelContainer" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox/PillRow"]
+[node name="Pill" type="PanelContainer" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox/PillRow" unique_id=1841569472]
 layout_mode = 2
 theme_override_styles/panel = SubResource("sb_pill")
 
-[node name="PillLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox/PillRow/Pill"]
+[node name="PillLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox/PillRow/Pill" unique_id=944079988]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.615686, 0.392157, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "FIELD TERMINAL"
+text = "Tri-Fang University Browser"
 
-[node name="TitleLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox"]
+[node name="TitleLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox" unique_id=127071631]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_jmhblack")
 theme_override_font_sizes/font_size = 34
 text = "Tri-Search"
 
-[node name="SubLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox"]
+[node name="SubLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox" unique_id=1635121574]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.764706, 0.839216, 1)
 theme_override_font_sizes/font_size = 13
-text = "Trusted answers for hunters and skeptics alike."
+text = "Student browsing made easy."
 
-[node name="BannerSpacer" type="Control" parent="Page/Banner/BannerRow"]
+[node name="BannerSpacer" type="Control" parent="Page/Banner/BannerRow" unique_id=641787197]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="StatCard" type="PanelContainer" parent="Page/Banner/BannerRow"]
+[node name="StatCard" type="PanelContainer" parent="Page/Banner/BannerRow" unique_id=74151760]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("sb_stat_card")
 
-[node name="StatHBox" type="HBoxContainer" parent="Page/Banner/BannerRow/StatCard"]
+[node name="StatHBox" type="HBoxContainer" parent="Page/Banner/BannerRow/StatCard" unique_id=1631679069]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="SourceRing" type="Control" parent="Page/Banner/BannerRow/StatCard/StatHBox"]
+[node name="SourceRing" type="Control" parent="Page/Banner/BannerRow/StatCard/StatHBox" unique_id=557825668]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("13_ring")
 
-[node name="RingLabel" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/SourceRing"]
+[node name="RingLabel" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/SourceRing" unique_id=42760904]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -252,32 +245,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 text = "0/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StatText" type="VBoxContainer" parent="Page/Banner/BannerRow/StatCard/StatHBox"]
+[node name="StatText" type="VBoxContainer" parent="Page/Banner/BannerRow/StatCard/StatHBox" unique_id=50383033]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 4
 
-[node name="StatTitle" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/StatText"]
+[node name="StatTitle" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/StatText" unique_id=667803764]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.764706, 0.839216, 1)
 theme_override_font_sizes/font_size = 11
 text = "SOURCES VISITED"
 
-[node name="ThresholdLabel" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/StatText"]
+[node name="ThresholdLabel" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/StatText" unique_id=2138982321]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.560784, 0.541176, 0.619608, 1)
 theme_override_font_sizes/font_size = 12
 text = "Visit 6+ to end early"
 
-[node name="ContinueBtn" type="Button" parent="Page/Banner/BannerRow"]
+[node name="ContinueBtn" type="Button" parent="Page/Banner/BannerRow" unique_id=2025985821]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -285,7 +277,7 @@ theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Continue"
 
-[node name="ContentMargin" type="MarginContainer" parent="Page"]
+[node name="ContentMargin" type="MarginContainer" parent="Page" unique_id=1088441721]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 40
@@ -293,136 +285,136 @@ theme_override_constants/margin_top = -18
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 36
 
-[node name="PanelsRow" type="HBoxContainer" parent="Page/ContentMargin"]
+[node name="PanelsRow" type="HBoxContainer" parent="Page/ContentMargin" unique_id=647921989]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="SitesColumn" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow"]
+[node name="SitesColumn" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow" unique_id=2087037579]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 theme_override_constants/separation = 0
 
-[node name="SitesTabRow" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn"]
+[node name="SitesTabRow" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn" unique_id=349550400]
 layout_mode = 2
 
-[node name="TabPad" type="Control" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow"]
+[node name="TabPad" type="Control" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow" unique_id=419732300]
 custom_minimum_size = Vector2(34, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="SitesTab" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow"]
+[node name="SitesTab" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow" unique_id=1788199533]
 layout_mode = 2
 theme_override_styles/panel = SubResource("sb_tab")
 
-[node name="SitesTabLabel" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow/SitesTab"]
+[node name="SitesTabLabel" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow/SitesTab" unique_id=1059382644]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "WEBSITES DIRECTORY"
 
-[node name="SitesPanel" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn"]
+[node name="SitesPanel" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn" unique_id=557338546]
 layout_mode = 2
 theme_override_styles/panel = SubResource("sb_panel_white")
 
-[node name="SitesMargin" type="MarginContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel"]
+[node name="SitesMargin" type="MarginContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel" unique_id=1762959028]
 layout_mode = 2
 theme_override_constants/margin_left = 34
 theme_override_constants/margin_top = 26
 theme_override_constants/margin_right = 34
 theme_override_constants/margin_bottom = 30
 
-[node name="SitesVBox" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin"]
+[node name="SitesVBox" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin" unique_id=1954723387]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="SitesHead" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox"]
+[node name="SitesHead" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox" unique_id=1110742330]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="SitesHeadText" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead"]
+[node name="SitesHeadText" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead" unique_id=555002898]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="SitesTitle" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/SitesHeadText"]
+[node name="SitesTitle" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/SitesHeadText" unique_id=2110460824]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.14902, 0.141176, 0.121569, 1)
 theme_override_fonts/font = ExtResource("11_jmhblack")
 theme_override_font_sizes/font_size = 21
 text = "Where would you like to go?"
 
-[node name="SitesSub" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/SitesHeadText"]
+[node name="SitesSub" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/SitesHeadText" unique_id=385208758]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.607843, 0.584314, 0.521569, 1)
 theme_override_font_sizes/font_size = 13
 text = "Select a site to browse"
 
-[node name="DestTag" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead"]
+[node name="DestTag" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead" unique_id=1318306908]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("sb_tag")
 
-[node name="DestCountLabel" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/DestTag"]
+[node name="DestCountLabel" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/DestTag" unique_id=895093059]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.615686, 0.392157, 0, 1)
 theme_override_font_sizes/font_size = 11
 text = "7 destinations"
 
-[node name="Grid" type="GridContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox"]
+[node name="Grid" type="GridContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox" unique_id=2048557817]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 14
 theme_override_constants/v_separation = 14
 columns = 4
 
-[node name="FactsColumn" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow"]
+[node name="FactsColumn" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow" unique_id=1061005139]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="FactsTabRow" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn"]
+[node name="FactsTabRow" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn" unique_id=1827634296]
 layout_mode = 2
 
-[node name="TabPad" type="Control" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow"]
+[node name="TabPad" type="Control" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow" unique_id=2003189146]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="FactsTab" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow"]
+[node name="FactsTab" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow" unique_id=1543216923]
 layout_mode = 2
 theme_override_styles/panel = SubResource("sb_tab")
 
-[node name="FactsTabLabel" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow/FactsTab"]
+[node name="FactsTabLabel" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow/FactsTab" unique_id=1682055833]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "CASE FILE"
 
-[node name="FactsPanel" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn"]
+[node name="FactsPanel" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn" unique_id=1717824716]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("sb_panel_white")
 
-[node name="FactsMargin" type="MarginContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel"]
+[node name="FactsMargin" type="MarginContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel" unique_id=645950758]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 26
 
-[node name="FactsVBox" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin"]
+[node name="FactsVBox" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin" unique_id=199542591]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="FactsHead" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
+[node name="FactsHead" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox" unique_id=2044892187]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="FactsTitle" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead"]
+[node name="FactsTitle" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead" unique_id=343772906]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.14902, 0.141176, 0.121569, 1)
@@ -430,37 +422,37 @@ theme_override_fonts/font = ExtResource("11_jmhblack")
 theme_override_font_sizes/font_size = 18
 text = "Werewolf Fact Checker"
 
-[node name="MarkedTag" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead"]
+[node name="MarkedTag" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead" unique_id=1087380990]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("sb_tag")
 
-[node name="MarkedLabel" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead/MarkedTag"]
+[node name="MarkedLabel" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead/MarkedTag" unique_id=1249261065]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.615686, 0.392157, 0, 1)
 theme_override_font_sizes/font_size = 11
 text = "0/8 marked"
 
-[node name="FactsDesc" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
+[node name="FactsDesc" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox" unique_id=809793162]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.607843, 0.584314, 0.521569, 1)
 theme_override_font_sizes/font_size = 12
 text = "Check off the facts you believe are true about werewolves."
 autowrap_mode = 2
 
-[node name="FactsSpacer" type="Control" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
+[node name="FactsSpacer" type="Control" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox" unique_id=907172557]
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ChecklistScroll" type="ScrollContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
+[node name="ChecklistScroll" type="ScrollContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox" unique_id=36291653]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="ChecklistItems" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/ChecklistScroll"]
+[node name="ChecklistItems" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/ChecklistScroll" unique_id=299466067]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

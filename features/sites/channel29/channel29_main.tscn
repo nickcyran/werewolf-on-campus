@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bqf82jmxk4h0w" path="res://features/sites/channel29/channel29_main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://byak3m7q2wf5t" path="res://features/sites/channel29/channel29_about.tscn" id="2_about"]
 [ext_resource type="Texture2D" uid="uid://gr3lfro17hif" path="res://assets/mockups/Curved text of Channel 29 News logo.png" id="3_badge"]
+[ext_resource type="Texture2D" uid="uid://cps3w2rwwa4oo" path="res://assets/logos/channel29_badge.png" id="3_jgpmm"]
 
 [sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
 bg_color = Color(0, 0, 0, 0)
@@ -29,6 +30,8 @@ size_flags_vertical = 3
 script = ExtResource("1_main")
 about_page_scene = ExtResource("2_about")
 site_name = "Channel 29"
+site_logo = ExtResource("3_jgpmm")
+tile_color = Color(0.12767279, 0.12142048, 0.17403752, 1)
 site_url = "www.channel29news.com/news/werewolf-on-campus"
 source_id = "channel29"
 

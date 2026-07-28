@@ -13,7 +13,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_site")
-site_name = "About ACWW"
+site_name = "ACWW - About"
+site_logo = ExtResource("2_pvetf")
 site_url = "www.amcomwolves.com/about"
 
 [node name="BG" type="ColorRect" parent="." unique_id=54266056]

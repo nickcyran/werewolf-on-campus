@@ -6,8 +6,45 @@
 [ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="4_jmhreg"]
 [ext_resource type="Texture2D" uid="uid://bo3ysexmratmm" path="res://assets/ad/Source - Ad Garlic Emporium.png" id="5_garlic"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_garlic"]
+[sub_resource type="StyleBoxFlat" id="GarlicCard"]
 bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.22)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="GarlicCloseNormal"]
+bg_color = Color(0.17, 0.17, 0.17, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="GarlicCloseHover"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
 
 [node name="Site" type="Control" unique_id=928239007]
 layout_mode = 3
@@ -20,7 +57,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_site")
 site_name = "NoWolves"
-site_url = "www.nowolves.news/articles/signs-of-a-werewolf"
+site_url = "www.Nowolves.org/articles/signs-of-a-werewolf"
 source_id = "nowolves"
 
 [node name="BG" type="ColorRect" parent="." unique_id=197703289]
@@ -225,58 +262,93 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.65)
+color = Color(0, 0, 0, 0.55)
 
-[node name="PopupPanel" type="PanelContainer" parent="GarlicAdPopup" unique_id=126984696]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.08
-anchor_top = 0.08
-anchor_right = 0.92
-anchor_bottom = 0.92
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_garlic")
-metadata/_edit_use_anchors_ = true
-
-[node name="Content" type="Control" parent="GarlicAdPopup/PopupPanel" unique_id=1150382904]
-layout_mode = 2
-
-[node name="AdImage" type="TextureRect" parent="GarlicAdPopup/PopupPanel/Content" unique_id=1150382906]
+[node name="Center" type="CenterContainer" parent="GarlicAdPopup"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="GarlicAdPopup/Center"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("GarlicCard")
+
+[node name="CardVBox" type="VBoxContainer" parent="GarlicAdPopup/Center/Card"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HeaderMargin" type="MarginContainer" parent="GarlicAdPopup/Center/Card/CardVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
+
+[node name="HeaderHBox" type="HBoxContainer" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin"]
+layout_mode = 2
+
+[node name="AdvertLabel" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_fonts/font = ExtResource("4_jmhreg")
+theme_override_font_sizes/font_size = 11
+text = "ADVERTISEMENT"
+vertical_alignment = 1
+
+[node name="HeaderSpacer" type="Control" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SponsoredLabel" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.73, 0.73, 0.73, 1)
+theme_override_fonts/font = ExtResource("4_jmhreg")
+theme_override_font_sizes/font_size = 10
+text = "Sponsored"
+vertical_alignment = 1
+
+[node name="HeaderRule" type="ColorRect" parent="GarlicAdPopup/Center/Card/CardVBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.898, 0.898, 0.898, 1)
+
+[node name="ImageMargin" type="MarginContainer" parent="GarlicAdPopup/Center/Card/CardVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="AdImage" type="TextureRect" parent="GarlicAdPopup/Center/Card/CardVBox/ImageMargin" unique_id=1150382906]
+custom_minimum_size = Vector2(680, 459)
+layout_mode = 2
 texture = ExtResource("5_garlic")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AdvertisementLabel" type="Label" parent="GarlicAdPopup/PopupPanel/Content" unique_id=1150382907]
-layout_mode = 1
-offset_left = 14.0
-offset_top = 10.0
-offset_right = 170.0
-offset_bottom = 30.0
-theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
-theme_override_fonts/font = ExtResource("4_jmhreg")
-theme_override_font_sizes/font_size = 13
-text = "Advertisement"
+[node name="CloseWrap" type="MarginContainer" parent="GarlicAdPopup/Center/Card"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = -12
+theme_override_constants/margin_right = -12
+theme_override_constants/margin_bottom = 0
 
-[node name="CloseBtn" type="Button" parent="GarlicAdPopup" unique_id=1150382905]
+[node name="CloseBtn" type="Button" parent="GarlicAdPopup/Center/Card/CloseWrap" unique_id=1150382905]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -68.0
-offset_top = 24.0
-offset_right = -28.0
-offset_bottom = 64.0
-grow_horizontal = 0
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_jmhblack")
-theme_override_font_sizes/font_size = 22
-text = "×"
-metadata/_edit_use_anchors_ = true
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("GarlicCloseNormal")
+theme_override_styles/hover = SubResource("GarlicCloseHover")
+theme_override_styles/pressed = SubResource("GarlicCloseHover")
+text = "✕"

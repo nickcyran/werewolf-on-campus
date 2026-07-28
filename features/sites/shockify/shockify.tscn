@@ -87,7 +87,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_script")
-site_title = "shockify.fm/tricitycast"
+site_name = "Shockify"
+site_url = "shockify.fm/tricitycast"
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1

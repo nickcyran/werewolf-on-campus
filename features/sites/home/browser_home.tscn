@@ -3,94 +3,131 @@
 [ext_resource type="Script" uid="uid://degg7qsgmghtb" path="res://features/sites/home/browser_home.gd" id="1_home"]
 [ext_resource type="PackedScene" uid="uid://bqkh6hns1kohv" path="res://features/sites/nowolves/nowolves.tscn" id="2_nw"]
 [ext_resource type="PackedScene" uid="uid://jx04rrr7disu" path="res://features/sites/greendit/greendit.tscn" id="3_greendit"]
-[ext_resource type="PackedScene" uid="uid://cd1j70hcw1372" path="res://features/sites/email/EmailClient.tscn" id="4_email"]
+[ext_resource type="PackedScene" uid="uid://cd1j70hcw1372" path="res://features/sites/email/email_client.tscn" id="4_email"]
 [ext_resource type="PackedScene" uid="uid://kgsdixpw20t6" path="res://features/sites/acww/acww_main.tscn" id="5_acww"]
 [ext_resource type="PackedScene" uid="uid://dxk3amp4h7q1w" path="res://features/sites/channel29/channel29_main.tscn" id="6_ch29"]
 [ext_resource type="PackedScene" uid="uid://c4ya7npfp4aot" path="res://features/sites/trifangnews/trifang_news.tscn" id="7_tfn"]
 [ext_resource type="PackedScene" uid="uid://dqt5k7rnx2p8c" path="res://features/sites/shockify/shockify.tscn" id="8_shockify"]
-[ext_resource type="Texture2D" uid="uid://bc4lqvpe3n3qb" path="res://assets/logos/CloudMail_logo.png" id="9_logo_cm"]
-[ext_resource type="Texture2D" uid="uid://uh7v0v0flufl" path="res://assets/logos/ACWW.png" id="10_logo_acww"]
-[ext_resource type="Texture2D" uid="uid://gr3lfro17hif" path="res://assets/mockups/Curved text of Channel 29 News logo.png" id="11_6ly25"]
-[ext_resource type="Texture2D" uid="uid://bh2slt1wk4g4s" path="res://assets/logos/Trifang-crest.png" id="12_k066q"]
-[ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/logos/SHOCKIFY logo.png" id="13_logo_sk"]
-[ext_resource type="Script" uid="uid://c2pq3spnwl7cy" path="res://features/sites/home/site_definition.gd" id="14_sd"]
-[ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="15_jmhblack"]
-[ext_resource type="Script" uid="uid://drkkgknwgg4ro" path="res://features/sites/home/browser_home_grid_bg.gd" id="16_gridbg"]
+[ext_resource type="Texture2D" uid="uid://bh2slt1wk4g4s" path="res://assets/logos/Trifang-crest.png" id="9_crest"]
+[ext_resource type="Script" uid="uid://c2pq3spnwl7cy" path="res://features/sites/home/site_definition.gd" id="10_sd"]
+[ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="11_jmhblack"]
+[ext_resource type="Script" uid="uid://drkkgknwgg4ro" path="res://features/sites/home/browser_home_grid_bg.gd" id="12_dotsbg"]
+[ext_resource type="Script" path="res://features/sites/home/source_ring.gd" id="13_ring"]
 
 [sub_resource type="Resource" id="1_site_nw"]
-script = ExtResource("14_sd")
+script = ExtResource("10_sd")
 scene = ExtResource("2_nw")
 label = "NoWolves"
 icon = "NW"
+tile_color = Color(0.419608, 0.486275, 1, 1)
 
 [sub_resource type="Resource" id="2_site_greendit"]
-script = ExtResource("14_sd")
+script = ExtResource("10_sd")
 scene = ExtResource("3_greendit")
 label = "Greendit"
 icon = "GD"
+tile_color = Color(0.298039, 0.686275, 0.490196, 1)
 
 [sub_resource type="Resource" id="3_site_email"]
-script = ExtResource("14_sd")
+script = ExtResource("10_sd")
 scene = ExtResource("4_email")
 label = "Cloudmail"
-logo = ExtResource("9_logo_cm")
+icon = "CM"
+tile_color = Color(0.356863, 0.607843, 0.835294, 1)
 
 [sub_resource type="Resource" id="4_site_acww"]
-script = ExtResource("14_sd")
+script = ExtResource("10_sd")
 scene = ExtResource("5_acww")
 label = "ACWW"
-logo = ExtResource("10_logo_acww")
+icon = "AC"
+tile_color = Color(0.541176, 0.541176, 0.541176, 1)
 
 [sub_resource type="Resource" id="5_site_ch29"]
-script = ExtResource("14_sd")
+script = ExtResource("10_sd")
 scene = ExtResource("6_ch29")
 label = "Channel 29"
-logo = ExtResource("11_6ly25")
+icon = "29"
+tile_color = Color(0.85098, 0.541176, 0.239216, 1)
 
 [sub_resource type="Resource" id="6_site_tfn"]
-script = ExtResource("14_sd")
+script = ExtResource("10_sd")
 scene = ExtResource("7_tfn")
 label = "Trifang News"
-logo = ExtResource("12_k066q")
+icon = "TF"
+tile_color = Color(0.227451, 0.227451, 0.227451, 1)
 
 [sub_resource type="Resource" id="7_site_shockify"]
-script = ExtResource("14_sd")
+script = ExtResource("10_sd")
 scene = ExtResource("8_shockify")
 label = "Shockify"
-logo = ExtResource("13_logo_sk")
+icon = "SF"
+tile_color = Color(0.788235, 0.270588, 0.478431, 1)
 
-[sub_resource type="StyleBoxFlat" id="sb_sources_card"]
-content_margin_left = 18.0
-content_margin_top = 8.0
-content_margin_right = 18.0
-content_margin_bottom = 8.0
+[sub_resource type="StyleBoxFlat" id="sb_banner"]
+content_margin_left = 48.0
+content_margin_top = 22.0
+content_margin_right = 48.0
+content_margin_bottom = 28.0
+bg_color = Color(0.12549, 0.121569, 0.168627, 1)
+
+[sub_resource type="StyleBoxFlat" id="sb_pill"]
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 3.0
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0.62, 0.24, 0.85)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="sb_dashboard_card"]
+[sub_resource type="StyleBoxFlat" id="sb_stat_card"]
+content_margin_left = 20.0
+content_margin_top = 12.0
+content_margin_right = 20.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 0.1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.18)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="sb_panel_white"]
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.9882353, 0.8039216, 0.007843138, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-shadow_color = Color(0, 0, 0, 0.22)
-shadow_size = 14
-shadow_offset = Vector2(0, 5)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0.117647, 0.098039, 0.176471, 0.1)
+shadow_size = 16
+shadow_offset = Vector2(0, 8)
 
-[node name="BrowserHome" type="Control" unique_id=1913955789]
+[sub_resource type="StyleBoxFlat" id="sb_tab"]
+content_margin_left = 12.0
+content_margin_top = 5.0
+content_margin_right = 12.0
+content_margin_bottom = 5.0
+bg_color = Color(0.615686, 0.392157, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+
+[sub_resource type="StyleBoxFlat" id="sb_tag"]
+content_margin_left = 11.0
+content_margin_top = 5.0
+content_margin_right = 11.0
+content_margin_bottom = 5.0
+bg_color = Color(0.615686, 0.392157, 0, 0.08)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="BrowserHome" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,10 +137,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_home")
-sites = Array[ExtResource("14_sd")]([SubResource("1_site_nw"), SubResource("2_site_greendit"), SubResource("3_site_email"), SubResource("4_site_acww"), SubResource("5_site_ch29"), SubResource("6_site_tfn"), SubResource("7_site_shockify")])
-site_title = "Home"
+sites = Array[ExtResource("10_sd")]([SubResource("1_site_nw"), SubResource("2_site_greendit"), SubResource("3_site_email"), SubResource("4_site_acww"), SubResource("5_site_ch29"), SubResource("6_site_tfn"), SubResource("7_site_shockify")])
+site_name = "Home"
+site_url = "www.tri-search.com"
 
-[node name="Background" type="ColorRect" parent="." unique_id=480897715]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,9 +149,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.82693505, 0.21231651, 0.27664554, 1)
+color = Color(0.94902, 0.937255, 0.909804, 1)
 
-[node name="GridTexture" type="Control" parent="." unique_id=1312743084]
+[node name="DotsTexture" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,175 +159,309 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("16_gridbg")
+script = ExtResource("12_dotsbg")
 
-[node name="PageMargin" type="MarginContainer" parent="." unique_id=1609777907]
+[node name="Page" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 28
+theme_override_constants/separation = 0
 
-[node name="PageVBox" type="VBoxContainer" parent="PageMargin" unique_id=1797733394]
+[node name="Banner" type="PanelContainer" parent="Page"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("sb_banner")
+
+[node name="BannerRow" type="HBoxContainer" parent="Page/Banner"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="CrestGroup" type="HBoxContainer" parent="Page/Banner/BannerRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 18
+
+[node name="Crest" type="TextureRect" parent="Page/Banner/BannerRow/CrestGroup"]
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+mouse_filter = 2
+texture_filter = 4
+texture = ExtResource("9_crest")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleVBox" type="VBoxContainer" parent="Page/Banner/BannerRow/CrestGroup"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="PillRow" type="HBoxContainer" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox"]
+layout_mode = 2
+
+[node name="Pill" type="PanelContainer" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox/PillRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("sb_pill")
+
+[node name="PillLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox/PillRow/Pill"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.615686, 0.392157, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "FIELD TERMINAL"
+
+[node name="TitleLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_jmhblack")
+theme_override_font_sizes/font_size = 34
+text = "Tri-Search"
+
+[node name="SubLabel" type="Label" parent="Page/Banner/BannerRow/CrestGroup/TitleVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.780392, 0.764706, 0.839216, 1)
+theme_override_font_sizes/font_size = 13
+text = "Trusted answers for hunters and skeptics alike."
+
+[node name="BannerSpacer" type="Control" parent="Page/Banner/BannerRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="StatCard" type="PanelContainer" parent="Page/Banner/BannerRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("sb_stat_card")
+
+[node name="StatHBox" type="HBoxContainer" parent="Page/Banner/BannerRow/StatCard"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SourceRing" type="Control" parent="Page/Banner/BannerRow/StatCard/StatHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("13_ring")
+
+[node name="RingLabel" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/SourceRing"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "0/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatText" type="VBoxContainer" parent="Page/Banner/BannerRow/StatCard/StatHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="StatTitle" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/StatText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.780392, 0.764706, 0.839216, 1)
+theme_override_font_sizes/font_size = 11
+text = "SOURCES VISITED"
+
+[node name="ThresholdLabel" type="Label" parent="Page/Banner/BannerRow/StatCard/StatHBox/StatText"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.560784, 0.541176, 0.619608, 1)
+theme_override_font_sizes/font_size = 12
+text = "Visit 6+ to end early"
+
+[node name="ContinueBtn" type="Button" parent="Page/Banner/BannerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 13
+disabled = true
+text = "Continue"
+
+[node name="ContentMargin" type="MarginContainer" parent="Page"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = -18
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 36
+
+[node name="PanelsRow" type="HBoxContainer" parent="Page/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="SitesColumn" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/separation = 0
+
+[node name="SitesTabRow" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn"]
+layout_mode = 2
+
+[node name="TabPad" type="Control" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow"]
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SitesTab" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("sb_tab")
+
+[node name="SitesTabLabel" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesTabRow/SitesTab"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "WEBSITES DIRECTORY"
+
+[node name="SitesPanel" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("sb_panel_white")
+
+[node name="SitesMargin" type="MarginContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 30
+
+[node name="SitesVBox" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="HeaderRow" type="HBoxContainer" parent="PageMargin/PageVBox" unique_id=501121848]
+[node name="SitesHead" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 16
 
-[node name="LogoTitleGroup" type="HBoxContainer" parent="PageMargin/PageVBox/HeaderRow" unique_id=989864836]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 14
-
-[node name="Crest" type="TextureRect" parent="PageMargin/PageVBox/HeaderRow/LogoTitleGroup" unique_id=1552302401]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("12_k066q")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="TitleLabel" type="Label" parent="PageMargin/PageVBox/HeaderRow/LogoTitleGroup" unique_id=2065233163]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.99215686, 0.81960785, 0, 1)
-theme_override_fonts/font = ExtResource("15_jmhblack")
-theme_override_font_sizes/font_size = 30
-text = "Tri-Search"
-vertical_alignment = 1
-
-[node name="HeaderSpacer" type="Control" parent="PageMargin/PageVBox/HeaderRow" unique_id=564665226]
+[node name="SitesHeadText" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 4
 
-[node name="SourcesCard" type="PanelContainer" parent="PageMargin/PageVBox/HeaderRow" unique_id=970076882]
+[node name="SitesTitle" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/SitesHeadText"]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("sb_sources_card")
-
-[node name="SourcesVBox" type="VBoxContainer" parent="PageMargin/PageVBox/HeaderRow/SourcesCard" unique_id=2043019769]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="SourcesLine1" type="Label" parent="PageMargin/PageVBox/HeaderRow/SourcesCard/SourcesVBox" unique_id=1959175238]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
-theme_override_font_sizes/font_size = 12
-text = "sources visited:"
-horizontal_alignment = 1
-
-[node name="SourcesLine2" type="Label" parent="PageMargin/PageVBox/HeaderRow/SourcesCard/SourcesVBox" unique_id=1963563562]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
-theme_override_font_sizes/font_size = 11
-text = "0 / 8 informative sources"
-horizontal_alignment = 1
-
-[node name="PanelsRow" type="HBoxContainer" parent="PageMargin/PageVBox" unique_id=732200353]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="SitesPanel" type="PanelContainer" parent="PageMargin/PageVBox/PanelsRow" unique_id=266053219]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.92
-theme_override_styles/panel = SubResource("sb_dashboard_card")
-
-[node name="SitesPanelMargin" type="MarginContainer" parent="PageMargin/PageVBox/PanelsRow/SitesPanel" unique_id=710692371]
-layout_mode = 2
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 24
-
-[node name="SitesCenter" type="CenterContainer" parent="PageMargin/PageVBox/PanelsRow/SitesPanel/SitesPanelMargin" unique_id=343848136]
-layout_mode = 2
-
-[node name="SitesPanelVBox" type="VBoxContainer" parent="PageMargin/PageVBox/PanelsRow/SitesPanel/SitesPanelMargin/SitesCenter" unique_id=1653236539]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 12
-
-[node name="SitesTitle" type="Label" parent="PageMargin/PageVBox/PanelsRow/SitesPanel/SitesPanelMargin/SitesCenter/SitesPanelVBox" unique_id=1339993831]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.14902, 0.141176, 0.121569, 1)
+theme_override_fonts/font = ExtResource("11_jmhblack")
+theme_override_font_sizes/font_size = 21
 text = "Where would you like to go?"
-horizontal_alignment = 1
 
-[node name="SitesSubtitle" type="Label" parent="PageMargin/PageVBox/PanelsRow/SitesPanel/SitesPanelMargin/SitesCenter/SitesPanelVBox" unique_id=1526833957]
+[node name="SitesSub" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/SitesHeadText"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.55, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.607843, 0.584314, 0.521569, 1)
+theme_override_font_sizes/font_size = 13
 text = "Select a site to browse"
-horizontal_alignment = 1
 
-[node name="SitesSpacer" type="Control" parent="PageMargin/PageVBox/PanelsRow/SitesPanel/SitesPanelMargin/SitesCenter/SitesPanelVBox" unique_id=1489014960]
-custom_minimum_size = Vector2(0, 10)
+[node name="DestTag" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead"]
 layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("sb_tag")
 
-[node name="Grid" type="GridContainer" parent="PageMargin/PageVBox/PanelsRow/SitesPanel/SitesPanelMargin/SitesCenter/SitesPanelVBox" unique_id=236350577]
+[node name="DestCountLabel" type="Label" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox/SitesHead/DestTag"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.615686, 0.392157, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "7 destinations"
+
+[node name="Grid" type="GridContainer" parent="Page/ContentMargin/PanelsRow/SitesColumn/SitesPanel/SitesMargin/SitesVBox"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_constants/h_separation = 14
 theme_override_constants/v_separation = 14
 columns = 4
 
-[node name="FactCheckerPanel" type="PanelContainer" parent="PageMargin/PageVBox/PanelsRow" unique_id=1450196686]
+[node name="FactsColumn" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("sb_dashboard_card")
+theme_override_constants/separation = 0
 
-[node name="FactCheckerMargin" type="MarginContainer" parent="PageMargin/PageVBox/PanelsRow/FactCheckerPanel" unique_id=698109023]
+[node name="FactsTabRow" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn"]
 layout_mode = 2
-theme_override_constants/margin_left = 24
+
+[node name="TabPad" type="Control" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="FactsTab" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("sb_tab")
+
+[node name="FactsTabLabel" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsTabRow/FactsTab"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "CASE FILE"
+
+[node name="FactsPanel" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("sb_panel_white")
+
+[node name="FactsMargin" type="MarginContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 26
 
-[node name="FactCheckerVBox" type="VBoxContainer" parent="PageMargin/PageVBox/PanelsRow/FactCheckerPanel/FactCheckerMargin" unique_id=1935500046]
+[node name="FactsVBox" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
-[node name="ChecklistTitle" type="Label" parent="PageMargin/PageVBox/PanelsRow/FactCheckerPanel/FactCheckerMargin/FactCheckerVBox" unique_id=755094218]
+[node name="FactsHead" type="HBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_constants/separation = 12
+
+[node name="FactsTitle" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.14902, 0.141176, 0.121569, 1)
+theme_override_fonts/font = ExtResource("11_jmhblack")
+theme_override_font_sizes/font_size = 18
 text = "Werewolf Fact Checker"
-horizontal_alignment = 1
-autowrap_mode = 2
 
-[node name="ChecklistDesc" type="Label" parent="PageMargin/PageVBox/PanelsRow/FactCheckerPanel/FactCheckerMargin/FactCheckerVBox" unique_id=257658577]
+[node name="MarkedTag" type="PanelContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.45, 0.5, 1)
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("sb_tag")
+
+[node name="MarkedLabel" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/FactsHead/MarkedTag"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.615686, 0.392157, 0, 1)
 theme_override_font_sizes/font_size = 11
-text = "Check off the facts you believe are TRUE about werewolves."
-horizontal_alignment = 1
+text = "0/8 marked"
+
+[node name="FactsDesc" type="Label" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.584314, 0.521569, 1)
+theme_override_font_sizes/font_size = 12
+text = "Check off the facts you believe are true about werewolves."
 autowrap_mode = 2
 
-[node name="ChecklistDivider" type="ColorRect" parent="PageMargin/PageVBox/PanelsRow/FactCheckerPanel/FactCheckerMargin/FactCheckerVBox" unique_id=946046941]
-custom_minimum_size = Vector2(0, 2)
+[node name="FactsSpacer" type="Control" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
-color = Color(0.8, 0.62, 0.24, 0.4)
+mouse_filter = 2
 
-[node name="ChecklistScroll" type="ScrollContainer" parent="PageMargin/PageVBox/PanelsRow/FactCheckerPanel/FactCheckerMargin/FactCheckerVBox" unique_id=948229276]
+[node name="ChecklistScroll" type="ScrollContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="ChecklistItems" type="GridContainer" parent="PageMargin/PageVBox/PanelsRow/FactCheckerPanel/FactCheckerMargin/FactCheckerVBox/ChecklistScroll" unique_id=1010405657]
+[node name="ChecklistItems" type="VBoxContainer" parent="Page/ContentMargin/PanelsRow/FactsColumn/FactsPanel/FactsMargin/FactsVBox/ChecklistScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 6
+theme_override_constants/separation = 8

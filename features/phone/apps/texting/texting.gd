@@ -155,6 +155,9 @@ func _populate_thread(thread_index: int) -> void:
 
 
 func _make_bubble(msg: TextingMessage) -> Control:
+	if msg.source_id != "":
+		GameManager.mark_source_visited(msg.source_id)
+
 	var bubble := PanelContainer.new()
 	bubble.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var style := StyleBoxFlat.new()

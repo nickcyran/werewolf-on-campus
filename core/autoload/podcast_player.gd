@@ -18,6 +18,7 @@ func play() -> void:
 		_player.play()
 		started = true
 		paused = false
+		GameManager.mark_source_visited("tricitypod")
 	elif paused:
 		_player.stream_paused = false
 		paused = false

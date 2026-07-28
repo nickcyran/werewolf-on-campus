@@ -210,8 +210,8 @@ func _refresh_address_label() -> void:
 		_address_label.text = ""
 		return
 		
-	var title := tab.get_title()
-	_address_label.text = title if title != "New Tab" else "about:blank"
+	var url := tab.get_url()
+	_address_label.text = url if url != "" else "about:blank"
 
 
 func _update_new_tab_visibility() -> void:

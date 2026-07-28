@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://entities/player/components/info_overlay_controller.gd" id="5_info"]
 [ext_resource type="Script" path="res://entities/player/components/hud_manager.gd" id="6_hud"]
 [ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="7_main_theme"]
-[ext_resource type="Script" path="res://entities/player/components/day_end_overlay.gd" id="8_day_end"]
+[ext_resource type="Script" path="res://features/day_end/day_end_overlay.gd" id="8_day_end"]
 [ext_resource type="PackedScene" uid="uid://gl_overlay_scene01" path="res://features/guided_learning/guided_learning_overlay.tscn" id="9_guided"]
 [ext_resource type="Script" path="res://entities/player/components/clock_ring.gd" id="10_clock_ring"]
 

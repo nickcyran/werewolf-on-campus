@@ -1,9 +1,16 @@
 class_name Site extends Control
 
-@export var site_title: String = ""
+## Shown on the browser tab.
+@export var site_name: String = ""
+## Shown in the browser address bar.
+@export var site_url: String = ""
+## When set, this site counts as that guided-learning source the moment it is shown.
+@export var source_id: String = ""
 
-func get_site_title() -> String:
-	return site_title
+
+func _enter_tree() -> void:
+	if source_id != "":
+		GameManager.mark_source_visited(source_id)
 
 
 func request_navigation(scene: PackedScene) -> void:

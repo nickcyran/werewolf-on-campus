@@ -6,8 +6,7 @@ extends Resource
 @export var pfp_texture: Texture2D
 @export var media_texture: Texture2D
 @export var video_stream: VideoStream
-## Height-to-width ratio of the video. 9/16 = landscape 16:9, 16/9 = vertical portrait.
-@export var video_aspect: float = 9.0 / 16.0
+## Guided-learning source credited when this post's media is viewed.
+@export var source_id: String = ""
 @export var description: String = ""
 @export var likes: int = 0
-@export var video_loop: bool = true

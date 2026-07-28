@@ -20,7 +20,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_main")
 about_page_scene = ExtResource("2_about")
-site_title = "www.amcomwolves.com/news/ualbany-werewolf-hysteria"
+site_name = "ACWW"
+site_url = "www.amcomwolves.com/news/ualbany-werewolf-hysteria"
+source_id = "acww"
 
 [node name="BG" type="ColorRect" parent="." unique_id=1022860714]
 layout_mode = 1

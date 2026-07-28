@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="WerewolfFact" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="WerewolfFact" format=3 uid="uid://b22j7vm8wxlpw"]
 
-[ext_resource type="Script" path="res://core/werewolf_fact.gd" id="1"]
+[ext_resource type="Script" uid="uid://id235yf8ogel" path="res://core/data/werewolf_fact.gd" id="1"]
 
 [resource]
 script = ExtResource("1")

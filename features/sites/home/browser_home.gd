@@ -2,83 +2,195 @@ extends Site
 
 const HomeSiteTileScene := preload("res://features/sites/home/home_site_tile.tscn")
 
+# palette lifted from the Tri-Search design mockup
+const ACCENT := Color("9d6400")
+const INK := Color("26241f")
+const MUTED := Color("9b9585")
+const BODY_TEXT := Color("4c4a41")
+const ROW_BG_A := Color("faf9f6")
+const ROW_BG_B := Color("f2f0eb")
+const ROW_BORDER := Color("efede6")
+const CHECK_BORDER := Color("c9c5b8")
+const INDEX_COLOR := Color("c2beb2")
+const CONTINUE_LOCKED_TEXT := Color("6f6a80")
+
 @export var sites: Array[SiteDefinition] = []
 
 @onready var _grid: GridContainer = %Grid
-@onready var _checklist_items: GridContainer = %ChecklistItems
+@onready var _checklist_items: VBoxContainer = %ChecklistItems
+@onready var _dest_count_label: Label = %DestCountLabel
+@onready var _marked_label: Label = %MarkedLabel
+@onready var _ring: SourceRing = %SourceRing
+@onready var _ring_label: Label = %RingLabel
+@onready var _threshold_label: Label = %ThresholdLabel
+@onready var _continue_btn: Button = %ContinueBtn
+
+# per-fact visual refs: {"row_style": StyleBoxFlat, "check_style": StyleBoxFlat, "mark": Label}
+var _fact_rows: Array[Dictionary] = []
 
 
 func _ready() -> void:
-	_grid.columns = maxi(1, mini(sites.size(), 4))
-
 	for site in sites:
 		var tile: HomeSiteTile = HomeSiteTileScene.instantiate() as HomeSiteTile
 		tile.navigate_requested.connect(request_navigation)
-		tile.configure(site.icon, site.label, site.description, site.scene, site.logo)
+		tile.configure(site)
 		_grid.add_child(tile)
 
-	_build_checklist()
+	_dest_count_label.text = "%d destinations" % sites.size()
+	_threshold_label.text = "Visit %d+ to end early" % GameManager.EARLY_END_SOURCE_THRESHOLD
 
+	_setup_continue_button()
+	_build_checklist()
+	_update_marked_tag()
+	_refresh_sources()
+
+	GameManager.source_visited.connect(_on_source_visited)
+
+
+# -- sources visited / continue --------------------------------------------------
+
+func _on_source_visited(_id: String, _count: int) -> void:
+	_refresh_sources()
+
+
+func _refresh_sources() -> void:
+	var visited := GameManager.visited_source_count()
+	var total := GameManager.total_source_count()
+	_ring.progress = float(visited) / float(total) if total > 0 else 0.0
+	_ring_label.text = "%d/%d" % [visited, total]
+
+	var unlocked := GameManager.can_end_day_early()
+	_continue_btn.disabled = not unlocked
+	_continue_btn.mouse_default_cursor_shape = (
+		Control.CURSOR_POINTING_HAND if unlocked else Control.CURSOR_FORBIDDEN
+	)
+
+
+func _setup_continue_button() -> void:
+	var base := StyleBoxFlat.new()
+	base.set_corner_radius_all(12)
+	base.content_margin_left = 24.0
+	base.content_margin_right = 24.0
+	base.content_margin_top = 12.0
+	base.content_margin_bottom = 12.0
+
+	var normal := base.duplicate() as StyleBoxFlat
+	normal.bg_color = ACCENT
+	var hover := base.duplicate() as StyleBoxFlat
+	hover.bg_color = ACCENT.lightened(0.1)
+	var pressed := base.duplicate() as StyleBoxFlat
+	pressed.bg_color = ACCENT.darkened(0.1)
+	var disabled := base.duplicate() as StyleBoxFlat
+	disabled.bg_color = Color(1, 1, 1, 0.12)
+
+	_continue_btn.add_theme_stylebox_override("normal", normal)
+	_continue_btn.add_theme_stylebox_override("hover", hover)
+	_continue_btn.add_theme_stylebox_override("pressed", pressed)
+	_continue_btn.add_theme_stylebox_override("disabled", disabled)
+	_continue_btn.add_theme_color_override("font_color", Color.WHITE)
+	_continue_btn.add_theme_color_override("font_hover_color", Color.WHITE)
+	_continue_btn.add_theme_color_override("font_pressed_color", Color.WHITE)
+	_continue_btn.add_theme_color_override("font_disabled_color", CONTINUE_LOCKED_TEXT)
+	_continue_btn.pressed.connect(_on_continue_pressed)
+
+
+func _on_continue_pressed() -> void:
+	if GameManager.can_end_day_early():
+		DayClock.end_day()
+
+
+# -- fact checker -----------------------------------------------------------------
 
 func _build_checklist() -> void:
 	var facts := WerewolfFactData.get_facts()
 	for i in range(facts.size()):
-		var is_checked: bool = GameManager.werewolf_checklist.get(i, false)
-
-		var panel := PanelContainer.new()
-		panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		var style := StyleBoxFlat.new()
-		style.bg_color = Color(0.97, 0.91, 0.78) if i % 2 == 0 else Color(0.91, 0.8, 0.58)
-		style.set_corner_radius_all(10)
-		style.content_margin_left = 16
-		style.content_margin_right = 16
-		style.content_margin_top = 12
-		style.content_margin_bottom = 12
-		style.border_width_left = 1
-		style.border_width_top = 1
-		style.border_width_right = 1
-		style.border_width_bottom = 1
-		style.border_color = Color(0.72, 0.55, 0.25, 0.55)
-		panel.add_theme_stylebox_override("panel", style)
-
-		var bg_normal := style.bg_color
-		var bg_hover := bg_normal.darkened(0.08)
-		var border_normal := style.border_color
-		var border_hover := Color(0.72, 0.55, 0.2, 0.95)
-
-		panel.mouse_entered.connect(func():
-			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-			tw.set_parallel(true)
-			tw.tween_property(style, "bg_color", bg_hover, 0.1)
-			tw.tween_property(style, "border_color", border_hover, 0.1)
-		)
-		panel.mouse_exited.connect(func():
-			var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-			tw.set_parallel(true)
-			tw.tween_property(style, "bg_color", bg_normal, 0.15)
-			tw.tween_property(style, "border_color", border_normal, 0.15)
-		)
-
-		var cb := CheckBox.new()
-		cb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		cb.text = facts[i].text
-		cb.theme_type_variation = &"BrowserCheckBox"
-		cb.add_theme_color_override("font_color", Color(0.05, 0.05, 0.05, 1))
-		cb.add_theme_color_override("font_hover_color", Color(0, 0, 0, 1))
-		cb.add_theme_color_override("font_pressed_color", Color(0.05, 0.05, 0.05, 1))
-		cb.add_theme_color_override("font_hover_pressed_color", Color(0, 0, 0, 1))
-		cb.toggled.connect(_on_fact_toggled.bind(i))
-		cb.set_pressed_no_signal(is_checked)
-		panel.add_child(cb)
-
-		# Toggle the checkbox when clicking the panel padding area (outside the checkbox itself)
-		panel.gui_input.connect(func(event: InputEvent):
-			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-				cb.button_pressed = !cb.button_pressed
-		)
-
-		_checklist_items.add_child(panel)
+		_checklist_items.add_child(_make_fact_row(i, facts[i].text))
 
 
-func _on_fact_toggled(checked: bool, index: int) -> void:
+func _make_fact_row(index: int, fact_text: String) -> Control:
+	var row_style := StyleBoxFlat.new()
+	row_style.bg_color = ROW_BG_A if index % 2 == 0 else ROW_BG_B
+	row_style.set_corner_radius_all(10)
+	row_style.set_border_width_all(1)
+	row_style.border_color = ROW_BORDER
+	row_style.content_margin_left = 14
+	row_style.content_margin_right = 14
+	row_style.content_margin_top = 13
+	row_style.content_margin_bottom = 13
+
+	var row := PanelContainer.new()
+	row.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	row.add_theme_stylebox_override("panel", row_style)
+
+	var hbox := HBoxContainer.new()
+	hbox.add_theme_constant_override("separation", 12)
+
+	var idx := Label.new()
+	idx.text = "%02d" % (index + 1)
+	idx.add_theme_color_override("font_color", INDEX_COLOR)
+	idx.add_theme_font_size_override("font_size", 11)
+	idx.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	hbox.add_child(idx)
+
+	var check_style := StyleBoxFlat.new()
+	check_style.set_corner_radius_all(6)
+	check_style.set_border_width_all(2)
+	# Plain Panel keeps a fixed 19x19 box: toggling the mark can never change row height.
+	var check := Panel.new()
+	check.custom_minimum_size = Vector2(19, 19)
+	check.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	check.add_theme_stylebox_override("panel", check_style)
+	var mark := Label.new()
+	mark.text = "✓"
+	mark.add_theme_color_override("font_color", Color.WHITE)
+	mark.add_theme_font_size_override("font_size", 11)
+	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	mark.set_anchors_preset(Control.PRESET_FULL_RECT)
+	check.add_child(mark)
+	hbox.add_child(check)
+
+	var lbl := Label.new()
+	lbl.text = fact_text
+	lbl.add_theme_color_override("font_color", BODY_TEXT)
+	lbl.add_theme_font_size_override("font_size", 13)
+	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hbox.add_child(lbl)
+
+	row.add_child(hbox)
+
+	_fact_rows.append({"row_style": row_style, "check_style": check_style, "mark": mark})
+	_apply_fact_visual(index, GameManager.werewolf_checklist.get(index, false))
+
+	row.gui_input.connect(func(event: InputEvent) -> void:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			_toggle_fact(index)
+	)
+	row.mouse_entered.connect(func(): row_style.border_color = Color(ACCENT, 0.33))
+	row.mouse_exited.connect(func(): row_style.border_color = ROW_BORDER)
+	return row
+
+
+func _toggle_fact(index: int) -> void:
+	var checked: bool = not GameManager.werewolf_checklist.get(index, false)
 	GameManager.werewolf_checklist[index] = checked
+	_apply_fact_visual(index, checked)
+	_update_marked_tag()
+
+
+func _apply_fact_visual(index: int, checked: bool) -> void:
+	var refs: Dictionary = _fact_rows[index]
+	var check_style: StyleBoxFlat = refs["check_style"]
+	check_style.bg_color = ACCENT if checked else Color(0, 0, 0, 0)
+	check_style.border_color = ACCENT if checked else CHECK_BORDER
+	(refs["mark"] as Label).visible = checked
+
+
+func _update_marked_tag() -> void:
+	var total := WerewolfFactData.fact_count()
+	var checked_count := 0
+	for i in range(total):
+		if GameManager.werewolf_checklist.get(i, false):
+			checked_count += 1
+	_marked_label.text = "%d/%d marked" % [checked_count, total]

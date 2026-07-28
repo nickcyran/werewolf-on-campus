@@ -8,7 +8,6 @@ const C_RING_ACTIVE := Color(0.55, 0.75, 0.65)
 const C_RING_SELF := Color(0.50, 0.50, 0.52)
 const C_SEPARATOR := Color(0.18, 0.16, 0.16, 1)
 const C_PLACEHOLDER := Color(0.35, 0.25, 0.23, 1)
-const C_BLACK := Color(0.0, 0.0, 0.0, 1)
 
 # ── Story data ────────────────────────────────────────────────────────────────
 const STORY_USERS := ["Your Story", "wolfie", "campus", "night_owl", "chef"]
@@ -26,6 +25,9 @@ const STORY_COLORS: Array[Color] = [
 @onready var _posts_vbox: VBoxContainer = $VBox/PostsFeed/PostsVBox
 
 var _video_entries: Array[VideoPlayerControl] = []
+
+# Maps a video player to the guided-learning source id of its post.
+var _video_sources := {}
 
 # Shared across all pfp TextureRects so the GPU compiles it once.
 static var _pfp_shader: Shader
@@ -97,6 +99,9 @@ func _update_active_video() -> void:
 			vpc.auto_play()
 		else:
 			vpc.auto_pause()
+
+	if best and _video_sources.has(best):
+		GameManager.mark_source_visited(_video_sources[best])
 
 
 func _make_post(post: CapturePost) -> Control:
@@ -174,6 +179,8 @@ func _make_post_media(post: CapturePost) -> Control:
 		media.add_child(vpc)
 		vpc.set_stream(post.video_stream)
 		_video_entries.append(vpc)
+		if post.source_id != "":
+			_video_sources[vpc] = post.source_id
 
 	else:
 		var bg := ColorRect.new()

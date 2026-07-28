@@ -28,7 +28,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_main")
 about_page_scene = ExtResource("2_about")
-site_title = "www.channel29news.com/news/werewolf-on-campus"
+site_name = "Channel 29"
+site_url = "www.channel29news.com/news/werewolf-on-campus"
+source_id = "channel29"
 
 [node name="BG" type="ColorRect" parent="." unique_id=209571843]
 layout_mode = 1

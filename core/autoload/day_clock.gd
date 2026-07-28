@@ -30,6 +30,15 @@ func reset() -> void:
 	_refresh_acc = 0.0
 
 
+## Force the day to end now (e.g. the browser home "Continue" button).
+func end_day() -> void:
+	if day_over or !started:
+		return
+	elapsed = max_game_time_seconds
+	day_over = true
+	day_ended.emit()
+
+
 func _process(delta: float) -> void:
 	if !started or day_over:
 		return

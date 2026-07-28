@@ -19,7 +19,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_site")
-site_title = "www.nowolves.news/articles/signs-of-a-werewolf"
+site_name = "NoWolves"
+site_url = "www.nowolves.news/articles/signs-of-a-werewolf"
+source_id = "nowolves"
 
 [node name="BG" type="ColorRect" parent="." unique_id=197703289]
 layout_mode = 1

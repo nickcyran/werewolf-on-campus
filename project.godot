@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="werewolf on campus"
-run/main_scene="res://ui/landing_page/landing_page.tscn"
+run/main_scene="res://features/landing_page/landing_page.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 

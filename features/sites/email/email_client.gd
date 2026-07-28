@@ -2,7 +2,7 @@ extends Site
 
 const EmailDataRes := preload("res://features/sites/email/email_data.gd")
 const EmailEntryClass := preload("res://features/sites/email/email_entry.gd")
-const EmailEntryScene := preload("res://features/sites/email/EmailEntry.tscn")
+const EmailEntryScene := preload("res://features/sites/email/email_entry.tscn")
 const PresidentLetterScene := preload("res://features/sites/email/letters/president_announcement_email.tscn")
 
 @onready var _list_header: Label = %ListHeader
@@ -23,7 +23,6 @@ var _category_buttons: Dictionary = {}
 
 
 func _ready() -> void:
-	site_title = "CloudMail"
 	_category_buttons = {
 		"inbox": %BtnInbox,
 		"spam": %BtnSpam,

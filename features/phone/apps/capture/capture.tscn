@@ -19,6 +19,7 @@ metadata/_custom_type_script = "uid://bs5jjh5pnd54t"
 [sub_resource type="Resource" id="Resource_2ic71"]
 script = ExtResource("2_4xrv5")
 username = "BigWolfStar93"
+source_id = "bigwolfstar93"
 pfp_texture = ExtResource("3_4xrv5")
 video_stream = ExtResource("3_3bo57")
 description = "I was out exploring the other day... Look what happend!!!"

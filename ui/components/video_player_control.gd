@@ -73,10 +73,6 @@ func stop() -> void:
 	user_paused = false
 
 
-func is_playing() -> bool:
-	return _vp.is_playing() and not _vp.paused
-
-
 # ── Internal ──────────────────────────────────────────────────────────────────
 
 func _on_gui_input(event: InputEvent) -> void:

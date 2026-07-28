@@ -52,6 +52,7 @@ func _draw() -> void:
 func _start_pulse() -> void:
 	if _pulse_tween and _pulse_tween.is_running():
 		return
+		
 	_pulse_tween = create_tween().set_loops()
 	_pulse_tween.tween_property(self, "modulate:a", 0.35, 0.4)
 	_pulse_tween.tween_property(self, "modulate:a", 1.0, 0.4)

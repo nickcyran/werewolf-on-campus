@@ -54,10 +54,16 @@ func get_current_scene() -> PackedScene:
 
 func get_title() -> String:
 	if current_page && current_page is Site:
-		var t := (current_page as Site).get_site_title()
+		var t := (current_page as Site).site_name
 		if t != "":
 			return t
 	return "New Tab"
+
+
+func get_url() -> String:
+	if current_page && current_page is Site:
+		return (current_page as Site).site_url
+	return ""
 
 
 func replace_page(scene: PackedScene) -> Control:

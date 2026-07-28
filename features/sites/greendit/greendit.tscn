@@ -45,7 +45,9 @@ size_flags_vertical = 3
 theme = ExtResource("2_comments_theme")
 script = ExtResource("1_greendit")
 comments = Array[ExtResource("3_o5146")]([SubResource("Resource_iwl4i"), SubResource("Resource_o5146"), SubResource("Resource_iprana")])
-site_title = "www.greendit.com/r/campuslife/comments/8k2m9q/lorem_ipsum_dolor_sit_amet/"
+site_name = "Greendit"
+site_url = "www.greendit.com/r/campuslife/comments/8k2m9q/lorem_ipsum_dolor_sit_amet/"
+source_id = "greendit"
 
 [node name="BG" type="ColorRect" parent="." unique_id=726273541]
 layout_mode = 1

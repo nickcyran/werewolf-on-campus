@@ -36,7 +36,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_script")
 professor_page = ExtResource("2_prof")
-site_title = "www.trifang.edu/news/werewolf-seen-on-campus"
+site_name = "Trifang News"
+site_url = "www.trifang.edu/news/werewolf-seen-on-campus"
+source_id = "trifang_news"
 
 [node name="BG" type="ColorRect" parent="." unique_id=790893392]
 layout_mode = 1

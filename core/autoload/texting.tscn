@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://core/autoload/texting.gd" id="1_texting"]
-[ext_resource type="Script" path="res://core/texting_thread.gd" id="2_thread_script"]
-[ext_resource type="Resource" path="res://data/texts/thread_02_mom.tres" id="3_mom"]
-[ext_resource type="Resource" path="res://data/texts/thread_01_dylan.tres" id="4_dylan"]
+[ext_resource type="Script" path="res://features/phone/apps/texting/texting_thread.gd" id="2_thread_script"]
+[ext_resource type="Resource" path="res://features/phone/apps/texting/threads/thread_02_mom.tres" id="3_mom"]
+[ext_resource type="Resource" path="res://features/phone/apps/texting/threads/thread_01_dylan.tres" id="4_dylan"]
 
 [node name="Texting" type="Node"]
 script = ExtResource("1_texting")

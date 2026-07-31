@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" path="res://features/sites/trifangnews/trifang_professor.tscn" id="2_prof"]
 [ext_resource type="Texture2D" uid="uid://ceq18rs5nix2b" path="res://assets/media/werwolf_spotting.png" id="3_image"]
 [ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="3_twoay"]
+[ext_resource type="Script" uid="uid://c7mzr3pb6vhla" path="res://ui/components/dynamic_date_label.gd" id="4_dyndate"]
 
 [sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
 bg_color = Color(0, 0, 0, 0)
@@ -272,6 +273,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.615, 0.63, 1)
 theme_override_font_sizes/font_size = 14
 text = "May 3, 2026"
+script = ExtResource("4_dyndate")
+template = "{date}"
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1261720133]
 custom_minimum_size = Vector2(0, 18)
@@ -373,6 +376,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
 text = "May 3"
+script = ExtResource("4_dyndate")
+template = "{date}"
+pattern = "MMMM D"
 
 [node name="Row1Divider" type="ColorRect" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox/MoreList" unique_id=2075925042]
 custom_minimum_size = Vector2(0, 1)
@@ -396,6 +402,10 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
 text = "May 2"
+script = ExtResource("4_dyndate")
+template = "{date}"
+pattern = "MMMM D"
+offset_days = -1
 
 [node name="Row2Divider" type="ColorRect" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox/MoreList" unique_id=1072740728]
 custom_minimum_size = Vector2(0, 1)
@@ -419,3 +429,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
 text = "May 1"
+script = ExtResource("4_dyndate")
+template = "{date}"
+pattern = "MMMM D"
+offset_days = -2

@@ -65,8 +65,12 @@ func get_progress() -> float:
 
 
 func get_display_time() -> String:
-	# Convert current progress into total minutes within range
-	var total_min := START_HOUR * 60.0 + get_progress() * (END_HOUR - START_HOUR) * 60.0
+	return progress_to_display_time(get_progress())
+
+
+func progress_to_display_time(progress: float) -> String:
+	# Convert progress into total minutes within range
+	var total_min := START_HOUR * 60.0 + clampf(progress, 0.0, 1.0) * (END_HOUR - START_HOUR) * 60.0
 	var hour := int(total_min / 60.0)
 
 	# Snap minutes to nearest 15-minute interval (0, 15, 30, 45)

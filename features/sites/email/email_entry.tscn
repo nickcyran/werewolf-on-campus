@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://email_entry"]
+[gd_scene load_steps=3 format=3 uid="uid://cq2vhx8dm4t7b"]
 
-[ext_resource type="Script" path="res://features/sites/email/email_entry.gd" id="1"]
-[ext_resource type="Theme" uid="uid://email_theme" path="res://features/sites/email/email_theme.tres" id="2_email_theme"]
+[ext_resource type="Script" uid="uid://du108h41yqc3q" path="res://features/sites/email/email_entry.gd" id="1"]
+[ext_resource type="Theme" uid="uid://dosjhvpyoh2j4" path="res://features/sites/email/email_theme.tres" id="2_email_theme"]
 
 [node name="EmailEntry" type="Button"]
 anchors_preset = 15
@@ -12,6 +12,8 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 72)
 size_flags_horizontal = 3
 theme = ExtResource("2_email_theme")
+theme_type_variation = &"EmailEntry"
+clip_text = true
 script = ExtResource("1")
 
 [node name="Row" type="HBoxContainer" parent="."]

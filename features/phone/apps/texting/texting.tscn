@@ -2,7 +2,69 @@
 
 [ext_resource type="Script" uid="uid://rxc3bimuil77" path="res://features/phone/apps/texting/texting.gd" id="1_texting"]
 
-[node name="Texting" type="Control" unique_id=1991321268]
+[sub_resource type="StyleBoxFlat" id="AvatarCircle"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 54
+corner_radius_top_right = 54
+corner_radius_bottom_right = 54
+corner_radius_bottom_left = 54
+
+[sub_resource type="StyleBoxFlat" id="BackCircle"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="BackCircleHover"]
+bg_color = Color(0.95, 0.95, 0.96, 1)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="ComposerPlus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.6, 0.6, 0.62, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="ComposerField"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.81, 1)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+content_margin_left = 30.0
+content_margin_top = 14.0
+content_margin_right = 30.0
+content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="ComposerSend"]
+bg_color = Color(0, 0.478, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Texting" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_texting")
 
-[node name="BG" type="ColorRect" parent="." unique_id=1086560938]
+[node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,9 +81,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.04, 0.05, 0.18, 1)
+color = Color(1, 1, 1, 1)
 
-[node name="InboxView" type="Control" parent="." unique_id=900708451]
+[node name="InboxView" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -30,7 +92,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InboxScroll" type="ScrollContainer" parent="InboxView" unique_id=336662498]
+[node name="InboxScroll" type="ScrollContainer" parent="InboxView"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,30 +101,30 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="InboxMargin" type="MarginContainer" parent="InboxView/InboxScroll" unique_id=1553954810]
+[node name="InboxMargin" type="MarginContainer" parent="InboxView/InboxScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 32
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 34
 theme_override_constants/margin_bottom = 36
 
-[node name="InboxVBox" type="VBoxContainer" parent="InboxView/InboxScroll/InboxMargin" unique_id=2076959324]
+[node name="InboxVBox" type="VBoxContainer" parent="InboxView/InboxScroll/InboxMargin"]
 layout_mode = 2
-theme_override_constants/separation = 28
+theme_override_constants/separation = 16
 
-[node name="InboxTitle" type="Label" parent="InboxView/InboxScroll/InboxMargin/InboxVBox" unique_id=1471703922]
+[node name="InboxTitle" type="Label" parent="InboxView/InboxScroll/InboxMargin/InboxVBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 68
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
 text = "Messages"
 
-[node name="ThreadList" type="VBoxContainer" parent="InboxView/InboxScroll/InboxMargin/InboxVBox" unique_id=1837586728]
+[node name="ThreadList" type="VBoxContainer" parent="InboxView/InboxScroll/InboxMargin/InboxVBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 22
+theme_override_constants/separation = 0
 
-[node name="ThreadView" type="Control" parent="." unique_id=1912764417]
+[node name="ThreadView" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -72,7 +134,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ThreadVBox" type="VBoxContainer" parent="ThreadView" unique_id=1423894289]
+[node name="ThreadVBox" type="VBoxContainer" parent="ThreadView"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,56 +143,150 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="ThreadHeader" type="HBoxContainer" parent="ThreadView/ThreadVBox" unique_id=1360676685]
-custom_minimum_size = Vector2(0, 130)
+[node name="ThreadHeader" type="Control" parent="ThreadView/ThreadVBox"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme_override_constants/separation = 16
 
-[node name="ThreadBackBtn" type="Button" parent="ThreadView/ThreadVBox/ThreadHeader" unique_id=1818303868]
+[node name="HeaderCenter" type="VBoxContainer" parent="ThreadView/ThreadVBox/ThreadHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="AvatarCenter" type="CenterContainer" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter"]
+layout_mode = 2
+
+[node name="ThreadAvatar" type="PanelContainer" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter/AvatarCenter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 108)
+layout_mode = 2
+theme_override_styles/panel = SubResource("AvatarCircle")
+
+[node name="ThreadAvatarInitial" type="Label" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter/AvatarCenter/ThreadAvatar"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.55, 0.7, 1, 1)
-theme_override_font_sizes/font_size = 50
-text = "‹ Messages"
-flat = true
-
-[node name="ThreadHeaderLabel" type="Label" parent="ThreadView/ThreadVBox/ThreadHeader" unique_id=2116972849]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThreadHeaderLabel" type="Label" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 
-[node name="HeaderSpacer" type="Control" parent="ThreadView/ThreadVBox/ThreadHeader" unique_id=777661623]
-custom_minimum_size = Vector2(260, 0)
-layout_mode = 2
+[node name="ThreadBackBtn" type="Button" parent="ThreadView/ThreadVBox/ThreadHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 68)
+layout_mode = 1
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 92.0
+offset_bottom = 124.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.478, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("BackCircle")
+theme_override_styles/hover = SubResource("BackCircleHover")
+theme_override_styles/pressed = SubResource("BackCircleHover")
+text = "‹"
 
-[node name="ThreadDivider" type="ColorRect" parent="ThreadView/ThreadVBox" unique_id=2080994523]
+[node name="ThreadDivider" type="ColorRect" parent="ThreadView/ThreadVBox"]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
-color = Color(1, 1, 1, 0.08)
+color = Color(0, 0, 0, 0.08)
 
-[node name="MessagesScroll" type="ScrollContainer" parent="ThreadView/ThreadVBox" unique_id=1132699253]
+[node name="MessagesScroll" type="ScrollContainer" parent="ThreadView/ThreadVBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="MessagesMargin" type="MarginContainer" parent="ThreadView/ThreadVBox/MessagesScroll" unique_id=356544418]
+[node name="MessagesMargin" type="MarginContainer" parent="ThreadView/ThreadVBox/MessagesScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 28
-theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 28
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 20
 
-[node name="MessagesVBox" type="VBoxContainer" parent="ThreadView/ThreadVBox/MessagesScroll/MessagesMargin" unique_id=758447351]
+[node name="MessagesVBox" type="VBoxContainer" parent="ThreadView/ThreadVBox/MessagesScroll/MessagesMargin"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 14
+
+[node name="ComposerDivider" type="ColorRect" parent="ThreadView/ThreadVBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0, 0, 0, 0.08)
+
+[node name="ComposerMargin" type="MarginContainer" parent="ThreadView/ThreadVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 26
+
+[node name="ComposerHBox" type="HBoxContainer" parent="ThreadView/ThreadVBox/ComposerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PlusCircle" type="Panel" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("ComposerPlus")
+
+[node name="PlusLabel" type="Label" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox/PlusCircle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.52, 1)
+theme_override_font_sizes/font_size = 40
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComposerField" type="PanelContainer" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("ComposerField")
+
+[node name="ComposerPlaceholder" type="Label" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox/ComposerField"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.62, 0.64, 1)
+theme_override_font_sizes/font_size = 34
+text = "Text Message"
+
+[node name="SendCircle" type="Panel" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("ComposerSend")
+
+[node name="SendLabel" type="Label" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox/SendCircle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 34
+text = "↑"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ImageViewer" type="Control" parent="."]
 unique_name_in_owner = true

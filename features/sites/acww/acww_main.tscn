@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://kvvfc6x3qfi1" path="res://features/sites/acww/acww_main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://d02ovf7iap15t" path="res://features/sites/acww/acww_about.tscn" id="2_about"]
 [ext_resource type="Texture2D" uid="uid://uh7v0v0flufl" path="res://assets/logos/ACWW.png" id="3_nfa04"]
+[ext_resource type="Script" uid="uid://c7mzr3pb6vhla" path="res://ui/components/dynamic_date_label.gd" id="4_dyndate"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfa04"]
 bg_color = Color(0, 0.7490196, 0.3882353, 1)
@@ -242,6 +243,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 13
 text = "September 4, 2025"
+script = ExtResource("4_dyndate")
+template = "{date}"
+offset_months = -8
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleVBox" unique_id=626162343]
 custom_minimum_size = Vector2(0, 6)

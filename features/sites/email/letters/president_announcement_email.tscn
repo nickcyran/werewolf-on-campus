@@ -89,6 +89,9 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_type_variation = &"EmailBannerRich"
 bbcode_enabled = true
+text = "[font_size=11]OFFICE OF THE PRESIDENT[/font_size]
+[font_size=20][b]Dr. Chandra Hel Acheron[/b][/font_size]
+[font_size=13][i]President[/i][/font_size]"
 fit_content = true
 scroll_active = false
 
@@ -96,8 +99,6 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"EmailAnnounceHeadline"
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -107,7 +108,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"EmailAnnounceBody"
-theme_override_font_sizes/normal_font_size = 18
 fit_content = true
 scroll_active = false
 

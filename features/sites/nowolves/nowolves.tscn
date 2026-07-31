@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="3_jmhblack"]
 [ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="4_jmhreg"]
 [ext_resource type="Texture2D" uid="uid://bo3ysexmratmm" path="res://assets/ad/Source - Ad Garlic Emporium.png" id="5_garlic"]
+[ext_resource type="Script" uid="uid://c7mzr3pb6vhla" path="res://ui/components/dynamic_date_label.gd" id="6_dyndate"]
 
 [sub_resource type="StyleBoxFlat" id="GarlicCard"]
 bg_color = Color(1, 1, 1, 1)
@@ -179,6 +180,8 @@ theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_fonts/font = ExtResource("4_jmhreg")
 theme_override_font_sizes/font_size = 10
 text = "[Date]"
+script = ExtResource("6_dyndate")
+template = "Posted {date}"
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1692528923]
 custom_minimum_size = Vector2(0, 10)
@@ -328,6 +331,21 @@ layout_mode = 2
 texture = ExtResource("5_garlic")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="ValidUntilDate" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/ImageMargin/AdImage"]
+layout_mode = 1
+offset_left = 578.0
+offset_top = 324.0
+offset_right = 658.0
+offset_bottom = 344.0
+theme_override_colors/font_color = Color(0.11, 0.1, 0.09, 1)
+theme_override_fonts/font = ExtResource("4_jmhreg")
+theme_override_font_sizes/font_size = 13
+vertical_alignment = 1
+script = ExtResource("6_dyndate")
+template = "{date}"
+pattern = "M/D/YY"
+offset_days = 30
 
 [node name="CloseWrap" type="MarginContainer" parent="GarlicAdPopup/Center/Card"]
 layout_mode = 2

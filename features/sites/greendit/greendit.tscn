@@ -33,7 +33,34 @@ score = 4
 body = "Werewolves are afraid of vacuum cleaners? That's hilarious. My 9lb chihuahua is afraid of the vacuum"
 metadata/_custom_type_script = "uid://c4skv1qe2stk7"
 
-[node name="Greendit" type="Control" unique_id=1090599332]
+[sub_resource type="StyleBoxFlat" id="CardStyle"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9, 0.9, 0.886, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="LogoSquare"]
+bg_color = Color(0.133, 0.773, 0.369, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="Gradient" id="Gradient_banner"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0.133, 0.773, 0.369, 1, 0.1, 0.58, 0.277, 1)
+
+[sub_resource type="GradientTexture2D" id="GradTex_banner"]
+gradient = SubResource("Gradient_banner")
+fill_to = Vector2(1, 1)
+
+[node name="Greendit" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +77,7 @@ site_url = "www.greendit.com/r/campuslife/comments/8k2m9q/lorem_ipsum_dolor_sit_
 source_id = "greendit"
 tile_color = Color(0.298039, 0.686275, 0.490196, 1)
 
-[node name="BG" type="ColorRect" parent="." unique_id=726273541]
+[node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,27 +85,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.1, 0.1, 0.1, 1)
+color = Color(0.98, 0.98, 0.976, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=334849283]
+[node name="Page" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_scroll_mode = 0
-
-[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=997690654]
-layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Header" type="Control" parent="ScrollContainer/Content" unique_id=1988212800]
-custom_minimum_size = Vector2(0, 44)
+[node name="Header" type="Control" parent="Page"]
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 
-[node name="HeaderBG" type="ColorRect" parent="ScrollContainer/Content/Header" unique_id=911347523]
+[node name="HeaderBG" type="ColorRect" parent="Page/Header"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,20 +108,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.12, 0.14, 0.12, 1)
+color = Color(1, 1, 1, 1)
 
-[node name="LogoCircle" type="ColorRect" parent="ScrollContainer/Content/Header" unique_id=562315365]
+[node name="HeaderBorder" type="ColorRect" parent="Page/Header"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.02
-anchor_top = 0.1
-anchor_right = 0.06
-anchor_bottom = 0.9
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 2
-color = Color(0.18, 0.55, 0.22, 1)
-metadata/_edit_use_anchors_ = true
+color = Color(0.9, 0.9, 0.886, 1)
 
-[node name="LogoLabel" type="Label" parent="ScrollContainer/Content/Header/LogoCircle" unique_id=520211273]
+[node name="HeaderMargin" type="MarginContainer" parent="Page/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_right = 28
+
+[node name="HeaderHBox" type="HBoxContainer" parent="Page/Header/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="LogoSquare" type="Panel" parent="Page/Header/HeaderMargin/HeaderHBox"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("LogoSquare")
+
+[node name="LogoLabel" type="Label" parent="Page/Header/HeaderMargin/HeaderHBox/LogoSquare"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,237 +150,336 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 17
 text = "G"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SiteName" type="Label" parent="ScrollContainer/Content/Header" unique_id=1651803652]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.075
-anchor_top = 0.1
-anchor_right = 0.3
-anchor_bottom = 0.9
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-theme_override_font_sizes/font_size = 22
-text = "greendit"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="SubName" type="Label" parent="ScrollContainer/Content/Header" unique_id=180174201]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.22
-anchor_top = 0.1
-anchor_right = 0.5
-anchor_bottom = 0.9
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 13
-text = "g/campuslife"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Separator" type="ColorRect" parent="ScrollContainer/Content" unique_id=368915242]
-custom_minimum_size = Vector2(0, 2)
+[node name="SiteName" type="Label" parent="Page/Header/HeaderMargin/HeaderHBox"]
 layout_mode = 2
-color = Color(0.25, 0.28, 0.25, 1)
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.13, 0.13, 0.12, 1)
+theme_override_font_sizes/font_size = 19
+text = "greendit"
 
-[node name="BodySection" type="HBoxContainer" parent="ScrollContainer/Content" unique_id=153696630]
+[node name="VDivider" type="ColorRect" parent="Page/Header/HeaderMargin/HeaderHBox"]
+custom_minimum_size = Vector2(1, 20)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0.88, 0.88, 0.87, 1)
+
+[node name="SubName" type="Label" parent="Page/Header/HeaderMargin/HeaderHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.5, 0.5, 0.49, 1)
+theme_override_font_sizes/font_size = 14
+text = "g/campuslife"
+
+[node name="Scroll" type="ScrollContainer" parent="Page"]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="Feed" type="MarginContainer" parent="ScrollContainer/Content/BodySection" unique_id=1676960917]
+[node name="OuterMargin" type="MarginContainer" parent="Page/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 24
 
-[node name="PostColumn" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed" unique_id=756815758]
+[node name="BodySection" type="HBoxContainer" parent="Page/Scroll/OuterMargin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MainCard" type="PanelContainer" parent="Page/Scroll/OuterMargin/BodySection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("CardStyle")
+
+[node name="CardVBox" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PostCard" type="HBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn" unique_id=1164199907]
+[node name="PostMargin" type="MarginContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox"]
 layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 16
 
-[node name="PostCardBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard" unique_id=1928231872]
-show_behind_parent = true
+[node name="PostHBox" type="HBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin"]
 layout_mode = 2
-mouse_filter = 2
-color = Color(0.16, 0.17, 0.19, 1)
+theme_override_constants/separation = 8
 
-[node name="VoteBar" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard" unique_id=1427392961]
-custom_minimum_size = Vector2(44, 0)
+[node name="VoteBar" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_constants/separation = 2
-alignment = 1
 
-[node name="UpArrow" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar" unique_id=88599433]
+[node name="UpArrow" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.65, 0.45, 1)
+theme_override_colors/font_color = Color(0.133, 0.773, 0.369, 1)
 theme_override_font_sizes/font_size = 16
 text = "▲"
 horizontal_alignment = 1
 
-[node name="Score" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar" unique_id=747206780]
+[node name="Score" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.2, 0.2, 0.19, 1)
+theme_override_font_sizes/font_size = 15
 text = "15"
 horizontal_alignment = 1
 
-[node name="DownArrow" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/VoteBar" unique_id=609104411]
+[node name="DownArrow" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.45, 0.45, 1)
+theme_override_colors/font_color = Color(0.75, 0.75, 0.74, 1)
 theme_override_font_sizes/font_size = 16
 text = "▼"
 horizontal_alignment = 1
 
-[node name="PostBody" type="MarginContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard" unique_id=1057313843]
+[node name="PostContent" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 10
+theme_override_constants/separation = 8
 
-[node name="PostContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody" unique_id=643634752]
+[node name="PostMeta" type="RichTextLabel" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/PostContent"]
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_override_colors/default_color = Color(0.5, 0.5, 0.49, 1)
+theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/bold_font_size = 13
+bbcode_enabled = true
+text = "[color=#22c55e][b]g/campuslife[/b][/color]  [color=#c9c9c6]•[/color]  14h  [color=#c9c9c6]•[/color]  by Dramatic_Strawberry9897"
+fit_content = true
+scroll_active = false
 
-[node name="PostMeta" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent" unique_id=97592649]
+[node name="PostTitle" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/PostContent"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1)
-theme_override_font_sizes/font_size = 13
-text = "g/campuslife  •  14h 
-by Dramatic_Strawberry9897  "
-
-[node name="PostTitle" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent" unique_id=1416135957]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.1, 0.1, 0.09, 1)
+theme_override_font_sizes/font_size = 26
 text = "Tri-Fang University Werewolf?"
 autowrap_mode = 3
 
-[node name="PostText" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent" unique_id=1008619625]
+[node name="PostText" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/PostContent"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.2, 0.2, 0.19, 1)
+theme_override_font_sizes/font_size = 15
 text = "Does anybody actually believe this is real? Pretty sure this is a prank.
-My cousin was here like 7 years ago and he said there was a big conspiracy. 
-Pretty sure they just want us to panic for some reason. I'm not staying in my dorm just because
-the professors are scared of a rumor."
+
+My cousin was here like 7 years ago and he said there was a big conspiracy.
+
+Pretty sure they just want us to panic for some reason. I'm not staying in my dorm just because the professors are scared of a rumor."
 autowrap_mode = 3
 
-[node name="PostStats" type="Label" parent="ScrollContainer/Content/BodySection/Feed/PostColumn/PostCard/PostBody/PostContent" unique_id=443070756]
+[node name="PostStats" type="HBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/PostContent"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1)
-theme_override_font_sizes/font_size = 11
-text = "3	 comments"
+theme_override_constants/separation = 18
 
-[node name="CommentDivider" type="ColorRect" parent="ScrollContainer/Content/BodySection/Feed/PostColumn" unique_id=1519754186]
+[node name="CommentCount" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/PostContent/PostStats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.49, 1)
+theme_override_font_sizes/font_size = 13
+text = "3 comments"
+
+[node name="ShareLabel" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/PostContent/PostStats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.49, 1)
+theme_override_font_sizes/font_size = 13
+text = "Share"
+
+[node name="CommentsMargin" type="MarginContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="CommentSection" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/CommentsMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Sidebar" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="CommunityCard" type="PanelContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("CardStyle")
+
+[node name="CommunityVBox" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Banner" type="TextureRect" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+texture = SubResource("GradTex_banner")
+expand_mode = 1
+
+[node name="CommunityMargin" type="MarginContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="CommunityContent" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CommunityTitle" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13, 0.13, 0.12, 1)
+theme_override_font_sizes/font_size = 16
+text = "g/campuslife"
+
+[node name="CommunityDesc" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.42, 0.41, 1)
+theme_override_font_sizes/font_size = 13
+text = "The unofficial hub for campus news, rumors, and late-night discussions."
+autowrap_mode = 3
+
+[node name="StatsRule" type="ColorRect" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent"]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
-color = Color(0.22, 0.24, 0.22, 1)
-
-[node name="CommentSection" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Feed/PostColumn" unique_id=1646033755]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="Sidebar" type="MarginContainer" parent="ScrollContainer/Content/BodySection" unique_id=1279108364]
-custom_minimum_size = Vector2(220, 0)
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 10
-
-[node name="SidebarVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Sidebar" unique_id=249502988]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CommunityCard" type="PanelContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox" unique_id=1048091132]
-layout_mode = 2
-
-[node name="CommunityCardBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard" unique_id=372443415]
-show_behind_parent = true
-layout_mode = 2
 mouse_filter = 2
-color = Color(0.16, 0.17, 0.19, 1)
+color = Color(0.92, 0.92, 0.91, 1)
 
-[node name="CardContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard" unique_id=102485487]
+[node name="StatsHBox" type="HBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent"]
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 24
 
-[node name="CommunityBanner" type="ColorRect" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent" unique_id=98467678]
-custom_minimum_size = Vector2(0, 20)
+[node name="MembersStat" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent/StatsHBox"]
 layout_mode = 2
-color = Color(0.18, 0.55, 0.22, 1)
+theme_override_constants/separation = 0
 
-[node name="CommunityTitle" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent" unique_id=718145335]
+[node name="MembersCount" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent/StatsHBox/MembersStat"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_color = Color(0.13, 0.13, 0.12, 1)
 theme_override_font_sizes/font_size = 14
-text = "  g/campuslife"
+text = "12.4k"
 
-[node name="CommunityDesc" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent" unique_id=1800179360]
+[node name="MembersLabel" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent/StatsHBox/MembersStat"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_font_sizes/font_size = 11
-text = "  The unofficial hub for campus 
-  news, rumors, and late-night 
-  discussions."
+theme_override_colors/font_color = Color(0.55, 0.55, 0.54, 1)
+theme_override_font_sizes/font_size = 12
+text = "Members"
+
+[node name="OnlineStat" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent/StatsHBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="OnlineCount" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent/StatsHBox/OnlineStat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.133, 0.773, 0.369, 1)
+theme_override_font_sizes/font_size = 14
+text = "342"
+
+[node name="OnlineLabel" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/CommunityCard/CommunityVBox/CommunityMargin/CommunityContent/StatsHBox/OnlineStat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.54, 1)
+theme_override_font_sizes/font_size = 12
+text = "Online"
+
+[node name="RulesCard" type="PanelContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("CardStyle")
+
+[node name="RulesMargin" type="MarginContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="RulesContent" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="RulesTitle" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13, 0.13, 0.12, 1)
+theme_override_font_sizes/font_size = 14
+text = "Community Rules"
+
+[node name="Rule1" type="HBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Num" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule1"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.133, 0.773, 0.369, 1)
+theme_override_font_sizes/font_size = 13
+text = "1."
+
+[node name="Text" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.36, 0.36, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+text = "No spam or self-promotion"
 autowrap_mode = 3
 
-[node name="MemberInfo" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/CommunityCard/CardContent" unique_id=579588393]
+[node name="Rule2" type="HBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 11
-text = "
-  12.4k Members  342 Online"
+theme_override_constants/separation = 8
 
-[node name="RulesCard" type="PanelContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox" unique_id=1207327840]
+[node name="Num" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule2"]
 layout_mode = 2
-
-[node name="RulesCardBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard" unique_id=2124313177]
-show_behind_parent = true
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.16, 0.17, 0.19, 1)
-
-[node name="RulesContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard" unique_id=2005774644]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="RulesTitle" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent" unique_id=27018628]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.133, 0.773, 0.369, 1)
 theme_override_font_sizes/font_size = 13
-text = "  Community Rules"
+text = "2."
 
-[node name="Rule1" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent" unique_id=1013102774]
+[node name="Text" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_font_sizes/font_size = 11
-text = "  1. No spam or self-promotion"
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.36, 0.36, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+text = "Do not spread misinformation"
+autowrap_mode = 3
 
-[node name="Rule2" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent" unique_id=2076624373]
+[node name="Rule3" type="HBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_font_sizes/font_size = 11
-text = "  2. Do not spread misinformation"
+theme_override_constants/separation = 8
 
-[node name="Rule3" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent" unique_id=1553215964]
+[node name="Num" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule3"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_font_sizes/font_size = 11
-text = "  3. No illegal or unethical behavior"
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.133, 0.773, 0.369, 1)
+theme_override_font_sizes/font_size = 13
+text = "3."
 
-[node name="Rule4" type="Label" parent="ScrollContainer/Content/BodySection/Sidebar/SidebarVBox/RulesCard/RulesContent" unique_id=444571876]
+[node name="Text" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule3"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_font_sizes/font_size = 11
-text = "  4. Be respectful"
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.36, 0.36, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+text = "No illegal or unethical behavior"
+autowrap_mode = 3
+
+[node name="Rule4" type="HBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Num" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule4"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.133, 0.773, 0.369, 1)
+theme_override_font_sizes/font_size = 13
+text = "4."
+
+[node name="Text" type="Label" parent="Page/Scroll/OuterMargin/BodySection/Sidebar/RulesCard/RulesMargin/RulesContent/Rule4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.36, 0.36, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+text = "Be respectful"
+autowrap_mode = 3

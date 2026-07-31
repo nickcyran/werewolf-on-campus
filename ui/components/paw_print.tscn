@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pad"]
+bg_color = Color(0.788, 0.831, 0.937, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toe"]
+bg_color = Color(0.788, 0.831, 0.937, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PawPrint" type="Control"]
+custom_minimum_size = Vector2(30, 52)
+offset_right = 30.0
+offset_bottom = 52.0
+mouse_filter = 2
+modulate = Color(1, 1, 1, 0.22)
+
+[node name="Pad" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 20.0
+offset_right = 30.0
+offset_bottom = 52.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pad")
+
+[node name="Toe1" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 9.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toe")
+
+[node name="Toe2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 1.0
+offset_right = 21.0
+offset_bottom = 14.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toe")
+
+[node name="Toe3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 6.0
+offset_right = 33.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toe")

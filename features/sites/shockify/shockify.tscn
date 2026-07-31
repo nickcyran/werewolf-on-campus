@@ -3,81 +3,102 @@
 [ext_resource type="Script" uid="uid://bm8vh3px06k1w" path="res://features/sites/shockify/shockify.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/logos/SHOCKIFY logo.png" id="2_logo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_episode"]
-content_margin_left = 12.0
-content_margin_top = 10.0
-content_margin_right = 12.0
-content_margin_bottom = 10.0
-bg_color = Color(0.12, 0.03, 0.2, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="Gradient" id="Gradient_art"]
+colors = PackedColorArray(0.541, 0.247, 0.988, 1, 0.29, 0.102, 0.541, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_normal"]
-bg_color = Color(0.5, 0, 0.9, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="GradientTexture2D" id="GradTex_art"]
+gradient = SubResource("Gradient_art")
+fill_to = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_pressed"]
-bg_color = Color(0.4, 0, 0.75, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="Gradient" id="Gradient_main"]
+offsets = PackedFloat32Array(0, 0.22, 0.45, 1)
+colors = PackedColorArray(0.227, 0.118, 0.361, 1, 0.102, 0.059, 0.18, 1, 0.071, 0.071, 0.071, 1, 0.071, 0.071, 0.071, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playbig_hover"]
-bg_color = Color(0.65, 0.15, 1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="GradientTexture2D" id="GradTex_main"]
+gradient = SubResource("Gradient_main")
+fill_to = Vector2(0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_normal"]
-bg_color = Color(0.5, 0, 0.9, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="PlayCircleNormal"]
+bg_color = Color(0.659, 0.333, 0.969, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_pressed"]
-bg_color = Color(0.4, 0, 0.75, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="PlayCirclePressed"]
+bg_color = Color(0.56, 0.26, 0.85, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_hover"]
-bg_color = Color(0.65, 0.15, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="PlayCircleHover"]
+bg_color = Color(0.73, 0.44, 1, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_bg"]
-bg_color = Color(0.22, 0.08, 0.38, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="StyleBoxFlat" id="BarPlayNormal"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_fill"]
-bg_color = Color(0.6, 0.1, 1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="StyleBoxFlat" id="BarPlayHover"]
+bg_color = Color(0.9, 0.9, 0.9, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prog_fill_hl"]
-bg_color = Color(0.7, 0.2, 1, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="StyleBoxFlat" id="SliderBG"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.302, 0.302, 0.302, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[node name="Shockify" type="Control" unique_id=1009142513]
+[sub_resource type="StyleBoxFlat" id="SliderFill"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.659, 0.333, 0.969, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="SliderFillHl"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.73, 0.44, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="VolBG"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.302, 0.302, 0.302, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="VolFillWhite"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Shockify" type="Control" unique_id=1354409394]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,10 +110,10 @@ size_flags_vertical = 3
 script = ExtResource("1_script")
 site_name = "Shockify"
 site_logo = ExtResource("2_logo")
-tile_color = Color(0.72920316, 0.65321064, 0.8515857, 1)
+tile_color = Color(0.6151227, 0.35617754, 0.9263735, 1)
 site_url = "www.shockify.fm/tricitycast"
 
-[node name="BG" type="ColorRect" parent="." unique_id=1718110263]
+[node name="BG" type="ColorRect" parent="." unique_id=1373402062]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,9 +121,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.06, 0.02, 0.1, 1)
+color = Color(0, 0, 0, 1)
 
-[node name="Layout" type="VBoxContainer" parent="." unique_id=1550989638]
+[node name="Layout" type="VBoxContainer" parent="." unique_id=971814174]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,191 +132,506 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Header" type="Control" parent="Layout" unique_id=907739436]
-custom_minimum_size = Vector2(0, 68)
+[node name="Body" type="HBoxContainer" parent="Layout" unique_id=292108704]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="HeaderBG" type="ColorRect" parent="Layout/Header" unique_id=1708680917]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.06, 0, 0.12, 1)
+[node name="Sidebar" type="MarginContainer" parent="Layout/Body" unique_id=309648651]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 20
 
-[node name="HeaderLine" type="ColorRect" parent="Layout/Header" unique_id=1203246527]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-color = Color(0.35, 0.1, 0.55, 1)
+[node name="SideVBox" type="VBoxContainer" parent="Layout/Body/Sidebar" unique_id=2024973700]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="LogoImage" type="TextureRect" parent="Layout/Header" unique_id=1603613228]
-layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_right = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="BrandRow" type="HBoxContainer" parent="Layout/Body/Sidebar/SideVBox" unique_id=516840279]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LogoImage" type="TextureRect" parent="Layout/Body/Sidebar/SideVBox/BrandRow" unique_id=724878991]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("2_logo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MainScroll" type="ScrollContainer" parent="Layout" unique_id=1872080919]
+[node name="BrandLabel" type="Label" parent="Layout/Body/Sidebar/SideVBox/BrandRow" unique_id=1207105124]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 19
+text = "Shockify"
+
+[node name="NavVBox" type="VBoxContainer" parent="Layout/Body/Sidebar/SideVBox" unique_id=1516915469]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="NavHome" type="Label" parent="Layout/Body/Sidebar/SideVBox/NavVBox" unique_id=572827888]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 15
+text = "Home"
+
+[node name="NavSearch" type="Label" parent="Layout/Body/Sidebar/SideVBox/NavVBox" unique_id=1367222197]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 15
+text = "Search"
+
+[node name="SideRule" type="ColorRect" parent="Layout/Body/Sidebar/SideVBox" unique_id=1795124536]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.165, 0.165, 0.165, 1)
+
+[node name="LibLabel" type="Label" parent="Layout/Body/Sidebar/SideVBox" unique_id=169202232]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 15
+text = "Your Library"
+
+[node name="SideSpacer" type="Control" parent="Layout/Body/Sidebar/SideVBox" unique_id=1923719474]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FollowingLabel" type="Label" parent="Layout/Body/Sidebar/SideVBox" unique_id=761122095]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.416, 0.416, 0.416, 1)
+theme_override_font_sizes/font_size = 11
+text = "Following"
+
+[node name="FollowRow" type="HBoxContainer" parent="Layout/Body/Sidebar/SideVBox" unique_id=268657246]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FollowArt" type="TextureRect" parent="Layout/Body/Sidebar/SideVBox/FollowRow" unique_id=1120549897]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("GradTex_art")
+expand_mode = 1
+
+[node name="FollowInfo" type="VBoxContainer" parent="Layout/Body/Sidebar/SideVBox/FollowRow" unique_id=869482726]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="FollowName" type="Label" parent="Layout/Body/Sidebar/SideVBox/FollowRow/FollowInfo" unique_id=656828123]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.902, 0.902, 0.902, 1)
+theme_override_font_sizes/font_size = 13
+text = "TriCityPod"
+
+[node name="FollowType" type="Label" parent="Layout/Body/Sidebar/SideVBox/FollowRow/FollowInfo" unique_id=839297782]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.416, 0.416, 0.416, 1)
+theme_override_font_sizes/font_size = 12
+text = "Podcast"
+
+[node name="MainArea" type="Control" parent="Layout/Body" unique_id=1567876679]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+
+[node name="MainBG" type="TextureRect" parent="Layout/Body/MainArea" unique_id=1683499517]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradTex_main")
+expand_mode = 1
+
+[node name="MainScroll" type="ScrollContainer" parent="Layout/Body/MainArea" unique_id=834886301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="Content" type="VBoxContainer" parent="Layout/MainScroll" unique_id=1639520865]
+[node name="Content" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll" unique_id=72752163]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="ChannelBannerMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=462076952]
+[node name="HeroMargin" type="MarginContainer" parent="Layout/Body/MainArea/MainScroll/Content" unique_id=984034251]
 layout_mode = 2
-theme_override_constants/margin_left = 36
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 36
-theme_override_constants/margin_bottom = 28
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 44
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 10
 
-[node name="ChannelBanner" type="HBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin" unique_id=849744811]
+[node name="HeroHBox" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/HeroMargin" unique_id=1462736653]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="ChannelThumb" type="ColorRect" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner" unique_id=383646862]
-custom_minimum_size = Vector2(140, 140)
+[node name="HeroArt" type="TextureRect" parent="Layout/Body/MainArea/MainScroll/Content/HeroMargin/HeroHBox" unique_id=2094832803]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-color = Color(0.3, 0.05, 0.55, 1)
+texture = SubResource("GradTex_art")
+expand_mode = 1
 
-[node name="ThumbInitials" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelThumb" unique_id=1880790291]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.85, 0.65, 1, 0.6)
-theme_override_font_sizes/font_size = 38
-text = "TC"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ChannelInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner" unique_id=1678591497]
+[node name="HeroInfo" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/HeroMargin/HeroHBox" unique_id=1410672145]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 8
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 10
 
-[node name="TypeLabel" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo" unique_id=1661952280]
+[node name="HeroType" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/HeroMargin/HeroHBox/HeroInfo" unique_id=1879963656]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.5, 0.75, 1)
-theme_override_font_sizes/font_size = 11
-text = "PODCAST"
+theme_override_colors/font_color = Color(0.902, 0.902, 0.902, 1)
+theme_override_font_sizes/font_size = 13
+text = "Podcast"
 
-[node name="ChannelName" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo" unique_id=685032345]
+[node name="HeroTitle" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/HeroMargin/HeroHBox/HeroInfo" unique_id=820886428]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 54
 text = "TriCityPod"
 
-[node name="ChannelDesc" type="Label" parent="Layout/MainScroll/Content/ChannelBannerMargin/ChannelBanner/ChannelInfo" unique_id=170023270]
+[node name="HeroMeta" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/HeroMargin/HeroHBox/HeroInfo" unique_id=2131252055]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.68, 0.62, 0.75, 1)
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
 theme_override_font_sizes/font_size = 14
-text = "Your local tri-city campus podcast"
+text = "Your local tri-city campus podcast · 6 episodes · 8,412 followers"
 
-[node name="DividerMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=124000058]
+[node name="ActionMargin" type="MarginContainer" parent="Layout/Body/MainArea/MainScroll/Content" unique_id=219706851]
 layout_mode = 2
-theme_override_constants/margin_left = 36
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 36
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
 
-[node name="Divider" type="ColorRect" parent="Layout/MainScroll/Content/DividerMargin" unique_id=1051023332]
+[node name="ActionHBox" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/ActionMargin" unique_id=1367192964]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="PlayBtn" type="Button" parent="Layout/Body/MainArea/MainScroll/Content/ActionMargin/ActionHBox" unique_id=2061346236]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("PlayCircleNormal")
+theme_override_styles/pressed = SubResource("PlayCirclePressed")
+theme_override_styles/hover = SubResource("PlayCircleHover")
+text = "▶"
+
+[node name="HeartLabel" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/ActionMargin/ActionHBox" unique_id=2074755076]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 26
+text = "♡"
+
+[node name="TableMargin" type="MarginContainer" parent="Layout/Body/MainArea/MainScroll/Content" unique_id=574722185]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 40
+
+[node name="TableVBox" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin" unique_id=1996155389]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="THead" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=469877434]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="THNum" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/THead" unique_id=272070793]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.416, 0.416, 0.416, 1)
+theme_override_font_sizes/font_size = 12
+text = "#"
+
+[node name="THTitle" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/THead" unique_id=516136183]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.416, 0.416, 0.416, 1)
+theme_override_font_sizes/font_size = 12
+text = "Title"
+
+[node name="THDur" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/THead" unique_id=1138232537]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.416, 0.416, 0.416, 1)
+theme_override_font_sizes/font_size = 12
+text = "Duration"
+horizontal_alignment = 2
+
+[node name="THeadRule" type="ColorRect" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=1903819294]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.28, 0.1, 0.45, 1)
+color = Color(0.165, 0.165, 0.165, 1)
 
-[node name="EpisodesLabelMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=203350738]
+[node name="THeadGap" type="Control" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=1705057901]
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-theme_override_constants/margin_left = 36
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 36
-theme_override_constants/margin_bottom = 14
 
-[node name="EpisodesLabel" type="Label" parent="Layout/MainScroll/Content/EpisodesLabelMargin" unique_id=261911671]
+[node name="Row1" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=31726459]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 22
-text = "Episodes"
+theme_override_constants/separation = 16
 
-[node name="EpisodeCardMargin" type="MarginContainer" parent="Layout/MainScroll/Content" unique_id=1358659818]
+[node name="Num" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row1" unique_id=700480279]
+custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
-theme_override_constants/margin_left = 36
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 36
-theme_override_constants/margin_bottom = 40
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 14
+text = "1"
+vertical_alignment = 1
 
-[node name="EpisodePanel" type="PanelContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin" unique_id=28672394]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_episode")
-
-[node name="EpisodeRow" type="HBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel" unique_id=1658636588]
-layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="EpisodeThumb" type="ColorRect" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow" unique_id=280976532]
-custom_minimum_size = Vector2(72, 72)
-layout_mode = 2
-size_flags_vertical = 4
-color = Color(0.22, 0.05, 0.42, 1)
-
-[node name="EpisodeInfo" type="VBoxContainer" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow" unique_id=780555492]
+[node name="Info" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row1" unique_id=420131505]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_constants/separation = 4
+theme_override_constants/separation = 2
 
-[node name="EpisodeTitle" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo" unique_id=1370699807]
+[node name="Title" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row1/Info" unique_id=1809975830]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 15
+text = "Welcome to TriCityPod"
+
+[node name="Sub" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row1/Info" unique_id=1761601270]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 12
+text = "Not available in your region"
+
+[node name="Dur" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row1" unique_id=1113392116]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 13
+text = "1:12"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Row3" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=181312492]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Num" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row3" unique_id=191018171]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 14
+text = "2"
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row3" unique_id=1603199050]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row3/Info" unique_id=1341330270]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 15
+text = "Homecoming Week Recap"
+
+[node name="Sub" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row3/Info" unique_id=1078761875]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 12
+text = "Not available in your region"
+
+[node name="Dur" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row3" unique_id=1962368052]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 13
+text = "2:04"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Row4" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=2132073507]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Num" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row4" unique_id=1593935298]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 14
+text = "3"
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row4" unique_id=540985834]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row4/Info" unique_id=63611959]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 15
+text = "The Dining Hall Debate"
+
+[node name="Sub" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row4/Info" unique_id=1639114225]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 12
+text = "Not available in your region"
+
+[node name="Dur" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row4" unique_id=1424438811]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 13
+text = "1:47"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Row5" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=573999006]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Num" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row5" unique_id=688448266]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 14
+text = "4"
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row5" unique_id=1074323182]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row5/Info" unique_id=432584936]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 15
+text = "Late Night Study Sessions"
+
+[node name="Sub" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row5/Info" unique_id=2069444935]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 12
+text = "Not available in your region"
+
+[node name="Dur" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row5" unique_id=94731861]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 13
+text = "2:15"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayableRow" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=922665923]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 16
+
+[node name="Num" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/PlayableRow" unique_id=1046479039]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.659, 0.333, 0.969, 1)
+theme_override_font_sizes/font_size = 14
+text = "5"
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/PlayableRow" unique_id=1165674280]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/PlayableRow/Info" unique_id=1865785606]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 16
-text = "TriCityPod"
+theme_override_font_sizes/font_size = 15
+text = "Werewolf on Campus?!?"
 
-[node name="EpisodeSub" type="Label" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow/EpisodeInfo" unique_id=1603890631]
+[node name="Sub" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/PlayableRow/Info" unique_id=1190773968]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.55, 0.68, 1)
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
 theme_override_font_sizes/font_size = 12
 text = "Campus news & culture"
 
-[node name="PlayBtn" type="Button" parent="Layout/MainScroll/Content/EpisodeCardMargin/EpisodePanel/EpisodeRow" unique_id=1979431657]
+[node name="EpisodeDur" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/PlayableRow" unique_id=918961553]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 36)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
 theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxFlat_playbig_normal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_playbig_pressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_playbig_hover")
-theme_override_styles/focus = SubResource("StyleBoxFlat_playbig_normal")
-text = "Play"
+text = "1:36"
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="PlayerBar" type="Control" parent="Layout" unique_id=1039097379]
-custom_minimum_size = Vector2(0, 82)
+[node name="Row6" type="HBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox" unique_id=2135929912]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Num" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row6" unique_id=870930105]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 14
+text = "6"
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row6" unique_id=1533809759]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row6/Info" unique_id=2147158415]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 15
+text = "Finals Week Meltdown"
+
+[node name="Sub" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row6/Info" unique_id=1001113659]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 12
+text = "Not available in your region"
+
+[node name="Dur" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/TableMargin/TableVBox/Row6" unique_id=1501994396]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.353, 0.353, 0.353, 1)
+theme_override_font_sizes/font_size = 13
+text = "1:58"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TranscriptPanel" type="Control" parent="Layout/Body" unique_id=1022166938]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 
-[node name="PlayerBG" type="ColorRect" parent="Layout/PlayerBar" unique_id=1463056973]
+[node name="TBg" type="ColorRect" parent="Layout/Body/TranscriptPanel" unique_id=625982551]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -303,92 +639,250 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.04, 0, 0.08, 1)
+color = Color(0.071, 0.071, 0.071, 1)
 
-[node name="TopLine" type="ColorRect" parent="Layout/PlayerBar" unique_id=639876455]
+[node name="TBorder" type="ColorRect" parent="Layout/Body/TranscriptPanel" unique_id=661123909]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.157, 0.157, 0.157, 1)
+
+[node name="TMargin" type="MarginContainer" parent="Layout/Body/TranscriptPanel" unique_id=1981040068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TVBox" type="VBoxContainer" parent="Layout/Body/TranscriptPanel/TMargin" unique_id=29623220]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="THeadRow" type="HBoxContainer" parent="Layout/Body/TranscriptPanel/TMargin/TVBox" unique_id=1919758971]
+layout_mode = 2
+
+[node name="TTitle" type="Label" parent="Layout/Body/TranscriptPanel/TMargin/TVBox/THeadRow" unique_id=697069900]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Transcript"
+
+[node name="TranscriptCloseBtn" type="Button" parent="Layout/Body/TranscriptPanel/TMargin/TVBox/THeadRow" unique_id=1230845781]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 16
+text = "✕"
+flat = true
+
+[node name="TScroll" type="ScrollContainer" parent="Layout/Body/TranscriptPanel/TMargin/TVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TBody" type="RichTextLabel" parent="Layout/Body/TranscriptPanel/TMargin/TVBox/TScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.902, 0.902, 0.902, 1)
+theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/bold_font_size = 13
+theme_override_font_sizes/italics_font_size = 13
+bbcode_enabled = true
+text = "[b]Host:[/b] Welcome to the Tri City weekly podcast! This week, we have special guest, Georgia Waggner, to discuss the latest rumors about a werewolf hunting on the TriFang University Campus.
+
+Georgia is a popular local personality and a successful business owner. So, tell us Ms. Waggner, what do you make of all this?
+
+[i](time skip)[/i]
+
+[b]Georgia:[/b] Gotta say, these rumors are really overblown. While it might be true that something nefarious has been sighted on the campus, I think it's more likely a vampire.
+
+[b]Host:[/b] What about that lycanthropy professor? She seemed pretty convinced about the danger.
+
+[b]Georgia:[/b] Lycanthropy? What does that even mean? We’re talking about werewolves here. I don’t care what some ivory tower snob says – I have common sense.
+
+[b]Host:[/b] There you have it! Local business owner Georgia Wagger says there’s no werewolves, but there might be a vampire. Now, for a word from our sponsor, Garlic Emporium."
+fit_content = true
+scroll_active = false
+
+[node name="PlayerBar" type="Control" parent="Layout" unique_id=811326145]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="PlayerBG" type="ColorRect" parent="Layout/PlayerBar" unique_id=1067003746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.094, 0.094, 0.094, 1)
+
+[node name="TopLine" type="ColorRect" parent="Layout/PlayerBar" unique_id=361791887]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 mouse_filter = 2
-color = Color(0.32, 0.1, 0.5, 1)
+color = Color(0.157, 0.157, 0.157, 1)
 
-[node name="PlayerMargin" type="MarginContainer" parent="Layout/PlayerBar" unique_id=1859242062]
+[node name="PlayerMargin" type="MarginContainer" parent="Layout/PlayerBar" unique_id=1621661763]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 24
+theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 24
+theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 10
 
-[node name="PlayerContent" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin" unique_id=1021355352]
+[node name="PlayerContent" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin" unique_id=44393099]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 16
 
-[node name="NowPlaying" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=1227981393]
-custom_minimum_size = Vector2(200, 0)
+[node name="NowPlaying" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=139086873]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NPArt" type="TextureRect" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying" unique_id=1289422031]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("GradTex_art")
+expand_mode = 1
+
+[node name="NPInfo" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying" unique_id=1789381218]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 2
 
-[node name="NowPlayingTitle" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying" unique_id=1820067180]
+[node name="NowPlayingTitle" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying/NPInfo" unique_id=406576269]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
+text = "Werewolf on Campus?!?"
 
-[node name="NowPlayingChannel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying" unique_id=1382365364]
+[node name="NowPlayingChannel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/NowPlaying/NPInfo" unique_id=860933253]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.58, 0.5, 0.68, 1)
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 12
+text = "TriCityPod"
 
-[node name="Controls" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=310714738]
+[node name="Controls" type="VBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=1734252790]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_constants/separation = 6
+theme_override_constants/separation = 8
 
-[node name="ControlRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls" unique_id=1198076828]
+[node name="ControlRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls" unique_id=1927952765]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="PlayPauseBtn" type="Button" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=830329794]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 36)
+[node name="PrevLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=87417003]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxFlat_play_normal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_play_pressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_play_hover")
-theme_override_styles/focus = SubResource("StyleBoxFlat_play_normal")
-text = "Play"
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 18
+text = "«"
 
-[node name="Progress" type="HSlider" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls" unique_id=447935728]
+[node name="PlayPauseBtn" type="Button" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=129220271]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("BarPlayNormal")
+theme_override_styles/pressed = SubResource("BarPlayHover")
+theme_override_styles/hover = SubResource("BarPlayHover")
+text = "▶"
+
+[node name="NextLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=605988374]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 18
+text = "»"
+
+[node name="ProgressRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls" unique_id=101119018]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TimeLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ProgressRow" unique_id=1792734058]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.655, 0.655, 0.655, 1)
+theme_override_font_sizes/font_size = 11
+text = "0:00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Progress" type="HSlider" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ProgressRow" unique_id=573882022]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 focus_mode = 0
-theme_override_styles/slider = SubResource("StyleBoxFlat_prog_bg")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_prog_fill")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_prog_fill_hl")
+theme_override_styles/slider = SubResource("SliderBG")
+theme_override_styles/grabber_area = SubResource("SliderFill")
+theme_override_styles/grabber_area_highlight = SubResource("SliderFillHl")
 max_value = 1.0
 step = 0.001
 
-[node name="TimeLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=1291032434]
+[node name="DurationLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ProgressRow" unique_id=313267483]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(56, 0)
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.55, 0.7, 1)
-theme_override_font_sizes/font_size = 12
-text = "0:00"
-horizontal_alignment = 2
+theme_override_colors/font_color = Color(0.655, 0.655, 0.655, 1)
+theme_override_font_sizes/font_size = 11
+text = "1:36"
 vertical_alignment = 1
+
+[node name="RightRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent" unique_id=1552290963]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="TranscriptBtn" type="Button" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/RightRow" unique_id=230401645]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_font_sizes/font_size = 20
+text = "≡"
+flat = true
+
+[node name="VolumeSlider" type="HSlider" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/RightRow" unique_id=1817463956]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 12)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/slider = SubResource("VolBG")
+theme_override_styles/grabber_area = SubResource("VolFillWhite")
+theme_override_styles/grabber_area_highlight = SubResource("VolFillWhite")
+max_value = 1.0
+step = 0.01
+value = 0.7

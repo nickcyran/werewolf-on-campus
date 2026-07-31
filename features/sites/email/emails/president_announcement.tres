@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EmailData" format=3 uid="uid://cw8m2pr4tvqn6"]
+
+[ext_resource type="Script" uid="uid://dbxjloaiw35vp" path="res://features/sites/email/email_data.gd" id="1_data"]
+[ext_resource type="PackedScene" uid="uid://dyjs5bkwfgx6b" path="res://features/sites/email/letters/president_announcement_email.tscn" id="2_layout"]
+
+[resource]
+script = ExtResource("1_data")
+sender = "dbenso@tri-fang.edu"
+subject = "Breaking News: Campus Werewolf Apprehended"
+body = "Dear campus community,
+
+The campus werewolf has been identified and taken into custody, says university president Dr. Derek Hale. There is no need for students to worry. All is safe, and classes will resume as normal. Thank you for your cooperation during this time!"
+reading_layout = ExtResource("2_layout")
+sent_line = "{date-6y}"
+to_line = "ALLSTUDENTS@LISTSERV.TRI-FANG.EDU"
+metadata/_custom_type_script = "uid://dbxjloaiw35vp"

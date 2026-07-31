@@ -1,5 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://d0jx4wd0hbena"]
 
+[ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="1_typewriter"]
+[ext_resource type="FontFile" uid="uid://dtqvy8hmmfd3m" path="res://assets/fonts/Creepster-Regular.ttf" id="2_creepster"]
+
 [sub_resource type="StyleBoxFlat" id="sb_btn_disabled"]
 content_margin_left = 16.0
 content_margin_top = 8.0
@@ -197,6 +200,25 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="sb_howto_card"]
+bg_color = Color(0.063, 0.055, 0.102, 0.78)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.169, 0.239, 0.345, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="FontVariation" id="font_spooky"]
+base_font = ExtResource("2_creepster")
+spacing_glyph = 4
+
 [sub_resource type="StyleBoxFlat" id="sb_time_panel"]
 content_margin_left = 16.0
 content_margin_top = 6.0
@@ -218,6 +240,117 @@ shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="sb_info_slide_panel"]
 bg_color = Color(0.15, 0.15, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_landing_card"]
+bg_color = Color(0.063, 0.055, 0.102, 0.78)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.227, 0.2, 0.333, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_landing_chip"]
+bg_color = Color(1, 0.824, 0.247, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 4
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="FontVariation" id="font_tracked"]
+base_font = ExtResource("1_typewriter")
+spacing_glyph = 3
+
+[sub_resource type="StyleBoxFlat" id="sb_mission_card"]
+bg_color = Color(0.063, 0.055, 0.102, 0.78)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.173, 0.29, 0.204, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_mission_row"]
+bg_color = Color(0.341, 0.851, 0.467, 0.07)
+
+[sub_resource type="StyleBoxFlat" id="sb_nav_outline"]
+content_margin_left = 26.0
+content_margin_top = 11.0
+content_margin_right = 26.0
+content_margin_bottom = 11.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29, 0.263, 0.408, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_nav_outline_hover"]
+content_margin_left = 26.0
+content_margin_top = 11.0
+content_margin_right = 26.0
+content_margin_bottom = 11.0
+bg_color = Color(0.663, 0.635, 0.769, 0.08)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.663, 0.635, 0.769, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_nav_accent"]
+content_margin_left = 30.0
+content_margin_top = 11.0
+content_margin_right = 30.0
+content_margin_bottom = 11.0
+bg_color = Color(1, 0.18, 0.122, 0.12)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.18, 0.122, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_nav_accent_hover"]
+content_margin_left = 30.0
+content_margin_top = 11.0
+content_margin_right = 30.0
+content_margin_bottom = 11.0
+bg_color = Color(1, 0.18, 0.122, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.18, 0.122, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -335,11 +468,21 @@ DayEndTitle/base_type = &"Label"
 DayEndTitle/colors/font_color = Color(0.96, 0.97, 0.98, 1)
 DayEndTitle/font_sizes/font_size = 32
 HowToBullet/base_type = &"Label"
-HowToBullet/colors/font_color = Color(0.82, 0.82, 0.86, 1)
-HowToBullet/font_sizes/font_size = 19
+HowToBullet/colors/font_color = Color(0.937, 0.91, 0.863, 1)
+HowToBullet/font_sizes/font_size = 21
+HowToBullet/fonts/font = ExtResource("1_typewriter")
+HowToCard/base_type = &"PanelContainer"
+HowToCard/styles/panel = SubResource("sb_howto_card")
 HowToTitleBlue/base_type = &"Label"
-HowToTitleBlue/colors/font_color = Color(0.4, 0.65, 0.9, 1)
-HowToTitleBlue/font_sizes/font_size = 32
+HowToTitleBlue/colors/font_color = Color(0.365, 0.722, 1, 1)
+HowToTitleBlue/colors/font_outline_color = Color(0.03, 0.09, 0.16, 1)
+HowToTitleBlue/colors/font_shadow_color = Color(0.051, 0.165, 0.29, 1)
+HowToTitleBlue/constants/outline_size = 8
+HowToTitleBlue/constants/shadow_offset_x = 4
+HowToTitleBlue/constants/shadow_offset_y = 4
+HowToTitleBlue/constants/shadow_outline_size = 0
+HowToTitleBlue/font_sizes/font_size = 74
+HowToTitleBlue/fonts/font = SubResource("font_spooky")
 HudControlLine/base_type = &"Label"
 HudControlLine/colors/font_color = Color(0.7, 0.7, 0.7, 0.55)
 HudControlLine/font_sizes/font_size = 12
@@ -375,30 +518,106 @@ InfoTitleGold/font_sizes/font_size = 36
 Label/colors/font_color = Color(0.82, 0.82, 0.86, 1)
 Label/font_sizes/font_size = 16
 LandingBody/base_type = &"Label"
-LandingBody/colors/font_color = Color(0.82, 0.82, 0.86, 1)
-LandingBody/font_sizes/font_size = 19
+LandingBody/colors/font_color = Color(0.937, 0.91, 0.863, 1)
+LandingBody/font_sizes/font_size = 22
+LandingBody/fonts/font = ExtResource("1_typewriter")
+LandingCard/base_type = &"PanelContainer"
+LandingCard/styles/panel = SubResource("sb_landing_card")
+LandingChip/base_type = &"PanelContainer"
+LandingChip/styles/panel = SubResource("sb_landing_chip")
 LandingDetail/base_type = &"Label"
-LandingDetail/colors/font_color = Color(0.58, 0.58, 0.63, 1)
-LandingDetail/font_sizes/font_size = 16
+LandingDetail/colors/font_color = Color(0.663, 0.635, 0.769, 1)
+LandingDetail/font_sizes/font_size = 17
+LandingDetail/fonts/font = ExtResource("1_typewriter")
 LandingHeroTitle/base_type = &"Label"
-LandingHeroTitle/colors/font_color = Color(0.85, 0.25, 0.2, 1)
-LandingHeroTitle/font_sizes/font_size = 42
+LandingHeroTitle/colors/font_color = Color(1, 0.18, 0.122, 1)
+LandingHeroTitle/colors/font_outline_color = Color(0.16, 0, 0, 1)
+LandingHeroTitle/colors/font_shadow_color = Color(0.361, 0, 0, 1)
+LandingHeroTitle/constants/outline_size = 10
+LandingHeroTitle/constants/shadow_offset_x = 5
+LandingHeroTitle/constants/shadow_offset_y = 5
+LandingHeroTitle/constants/shadow_outline_size = 0
+LandingHeroTitle/font_sizes/font_size = 88
+LandingHeroTitle/fonts/font = SubResource("font_spooky")
 LandingSubtitle/base_type = &"Label"
-LandingSubtitle/colors/font_color = Color(0.55, 0.55, 0.6, 0.7)
-LandingSubtitle/font_sizes/font_size = 14
+LandingSubtitle/colors/font_color = Color(0.102, 0.071, 0.024, 1)
+LandingSubtitle/font_sizes/font_size = 19
+LandingSubtitle/fonts/font = SubResource("font_tracked")
+MissionCard/base_type = &"PanelContainer"
+MissionCard/styles/panel = SubResource("sb_mission_card")
 MissionEmphasis/base_type = &"Label"
-MissionEmphasis/colors/font_color = Color(0.9, 0.9, 0.93, 1)
-MissionEmphasis/font_sizes/font_size = 19
+MissionEmphasis/colors/font_color = Color(0.937, 0.91, 0.863, 1)
+MissionEmphasis/font_sizes/font_size = 21
+MissionEmphasis/fonts/font = ExtResource("1_typewriter")
 MissionHint/base_type = &"Label"
-MissionHint/colors/font_color = Color(0.74, 0.75, 0.8, 1)
-MissionHint/font_sizes/font_size = 16
+MissionHint/colors/font_color = Color(0.663, 0.635, 0.769, 1)
+MissionHint/font_sizes/font_size = 17
+MissionHint/fonts/font = ExtResource("1_typewriter")
 MissionIntro/base_type = &"Label"
-MissionIntro/colors/font_color = Color(0.82, 0.82, 0.86, 1)
-MissionIntro/font_sizes/font_size = 18
+MissionIntro/colors/font_color = Color(0.937, 0.91, 0.863, 1)
+MissionIntro/font_sizes/font_size = 22
+MissionIntro/fonts/font = ExtResource("1_typewriter")
+MissionNumber/base_type = &"Label"
+MissionNumber/colors/font_color = Color(0.341, 0.851, 0.467, 1)
+MissionNumber/colors/font_shadow_color = Color(0.047, 0.227, 0.094, 1)
+MissionNumber/constants/shadow_offset_x = 2
+MissionNumber/constants/shadow_offset_y = 2
+MissionNumber/constants/shadow_outline_size = 0
+MissionNumber/font_sizes/font_size = 32
+MissionNumber/fonts/font = SubResource("font_spooky")
+MissionRow/base_type = &"PanelContainer"
+MissionRow/styles/panel = SubResource("sb_mission_row")
 MissionTitleGreen/base_type = &"Label"
-MissionTitleGreen/colors/font_color = Color(0.35, 0.75, 0.45, 1)
-MissionTitleGreen/font_sizes/font_size = 32
+MissionTitleGreen/colors/font_color = Color(0.341, 0.851, 0.467, 1)
+MissionTitleGreen/colors/font_outline_color = Color(0.02, 0.12, 0.05, 1)
+MissionTitleGreen/colors/font_shadow_color = Color(0.047, 0.227, 0.094, 1)
+MissionTitleGreen/constants/outline_size = 8
+MissionTitleGreen/constants/shadow_offset_x = 4
+MissionTitleGreen/constants/shadow_offset_y = 4
+MissionTitleGreen/constants/shadow_outline_size = 0
+MissionTitleGreen/font_sizes/font_size = 74
+MissionTitleGreen/fonts/font = SubResource("font_spooky")
+NavBackBtn/base_type = &"Button"
+NavBackBtn/colors/font_color = Color(0.663, 0.635, 0.769, 1)
+NavBackBtn/colors/font_disabled_color = Color(0.663, 0.635, 0.769, 0.4)
+NavBackBtn/colors/font_focus_color = Color(0.937, 0.91, 0.863, 1)
+NavBackBtn/colors/font_hover_color = Color(0.937, 0.91, 0.863, 1)
+NavBackBtn/colors/font_pressed_color = Color(0.937, 0.91, 0.863, 1)
+NavBackBtn/font_sizes/font_size = 17
+NavBackBtn/fonts/font = ExtResource("1_typewriter")
+NavBackBtn/styles/disabled = SubResource("sb_nav_outline")
+NavBackBtn/styles/focus = SubResource("sb_nav_outline_hover")
+NavBackBtn/styles/hover = SubResource("sb_nav_outline_hover")
+NavBackBtn/styles/normal = SubResource("sb_nav_outline")
+NavBackBtn/styles/pressed = SubResource("sb_nav_outline_hover")
+NavBeginBtn/base_type = &"Button"
+NavBeginBtn/colors/font_color = Color(1, 0.416, 0.353, 1)
+NavBeginBtn/colors/font_disabled_color = Color(1, 0.416, 0.353, 0.4)
+NavBeginBtn/colors/font_focus_color = Color(1, 0.973, 0.925, 1)
+NavBeginBtn/colors/font_hover_color = Color(1, 0.973, 0.925, 1)
+NavBeginBtn/colors/font_pressed_color = Color(1, 0.973, 0.925, 1)
+NavBeginBtn/font_sizes/font_size = 17
+NavBeginBtn/fonts/font = ExtResource("1_typewriter")
+NavBeginBtn/styles/disabled = SubResource("sb_nav_accent")
+NavBeginBtn/styles/focus = SubResource("sb_nav_accent_hover")
+NavBeginBtn/styles/hover = SubResource("sb_nav_accent_hover")
+NavBeginBtn/styles/normal = SubResource("sb_nav_accent")
+NavBeginBtn/styles/pressed = SubResource("sb_nav_accent_hover")
+NavNextBtn/base_type = &"Button"
+NavNextBtn/colors/font_color = Color(0.663, 0.635, 0.769, 1)
+NavNextBtn/colors/font_disabled_color = Color(0.663, 0.635, 0.769, 0.4)
+NavNextBtn/colors/font_focus_color = Color(0.937, 0.91, 0.863, 1)
+NavNextBtn/colors/font_hover_color = Color(0.937, 0.91, 0.863, 1)
+NavNextBtn/colors/font_pressed_color = Color(0.937, 0.91, 0.863, 1)
+NavNextBtn/font_sizes/font_size = 17
+NavNextBtn/fonts/font = ExtResource("1_typewriter")
+NavNextBtn/styles/disabled = SubResource("sb_nav_outline")
+NavNextBtn/styles/focus = SubResource("sb_nav_outline_hover")
+NavNextBtn/styles/hover = SubResource("sb_nav_outline_hover")
+NavNextBtn/styles/normal = SubResource("sb_nav_outline")
+NavNextBtn/styles/pressed = SubResource("sb_nav_outline_hover")
 NavPageIndicator/base_type = &"Label"
-NavPageIndicator/colors/font_color = Color(0.5, 0.5, 0.55, 1)
-NavPageIndicator/font_sizes/font_size = 13
+NavPageIndicator/colors/font_color = Color(0.435, 0.408, 0.565, 1)
+NavPageIndicator/font_sizes/font_size = 15
+NavPageIndicator/fonts/font = SubResource("font_tracked")
 Panel/styles/panel = SubResource("sb_slide_panel")

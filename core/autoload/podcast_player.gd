@@ -4,6 +4,8 @@ var started := false
 var paused := false
 
 var _player: AudioStreamPlayer
+# Seek requested while not actively playing; applied when playback (re)starts.
+var _pending_seek := -1.0
 
 
 func _ready() -> void:
@@ -15,13 +17,16 @@ func _ready() -> void:
 
 func play() -> void:
 	if not started:
-		_player.play()
+		_player.play(maxf(_pending_seek, 0.0))
 		started = true
 		paused = false
 		GameManager.mark_source_visited("tricitypod")
 	elif paused:
 		_player.stream_paused = false
 		paused = false
+		if _pending_seek >= 0.0:
+			_player.seek(_pending_seek)
+	_pending_seek = -1.0
 
 
 func pause() -> void:
@@ -34,12 +39,22 @@ func stop() -> void:
 	_player.stop()
 	started = false
 	paused = false
+	_pending_seek = -1.0
+
+
+func set_volume(linear: float) -> void:
+	_player.volume_db = linear_to_db(clampf(linear, 0.0, 1.0)) if linear > 0.001 else -80.0
 
 
 func seek(ratio: float) -> void:
 	var duration := get_duration()
-	if duration > 0.0:
-		_player.seek(ratio * duration)
+	if duration <= 0.0:
+		return
+	var pos := ratio * duration
+	if is_playing():
+		_player.seek(pos)
+	else:
+		_pending_seek = pos
 
 
 func is_playing() -> bool:
@@ -47,6 +62,8 @@ func is_playing() -> bool:
 
 
 func get_position() -> float:
+	if _pending_seek >= 0.0 and not is_playing():
+		return _pending_seek
 	return _player.get_playback_position()
 
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/components/fullscreen_button.gd" id="1_script"]
+
+[node name="FullscreenButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_type_variation = &"NavBackBtn"
+text = "Fullscreen"
+script = ExtResource("1_script")

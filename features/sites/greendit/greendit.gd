@@ -3,7 +3,7 @@ extends Site
 const CommentRowScene := preload("res://features/sites/greendit/greendit_comment_row.tscn")
 
 @export var comments: Array[GreenditComment] = []
-@onready var _comment_list: VBoxContainer = $ScrollContainer/Content/BodySection/Feed/PostColumn/CommentSection
+@onready var _comment_list: VBoxContainer = %CommentSection
 
 
 func _ready() -> void:
@@ -12,13 +12,13 @@ func _ready() -> void:
 
 
 func _add_comment(data: GreenditComment, parent: VBoxContainer, depth: int = 0) -> void:
+	if depth == 0:
+		parent.add_child(_make_thread_divider())
+
 	var row: GreenditCommentRow = CommentRowScene.instantiate() as GreenditCommentRow
 	parent.add_child(row)
 	row.apply_comment(data, depth)
 	row.link_activated.connect(_on_comment_link_activated)
-
-	if depth == 0:
-		parent.add_child(_make_thread_divider())
 
 	for reply in data.replies:
 		_add_comment(reply, parent, depth + 1)

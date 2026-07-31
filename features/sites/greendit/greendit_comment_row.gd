@@ -5,7 +5,7 @@ extends HBoxContainer
 ## scene_path is the res:// path the link points to.
 signal link_activated(scene_path: String)
 
-const LINK_COLOR := "#7fb7ff"
+const LINK_COLOR := "#1d9e5f"
 
 static var _link_regex: RegEx = _make_link_regex()
 
@@ -20,6 +20,8 @@ func _ready() -> void:
 
 
 func apply_comment(data: GreenditComment, depth: int) -> void:
+	%Avatar.self_modulate = _avatar_color(data.author)
+	%AvatarInitial.text = data.author.left(1).to_upper() if data.author != "" else "U"
 	%Author.text = data.author if data.author else "u/anonymous"
 	%TimeLabel.text = data.time
 	%Body.text = _stylize_links(data.body)
@@ -42,6 +44,14 @@ func apply_comment(data: GreenditComment, depth: int) -> void:
 		_indent_spacer.custom_minimum_size = Vector2.ZERO
 		_indent_bar.visible = false
 		_gap_indent.visible = false
+
+
+## Deterministic per-user avatar tint, hashed from the username like the mockup.
+static func _avatar_color(author: String) -> Color:
+	var h := 0
+	for i in author.length():
+		h = (h * 31 + author.unicode_at(i)) % 360
+	return Color.from_ok_hsl(h / 360.0, 0.62, 0.6)
 
 
 func _on_body_meta_clicked(meta: Variant) -> void:

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dj40wxghl736n" path="res://features/sites/email/email_client.gd" id="1"]
 [ext_resource type="Theme" uid="uid://dosjhvpyoh2j4" path="res://features/sites/email/email_theme.tres" id="2_them"]
 [ext_resource type="Texture2D" uid="uid://bc4lqvpe3n3qb" path="res://assets/logos/CloudMail_logo.png" id="3_logo"]
+[ext_resource type="Script" uid="uid://dbxjloaiw35vp" path="res://features/sites/email/email_data.gd" id="4_data"]
+[ext_resource type="Resource" uid="uid://cw8m2pr4tvqn6" path="res://features/sites/email/emails/president_announcement.tres" id="5_president"]
 
 [node name="EmailClient" type="Control" unique_id=2007259044]
 layout_mode = 3
@@ -20,6 +22,7 @@ site_logo = ExtResource("3_logo")
 tile_color = Color(0.71872723, 0.7838086, 0.9448531, 1)
 site_url = "www.cloudmail.com/inbox"
 source_id = "cloudmail"
+emails = Array[ExtResource("4_data")]([ExtResource("5_president")])
 
 [node name="RootPanel" type="PanelContainer" parent="." unique_id=578218129]
 layout_mode = 1

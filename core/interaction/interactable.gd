@@ -22,7 +22,7 @@ const OUTLINE_MATERIAL := preload("res://vfx/outline/outline.tres")
 var focus_point: Marker3D
 var embedded_viewport: SubViewport
 
-var _mesh: MeshInstance3D
+var _mesh: GeometryInstance3D
 var _outline: ShaderMaterial
 var _is_hovered: bool
 
@@ -60,8 +60,8 @@ func get_held_transform(cam: Camera3D) -> Transform3D:
 
 func _discover_children() -> void:
 	for child in get_children():
-		# Assume first mesh3d child is the visual component of model
-		if !_mesh and child is MeshInstance3D:
+		# Assume first geometry child is the visual component of model
+		if !_mesh and child is GeometryInstance3D:
 			_mesh = child
 
 		# Marker used as focus target

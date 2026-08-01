@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://byak3m7q2wf5t"]
 
 [ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
-[ext_resource type="Texture2D" uid="uid://16tgesm3tp33" path="res://assets/logos/channel29_logo.png" id="2_logo"]
 [ext_resource type="Texture2D" uid="uid://cps3w2rwwa4oo" path="res://assets/logos/channel29_badge.png" id="3_badge"]
 
-[sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1dgf"]
+content_margin_left = 18.0
+content_margin_top = 6.0
+content_margin_right = 18.0
+content_margin_bottom = 6.0
 bg_color = Color(0, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="NavBtnHover"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xpcx"]
+content_margin_left = 18.0
+content_margin_top = 6.0
+content_margin_right = 18.0
+content_margin_bottom = 6.0
 bg_color = Color(1, 1, 1, 0.1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
@@ -27,7 +34,7 @@ script = ExtResource("1_site")
 site_name = "Mary Harker"
 site_url = "www.channel29news.com/staff/mary-harker"
 
-[node name="BG" type="ColorRect" parent="." unique_id=1278891469]
+[node name="BG" type="ColorRect" parent="." unique_id=998410673]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,27 +42,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.96, 0.96, 0.96, 1)
+color = Color(0.953, 0.953, 0.945, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1363300365]
+[node name="Content" type="VBoxContainer" parent="." unique_id=1651225513]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_scroll_mode = 0
-
-[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=1516569518]
-layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="NavBar" type="Control" parent="ScrollContainer/Content" unique_id=2016850191]
-custom_minimum_size = Vector2(0, 56)
+[node name="NavBar" type="Control" parent="Content" unique_id=818230056]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 
-[node name="NavBarBG" type="ColorRect" parent="ScrollContainer/Content/NavBar" unique_id=1728545769]
+[node name="NavBarBG" type="ColorRect" parent="Content/NavBar" unique_id=401888795]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,200 +65,172 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.1, 0.1, 0.12, 1)
+color = Color(0.067, 0.067, 0.067, 1)
 
-[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=255103961]
+[node name="NavLinks" type="HBoxContainer" parent="Content/NavBar" unique_id=1147958425]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.02
-anchor_right = 0.66
+anchors_preset = 9
 anchor_bottom = 1.0
-theme_override_constants/separation = 0
-alignment = 1
-metadata/_edit_use_anchors_ = true
+offset_left = 40.0
+offset_right = 340.0
+grow_vertical = 2
+theme_override_constants/separation = 8
 
-[node name="NewsLabel" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1955063093]
-custom_minimum_size = Vector2(100, 0)
+[node name="NewsLabel" type="Button" parent="Content/NavBar/NavLinks" unique_id=412706344]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("NavBtnNormal")
-theme_override_styles/hover = SubResource("NavBtnHover")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x1dgf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1xpcx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1xpcx")
 text = "News"
 
-[node name="WeatherLabel" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=202980808]
-custom_minimum_size = Vector2(110, 0)
+[node name="WeatherLabel" type="Button" parent="Content/NavBar/NavLinks" unique_id=701872534]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("NavBtnNormal")
-theme_override_styles/hover = SubResource("NavBtnHover")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x1dgf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1xpcx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1xpcx")
 text = "Weather"
 
-[node name="SportsLabel" type="Button" parent="ScrollContainer/Content/NavBar/NavLinks" unique_id=1154974053]
-custom_minimum_size = Vector2(100, 0)
+[node name="SportsLabel" type="Button" parent="Content/NavBar/NavLinks" unique_id=2131219080]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.87, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("NavBtnNormal")
-theme_override_styles/hover = SubResource("NavBtnHover")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x1dgf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1xpcx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1xpcx")
 text = "Sports"
 
-[node name="WeatherWidget" type="HBoxContainer" parent="ScrollContainer/Content/NavBar" unique_id=1924185759]
+[node name="WeatherWidget" type="HBoxContainer" parent="Content/NavBar" unique_id=858844292]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8
-anchor_top = 0.14
-anchor_right = 0.98
-anchor_bottom = 0.86
-theme_override_constants/separation = 6
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_right = -40.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
 alignment = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="CloudIcon" type="Label" parent="ScrollContainer/Content/NavBar/WeatherWidget" unique_id=1728545770]
+[node name="CloudIcon" type="Label" parent="Content/NavBar/WeatherWidget" unique_id=1465104635]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.82, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.87, 0.87, 0.87, 1)
+theme_override_font_sizes/font_size = 16
 text = "☁"
+vertical_alignment = 1
 
-[node name="TempVBox" type="VBoxContainer" parent="ScrollContainer/Content/NavBar/WeatherWidget" unique_id=1728545771]
+[node name="TempVBox" type="VBoxContainer" parent="Content/NavBar/WeatherWidget" unique_id=708976302]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = -2
+theme_override_constants/separation = -1
 
-[node name="Temp" type="Label" parent="ScrollContainer/Content/NavBar/WeatherWidget/TempVBox" unique_id=1728545772]
+[node name="Temp" type="Label" parent="Content/NavBar/WeatherWidget/TempVBox" unique_id=2068254351]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.35, 0.3, 1)
+theme_override_colors/font_color = Color(0.886, 0.329, 0.247, 1)
 theme_override_font_sizes/font_size = 13
 text = "34°"
 
-[node name="Location" type="Label" parent="ScrollContainer/Content/NavBar/WeatherWidget/TempVBox" unique_id=1728545773]
+[node name="Location" type="Label" parent="Content/NavBar/WeatherWidget/TempVBox" unique_id=1096540084]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.72, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 11
 text = "Tri-fang NY"
 
-[node name="BodySection" type="HBoxContainer" parent="ScrollContainer/Content" unique_id=1519437769]
+[node name="TopSpacer" type="Control" parent="Content" unique_id=982884846]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BodySection" type="HBoxContainer" parent="Content" unique_id=1633846351]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="LeftSidebar" type="VBoxContainer" parent="ScrollContainer/Content/BodySection" unique_id=829252730]
-custom_minimum_size = Vector2(200, 0)
+[node name="ArticleMargin" type="MarginContainer" parent="Content/BodySection" unique_id=755442901]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 0
+
+[node name="ArticleVBox" type="VBoxContainer" parent="Content/BodySection/ArticleMargin" unique_id=314018668]
+layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="SidebarBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=1521915640]
-show_behind_parent = true
+[node name="Name" type="Label" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=1612899566]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Varcola U. Kane"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameSpacer" type="Control" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=1562576092]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.94, 0.94, 0.94, 1)
 
-[node name="BadgeRow" type="CenterContainer" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=666127743]
-custom_minimum_size = Vector2(0, 200)
+[node name="JournalistBio" type="Label" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=1515676995]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Journalist Bio:"
 
-[node name="Badge" type="TextureRect" parent="ScrollContainer/Content/BodySection/LeftSidebar/BadgeRow" unique_id=1588810959]
-custom_minimum_size = Vector2(200, 200)
+[node name="JournalistSpacer" type="Control" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=1111413280]
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
+mouse_filter = 2
+
+[node name="JournalistInfo" type="Label" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=801185718]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Varcola U. Kane, staff writer
+vkane@channel29.com | 361-555-4321
+"
+
+[node name="Body1" type="RichTextLabel" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=1513740891]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.102, 0.102, 0.102, 1)
+theme_override_constants/line_separation = 6
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Varcola U. Kane is a reporter with the rapid response team at Channel 29 News. Kane graduated magna cum laude with a degree in journalism from Tri-Fang University in 2011. She worked at the student paper there and held an internship with the Tri-Fang City Herald before joining Channel 29 in 2016. She primarily covers public safety and topics of local concern for the Tri-City area. She won the Selden Ring Award in 2023 for her work exposing several member's of the mayor's office as vampires."
+fit_content = true
+scroll_active = false
+
+[node name="DividerSpacer" type="Control" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=356510904]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Divider" type="ColorRect" parent="Content/BodySection/ArticleMargin/ArticleVBox" unique_id=132515363]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="BadgeMargin" type="MarginContainer" parent="Content/BodySection" unique_id=1905180823]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_right = 90
+
+[node name="BadgeRect" type="TextureRect" parent="Content/BodySection/BadgeMargin" unique_id=249404175]
+custom_minimum_size = Vector2(260, 260)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
 texture = ExtResource("3_badge")
 expand_mode = 3
 stretch_mode = 5
-
-[node name="NameLabel" type="Label" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=1111319432]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
-theme_override_font_sizes/font_size = 18
-text = "Mary Harker"
-horizontal_alignment = 1
-
-[node name="Spacer2" type="Control" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=122861539]
-custom_minimum_size = Vector2(0, 14)
-layout_mode = 2
-
-[node name="AboutLabel" type="Label" parent="ScrollContainer/Content/BodySection/LeftSidebar" unique_id=1507800879]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25, 0.25, 0.3, 1)
-theme_override_font_sizes/font_size = 14
-text = "About"
-horizontal_alignment = 1
-
-[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/BodySection" unique_id=1853839533]
-custom_minimum_size = Vector2(1, 0)
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.82, 0.82, 0.82, 1)
-
-[node name="MainContent" type="VBoxContainer" parent="ScrollContainer/Content/BodySection" unique_id=1276699817]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="LogoBanner" type="CenterContainer" parent="ScrollContainer/Content/BodySection/MainContent" unique_id=996407248]
-custom_minimum_size = Vector2(0, 95.7)
-layout_mode = 2
-
-[node name="LogoBannerBG" type="ColorRect" parent="ScrollContainer/Content/BodySection/MainContent/LogoBanner" unique_id=370422975]
-show_behind_parent = true
-layout_mode = 2
-mouse_filter = 2
-color = Color(0.06, 0.06, 0.08, 1)
-
-[node name="Logo" type="TextureRect" parent="ScrollContainer/Content/BodySection/MainContent/LogoBanner" unique_id=518710090]
-custom_minimum_size = Vector2(500, 120)
-layout_mode = 2
-texture = ExtResource("2_logo")
-expand_mode = 3
-stretch_mode = 6
-
-[node name="BioSection" type="MarginContainer" parent="ScrollContainer/Content/BodySection/MainContent" unique_id=1793912702]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 20
-
-[node name="BioVBox" type="VBoxContainer" parent="ScrollContainer/Content/BodySection/MainContent/BioSection" unique_id=1435453425]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="BioTitle" type="Label" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=2028735478]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
-theme_override_font_sizes/font_size = 22
-text = "Journalist Bio:"
-
-[node name="Divider1" type="ColorRect" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=84897490]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 2
-color = Color(0.82, 0.82, 0.82, 1)
-
-[node name="StaffLine" type="Label" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=110253113]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
-theme_override_font_sizes/font_size = 16
-text = "Mary Harker, staff writer"
-
-[node name="ContactLine" type="Label" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=2073235696]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.4, 0.42, 1)
-theme_override_font_sizes/font_size = 12
-text = "mharker@channel29.com | 361-555-4321"
-
-[node name="Spacer" type="Control" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=584594939]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox" unique_id=539510430]
-layout_mode = 2
-theme_override_constants/margin_right = 98
-
-[node name="BioBody" type="RichTextLabel" parent="ScrollContainer/Content/BodySection/MainContent/BioSection/BioVBox/MarginContainer" unique_id=310972692]
-custom_minimum_size = Vector2(0, 280)
-layout_mode = 2
-theme_override_colors/default_color = Color(0.18, 0.18, 0.18, 1)
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "Mary Harker is a reporter with the rapid response team at Channel 29 News. Harker graduated magna cum laude with a degree in Journalism from Tri-Fang University in 2011. She worked at the student paper there and held an internship with the Tri-Fang City Herald before joining Channel 29 in 2016. She primarily covers public safety and topics of local concern for the Tri-City area. She won the Selden Ring Award in 2023 for her work exposing several members of the mayor's office as vampires."
-scroll_active = false

@@ -1,20 +1,9 @@
 [gd_scene format=3 uid="uid://c4ya7npfp4aot"]
 
-[ext_resource type="Script" uid="uid://b8u2wcy5kheox" path="res://features/sites/trifangnews/trifang_news.gd" id="1_script"]
-[ext_resource type="PackedScene" path="res://features/sites/trifangnews/trifang_professor.tscn" id="2_prof"]
+[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://ceq18rs5nix2b" path="res://assets/media/werwolf_spotting.png" id="3_image"]
 [ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="3_twoay"]
-[ext_resource type="Script" uid="uid://c7mzr3pb6vhla" path="res://ui/components/dynamic_date_label.gd" id="4_dyndate"]
-
-[sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
-bg_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="NavBtnHover"]
-bg_color = Color(1, 1, 1, 0.08)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[ext_resource type="Script" path="res://ui/components/dynamic_date_label.gd" id="4_dyndate"]
 
 [sub_resource type="StyleBoxFlat" id="BreakingPillBg"]
 content_margin_left = 10.0
@@ -37,7 +26,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_script")
-professor_page = ExtResource("2_prof")
 site_name = "Trifang News"
 site_logo = ExtResource("3_twoay")
 tile_color = Color(0, 0, 0, 1)
@@ -69,6 +57,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="WeatherBar" type="Control" parent="ScrollContainer/Content" unique_id=15252232]
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
@@ -152,15 +141,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 36
-
-[node name="AboutBtn" type="Button" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderRow/NavLinks" unique_id=1516459997]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.83, 0.825, 0.84, 1)
-theme_override_colors/font_hover_color = Color(0.91, 0.905, 0.92, 1)
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("NavBtnNormal")
-theme_override_styles/hover = SubResource("NavBtnHover")
-text = "About"
 
 [node name="NewsLabel" type="Label" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderRow/NavLinks" unique_id=1428962631]
 layout_mode = 2
@@ -262,7 +242,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.92, 0.62, 0.38, 1)
 theme_override_font_sizes/font_size = 14
-text = "By Varcola U. Kane"
+text = "By staff writers"
 
 [node name="BylineSpacer" type="Control" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox/BylineRow" unique_id=1191423805]
 layout_mode = 2
@@ -272,9 +252,9 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.615, 0.63, 1)
 theme_override_font_sizes/font_size = 14
-text = "May 3, 2026"
+text = "July 24, 2026"
 script = ExtResource("4_dyndate")
-template = "{date}"
+offset_days = -7
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1261720133]
 custom_minimum_size = Vector2(0, 18)
@@ -291,7 +271,7 @@ layout_mode = 2
 
 [node name="Body" type="MarginContainer" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1512906308]
 layout_mode = 2
-theme_override_constants/margin_right = 103
+theme_override_constants/margin_right = 104
 
 [node name="BodyRow" type="HBoxContainer" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox/Body" unique_id=1516459999]
 layout_mode = 2
@@ -302,11 +282,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.88, 0.875, 0.89, 1)
 theme_override_font_sizes/normal_font_size = 21
-text = "Approximately 2:30pm on Wednesday, a werewolf sighting occurred. A clip gone viral shows an influencer encountering a creature in the campus tunnels.
+text = "“At approximately 2:30pm on Wednesday, a werewolf sighting occurred. A clip has gone viral with an influencer finding a creature in the campus tunnels. 
 
-Officers are closely examining the scene, finding piles of fur scattered throughout. If anyone can provide any information, please call 567-TRI-TFPD.
-
-Campus security has increased patrols around the tunnel entrances, and administrators say a full statement will follow once the investigation concludes. Students are advised to avoid the area after dark until further notice."
+Officers closely examining the scene found scattered fur. If anyone can provide any information, please call 567-TRI-TPFPD."
 fit_content = true
 scroll_active = false
 
@@ -333,29 +311,35 @@ fit_content = true
 scroll_active = false
 
 [node name="Spacer5" type="Control" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1150142540]
+visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="MoreDivider" type="ColorRect" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1191423806]
+visible = false
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.235, 0.22, 0.25, 1)
 
 [node name="Spacer6" type="Control" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1072740727]
+visible = false
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
 [node name="MoreLabel" type="Label" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1261720134]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.615, 0.63, 1)
 theme_override_font_sizes/font_size = 12
 text = "MORE FROM TRI-FANG NEWS"
 
 [node name="Spacer7" type="Control" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=806002164]
+visible = false
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
 [node name="MoreList" type="VBoxContainer" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox" unique_id=1531382170]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 
@@ -375,9 +359,8 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
-text = "May 3"
+text = "July 31"
 script = ExtResource("4_dyndate")
-template = "{date}"
 pattern = "MMMM D"
 
 [node name="Row1Divider" type="ColorRect" parent="ScrollContainer/Content/ArticleMargin/ArticleVBox/MoreList" unique_id=2075925042]
@@ -401,9 +384,8 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
-text = "May 2"
+text = "July 30"
 script = ExtResource("4_dyndate")
-template = "{date}"
 pattern = "MMMM D"
 offset_days = -1
 
@@ -428,8 +410,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
-text = "May 1"
+text = "July 29"
 script = ExtResource("4_dyndate")
-template = "{date}"
 pattern = "MMMM D"
 offset_days = -2

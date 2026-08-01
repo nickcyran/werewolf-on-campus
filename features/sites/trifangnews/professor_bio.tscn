@@ -1,0 +1,134 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
+[ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="2_logo"]
+
+[node name="ProfessorBio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_site")
+site_name = "Prof. Housman"
+site_logo = ExtResource("2_logo")
+tile_color = Color(0, 0, 0, 1)
+site_url = "www.trifang.edu/faculty/housman"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.97, 0.97, 0.97, 1)
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="Control" parent="Content"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="HeaderBG" type="ColorRect" parent="Content/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.1, 0.12, 1)
+
+[node name="HeaderHBox" type="HBoxContainer" parent="Content/Header"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = 400.0
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Logo" type="TextureRect" parent="Content/Header/HeaderHBox"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_logo")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SiteLabel" type="Label" parent="Content/Header/HeaderHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Tri-Fang University | Faculty"
+vertical_alignment = 1
+
+[node name="BodyMargin" type="MarginContainer" parent="Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 0
+
+[node name="BodyVBox" type="VBoxContainer" parent="Content/BodyMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Name" type="Label" parent="Content/BodyMargin/BodyVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Dr. Clemence Housman"
+
+[node name="NameSpacer" type="Control" parent="Content/BodyMargin/BodyVBox"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Content/BodyMargin/BodyVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = "Professor of Cryptids and Lycanthropy"
+autowrap_mode = 3
+
+[node name="TitleSpacer" type="Control" parent="Content/BodyMargin/BodyVBox"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Divider" type="ColorRect" parent="Content/BodyMargin/BodyVBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="DividerSpacer" type="Control" parent="Content/BodyMargin/BodyVBox"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Body" type="RichTextLabel" parent="Content/BodyMargin/BodyVBox"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.102, 0.102, 0.102, 1)
+theme_override_constants/line_separation = 6
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Faculty bio coming soon."
+fit_content = true
+scroll_active = false

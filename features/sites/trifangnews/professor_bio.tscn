@@ -1,13 +1,10 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://c82v7ol7qlk8j"]
 
 [ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
 [ext_resource type="Texture2D" uid="uid://bh2slt1wk4g4s" path="res://assets/logos/Trifang-crest.png" id="2_crest"]
 
 [sub_resource type="FontVariation" id="EyebrowFont"]
 spacing_glyph = 2
-
-[sub_resource type="FontVariation" id="ObliqueFont"]
-variation_transform = Transform2D(1, 0, 0.2, 1, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="PortraitSlot"]
 bg_color = Color(0.937, 0.913, 0.851, 1)
@@ -21,7 +18,7 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[node name="ProfessorBio" type="Control"]
+[node name="ProfessorBio" type="Control" unique_id=2054471881]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +33,7 @@ site_logo = ExtResource("2_crest")
 tile_color = Color(0.478, 0.078, 0.125, 1)
 site_url = "www.trifang.edu/folklore/faculty/housman"
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=816003058]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +43,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.98, 0.965, 0.925, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=913150913]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,16 +52,16 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="Content" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Content" type="VBoxContainer" parent="ScrollContainer" unique_id=1416434062]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Header" type="Control" parent="ScrollContainer/Content"]
+[node name="Header" type="Control" parent="ScrollContainer/Content" unique_id=1913413201]
 custom_minimum_size = Vector2(0, 116)
 layout_mode = 2
 
-[node name="HeaderBG" type="ColorRect" parent="ScrollContainer/Content/Header"]
+[node name="HeaderBG" type="ColorRect" parent="ScrollContainer/Content/Header" unique_id=1798007597]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +71,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.478, 0.078, 0.125, 1)
 
-[node name="HeaderMargin" type="MarginContainer" parent="ScrollContainer/Content/Header"]
+[node name="HeaderMargin" type="MarginContainer" parent="ScrollContainer/Content/Header" unique_id=1163255833]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,12 +84,12 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 10
 
-[node name="HeaderHBox" type="HBoxContainer" parent="ScrollContainer/Content/Header/HeaderMargin"]
+[node name="HeaderHBox" type="HBoxContainer" parent="ScrollContainer/Content/Header/HeaderMargin" unique_id=200961662]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 28
 
-[node name="Crest" type="TextureRect" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox"]
+[node name="Crest" type="TextureRect" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox" unique_id=2107988191]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_vertical = 4
@@ -101,40 +98,39 @@ texture = ExtResource("2_crest")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Brand" type="Label" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox"]
+[node name="Brand" type="Label" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox" unique_id=1670595728]
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Tri-Fang Folklore"
 vertical_alignment = 1
 
-[node name="NavSpacer" type="Control" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox"]
+[node name="NavSpacer" type="Control" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox" unique_id=547756961]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox"]
+[node name="NavLinks" type="HBoxContainer" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox" unique_id=540857350]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 48
 
-[node name="Courses" type="Label" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox/NavLinks"]
+[node name="Courses" type="Label" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox/NavLinks" unique_id=262122770]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "Courses"
 vertical_alignment = 1
 
-[node name="Contact" type="Label" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox/NavLinks"]
+[node name="Contact" type="Label" parent="ScrollContainer/Content/Header/HeaderMargin/HeaderHBox/NavLinks" unique_id=707448521]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "Contact"
 vertical_alignment = 1
 
-[node name="MainMargin" type="MarginContainer" parent="ScrollContainer/Content"]
+[node name="MainMargin" type="MarginContainer" parent="ScrollContainer/Content" unique_id=956724696]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 48
@@ -142,82 +138,81 @@ theme_override_constants/margin_top = 56
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 80
 
-[node name="MainHBox" type="HBoxContainer" parent="ScrollContainer/Content/MainMargin"]
+[node name="MainHBox" type="HBoxContainer" parent="ScrollContainer/Content/MainMargin" unique_id=429677691]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 64
 
-[node name="BioVBox" type="VBoxContainer" parent="ScrollContainer/Content/MainMargin/MainHBox"]
+[node name="BioVBox" type="VBoxContainer" parent="ScrollContainer/Content/MainMargin/MainHBox" unique_id=1299469993]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="Eyebrow" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Eyebrow" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1874642590]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.541, 0.49, 0.388, 1)
 theme_override_fonts/font = SubResource("EyebrowFont")
 theme_override_font_sizes/font_size = 13
 text = "PROFESSOR BIO"
 
-[node name="EyebrowSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="EyebrowSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=851696639]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Title" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Title" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1651518696]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.29, 0.071, 0.094, 1)
 theme_override_font_sizes/font_size = 24
 text = "Dr. Clemence Housman, Professor of Cryptids and Lycanthropy"
 autowrap_mode = 3
 
-[node name="TitleSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="TitleSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=564831531]
 custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Degree1" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Degree1" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1466680431]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.161, 0.122, 1)
 theme_override_font_sizes/font_size = 16
 text = "1998 - Bachelor of Science in Cryptids, Kansas State University"
 autowrap_mode = 3
 
-[node name="Degree1Spacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Degree1Spacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=2078617814]
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Degree2" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Degree2" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1709795198]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.161, 0.122, 1)
 theme_override_font_sizes/font_size = 16
 text = "2006 – PhD in Lycanthropy, University of North Carolina at Chapel Hill"
 autowrap_mode = 3
 
-[node name="Degree2Spacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Degree2Spacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=698104248]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Dissertation" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Dissertation" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1074102494]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.29, 0.239, 0.173, 1)
 theme_override_constants/line_separation = 8
-theme_override_fonts/normal_font = SubResource("ObliqueFont")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "Dissertation: \"Werewolves and the Media: A Study of how Predators Leverage Distrust in the Fourth Estate.\""
+text = "[i]Dissertation: \"Werewolves and the Media: A Study of how Predators Leverage Distrust in the Fourth Estate.\"[i]"
 fit_content = true
 scroll_active = false
 
-[node name="DissertationSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="DissertationSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=674330805]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Intro" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Intro" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1877574005]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.2, 0.161, 0.122, 1)
 theme_override_constants/line_separation = 8
@@ -227,23 +222,23 @@ text = "Dr. Housman is a widely recognized expert on werewolf and cryptid physio
 fit_content = true
 scroll_active = false
 
-[node name="IntroSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="IntroSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=214627598]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="BooksHeading" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="BooksHeading" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1688562307]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.29, 0.071, 0.094, 1)
 theme_override_font_sizes/font_size = 17
 text = "Books"
 
-[node name="BooksHeadingSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="BooksHeadingSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1482081159]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="BooksList" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="BooksList" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1422481007]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.2, 0.161, 0.122, 1)
 theme_override_constants/line_separation = 8
@@ -254,23 +249,23 @@ The Right to Exist vs. the Right to Not Be Eaten[/ul]"
 fit_content = true
 scroll_active = false
 
-[node name="BooksListSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="BooksListSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=793224776]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ArticlesHeading" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="ArticlesHeading" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=775130497]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.29, 0.071, 0.094, 1)
 theme_override_font_sizes/font_size = 17
 text = "Articles"
 
-[node name="ArticlesHeadingSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="ArticlesHeadingSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=1845844976]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ArticlesList" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="ArticlesList" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=37810182]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.2, 0.161, 0.122, 1)
 theme_override_constants/line_separation = 8
@@ -285,23 +280,23 @@ From Missing Persons to Myth: Data Laundering in Lycanthrope-Heavy Cities[/ul]"
 fit_content = true
 scroll_active = false
 
-[node name="ArticlesListSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="ArticlesListSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=2010911381]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="Divider" type="ColorRect" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=885200640]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.894, 0.851, 0.741, 1)
 
-[node name="DividerSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="DividerSpacer" type="Control" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=891323155]
 custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ContactLine" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox"]
+[node name="ContactLine" type="RichTextLabel" parent="ScrollContainer/Content/MainMargin/MainHBox/BioVBox" unique_id=672493345]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.29, 0.239, 0.173, 1)
 theme_override_constants/line_separation = 8
@@ -311,34 +306,33 @@ text = "To inquire about interviews or speaking engagements, please contact [col
 fit_content = true
 scroll_active = false
 
-[node name="Aside" type="VBoxContainer" parent="ScrollContainer/Content/MainMargin/MainHBox"]
+[node name="Aside" type="VBoxContainer" parent="ScrollContainer/Content/MainMargin/MainHBox" unique_id=926323592]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 18
 
-[node name="Portrait" type="Panel" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside"]
+[node name="Portrait" type="Panel" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside" unique_id=938165663]
 custom_minimum_size = Vector2(260, 320)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("PortraitSlot")
 
-[node name="SlotLabel" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside/Portrait"]
+[node name="SlotLabel" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside/Portrait" unique_id=284191290]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.62, 0.577, 0.475, 1)
 theme_override_font_sizes/font_size = 14
 text = "Portrait"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PortraitImage" type="TextureRect" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside/Portrait"]
+[node name="PortraitImage" type="TextureRect" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside/Portrait" unique_id=560743504]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -349,7 +343,7 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Name" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside"]
+[node name="Name" type="Label" parent="ScrollContainer/Content/MainMargin/MainHBox/Aside" unique_id=925085454]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.29, 0.071, 0.094, 1)

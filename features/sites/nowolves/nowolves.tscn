@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="3_jmhblack"]
 [ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="4_jmhreg"]
 [ext_resource type="Texture2D" uid="uid://bo3ysexmratmm" path="res://assets/ad/Source - Ad Garlic Emporium.png" id="5_garlic"]
-[ext_resource type="Script" uid="uid://c7mzr3pb6vhla" path="res://ui/components/dynamic_date_label.gd" id="6_dyndate"]
+[ext_resource type="Script" path="res://ui/components/dynamic_date_label.gd" id="6_dyndate"]
 
 [sub_resource type="StyleBoxFlat" id="GarlicCard"]
 bg_color = Color(1, 1, 1, 1)
@@ -167,21 +167,15 @@ theme_override_fonts/font = ExtResource("3_jmhblack")
 theme_override_font_sizes/font_size = 30
 text = "Signs of a Werewolf"
 
-[node name="Author" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1606928998]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
-theme_override_fonts/font = ExtResource("4_jmhreg")
-theme_override_font_sizes/font_size = 11
-text = "By [Author]"
-
 [node name="Date" type="Label" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=802815567]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_fonts/font = ExtResource("4_jmhreg")
-theme_override_font_sizes/font_size = 10
-text = "[Date]"
+theme_override_font_sizes/font_size = 12
+text = "Posted June 15, 2026"
 script = ExtResource("6_dyndate")
 template = "Posted {date}"
+offset_days = -47
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Content/BodySection/Article/ArticleContent" unique_id=1692528923]
 custom_minimum_size = Vector2(0, 10)
@@ -267,7 +261,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.55)
 
-[node name="Center" type="CenterContainer" parent="GarlicAdPopup"]
+[node name="Center" type="CenterContainer" parent="GarlicAdPopup" unique_id=564746120]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -275,25 +269,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card" type="PanelContainer" parent="GarlicAdPopup/Center"]
+[node name="Card" type="PanelContainer" parent="GarlicAdPopup/Center" unique_id=487119721]
 layout_mode = 2
 theme_override_styles/panel = SubResource("GarlicCard")
 
-[node name="CardVBox" type="VBoxContainer" parent="GarlicAdPopup/Center/Card"]
+[node name="CardVBox" type="VBoxContainer" parent="GarlicAdPopup/Center/Card" unique_id=1031310781]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HeaderMargin" type="MarginContainer" parent="GarlicAdPopup/Center/Card/CardVBox"]
+[node name="HeaderMargin" type="MarginContainer" parent="GarlicAdPopup/Center/Card/CardVBox" unique_id=47562773]
 layout_mode = 2
 theme_override_constants/margin_left = 14
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 8
 
-[node name="HeaderHBox" type="HBoxContainer" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin"]
+[node name="HeaderHBox" type="HBoxContainer" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin" unique_id=1706170155]
 layout_mode = 2
 
-[node name="AdvertLabel" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox"]
+[node name="AdvertLabel" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox" unique_id=166006112]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_fonts/font = ExtResource("4_jmhreg")
@@ -301,11 +295,11 @@ theme_override_font_sizes/font_size = 11
 text = "ADVERTISEMENT"
 vertical_alignment = 1
 
-[node name="HeaderSpacer" type="Control" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox"]
+[node name="HeaderSpacer" type="Control" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox" unique_id=1238842254]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SponsoredLabel" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox"]
+[node name="SponsoredLabel" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/HeaderMargin/HeaderHBox" unique_id=1181641237]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.73, 0.73, 0.73, 1)
 theme_override_fonts/font = ExtResource("4_jmhreg")
@@ -313,12 +307,12 @@ theme_override_font_sizes/font_size = 10
 text = "Sponsored"
 vertical_alignment = 1
 
-[node name="HeaderRule" type="ColorRect" parent="GarlicAdPopup/Center/Card/CardVBox"]
+[node name="HeaderRule" type="ColorRect" parent="GarlicAdPopup/Center/Card/CardVBox" unique_id=380492642]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0.898, 0.898, 0.898, 1)
 
-[node name="ImageMargin" type="MarginContainer" parent="GarlicAdPopup/Center/Card/CardVBox"]
+[node name="ImageMargin" type="MarginContainer" parent="GarlicAdPopup/Center/Card/CardVBox" unique_id=160870415]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 28
@@ -332,7 +326,7 @@ texture = ExtResource("5_garlic")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ValidUntilDate" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/ImageMargin/AdImage"]
+[node name="ValidUntilDate" type="Label" parent="GarlicAdPopup/Center/Card/CardVBox/ImageMargin/AdImage" unique_id=636561632]
 layout_mode = 1
 offset_left = 578.0
 offset_top = 324.0
@@ -341,13 +335,13 @@ offset_bottom = 344.0
 theme_override_colors/font_color = Color(0.11, 0.1, 0.09, 1)
 theme_override_fonts/font = ExtResource("4_jmhreg")
 theme_override_font_sizes/font_size = 13
+text = "8/31/26"
 vertical_alignment = 1
 script = ExtResource("6_dyndate")
-template = "{date}"
 pattern = "M/D/YY"
 offset_days = 30
 
-[node name="CloseWrap" type="MarginContainer" parent="GarlicAdPopup/Center/Card"]
+[node name="CloseWrap" type="MarginContainer" parent="GarlicAdPopup/Center/Card" unique_id=663214728]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 0
@@ -367,6 +361,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_jmhblack")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("GarlicCloseNormal")
-theme_override_styles/hover = SubResource("GarlicCloseHover")
 theme_override_styles/pressed = SubResource("GarlicCloseHover")
+theme_override_styles/hover = SubResource("GarlicCloseHover")
 text = "✕"

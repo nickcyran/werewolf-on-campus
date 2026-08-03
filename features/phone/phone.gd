@@ -4,8 +4,8 @@ const PAGE_FADE_DURATION := 0.15
 
 @export var home_screen: PackedScene
 
-@onready var _time_label: Label = $PhoneContent/StatusBar/StatusBarHBox/TimeLabel
-@onready var _back_btn: Button = $PhoneContent/StatusBar/StatusBarHBox/BackBtn
+@onready var _time_label: Label = $PhoneContent/StatusBar/StatusRow/TimeLabel
+@onready var _back_btn: Button = $PhoneContent/StatusBar/StatusRow/BackBtn
 @onready var _content: Control = $PhoneContent/Content
 @onready var _home_btn: Button = $PhoneContent/HomeBar/HomeBtn
 

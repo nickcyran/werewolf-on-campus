@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1")
 label = "No easy way to learn about the author or publisher"
+why = "No author info means no accountability."

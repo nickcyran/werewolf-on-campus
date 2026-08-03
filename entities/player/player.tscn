@@ -7,8 +7,7 @@
 [ext_resource type="Script" path="res://entities/player/components/info_overlay_controller.gd" id="5_info"]
 [ext_resource type="Script" path="res://entities/player/components/hud_manager.gd" id="6_hud"]
 [ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="7_main_theme"]
-[ext_resource type="Script" path="res://features/day_end/day_end_overlay.gd" id="8_day_end"]
-[ext_resource type="PackedScene" uid="uid://gl_overlay_scene01" path="res://features/guided_learning/guided_learning_overlay.tscn" id="9_guided"]
+[ext_resource type="PackedScene" uid="uid://ge_sequence_scene" path="res://features/game_end/game_end_sequence.tscn" id="9_guided"]
 [ext_resource type="Script" path="res://entities/player/components/clock_ring.gd" id="10_clock_ring"]
 
 [node name="Player" type="Node3D" unique_id=678926049]
@@ -230,82 +229,7 @@ grow_vertical = 2
 [node name="ModalLayer" type="CanvasLayer" parent="."]
 layer = 200
 
-[node name="DayEndOverlay" type="ColorRect" parent="ModalLayer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
-theme = ExtResource("7_main_theme")
-script = ExtResource("8_day_end")
-
-[node name="DayEndCenter" type="CenterContainer" parent="ModalLayer/DayEndOverlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="TimeUpPanel" type="PanelContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter"]
-layout_mode = 2
-mouse_filter = 0
-
-[node name="Margin" type="MarginContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel"]
-layout_mode = 2
-
-[node name="VBox" type="VBoxContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin"]
-layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="TitleLabel" type="Label" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
-layout_mode = 2
-theme_type_variation = &"HudDayEnd"
-text = "Time's up"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="HintLabel" type="Label" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
-layout_mode = 2
-theme_type_variation = &"HudTime"
-text = "Werewolf Fact Checker — one last pass. Check every statement you believe is true, then confirm."
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Scroll" type="ScrollContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
-custom_minimum_size = Vector2(500, 290)
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 0
-horizontal_scroll_mode = 0
-
-[node name="ChecklistVBox" type="GridContainer" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox/Scroll"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/h_separation = 6
-theme_override_constants/v_separation = 6
-columns = 2
-
-[node name="ConfirmButton" type="Button" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
-layout_mode = 2
-text = "Confirm"
-
-[node name="ResultLabel" type="Label" parent="ModalLayer/DayEndOverlay/DayEndCenter/TimeUpPanel/Margin/VBox"]
-visible = false
-layout_mode = 2
-modulate = Color(1, 1, 1, 0)
-theme_type_variation = &"HudTime"
-text = ""
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="GuidedLearningOverlay" parent="ModalLayer" instance=ExtResource("9_guided")]
+[node name="GameEndSequence" parent="ModalLayer" instance=ExtResource("9_guided")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

@@ -4,22 +4,57 @@
 [ext_resource type="PackedScene" path="res://features/phone/apps/capture/capture.tscn" id="2_capture"]
 [ext_resource type="Script" path="res://features/phone/phone_app_definition.gd" id="3_pad"]
 [ext_resource type="PackedScene" path="res://features/phone/apps/texting/texting.tscn" id="4_texting"]
+[ext_resource type="Script" path="res://ui/components/dynamic_date_label.gd" id="5_dyndate"]
+
+[sub_resource type="Gradient" id="Gradient_wallpaper"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(0.118, 0.145, 0.278, 1, 0.063, 0.075, 0.165, 1, 0.039, 0.047, 0.11, 1)
+
+[sub_resource type="GradientTexture2D" id="GradTex_wallpaper"]
+gradient = SubResource("Gradient_wallpaper")
+width = 256
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(1.1, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_capture"]
+colors = PackedColorArray(0.333, 0.71, 0.498, 1, 0.184, 0.49, 0.333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradTex_capture"]
+gradient = SubResource("Gradient_capture")
+width = 128
+height = 128
+fill_from = Vector2(0.2, 0)
+fill_to = Vector2(0.8, 1)
+
+[sub_resource type="Gradient" id="Gradient_messages"]
+colors = PackedColorArray(0.357, 0.549, 0.941, 1, 0.184, 0.333, 0.769, 1)
+
+[sub_resource type="GradientTexture2D" id="GradTex_messages"]
+gradient = SubResource("Gradient_messages")
+width = 128
+height = 128
+fill_from = Vector2(0.2, 0)
+fill_to = Vector2(0.8, 1)
 
 [sub_resource type="Resource" id="1_app_capture"]
 script = ExtResource("3_pad")
 scene = ExtResource("2_capture")
 label = "Capture"
 icon = "📷"
-color = Color(0.18, 0.62, 0.28, 1)
+color = Color(0.259, 0.6, 0.416, 1)
+tile_gradient = SubResource("GradTex_capture")
 
 [sub_resource type="Resource" id="2_app_texting"]
 script = ExtResource("3_pad")
 scene = ExtResource("4_texting")
 label = "Messages"
 icon = "💬"
-color = Color(0.2, 0.45, 0.85, 1)
+color = Color(0.271, 0.441, 0.855, 1)
+tile_gradient = SubResource("GradTex_messages")
 
-[node name="PhoneHome" type="Control" unique_id=674979227]
+[node name="PhoneHome" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +64,7 @@ grow_vertical = 2
 script = ExtResource("1_home")
 apps = Array[PhoneAppDefinition]([SubResource("1_app_capture"), SubResource("2_app_texting")])
 
-[node name="BG" type="ColorRect" parent="." unique_id=137296692]
+[node name="Wallpaper" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,41 +72,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.04, 0.05, 0.18, 1)
+texture = SubResource("GradTex_wallpaper")
+expand_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=739233165]
+[node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_scroll_mode = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
 
-[node name="CenterMargin" type="MarginContainer" parent="ScrollContainer" unique_id=477973377]
+[node name="ClockBlock" type="MarginContainer" parent="Layout"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 24
+mouse_filter = 2
+theme_override_constants/margin_left = 46
+theme_override_constants/margin_top = 77
+theme_override_constants/margin_right = 46
 
-[node name="VBox" type="VBoxContainer" parent="ScrollContainer/CenterMargin" unique_id=888965161]
+[node name="ClockVBox" type="VBoxContainer" parent="Layout/ClockBlock"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 28
+mouse_filter = 2
+theme_override_constants/separation = 4
 
-[node name="DateLabel" type="Label" parent="ScrollContainer/CenterMargin/VBox" unique_id=1771670414]
+[node name="DateLabel" type="Label" parent="Layout/ClockBlock/ClockVBox"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.58, 0.72, 1)
-theme_override_font_sizes/font_size = 24
-text = "Campus Phone"
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.886, 0.906, 0.969, 0.6)
+theme_override_font_sizes/font_size = 28
+text = "Tuesday, September 3"
+horizontal_alignment = 1
+script = ExtResource("5_dyndate")
+pattern = "dddd, MMMM D"
+
+[node name="TimeLabel" type="Label" parent="Layout/ClockBlock/ClockVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.957, 0.965, 0.992, 1)
+theme_override_font_sizes/font_size = 130
+text = "9:15"
 horizontal_alignment = 1
 
-[node name="Grid" type="GridContainer" parent="ScrollContainer/CenterMargin/VBox" unique_id=660774955]
+[node name="GridBlock" type="MarginContainer" parent="Layout"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 24
-columns = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 98
+theme_override_constants/margin_right = 60
+
+[node name="Grid" type="GridContainer" parent="Layout/GridBlock"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 46
+columns = 4
+
+[node name="Filler" type="Control" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2

@@ -6,3 +6,4 @@
 script = ExtResource("1")
 label = "Clearly labeled as news or a factual announcement"
 is_positive = true
+why = "You can tell reporting from opinion or ads."

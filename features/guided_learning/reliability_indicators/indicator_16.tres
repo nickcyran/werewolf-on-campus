@@ -6,3 +6,4 @@
 script = ExtResource("1")
 label = "Informative, unmanipulative language"
 is_positive = true
+why = "Explains rather than pushes you to react."

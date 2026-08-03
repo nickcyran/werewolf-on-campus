@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1")
 label = "No clear source of funding or intent"
+why = "You do not know who paid for the conclusion."

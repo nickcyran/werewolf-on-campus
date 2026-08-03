@@ -2,7 +2,7 @@
 class_name HUDManager extends Node
 
 var time_label: Label
-var day_end_overlay: ColorRect
+var day_end_section: GameEndSequence
 
 var _time_tween: Tween
 
@@ -11,9 +11,9 @@ const _LABEL_WARN := Color(0.98, 0.80, 0.28, 1.0)
 const _LABEL_CRIT := Color(0.98, 0.42, 0.30, 1.0)
 
 
-func initialize(label: Label, end_overlay: ColorRect) -> void:
+func initialize(label: Label, end_section: GameEndSequence) -> void:
 	time_label = label
-	day_end_overlay = end_overlay
+	day_end_section = end_section
 	time_label.text = DayClock.get_display_time()
 	DayClock.time_changed.connect(_on_time_changed)
 	DayClock.day_ended.connect(_on_day_ended)
@@ -41,8 +41,9 @@ func _on_time_changed(display_time: String) -> void:
 	_time_tween.tween_property(time_label, "modulate:a", 1.0, 0.2)
 
 
+## The round is over the moment the clock stops, so the day-end section takes the
+## screen straight away — there is no interstitial panel between the two.
 func _on_day_ended() -> void:
-	if !day_end_overlay:
+	if !day_end_section:
 		return
-	if day_end_overlay.has_method("run_time_up_sequence"):
-		await day_end_overlay.run_time_up_sequence()
+	await day_end_section.run()

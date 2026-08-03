@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://ge_results_screen"]
+
+[ext_resource type="Script" path="res://features/game_end/screens/results_screen.gd" id="1_script"]
+
+[sub_resource type="Gradient" id="Gradient_wash"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(0.051, 0.039, 0.102, 0.5, 0.078, 0.055, 0.141, 0.55, 0.29, 0.165, 0.102, 0.85)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wash"]
+gradient = SubResource("Gradient_wash")
+width = 8
+height = 256
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[node name="GameEndResultsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Wash" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_wash")
+expand_mode = 1
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Center" type="CenterContainer" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="Scroll/Center"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 60
+
+[node name="Column" type="VBoxContainer" parent="Scroll/Center/Margin"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Eyebrow" type="Label" parent="Scroll/Center/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndEyebrow"
+text = "YOUR RESULTS"
+horizontal_alignment = 1
+
+[node name="EyebrowSpacer" type="Control" parent="Scroll/Center/Margin/Column"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Hero" type="Label" parent="Scroll/Center/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndHero"
+text = "HOW YOU DID"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HeroSpacer" type="Control" parent="Scroll/Center/Margin/Column"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScoreRow" type="HBoxContainer" parent="Scroll/Center/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Hits" type="Label" parent="Scroll/Center/Margin/Column/ScoreRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndScoreBig"
+text = "0"
+
+[node name="Total" type="Label" parent="Scroll/Center/Margin/Column/ScoreRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndScoreBigTotal"
+text = "/ 0 tells found"
+
+[node name="ScoreSpacer" type="Control" parent="Scroll/Center/Margin/Column"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="QuipCenter" type="CenterContainer" parent="Scroll/Center/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Quip" type="Label" parent="Scroll/Center/Margin/Column/QuipCenter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(620, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndBodyLarge"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonSpacer" type="Control" parent="Scroll/Center/Margin/Column"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Scroll/Center/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="PlayAgainBtn" type="Button" parent="Scroll/Center/Margin/Column/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "PLAY AGAIN"
+
+[node name="MainMenuBtn" type="Button" parent="Scroll/Center/Margin/Column/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndGhostBtn"
+text = "MAIN MENU"

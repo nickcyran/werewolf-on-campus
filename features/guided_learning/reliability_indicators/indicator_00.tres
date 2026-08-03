@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1")
 label = "No date"
+why = "Can't tell if it is recent or outdated."

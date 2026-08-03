@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1")
 label = "Emotional, fearful language or graphics"
+why = "Fear is used to skip past your judgement."

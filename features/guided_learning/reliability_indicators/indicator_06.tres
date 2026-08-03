@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1")
 label = "Claims without evidence"
+why = "Big statements with nothing to check them against."

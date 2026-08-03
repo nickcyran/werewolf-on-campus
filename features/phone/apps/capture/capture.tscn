@@ -6,45 +6,50 @@
 [ext_resource type="VideoStream" uid="uid://datj66q6modjm" path="res://assets/media/werewolf_vid.ogv" id="3_3bo57"]
 [ext_resource type="Texture2D" uid="uid://covjpgn4cv5rb" path="res://assets/icon.svg" id="3_4xrv5"]
 [ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="4_uf3vh"]
+[ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="5_theme"]
 
 [sub_resource type="Resource" id="Resource_1t1ph"]
 script = ExtResource("2_4xrv5")
 username = "user12345"
+meta = "Tri-Fang University · 5h"
 pfp_texture = ExtResource("4_uf3vh")
 media_texture = ExtResource("3_2ic71")
 description = "Welcome to Trifang University! We hope your semester goes amazing! Feel free to reach out if you have any questions about the campus."
 likes = 1738
+comments = 27
 metadata/_custom_type_script = "uid://bs5jjh5pnd54t"
 
 [sub_resource type="Resource" id="Resource_2ic71"]
 script = ExtResource("2_4xrv5")
 username = "BigWolfStar93"
+meta = "North Quad · 2h"
 source_id = "bigwolfstar93"
 pfp_texture = ExtResource("3_4xrv5")
 video_stream = ExtResource("3_3bo57")
 description = "I was out exploring the other day... Look what happend!!!"
 likes = 1689
+comments = 42
 
 [sub_resource type="StyleBoxFlat" id="HeaderStyle"]
 content_margin_left = 24.0
 content_margin_top = 10.0
 content_margin_right = 24.0
 content_margin_bottom = 10.0
-bg_color = Color(0.28, 0.26, 0.25, 1)
+bg_color = Color(0.224, 0.192, 0.165, 1)
 
 [sub_resource type="StyleBoxFlat" id="StoriesStyle"]
 content_margin_left = 16.0
 content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
-bg_color = Color(0.3, 0.28, 0.27, 1)
+bg_color = Color(0.26, 0.226, 0.196, 1)
 
 [sub_resource type="StyleBoxFlat" id="BottomNavStyle"]
 content_margin_left = 8.0
 content_margin_top = 10.0
 content_margin_right = 8.0
 content_margin_bottom = 10.0
-bg_color = Color(0.14, 0.13, 0.13, 1)
+bg_color = Color(0.145, 0.125, 0.11, 1)
 border_width_top = 1
 border_color = Color(0.22, 0.2, 0.2, 1)
 
@@ -59,11 +64,57 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="ProfileDotStyle"]
-bg_color = Color(0.4, 0.65, 0.48, 1)
+bg_color = Color(0.49, 0.58, 0.376, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="NavGlyphSquare"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.894, 0.847, 0.776, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="NavGlyphBubble"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.894, 0.847, 0.776, 0.45)
+corner_radius_top_left = 19
+corner_radius_top_right = 19
+corner_radius_bottom_right = 19
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="HomeChipStyle"]
+content_margin_left = 16.0
+content_margin_top = 11.0
+content_margin_right = 21.0
+content_margin_bottom = 11.0
+bg_color = Color(0.894, 0.847, 0.776, 0.1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="HomeChipHoverStyle"]
+content_margin_left = 16.0
+content_margin_top = 11.0
+content_margin_right = 21.0
+content_margin_bottom = 11.0
+bg_color = Color(0.894, 0.847, 0.776, 0.2)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
 
 [node name="Capture" type="Control" unique_id=1310068798]
 layout_mode = 3
@@ -72,6 +123,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_theme")
 script = ExtResource("1_app")
 posts = Array[ExtResource("2_4xrv5")]([SubResource("Resource_1t1ph"), SubResource("Resource_2ic71")])
 
@@ -82,7 +134,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.22, 0.2, 0.19, 1)
+color = Color(0.18, 0.157, 0.137, 1)
 
 [node name="VBox" type="VBoxContainer" parent="." unique_id=99716903]
 layout_mode = 1
@@ -94,7 +146,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="Header" type="PanelContainer" parent="VBox" unique_id=1594987416]
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
 theme_override_styles/panel = SubResource("HeaderStyle")
 
@@ -102,14 +154,20 @@ theme_override_styles/panel = SubResource("HeaderStyle")
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="AddBtn" type="Button" parent="VBox/Header/HeaderHBox" unique_id=993754402]
-custom_minimum_size = Vector2(56, 0)
+[node name="HomeChip" type="Button" parent="VBox/Header/HeaderHBox" unique_id=993754401]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.82, 0.8, 0.78, 1)
-theme_override_font_sizes/font_size = 32
-text = "+"
-flat = true
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.894, 0.847, 0.776, 1)
+theme_override_colors/font_hover_color = Color(0.949, 0.929, 0.902, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("HomeChipStyle")
+theme_override_styles/hover = SubResource("HomeChipHoverStyle")
+theme_override_styles/pressed = SubResource("HomeChipHoverStyle")
+theme_override_styles/focus = SubResource("HomeChipStyle")
+text = "‹  Home"
 
 [node name="Spacer1" type="Control" parent="VBox/Header/HeaderHBox" unique_id=1946391889]
 layout_mode = 2
@@ -117,25 +175,43 @@ size_flags_horizontal = 3
 
 [node name="AppTitle" type="Label" parent="VBox/Header/HeaderHBox" unique_id=963774095]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.88, 0.86, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.949, 0.929, 0.902, 1)
+theme_override_font_sizes/font_size = 33
 text = "Capture"
 
 [node name="Spacer2" type="Control" parent="VBox/Header/HeaderHBox" unique_id=897128637]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HeartBtn" type="Button" parent="VBox/Header/HeaderHBox" unique_id=1085226050]
-custom_minimum_size = Vector2(56, 0)
+[node name="RightRow" type="HBoxContainer" parent="VBox/Header/HeaderHBox" unique_id=1085226051]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.82, 0.5, 0.58, 1)
-theme_override_font_sizes/font_size = 26
+theme_override_constants/separation = 24
+
+[node name="AddBtn" type="Button" parent="VBox/Header/HeaderHBox/RightRow" unique_id=993754402]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.894, 0.847, 0.776, 1)
+theme_override_font_sizes/font_size = 38
+text = "+"
+flat = true
+
+[node name="HeartBtn" type="Button" parent="VBox/Header/HeaderHBox/RightRow" unique_id=1085226050]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.761, 0.376, 0.247, 1)
+theme_override_font_sizes/font_size = 32
 text = "♥"
 flat = true
 
 [node name="Stories" type="PanelContainer" parent="VBox" unique_id=1971168098]
-custom_minimum_size = Vector2(0, 170)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StoriesStyle")
 
@@ -145,12 +221,12 @@ vertical_scroll_mode = 0
 
 [node name="StoriesHBox" type="HBoxContainer" parent="VBox/Stories/StoriesScroll" unique_id=1226634626]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 28
 
 [node name="StoriesDivider" type="ColorRect" parent="VBox" unique_id=2061413378]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
-color = Color(0.18, 0.16, 0.16, 1)
+color = Color(0.224, 0.192, 0.165, 1)
 
 [node name="PostsFeed" type="ScrollContainer" parent="VBox" unique_id=1100614912]
 layout_mode = 2
@@ -163,7 +239,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="BottomNav" type="PanelContainer" parent="VBox" unique_id=284668357]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 116)
 layout_mode = 2
 theme_override_styles/panel = SubResource("BottomNavStyle")
 
@@ -174,21 +250,51 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.82, 0.8, 0.78, 1)
+theme_override_colors/font_color = Color(0.949, 0.929, 0.902, 1)
 theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("NavBtnNormal")
 theme_override_styles/hover = SubResource("NavBtnHover")
-text = "⌂"
+
+[node name="Glyph" type="Panel" parent="VBox/BottomNav/NavHBox/HomeNav" unique_id=1456550298]
+custom_minimum_size = Vector2(42, 38)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("NavGlyphSquare")
 
 [node name="MsgNav" type="Button" parent="VBox/BottomNav/NavHBox" unique_id=653111015]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
-theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("NavBtnNormal")
 theme_override_styles/hover = SubResource("NavBtnHover")
-text = "💬"
+
+[node name="Glyph" type="Panel" parent="VBox/BottomNav/NavHBox/MsgNav" unique_id=653111016]
+custom_minimum_size = Vector2(42, 38)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("NavGlyphBubble")
 
 [node name="ProfileNav" type="PanelContainer" parent="VBox/BottomNav/NavHBox" unique_id=1556601255]
 custom_minimum_size = Vector2(0, 52)

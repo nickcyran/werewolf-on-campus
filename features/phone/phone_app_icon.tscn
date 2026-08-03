@@ -3,15 +3,25 @@
 [ext_resource type="Script" path="res://features/phone/phone_app_icon.gd" id="1_icon"]
 
 [sub_resource type="StyleBoxFlat" id="sb_badge"]
-bg_color = Color(0.9, 0.2, 0.22, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
+content_margin_left = 12.0
+content_margin_top = 2.0
+content_margin_right = 12.0
+content_margin_bottom = 2.0
+bg_color = Color(0.937, 0.325, 0.392, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.051, 0.063, 0.141, 1)
+corner_radius_top_left = 23
+corner_radius_top_right = 23
+corner_radius_bottom_right = 23
+corner_radius_bottom_left = 23
 
 [node name="PhoneAppIcon" type="Control"]
-custom_minimum_size = Vector2(160, 192)
+custom_minimum_size = Vector2(137, 190)
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("1_icon")
 
 [node name="VBox" type="VBoxContainer" parent="."]
@@ -21,44 +31,86 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+mouse_filter = 2
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="IconButton" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(132, 132)
+[node name="TileSlot" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(137, 137)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 44
-text = "?"
+mouse_filter = 2
 
-[node name="BadgePanel" type="PanelContainer" parent="VBox/IconButton"]
+[node name="IconButton" type="Button" parent="VBox/TileSlot"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+clip_children = 1
+focus_mode = 0
+mouse_default_cursor_shape = 2
+
+[node name="TileGradient" type="TextureRect" parent="VBox/TileSlot/IconButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+
+[node name="Glyph" type="Label" parent="VBox/TileSlot/IconButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.957, 0.976, 1, 1)
+theme_override_font_sizes/font_size = 58
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BadgePanel" type="PanelContainer" parent="VBox/TileSlot"]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(46, 46)
 layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_top = -8.0
-offset_right = 0.0
-offset_bottom = 26.0
+offset_left = -35.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 35.0
 grow_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("sb_badge")
 
-[node name="BadgeLabel" type="Label" parent="VBox/IconButton/BadgePanel"]
+[node name="BadgeLabel" type="Label" parent="VBox/TileSlot/BadgePanel"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 23
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AppLabel" type="Label" parent="VBox"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.9, 0.94, 1)
-theme_override_font_sizes/font_size = 24
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.902, 0.918, 0.969, 1)
+theme_override_font_sizes/font_size = 23
 text = "App"
 horizontal_alignment = 1
 text_overrun_behavior = 3

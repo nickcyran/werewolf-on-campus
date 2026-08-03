@@ -6,3 +6,4 @@
 script = ExtResource("1")
 label = "Easily accessed information about the author or source"
 is_positive = true
+why = "A real person you can look up and question."

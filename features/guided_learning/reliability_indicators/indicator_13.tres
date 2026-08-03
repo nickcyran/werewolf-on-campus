@@ -6,3 +6,4 @@
 script = ExtResource("1")
 label = "Recent date"
 is_positive = true
+why = "You know how fresh the information is."

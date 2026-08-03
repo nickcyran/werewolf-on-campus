@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1")
 label = "Overly broad claims"
+why = "\"Everyone knows\" covers a lack of specifics."

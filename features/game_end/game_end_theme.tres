@@ -1,0 +1,670 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="1_typewriter"]
+[ext_resource type="FontFile" uid="uid://dtqvy8hmmfd3m" path="res://assets/fonts/Creepster-Regular.ttf" id="2_creepster"]
+
+[sub_resource type="FontVariation" id="font_tw_wide"]
+base_font = ExtResource("1_typewriter")
+spacing_glyph = 3
+
+[sub_resource type="FontVariation" id="font_tw_xwide"]
+base_font = ExtResource("1_typewriter")
+spacing_glyph = 5
+
+[sub_resource type="StyleBoxFlat" id="sb_panel"]
+bg_color = Color(0.086, 0.071, 0.122, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="sb_panel_header"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.133, 0.114, 0.192, 1)
+
+[sub_resource type="StyleBoxFlat" id="sb_bar"]
+content_margin_left = 32.0
+content_margin_top = 14.0
+content_margin_right = 32.0
+content_margin_bottom = 14.0
+bg_color = Color(0.086, 0.071, 0.122, 1)
+
+[sub_resource type="StyleBoxFlat" id="sb_card"]
+content_margin_left = 14.0
+content_margin_top = 11.0
+content_margin_right = 14.0
+content_margin_bottom = 11.0
+bg_color = Color(0.118, 0.102, 0.173, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="sb_choice"]
+content_margin_left = 20.0
+content_margin_top = 18.0
+content_margin_right = 20.0
+content_margin_bottom = 18.0
+bg_color = Color(0.11, 0.09, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.227, 0.196, 0.314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="sb_choice_yes"]
+content_margin_left = 20.0
+content_margin_top = 18.0
+content_margin_right = 20.0
+content_margin_bottom = 18.0
+bg_color = Color(0.878, 0.231, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.878, 0.231, 0.188, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="sb_choice_no"]
+content_margin_left = 20.0
+content_margin_top = 18.0
+content_margin_right = 20.0
+content_margin_bottom = 18.0
+bg_color = Color(1, 0.851, 0.239, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.239, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="sb_dot_off"]
+bg_color = Color(0.071, 0.063, 0.114, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.42, 0.373, 0.522, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="sb_dot_yes"]
+bg_color = Color(0.878, 0.231, 0.188, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.85)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="sb_dot_no"]
+bg_color = Color(1, 0.851, 0.239, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.85)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="sb_statement"]
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(0.11, 0.09, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.227, 0.196, 0.314, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="sb_statement_on"]
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 0.851, 0.239, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.239, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="sb_check_off"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.165, 0.137, 0.251, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.341, 0.286, 0.435, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="sb_check_on"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.086, 0.071, 0.122, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="sb_tag_box_neg"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.133, 0.11, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.878, 0.231, 0.188, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_tag_box_neg_on"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.878, 0.231, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.878, 0.231, 0.188, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_tag_box_pos"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.133, 0.11, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.639, 0.749, 0.361, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_tag_box_pos_on"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.639, 0.749, 0.361, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.639, 0.749, 0.361, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_badge_good"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(0.639, 0.749, 0.361, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+
+[sub_resource type="StyleBoxFlat" id="sb_badge_bad"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+bg_color = Color(0.878, 0.231, 0.188, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+
+[sub_resource type="StyleBoxFlat" id="sb_drawer_row"]
+content_margin_left = 22.0
+content_margin_top = 11.0
+content_margin_right = 22.0
+content_margin_bottom = 11.0
+bg_color = Color(0.086, 0.071, 0.122, 0)
+border_width_bottom = 1
+border_color = Color(0.141, 0.122, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="sb_drawer_row_on"]
+content_margin_left = 22.0
+content_margin_top = 11.0
+content_margin_right = 22.0
+content_margin_bottom = 11.0
+bg_color = Color(0.133, 0.11, 0.188, 1)
+border_width_bottom = 1
+border_color = Color(0.141, 0.122, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="sb_guide_row"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.086, 0.071, 0.122, 0)
+border_width_bottom = 1
+border_color = Color(0.141, 0.122, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="sb_source_bg"]
+bg_color = Color(0.925, 0.886, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="sb_primary"]
+content_margin_left = 28.0
+content_margin_top = 12.0
+content_margin_right = 28.0
+content_margin_bottom = 12.0
+bg_color = Color(0.878, 0.231, 0.188, 1)
+border_width_bottom = 3
+border_color = Color(0.478, 0.11, 0.078, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_primary_hover"]
+content_margin_left = 28.0
+content_margin_top = 12.0
+content_margin_right = 28.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 0.851, 0.239, 1)
+border_width_bottom = 3
+border_color = Color(0.659, 0.529, 0.102, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_primary_pressed"]
+content_margin_left = 28.0
+content_margin_top = 14.0
+content_margin_right = 28.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.851, 0.239, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_primary_disabled"]
+content_margin_left = 28.0
+content_margin_top = 12.0
+content_margin_right = 28.0
+content_margin_bottom = 12.0
+bg_color = Color(0.133, 0.11, 0.188, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_yellow"]
+content_margin_left = 22.0
+content_margin_top = 11.0
+content_margin_right = 22.0
+content_margin_bottom = 11.0
+bg_color = Color(1, 0.851, 0.239, 1)
+border_width_bottom = 3
+border_color = Color(0.659, 0.529, 0.102, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_yellow_pressed"]
+content_margin_left = 22.0
+content_margin_top = 13.0
+content_margin_right = 22.0
+content_margin_bottom = 9.0
+bg_color = Color(1, 0.851, 0.239, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_ghost"]
+content_margin_left = 22.0
+content_margin_top = 11.0
+content_margin_right = 22.0
+content_margin_bottom = 11.0
+bg_color = Color(0.133, 0.11, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.271, 0.231, 0.361, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_ghost_hover"]
+content_margin_left = 22.0
+content_margin_top = 11.0
+content_margin_right = 22.0
+content_margin_bottom = 11.0
+bg_color = Color(0.176, 0.145, 0.251, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.937, 0.91, 0.847, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="sb_back"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.086, 0.071, 0.122, 0)
+border_width_right = 1
+border_color = Color(0.937, 0.91, 0.847, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="sb_back_hover"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.937, 0.91, 0.847, 0.05)
+border_width_right = 1
+border_color = Color(0.937, 0.91, 0.847, 0.1)
+
+[resource]
+GameEndBackBtn/base_type = &"Button"
+GameEndBackBtn/colors/font_color = Color(0.557, 0.525, 0.463, 1)
+GameEndBackBtn/colors/font_hover_color = Color(0.937, 0.91, 0.847, 1)
+GameEndBackBtn/colors/font_pressed_color = Color(0.937, 0.91, 0.847, 1)
+GameEndBackBtn/font_sizes/font_size = 14
+GameEndBackBtn/fonts/font = SubResource("font_tw_wide")
+GameEndBackBtn/styles/focus = SubResource("sb_back")
+GameEndBackBtn/styles/hover = SubResource("sb_back_hover")
+GameEndBackBtn/styles/normal = SubResource("sb_back")
+GameEndBackBtn/styles/pressed = SubResource("sb_back_hover")
+GameEndBadgeBad/base_type = &"Label"
+GameEndBadgeBad/colors/font_color = Color(1, 0.949, 0.933, 1)
+GameEndBadgeBad/font_sizes/font_size = 15
+GameEndBadgeBad/fonts/font = ExtResource("1_typewriter")
+GameEndBadgeBad/styles/normal = SubResource("sb_badge_bad")
+GameEndBadgeGood/base_type = &"Label"
+GameEndBadgeGood/colors/font_color = Color(0.086, 0.071, 0.122, 1)
+GameEndBadgeGood/font_sizes/font_size = 15
+GameEndBadgeGood/fonts/font = ExtResource("1_typewriter")
+GameEndBadgeGood/styles/normal = SubResource("sb_badge_good")
+GameEndBar/base_type = &"PanelContainer"
+GameEndBar/styles/panel = SubResource("sb_bar")
+GameEndBody/base_type = &"Label"
+GameEndBody/colors/font_color = Color(0.698, 0.659, 0.58, 1)
+GameEndBody/font_sizes/font_size = 15
+GameEndBody/fonts/font = ExtResource("1_typewriter")
+GameEndBodyLarge/base_type = &"Label"
+GameEndBodyLarge/colors/font_color = Color(0.698, 0.659, 0.58, 1)
+GameEndBodyLarge/font_sizes/font_size = 21
+GameEndBodyLarge/fonts/font = ExtResource("1_typewriter")
+GameEndCard/base_type = &"PanelContainer"
+GameEndCard/styles/panel = SubResource("sb_card")
+GameEndCardLabel/base_type = &"Label"
+GameEndCardLabel/colors/font_color = Color(0.937, 0.91, 0.847, 1)
+GameEndCardLabel/font_sizes/font_size = 17
+GameEndCardLabel/fonts/font = ExtResource("1_typewriter")
+GameEndCardNote/base_type = &"Label"
+GameEndCardNote/colors/font_color = Color(0.557, 0.525, 0.463, 1)
+GameEndCardNote/font_sizes/font_size = 13
+GameEndCardNote/fonts/font = ExtResource("1_typewriter")
+GameEndCheckOff/base_type = &"Label"
+GameEndCheckOff/colors/font_color = Color(1, 1, 1, 0)
+GameEndCheckOff/font_sizes/font_size = 15
+GameEndCheckOff/fonts/font = ExtResource("1_typewriter")
+GameEndCheckOff/styles/normal = SubResource("sb_check_off")
+GameEndCheckOn/base_type = &"Label"
+GameEndCheckOn/colors/font_color = Color(1, 0.851, 0.239, 1)
+GameEndCheckOn/font_sizes/font_size = 15
+GameEndCheckOn/fonts/font = ExtResource("1_typewriter")
+GameEndCheckOn/styles/normal = SubResource("sb_check_on")
+GameEndChoice/base_type = &"PanelContainer"
+GameEndChoice/styles/panel = SubResource("sb_choice")
+GameEndChoiceHint/base_type = &"Label"
+GameEndChoiceHint/colors/font_color = Color(0.871, 0.839, 0.769, 0.8)
+GameEndChoiceHint/font_sizes/font_size = 14
+GameEndChoiceHint/fonts/font = ExtResource("1_typewriter")
+GameEndChoiceHintPicked/base_type = &"Label"
+GameEndChoiceHintPicked/colors/font_color = Color(0.071, 0.063, 0.059, 0.8)
+GameEndChoiceHintPicked/font_sizes/font_size = 14
+GameEndChoiceHintPicked/fonts/font = ExtResource("1_typewriter")
+GameEndChoiceLabel/base_type = &"Label"
+GameEndChoiceLabel/colors/font_color = Color(0.871, 0.839, 0.769, 1)
+GameEndChoiceLabel/font_sizes/font_size = 22
+GameEndChoiceLabel/fonts/font = ExtResource("1_typewriter")
+GameEndChoiceLabelPicked/base_type = &"Label"
+GameEndChoiceLabelPicked/colors/font_color = Color(0.071, 0.063, 0.059, 1)
+GameEndChoiceLabelPicked/font_sizes/font_size = 22
+GameEndChoiceLabelPicked/fonts/font = ExtResource("1_typewriter")
+GameEndChoiceNo/base_type = &"PanelContainer"
+GameEndChoiceNo/styles/panel = SubResource("sb_choice_no")
+GameEndChoiceYes/base_type = &"PanelContainer"
+GameEndChoiceYes/styles/panel = SubResource("sb_choice_yes")
+GameEndDotOff/base_type = &"Panel"
+GameEndDotOff/styles/panel = SubResource("sb_dot_off")
+GameEndDotOnNo/base_type = &"Panel"
+GameEndDotOnNo/styles/panel = SubResource("sb_dot_no")
+GameEndDotOnYes/base_type = &"Panel"
+GameEndDotOnYes/styles/panel = SubResource("sb_dot_yes")
+GameEndDrawerRow/base_type = &"PanelContainer"
+GameEndDrawerRow/styles/panel = SubResource("sb_drawer_row")
+GameEndDrawerRowOn/base_type = &"PanelContainer"
+GameEndDrawerRowOn/styles/panel = SubResource("sb_drawer_row_on")
+GameEndEyebrow/base_type = &"Label"
+GameEndEyebrow/colors/font_color = Color(1, 0.851, 0.239, 1)
+GameEndEyebrow/font_sizes/font_size = 20
+GameEndEyebrow/fonts/font = SubResource("font_tw_wide")
+GameEndGhostBtn/base_type = &"Button"
+GameEndGhostBtn/colors/font_color = Color(0.937, 0.91, 0.847, 1)
+GameEndGhostBtn/colors/font_hover_color = Color(0.937, 0.91, 0.847, 1)
+GameEndGhostBtn/colors/font_pressed_color = Color(0.937, 0.91, 0.847, 1)
+GameEndGhostBtn/font_sizes/font_size = 16
+GameEndGhostBtn/fonts/font = SubResource("font_tw_wide")
+GameEndGhostBtn/styles/focus = SubResource("sb_ghost")
+GameEndGhostBtn/styles/hover = SubResource("sb_ghost_hover")
+GameEndGhostBtn/styles/normal = SubResource("sb_ghost")
+GameEndGhostBtn/styles/pressed = SubResource("sb_ghost_hover")
+GameEndGuideRow/base_type = &"PanelContainer"
+GameEndGuideRow/styles/panel = SubResource("sb_guide_row")
+GameEndHero/base_type = &"Label"
+GameEndHero/colors/font_color = Color(0.878, 0.231, 0.188, 1)
+GameEndHero/colors/font_shadow_color = Color(0.227, 0.051, 0.035, 1)
+GameEndHero/constants/shadow_offset_x = 0
+GameEndHero/constants/shadow_offset_y = 5
+GameEndHero/constants/shadow_outline_size = 0
+GameEndHero/font_sizes/font_size = 104
+GameEndHero/fonts/font = ExtResource("2_creepster")
+GameEndHint/base_type = &"Label"
+GameEndHint/colors/font_color = Color(0.49, 0.459, 0.396, 1)
+GameEndHint/font_sizes/font_size = 13
+GameEndHint/fonts/font = ExtResource("1_typewriter")
+GameEndItemLabel/base_type = &"Label"
+GameEndItemLabel/colors/font_color = Color(0.937, 0.91, 0.847, 1)
+GameEndItemLabel/font_sizes/font_size = 17
+GameEndItemLabel/fonts/font = ExtResource("1_typewriter")
+GameEndItemWhy/base_type = &"Label"
+GameEndItemWhy/colors/font_color = Color(0.557, 0.525, 0.463, 1)
+GameEndItemWhy/font_sizes/font_size = 14
+GameEndItemWhy/fonts/font = ExtResource("1_typewriter")
+GameEndKicker/base_type = &"Label"
+GameEndKicker/colors/font_color = Color(0.557, 0.525, 0.463, 1)
+GameEndKicker/font_sizes/font_size = 20
+GameEndKicker/fonts/font = SubResource("font_tw_xwide")
+GameEndMarkNeg/base_type = &"Label"
+GameEndMarkNeg/colors/font_color = Color(0.878, 0.231, 0.188, 1)
+GameEndMarkNeg/font_sizes/font_size = 18
+GameEndMarkNeg/fonts/font = ExtResource("1_typewriter")
+GameEndMarkPos/base_type = &"Label"
+GameEndMarkPos/colors/font_color = Color(0.639, 0.749, 0.361, 1)
+GameEndMarkPos/font_sizes/font_size = 18
+GameEndMarkPos/fonts/font = ExtResource("1_typewriter")
+GameEndPanel/base_type = &"PanelContainer"
+GameEndPanel/styles/panel = SubResource("sb_panel")
+GameEndPanelHeader/base_type = &"PanelContainer"
+GameEndPanelHeader/styles/panel = SubResource("sb_panel_header")
+GameEndPrimaryBtn/base_type = &"Button"
+GameEndPrimaryBtn/colors/font_color = Color(1, 1, 1, 1)
+GameEndPrimaryBtn/colors/font_disabled_color = Color(0.373, 0.345, 0.286, 1)
+GameEndPrimaryBtn/colors/font_focus_color = Color(1, 1, 1, 1)
+GameEndPrimaryBtn/colors/font_hover_color = Color(0.059, 0.047, 0.106, 1)
+GameEndPrimaryBtn/colors/font_pressed_color = Color(0.059, 0.047, 0.106, 1)
+GameEndPrimaryBtn/font_sizes/font_size = 17
+GameEndPrimaryBtn/fonts/font = SubResource("font_tw_wide")
+GameEndPrimaryBtn/styles/disabled = SubResource("sb_primary_disabled")
+GameEndPrimaryBtn/styles/focus = SubResource("sb_primary")
+GameEndPrimaryBtn/styles/hover = SubResource("sb_primary_hover")
+GameEndPrimaryBtn/styles/normal = SubResource("sb_primary")
+GameEndPrimaryBtn/styles/pressed = SubResource("sb_primary_pressed")
+GameEndScore/base_type = &"Label"
+GameEndScore/colors/font_color = Color(1, 0.851, 0.239, 1)
+GameEndScore/font_sizes/font_size = 32
+GameEndScore/fonts/font = ExtResource("1_typewriter")
+GameEndScoreBig/base_type = &"Label"
+GameEndScoreBig/colors/font_color = Color(1, 0.851, 0.239, 1)
+GameEndScoreBig/font_sizes/font_size = 44
+GameEndScoreBig/fonts/font = ExtResource("1_typewriter")
+GameEndScoreBigTotal/base_type = &"Label"
+GameEndScoreBigTotal/colors/font_color = Color(0.49, 0.459, 0.396, 1)
+GameEndScoreBigTotal/font_sizes/font_size = 44
+GameEndScoreBigTotal/fonts/font = ExtResource("1_typewriter")
+GameEndScoreTotal/base_type = &"Label"
+GameEndScoreTotal/colors/font_color = Color(0.49, 0.459, 0.396, 1)
+GameEndScoreTotal/font_sizes/font_size = 20
+GameEndScoreTotal/fonts/font = ExtResource("1_typewriter")
+GameEndSectionNeg/base_type = &"Label"
+GameEndSectionNeg/colors/font_color = Color(0.941, 0.541, 0.447, 1)
+GameEndSectionNeg/font_sizes/font_size = 15
+GameEndSectionNeg/fonts/font = SubResource("font_tw_wide")
+GameEndSectionPos/base_type = &"Label"
+GameEndSectionPos/colors/font_color = Color(0.639, 0.749, 0.361, 1)
+GameEndSectionPos/font_sizes/font_size = 15
+GameEndSectionPos/fonts/font = SubResource("font_tw_wide")
+GameEndSourceBg/base_type = &"PanelContainer"
+GameEndSourceBg/styles/panel = SubResource("sb_source_bg")
+GameEndStatement/base_type = &"Label"
+GameEndStatement/colors/font_color = Color(0.871, 0.839, 0.769, 1)
+GameEndStatement/font_sizes/font_size = 16
+GameEndStatement/fonts/font = ExtResource("1_typewriter")
+GameEndStatementChecked/base_type = &"Label"
+GameEndStatementChecked/colors/font_color = Color(0.086, 0.071, 0.122, 1)
+GameEndStatementChecked/font_sizes/font_size = 16
+GameEndStatementChecked/fonts/font = ExtResource("1_typewriter")
+GameEndStatementRow/base_type = &"PanelContainer"
+GameEndStatementRow/styles/panel = SubResource("sb_statement")
+GameEndStatementRowChecked/base_type = &"PanelContainer"
+GameEndStatementRowChecked/styles/panel = SubResource("sb_statement_on")
+GameEndTagBoxNeg/base_type = &"Label"
+GameEndTagBoxNeg/colors/font_color = Color(1, 1, 1, 0)
+GameEndTagBoxNeg/font_sizes/font_size = 14
+GameEndTagBoxNeg/fonts/font = ExtResource("1_typewriter")
+GameEndTagBoxNeg/styles/normal = SubResource("sb_tag_box_neg")
+GameEndTagBoxNegOn/base_type = &"Label"
+GameEndTagBoxNegOn/colors/font_color = Color(0.086, 0.071, 0.122, 1)
+GameEndTagBoxNegOn/font_sizes/font_size = 14
+GameEndTagBoxNegOn/fonts/font = ExtResource("1_typewriter")
+GameEndTagBoxNegOn/styles/normal = SubResource("sb_tag_box_neg_on")
+GameEndTagBoxPos/base_type = &"Label"
+GameEndTagBoxPos/colors/font_color = Color(1, 1, 1, 0)
+GameEndTagBoxPos/font_sizes/font_size = 14
+GameEndTagBoxPos/fonts/font = ExtResource("1_typewriter")
+GameEndTagBoxPos/styles/normal = SubResource("sb_tag_box_pos")
+GameEndTagBoxPosOn/base_type = &"Label"
+GameEndTagBoxPosOn/colors/font_color = Color(0.086, 0.071, 0.122, 1)
+GameEndTagBoxPosOn/font_sizes/font_size = 14
+GameEndTagBoxPosOn/fonts/font = ExtResource("1_typewriter")
+GameEndTagBoxPosOn/styles/normal = SubResource("sb_tag_box_pos_on")
+GameEndTagCount/base_type = &"Label"
+GameEndTagCount/colors/font_color = Color(1, 0.851, 0.239, 1)
+GameEndTagCount/font_sizes/font_size = 20
+GameEndTagCount/fonts/font = ExtResource("1_typewriter")
+GameEndTagCountLabel/base_type = &"Label"
+GameEndTagCountLabel/colors/font_color = Color(0.557, 0.525, 0.463, 1)
+GameEndTagCountLabel/font_sizes/font_size = 11
+GameEndTagCountLabel/fonts/font = SubResource("font_tw_wide")
+GameEndTagLabel/base_type = &"Label"
+GameEndTagLabel/colors/font_color = Color(0.698, 0.659, 0.58, 1)
+GameEndTagLabel/font_sizes/font_size = 16
+GameEndTagLabel/fonts/font = ExtResource("1_typewriter")
+GameEndTagLabelOn/base_type = &"Label"
+GameEndTagLabelOn/colors/font_color = Color(0.937, 0.91, 0.847, 1)
+GameEndTagLabelOn/font_sizes/font_size = 16
+GameEndTagLabelOn/fonts/font = ExtResource("1_typewriter")
+GameEndTitle/base_type = &"Label"
+GameEndTitle/colors/font_color = Color(0.878, 0.231, 0.188, 1)
+GameEndTitle/colors/font_shadow_color = Color(0.227, 0.051, 0.035, 1)
+GameEndTitle/constants/shadow_offset_x = 0
+GameEndTitle/constants/shadow_offset_y = 5
+GameEndTitle/constants/shadow_outline_size = 0
+GameEndTitle/font_sizes/font_size = 54
+GameEndTitle/fonts/font = ExtResource("2_creepster")
+GameEndTopLabel/base_type = &"Label"
+GameEndTopLabel/colors/font_color = Color(0.871, 0.839, 0.769, 1)
+GameEndTopLabel/font_sizes/font_size = 14
+GameEndTopLabel/fonts/font = SubResource("font_tw_wide")
+GameEndYellowBtn/base_type = &"Button"
+GameEndYellowBtn/colors/font_color = Color(0.059, 0.047, 0.106, 1)
+GameEndYellowBtn/colors/font_hover_color = Color(0.059, 0.047, 0.106, 1)
+GameEndYellowBtn/colors/font_pressed_color = Color(0.059, 0.047, 0.106, 1)
+GameEndYellowBtn/font_sizes/font_size = 16
+GameEndYellowBtn/fonts/font = SubResource("font_tw_wide")
+GameEndYellowBtn/styles/focus = SubResource("sb_yellow")
+GameEndYellowBtn/styles/hover = SubResource("sb_yellow")
+GameEndYellowBtn/styles/normal = SubResource("sb_yellow")
+GameEndYellowBtn/styles/pressed = SubResource("sb_yellow_pressed")

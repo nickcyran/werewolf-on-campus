@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ge_guide_entry"]
+
+[ext_resource type="Script" path="res://features/game_end/components/guide_entry.gd" id="1_script"]
+
+[node name="GuideEntry" type="PanelContainer"]
+mouse_filter = 2
+theme_type_variation = &"GameEndGuideRow"
+script = ExtResource("1_script")
+
+[node name="Row" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="Mark" type="Label" parent="Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"GameEndMarkNeg"
+
+[node name="Text" type="VBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="Row/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndItemLabel"
+autowrap_mode = 3
+
+[node name="Why" type="Label" parent="Row/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndItemWhy"
+autowrap_mode = 3

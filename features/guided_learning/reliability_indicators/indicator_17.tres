@@ -6,3 +6,4 @@
 script = ExtResource("1")
 label = "Expert or authority with clear credentials on this topic"
 is_positive = true
+why = "The writer has actual standing on the topic."

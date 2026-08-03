@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GuidedLearningSource" format=3]
+
+[ext_resource type="Texture2D" uid="uid://dhhysd37kwtga" path="res://assets/media/Source - Inaccurate Infographic.png" id="1_image"]
+[ext_resource type="Script" uid="uid://3pce0tomye27" path="res://features/guided_learning/guided_learning_source.gd" id="2_script"]
+
+[resource]
+script = ExtResource("2_script")
+display_name = "Signs of a Werewolf"
+url = "texts/dylan"
+type = 1
+image = ExtResource("1_image")
+no_date = true
+no_author_info = true
+emotional_language = true
+no_funding_info = true
+overly_broad_claims = true
+claims_without_evidence = true
+mixed_accuracy = true

@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1")
 label = "Hyperbole or strong exaggeration"
+why = "The bigger the claim, the more proof it needs."

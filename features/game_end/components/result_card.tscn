@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ge_result_card"]
+
+[ext_resource type="Script" path="res://features/game_end/components/result_card.gd" id="1_script"]
+
+[node name="ResultCard" type="PanelContainer"]
+custom_minimum_size = Vector2(320, 0)
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"GameEndCard"
+script = ExtResource("1_script")
+
+[node name="Row" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Badge" type="Label" parent="Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"GameEndBadgeGood"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="VBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="Row/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndCardLabel"
+autowrap_mode = 3
+
+[node name="Note" type="Label" parent="Row/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndCardNote"
+autowrap_mode = 3

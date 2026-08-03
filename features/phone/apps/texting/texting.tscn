@@ -2,6 +2,17 @@
 
 [ext_resource type="Script" uid="uid://rxc3bimuil77" path="res://features/phone/apps/texting/texting.gd" id="1_texting"]
 
+[sub_resource type="StyleBoxFlat" id="SearchField"]
+bg_color = Color(1, 1, 1, 0.07)
+corner_radius_top_left = 21
+corner_radius_top_right = 21
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 21
+content_margin_left = 23.0
+content_margin_top = 8.0
+content_margin_right = 23.0
+content_margin_bottom = 8.0
+
 [sub_resource type="StyleBoxFlat" id="AvatarCircle"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 54
@@ -10,7 +21,7 @@ corner_radius_bottom_right = 54
 corner_radius_bottom_left = 54
 
 [sub_resource type="StyleBoxFlat" id="BackCircle"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0.07)
 corner_radius_top_left = 34
 corner_radius_top_right = 34
 corner_radius_bottom_right = 34
@@ -20,7 +31,7 @@ shadow_size = 6
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="BackCircleHover"]
-bg_color = Color(0.95, 0.95, 0.96, 1)
+bg_color = Color(1, 1, 1, 0.14)
 corner_radius_top_left = 34
 corner_radius_top_right = 34
 corner_radius_bottom_right = 34
@@ -35,19 +46,19 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.6, 0.6, 0.62, 1)
+border_color = Color(0.886, 0.906, 0.969, 0.45)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id="ComposerField"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0.07)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.8, 0.8, 0.81, 1)
+border_color = Color(1, 1, 1, 0.14)
 corner_radius_top_left = 34
 corner_radius_top_right = 34
 corner_radius_bottom_right = 34
@@ -58,7 +69,7 @@ content_margin_right = 30.0
 content_margin_bottom = 14.0
 
 [sub_resource type="StyleBoxFlat" id="ComposerSend"]
-bg_color = Color(0, 0.478, 1, 1)
+bg_color = Color(0.357, 0.549, 0.941, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -81,7 +92,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 1, 1, 1)
+color = Color(0.051, 0.063, 0.125, 1)
 
 [node name="InboxView" type="Control" parent="."]
 unique_name_in_owner = true
@@ -104,20 +115,49 @@ horizontal_scroll_mode = 0
 [node name="InboxMargin" type="MarginContainer" parent="InboxView/InboxScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 34
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 34
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 35
 theme_override_constants/margin_bottom = 36
 
 [node name="InboxVBox" type="VBoxContainer" parent="InboxView/InboxScroll/InboxMargin"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 28
 
 [node name="InboxTitle" type="Label" parent="InboxView/InboxScroll/InboxMargin/InboxVBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 72
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.957, 0.965, 0.992, 1)
+theme_override_font_sizes/font_size = 67
 text = "Messages"
+
+[node name="SearchField" type="PanelContainer" parent="InboxView/InboxScroll/InboxMargin/InboxVBox"]
+custom_minimum_size = Vector2(0, 67)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SearchField")
+
+[node name="SearchRow" type="HBoxContainer" parent="InboxView/InboxScroll/InboxMargin/InboxVBox/SearchField"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="SearchGlyph" type="Label" parent="InboxView/InboxScroll/InboxMargin/InboxVBox/SearchField/SearchRow"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.886, 0.906, 0.969, 0.45)
+theme_override_font_sizes/font_size = 25
+text = "○"
+
+[node name="SearchLabel" type="Label" parent="InboxView/InboxScroll/InboxMargin/InboxVBox/SearchField/SearchRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.886, 0.906, 0.969, 0.45)
+theme_override_font_sizes/font_size = 25
+text = "Search"
 
 [node name="ThreadList" type="VBoxContainer" parent="InboxView/InboxScroll/InboxMargin/InboxVBox"]
 unique_name_in_owner = true
@@ -169,7 +209,7 @@ theme_override_styles/panel = SubResource("AvatarCircle")
 [node name="ThreadAvatarInitial" type="Label" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter/AvatarCenter/ThreadAvatar"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.051, 0.063, 0.125, 1)
 theme_override_font_sizes/font_size = 44
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -177,7 +217,7 @@ vertical_alignment = 1
 [node name="ThreadHeaderLabel" type="Label" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.957, 0.965, 0.992, 1)
 theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 
@@ -191,7 +231,7 @@ offset_right = 92.0
 offset_bottom = 124.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0.478, 1, 1)
+theme_override_colors/font_color = Color(0.498, 0.643, 0.961, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("BackCircle")
 theme_override_styles/hover = SubResource("BackCircleHover")
@@ -201,7 +241,7 @@ text = "‹"
 [node name="ThreadDivider" type="ColorRect" parent="ThreadView/ThreadVBox"]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
-color = Color(0, 0, 0, 0.08)
+color = Color(1, 1, 1, 0.06)
 
 [node name="MessagesScroll" type="ScrollContainer" parent="ThreadView/ThreadVBox"]
 unique_name_in_owner = true
@@ -226,7 +266,7 @@ theme_override_constants/separation = 14
 [node name="ComposerDivider" type="ColorRect" parent="ThreadView/ThreadVBox"]
 custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
-color = Color(0, 0, 0, 0.08)
+color = Color(1, 1, 1, 0.06)
 
 [node name="ComposerMargin" type="MarginContainer" parent="ThreadView/ThreadVBox"]
 layout_mode = 2
@@ -252,7 +292,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.52, 1)
+theme_override_colors/font_color = Color(0.886, 0.906, 0.969, 0.45)
 theme_override_font_sizes/font_size = 40
 text = "+"
 horizontal_alignment = 1
@@ -265,7 +305,7 @@ theme_override_styles/panel = SubResource("ComposerField")
 
 [node name="ComposerPlaceholder" type="Label" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox/ComposerField"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.62, 0.62, 0.64, 1)
+theme_override_colors/font_color = Color(0.886, 0.906, 0.969, 0.45)
 theme_override_font_sizes/font_size = 34
 text = "Text Message"
 

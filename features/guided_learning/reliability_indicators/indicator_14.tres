@@ -6,3 +6,4 @@
 script = ExtResource("1")
 label = "Reliable publisher or author"
 is_positive = true
+why = "An outlet with a track record to protect."

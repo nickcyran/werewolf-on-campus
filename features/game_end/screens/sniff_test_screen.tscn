@@ -1,0 +1,345 @@
+[gd_scene format=3 uid="uid://ge_sniff_test_screen"]
+
+[ext_resource type="Script" path="res://features/game_end/screens/sniff_test_screen.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://ui/components/video_player_control.tscn" id="2_video"]
+
+[node name="SniffTestScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.043, 0.035, 0.075, 1)
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="PanelContainer" parent="Layout"]
+layout_mode = 2
+theme_type_variation = &"GameEndPanel"
+
+[node name="Row" type="HBoxContainer" parent="Layout/TopBar"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="BackBtn" type="Button" parent="Layout/TopBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndBackBtn"
+text = "← BACK"
+
+[node name="LabelMargin" type="MarginContainer" parent="Layout/TopBar/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 18
+
+[node name="SourceLabel" type="Label" parent="Layout/TopBar/Row/LabelMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndTopLabel"
+text = "SOURCE 1/9"
+
+[node name="CountMargin" type="MarginContainer" parent="Layout/TopBar/Row"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 18
+
+[node name="CountRow" type="HBoxContainer" parent="Layout/TopBar/Row/CountMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="TaggedCount" type="Label" parent="Layout/TopBar/Row/CountMargin/CountRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndTagCount"
+text = "0"
+
+[node name="TaggedLabel" type="Label" parent="Layout/TopBar/Row/CountMargin/CountRow"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndTagCountLabel"
+text = "TAGGED"
+
+[node name="SourceArea" type="PanelContainer" parent="Layout"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_type_variation = &"GameEndSourceBg"
+
+[node name="SceneContainer" type="SubViewportContainer" parent="Layout/SourceArea"]
+unique_name_in_owner = true
+layout_mode = 2
+stretch = true
+
+[node name="SceneViewport" type="SubViewport" parent="Layout/SourceArea/SceneContainer"]
+unique_name_in_owner = true
+size = Vector2i(1280, 340)
+render_target_update_mode = 4
+
+[node name="ImageScroll" type="ScrollContainer" parent="Layout/SourceArea"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ImageView" type="TextureRect" parent="Layout/SourceArea/ImageScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VideoView" parent="Layout/SourceArea" instance=ExtResource("2_video")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="AudioView" type="VBoxContainer" parent="Layout/SourceArea"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="AudioTitle" type="Label" parent="Layout/SourceArea/AudioView"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndChoiceLabelPicked"
+text = "Audio source"
+
+[node name="AudioBtn" type="Button" parent="Layout/SourceArea/AudioView"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "▶  PLAY"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="Layout/SourceArea/AudioView"]
+unique_name_in_owner = true
+
+[node name="CollapsedBar" type="PanelContainer" parent="Layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"GameEndBar"
+
+[node name="Row" type="HBoxContainer" parent="Layout/CollapsedBar"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="CollapsedCount" type="Label" parent="Layout/CollapsedBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "0 tells tagged on this source"
+
+[node name="OpenDrawerBtn" type="Button" parent="Layout/CollapsedBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndYellowBtn"
+text = "TAGS ↑"
+
+[node name="CollapsedSubmitBtn" type="Button" parent="Layout/CollapsedBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "SUBMIT"
+
+[node name="Drawer" type="PanelContainer" parent="Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 330)
+layout_mode = 2
+theme_type_variation = &"GameEndPanel"
+
+[node name="Stack" type="VBoxContainer" parent="Layout/Drawer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="HeadMargin" type="MarginContainer" parent="Layout/Drawer/Stack"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 10
+
+[node name="HeadRow" type="HBoxContainer" parent="Layout/Drawer/Stack/HeadMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="HeadTitle" type="Label" parent="Layout/Drawer/Stack/HeadMargin/HeadRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndTopLabel"
+text = "SELECT THE TAGS"
+
+[node name="HideDrawerBtn" type="Button" parent="Layout/Drawer/Stack/HeadMargin/HeadRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndGhostBtn"
+text = "HIDE ↓"
+
+[node name="Scroll" type="ScrollContainer" parent="Layout/Drawer/Stack"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Columns" type="HBoxContainer" parent="Layout/Drawer/Stack/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="NegColumn" type="VBoxContainer" parent="Layout/Drawer/Stack/Scroll/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="NegHeader" type="PanelContainer" parent="Layout/Drawer/Stack/Scroll/Columns/NegColumn"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndPanelHeader"
+
+[node name="Row" type="HBoxContainer" parent="Layout/Drawer/Stack/Scroll/Columns/NegColumn/NegHeader"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Layout/Drawer/Stack/Scroll/Columns/NegColumn/NegHeader/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"GameEndSectionNeg"
+text = "BAD SIGNS"
+
+[node name="NegCount" type="Label" parent="Layout/Drawer/Stack/Scroll/Columns/NegColumn/NegHeader/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "0 marked"
+
+[node name="NegList" type="VBoxContainer" parent="Layout/Drawer/Stack/Scroll/Columns/NegColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="PosColumn" type="VBoxContainer" parent="Layout/Drawer/Stack/Scroll/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="PosHeader" type="PanelContainer" parent="Layout/Drawer/Stack/Scroll/Columns/PosColumn"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndPanelHeader"
+
+[node name="Row" type="HBoxContainer" parent="Layout/Drawer/Stack/Scroll/Columns/PosColumn/PosHeader"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Layout/Drawer/Stack/Scroll/Columns/PosColumn/PosHeader/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"GameEndSectionPos"
+text = "GOOD SIGNS"
+
+[node name="PosCount" type="Label" parent="Layout/Drawer/Stack/Scroll/Columns/PosColumn/PosHeader/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "0 marked"
+
+[node name="PosList" type="VBoxContainer" parent="Layout/Drawer/Stack/Scroll/Columns/PosColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="FootMargin" type="MarginContainer" parent="Layout/Drawer/Stack"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 14
+
+[node name="FootRow" type="HBoxContainer" parent="Layout/Drawer/Stack/FootMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="FootHint" type="Label" parent="Layout/Drawer/Stack/FootMargin/FootRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "Tap a tell to add or remove it."
+
+[node name="DrawerSubmitBtn" type="Button" parent="Layout/Drawer/Stack/FootMargin/FootRow"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "SUBMIT RESPONSE →"

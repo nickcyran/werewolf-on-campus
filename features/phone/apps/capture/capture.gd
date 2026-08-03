@@ -7,6 +7,7 @@ const VideoPlayerControlScene := preload("res://ui/components/video_player_contr
 const C_RING_ACTIVE := Color(0.55, 0.75, 0.65)
 const C_RING_SELF := Color(0.50, 0.50, 0.52)
 const C_SEPARATOR := Color(0.18, 0.16, 0.16, 1)
+const C_ICON_OUTLINE := Color(0.949, 0.929, 0.902, 1)
 const C_PLACEHOLDER := Color(0.35, 0.25, 0.23, 1)
 
 # ── Story data ────────────────────────────────────────────────────────────────
@@ -35,6 +36,7 @@ static var _pfp_shader: Shader
 
 # ── Lifecycle ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	%HomeChip.pressed.connect(_on_home_pressed)
 	_build_stories()
 	_build_posts()
 	if not _video_entries.is_empty():
@@ -104,6 +106,15 @@ func _update_active_video() -> void:
 		GameManager.mark_source_visited(_video_sources[best])
 
 
+func _on_home_pressed() -> void:
+	var node: Node = self
+	while node:
+		if node is Phone:
+			(node as Phone).go_home()
+			return
+		node = node.get_parent()
+
+
 func _make_post(post: CapturePost) -> Control:
 	var container := VBoxContainer.new()
 	container.add_theme_constant_override("separation", 0)
@@ -119,16 +130,16 @@ func _make_post(post: CapturePost) -> Control:
 
 func _make_post_header(post: CapturePost) -> Control:
 	var header := PanelContainer.new()
-	header.custom_minimum_size = Vector2(0, 64)
+	header.custom_minimum_size = Vector2(0, 95)
 	header.theme_type_variation = &"CapturePostHeader"
 
 	var hbox := HBoxContainer.new()
-	hbox.add_theme_constant_override("separation", 14)
+	hbox.add_theme_constant_override("separation", 24)
 
 	var avatar := PanelContainer.new()
-	avatar.custom_minimum_size = Vector2(44, 44)
+	avatar.custom_minimum_size = Vector2(60, 60)
 	avatar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	avatar.add_theme_stylebox_override("panel", _flat(post.pfp_color, 22.0))
+	avatar.add_theme_stylebox_override("panel", _flat(post.pfp_color, 30.0))
 	if post.pfp_texture:
 		var tex := TextureRect.new()
 		tex.texture = post.pfp_texture
@@ -141,15 +152,22 @@ func _make_post_header(post: CapturePost) -> Control:
 	var info := VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	info.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	info.add_theme_constant_override("separation", 2)
+	info.add_theme_constant_override("separation", 4)
 	var username_lbl := Label.new()
 	username_lbl.text = post.username
 	username_lbl.theme_type_variation = &"CapturePostUsername"
 	info.add_child(username_lbl)
+
+	if post.meta != "":
+		var meta_lbl := Label.new()
+		meta_lbl.text = post.meta
+		meta_lbl.theme_type_variation = &"CapturePostMeta"
+		info.add_child(meta_lbl)
+
 	hbox.add_child(info)
 
 	var more := Button.new()
-	more.custom_minimum_size = Vector2(36, 0)
+	more.custom_minimum_size = Vector2(42, 0)
 	more.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	more.flat = true
 	more.text = "⋮"
@@ -196,9 +214,11 @@ func _make_post_actions(post: CapturePost) -> Control:
 	actions.theme_type_variation = &"CapturePostActions"
 
 	var avbox := VBoxContainer.new()
-	avbox.add_theme_constant_override("separation", 6)
+	avbox.add_theme_constant_override("separation", 10)
+	avbox.add_child(_make_action_icons())
+
 	var likes_lbl := Label.new()
-	likes_lbl.text = "♥  " + str(post.likes) + " likes"
+	likes_lbl.text = _thousands(post.likes) + " likes"
 	likes_lbl.theme_type_variation = &"CapturePostLikes"
 	avbox.add_child(likes_lbl)
 
@@ -211,5 +231,64 @@ func _make_post_actions(post: CapturePost) -> Control:
 		desc.theme_type_variation = &"CapturePostRTL"
 		avbox.add_child(desc)
 
+	if post.comments > 0:
+		var comments_lbl := Label.new()
+		comments_lbl.text = "View all %d comments" % post.comments
+		comments_lbl.theme_type_variation = &"CapturePostComments"
+		avbox.add_child(comments_lbl)
+
 	actions.add_child(avbox)
 	return actions
+
+
+## Like / comment on the left, save on the right — outlines rather than glyphs, so
+## they render the same whatever the font falls back to.
+func _make_action_icons() -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 28)
+
+	var heart := Label.new()
+	heart.text = "♥"
+	heart.theme_type_variation = &"CaptureActionHeart"
+	row.add_child(heart)
+
+	var bubble := Panel.new()
+	bubble.custom_minimum_size = Vector2(42, 38)
+	bubble.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	bubble.add_theme_stylebox_override("panel", _outline(Vector2(19, 5)))
+	row.add_child(bubble)
+
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(spacer)
+
+	var save := Panel.new()
+	save.custom_minimum_size = Vector2(34, 34)
+	save.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	save.add_theme_stylebox_override("panel", _outline(Vector2(5, 5)))
+	row.add_child(save)
+
+	return row
+
+
+## Hollow rounded box: [param radii] is (main corners, bottom-left tail corner).
+static func _outline(radii: Vector2) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0, 0, 0, 0)
+	style.set_border_width_all(4)
+	style.border_color = C_ICON_OUTLINE
+	style.corner_radius_top_left = int(radii.x)
+	style.corner_radius_top_right = int(radii.x)
+	style.corner_radius_bottom_right = int(radii.x)
+	style.corner_radius_bottom_left = int(radii.y)
+	return style
+
+
+static func _thousands(value: int) -> String:
+	var digits := str(value)
+	var out := ""
+	for i in range(digits.length()):
+		if i > 0 && (digits.length() - i) % 3 == 0:
+			out += ","
+		out += digits[i]
+	return out

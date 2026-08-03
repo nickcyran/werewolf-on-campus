@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ge_tag_row"]
+
+[ext_resource type="Script" path="res://features/game_end/components/tag_row.gd" id="1_script"]
+
+[node name="TagRow" type="PanelContainer"]
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndDrawerRow"
+script = ExtResource("1_script")
+
+[node name="Row" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="Box" type="Label" parent="Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndTagBoxNeg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndTagLabel"
+autowrap_mode = 3

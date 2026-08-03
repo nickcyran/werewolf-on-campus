@@ -4,11 +4,13 @@ class_name LinkRichTextLabel extends RichTextLabel
 ##
 ## The shape is set two ways on purpose. [member Control.mouse_default_cursor_shape]
 ## covers this label being hovered directly, as when the scene is run on its own.
-## [method Input.set_default_cursor_shape] covers the embedded screens: those render
-## into a SubViewport pinned to a 3D quad, so the root viewport finds no Control under
-## the pointer and falls back to the global default shape. It also applies immediately —
-## the per-Control shape only takes effect on the next mouse-motion event, which is why
-## it otherwise lags behind the hover.
+## [method DisplayServer.cursor_set_shape] covers the embedded screens, where nothing
+## else will apply it: [FocusSystem] marks each mouse event handled as it pushes it
+## into the SubViewport, so the root viewport's GUI pass — the only place Godot turns
+## a hovered Control's shape into a hardware cursor — never runs. The SubViewport does
+## not stand in for it either; one rendering to a 3D quad leaves the OS cursor alone.
+## Setting it here also applies immediately, where the per-Control shape would other-
+## wise wait for the next mouse-motion event and lag behind the hover.
 
 var _pointing := false
 
@@ -28,7 +30,7 @@ func _exit_tree() -> void:
 func _on_meta_hover_started(_meta: Variant) -> void:
 	_pointing = true
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+	DisplayServer.cursor_set_shape(DisplayServer.CURSOR_POINTING_HAND)
 
 
 func _on_meta_hover_ended(_meta: Variant) -> void:
@@ -41,4 +43,4 @@ func _clear_pointer() -> void:
 
 	_pointing = false
 	mouse_default_cursor_shape = Control.CURSOR_ARROW
-	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	DisplayServer.cursor_set_shape(DisplayServer.CURSOR_ARROW)

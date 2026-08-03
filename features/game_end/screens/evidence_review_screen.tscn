@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://ge_evidence_screen"]
+
+[ext_resource type="Script" path="res://features/game_end/screens/evidence_review_screen.gd" id="1_script"]
+
+[node name="EvidenceReviewScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Scroll" type="ScrollContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="Layout/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/margin_left = 152
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 152
+theme_override_constants/margin_bottom = 16
+
+[node name="Column" type="VBoxContainer" parent="Layout/Scroll/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Layout/Scroll/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndTitle"
+text = "HOW YOU READ IT"
+autowrap_mode = 3
+
+[node name="TitleSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScoreRow" type="HBoxContainer" parent="Layout/Scroll/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Score" type="Label" parent="Layout/Scroll/Margin/Column/ScoreRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndScore"
+text = "0"
+
+[node name="ScoreTotal" type="Label" parent="Layout/Scroll/Margin/Column/ScoreRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_type_variation = &"GameEndScoreTotal"
+text = "/ 8 read correctly"
+
+[node name="ScoreSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Quip" type="Label" parent="Layout/Scroll/Margin/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_type_variation = &"GameEndBody"
+autowrap_mode = 3
+
+[node name="QuipSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Cards" type="GridContainer" parent="Layout/Scroll/Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Footer" type="PanelContainer" parent="Layout"]
+layout_mode = 2
+theme_type_variation = &"GameEndBar"
+
+[node name="Row" type="HBoxContainer" parent="Layout/Footer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Helper" type="Label" parent="Layout/Footer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "Next up: how to spot a shaky source."
+
+[node name="ContinueBtn" type="Button" parent="Layout/Footer/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "CONTINUE →"

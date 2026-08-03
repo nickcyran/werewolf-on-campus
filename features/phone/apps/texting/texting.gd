@@ -1,13 +1,15 @@
 extends Control
 
-const TEXT_COLOR := Color(0.05, 0.05, 0.05, 1)
-const SECONDARY_COLOR := Color(0.557, 0.557, 0.576, 1)
-const PLACEHOLDER_COLOR := Color(0.68, 0.68, 0.7, 1)
-const SEPARATOR_COLOR := Color(0, 0, 0, 0.08)
-const BUBBLE_COLOR := Color(0.914, 0.914, 0.922, 1)
-const ACCENT_COLOR := Color(0, 0.478, 1, 1)
+const TEXT_COLOR := Color(0.957, 0.965, 0.992, 1)
+const SECONDARY_COLOR := Color(0.886, 0.906, 0.969, 0.6)
+const PLACEHOLDER_COLOR := Color(0.886, 0.906, 0.969, 0.45)
+const SEPARATOR_COLOR := Color(1, 1, 1, 0.06)
+const BUBBLE_COLOR := Color(0.11, 0.125, 0.204, 1)
+const ACCENT_COLOR := Color(0.357, 0.549, 0.941, 1)
 
-const AVATAR_SIZE := 112
+const AVATAR_SIZE := 91
+## Fixed gutter the unread dot sits in, so every row's avatar lines up.
+const UNREAD_SLOT_WIDTH := 21
 const BUBBLE_RADIUS := 38
 const BUBBLE_TEXT_WRAP_WIDTH := 600
 const BUBBLE_WRAP_THRESHOLD := 40
@@ -82,11 +84,23 @@ func _make_thread_row(thread_index: int) -> Control:
 	row.add_theme_constant_override("separation", 0)
 
 	var pad := MarginContainer.new()
-	pad.add_theme_constant_override("margin_top", 20)
-	pad.add_theme_constant_override("margin_bottom", 20)
+	pad.add_theme_constant_override("margin_top", 24)
+	pad.add_theme_constant_override("margin_bottom", 24)
 
 	var hbox := HBoxContainer.new()
-	hbox.add_theme_constant_override("separation", 26)
+	hbox.add_theme_constant_override("separation", 24)
+
+	var unread_slot := CenterContainer.new()
+	unread_slot.custom_minimum_size = Vector2(UNREAD_SLOT_WIDTH, 0)
+	if unread > 0:
+		var dot := Panel.new()
+		dot.custom_minimum_size = Vector2(14, 14)
+		var dot_style := StyleBoxFlat.new()
+		dot_style.bg_color = ACCENT_COLOR
+		dot_style.set_corner_radius_all(7)
+		dot.add_theme_stylebox_override("panel", dot_style)
+		unread_slot.add_child(dot)
+	hbox.add_child(unread_slot)
 
 	var avatar := PanelContainer.new()
 	avatar.custom_minimum_size = Vector2(AVATAR_SIZE, AVATAR_SIZE)
@@ -99,8 +113,8 @@ func _make_thread_row(thread_index: int) -> Control:
 	avatar_label.text = thread.avatar_initial
 	avatar_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	avatar_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	avatar_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
-	avatar_label.add_theme_font_size_override("font_size", 46)
+	avatar_label.add_theme_color_override("font_color", Color(0.051, 0.063, 0.125, 1))
+	avatar_label.add_theme_font_size_override("font_size", 35)
 	avatar.add_child(avatar_label)
 	hbox.add_child(avatar)
 
@@ -115,13 +129,13 @@ func _make_thread_row(thread_index: int) -> Control:
 	name_lbl.text = thread.contact_name
 	name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	name_lbl.add_theme_color_override("font_color", TEXT_COLOR)
-	name_lbl.add_theme_font_size_override("font_size", 36)
+	name_lbl.add_theme_font_size_override("font_size", 28)
 	name_row.add_child(name_lbl)
 	if !delivered.is_empty():
 		var time_lbl := Label.new()
 		time_lbl.text = DayClock.progress_to_display_time(delivered.back().trigger_progress)
 		time_lbl.add_theme_color_override("font_color", SECONDARY_COLOR)
-		time_lbl.add_theme_font_size_override("font_size", 30)
+		time_lbl.add_theme_font_size_override("font_size", 22)
 		name_row.add_child(time_lbl)
 	info.add_child(name_row)
 
@@ -130,22 +144,12 @@ func _make_thread_row(thread_index: int) -> Control:
 	preview_lbl.add_theme_color_override(
 		"font_color", SECONDARY_COLOR if !delivered.is_empty() else PLACEHOLDER_COLOR
 	)
-	preview_lbl.add_theme_font_size_override("font_size", 32)
+	preview_lbl.add_theme_font_size_override("font_size", 25)
 	preview_lbl.clip_text = true
 	preview_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	info.add_child(preview_lbl)
 
 	hbox.add_child(info)
-
-	if unread > 0:
-		var dot := Panel.new()
-		dot.custom_minimum_size = Vector2(18, 18)
-		dot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		var dot_style := StyleBoxFlat.new()
-		dot_style.bg_color = ACCENT_COLOR
-		dot_style.set_corner_radius_all(9)
-		dot.add_theme_stylebox_override("panel", dot_style)
-		hbox.add_child(dot)
 
 	pad.add_child(hbox)
 	row.add_child(pad)

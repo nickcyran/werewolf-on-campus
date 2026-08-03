@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://ge_verdict_screen"]
+
+[ext_resource type="Script" path="res://features/game_end/screens/verdict_screen.gd" id="1_script"]
+
+[node name="VerdictScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Scroll" type="ScrollContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="Layout/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/margin_left = 172
+theme_override_constants/margin_top = 56
+theme_override_constants/margin_right = 172
+theme_override_constants/margin_bottom = 40
+
+[node name="Column" type="VBoxContainer" parent="Layout/Scroll/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Kicker" type="Label" parent="Layout/Scroll/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndKicker"
+text = "SO, IS THERE A"
+
+[node name="KickerSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Hero" type="Label" parent="Layout/Scroll/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndHero"
+text = "WEREWOLF?"
+
+[node name="HeroSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Lede" type="Label" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(620, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_type_variation = &"GameEndBody"
+text = "You've read the sources. Make the call, then back it up with the signs you actually saw."
+autowrap_mode = 3
+
+[node name="LedeSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Choices" type="HBoxContainer" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(780, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="YesCard" type="PanelContainer" parent="Layout/Scroll/Margin/Column/Choices"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndChoice"
+
+[node name="Rows" type="VBoxContainer" parent="Layout/Scroll/Margin/Column/Choices/YesCard"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Head" type="HBoxContainer" parent="Layout/Scroll/Margin/Column/Choices/YesCard/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="YesDot" type="Panel" parent="Layout/Scroll/Margin/Column/Choices/YesCard/Rows/Head"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndDotOff"
+
+[node name="YesLabel" type="Label" parent="Layout/Scroll/Margin/Column/Choices/YesCard/Rows/Head"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"GameEndChoiceLabel"
+text = "THERE'S A WEREWOLF"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HintIndent" type="MarginContainer" parent="Layout/Scroll/Margin/Column/Choices/YesCard/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+
+[node name="YesHint" type="Label" parent="Layout/Scroll/Margin/Column/Choices/YesCard/Rows/HintIndent"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndChoiceHint"
+text = "You've seen enough signs to say it."
+autowrap_mode = 3
+
+[node name="NoCard" type="PanelContainer" parent="Layout/Scroll/Margin/Column/Choices"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndChoice"
+
+[node name="Rows" type="VBoxContainer" parent="Layout/Scroll/Margin/Column/Choices/NoCard"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Head" type="HBoxContainer" parent="Layout/Scroll/Margin/Column/Choices/NoCard/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="NoDot" type="Panel" parent="Layout/Scroll/Margin/Column/Choices/NoCard/Rows/Head"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndDotOff"
+
+[node name="NoLabel" type="Label" parent="Layout/Scroll/Margin/Column/Choices/NoCard/Rows/Head"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"GameEndChoiceLabel"
+text = "NO WEREWOLF HERE"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HintIndent" type="MarginContainer" parent="Layout/Scroll/Margin/Column/Choices/NoCard/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+
+[node name="NoHint" type="Label" parent="Layout/Scroll/Margin/Column/Choices/NoCard/Rows/HintIndent"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndChoiceHint"
+text = "Nothing you've seen holds up."
+autowrap_mode = 3
+
+[node name="SignsSection" type="VBoxContainer" parent="Layout/Scroll/Margin/Column"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SectionSpacer" type="Control" parent="Layout/Scroll/Margin/Column/SignsSection"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SignsHead" type="HBoxContainer" parent="Layout/Scroll/Margin/Column/SignsSection"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="SignsTitle" type="Label" parent="Layout/Scroll/Margin/Column/SignsSection/SignsHead"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"GameEndEyebrow"
+text = "WHICH SIGNS DID YOU SEE?"
+
+[node name="SelectedLabel" type="Label" parent="Layout/Scroll/Margin/Column/SignsSection/SignsHead"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "0 selected · optional"
+
+[node name="HeadSpacer" type="Control" parent="Layout/Scroll/Margin/Column/SignsSection"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SignsGrid" type="GridContainer" parent="Layout/Scroll/Margin/Column/SignsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Footer" type="PanelContainer" parent="Layout"]
+layout_mode = 2
+theme_type_variation = &"GameEndBar"
+
+[node name="Row" type="HBoxContainer" parent="Layout/Footer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Helper" type="Label" parent="Layout/Footer/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "Pick yes or no to continue."
+
+[node name="SubmitBtn" type="Button" parent="Layout/Footer/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "SUBMIT STATEMENT →"

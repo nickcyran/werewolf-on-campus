@@ -1,7 +1,7 @@
 extends Site
 
-const GLYPH_PLAY := "▶"
-const GLYPH_PAUSE := "||"
+@export var play_icon: Texture2D
+@export var pause_icon: Texture2D
 
 @onready var _play_btn: Button = %PlayBtn
 @onready var _play_pause_btn: Button = %PlayPauseBtn
@@ -62,8 +62,8 @@ func _toggle_transcript() -> void:
 
 func _refresh_ui() -> void:
 	var playing := PodcastPlayer.is_playing()
-	_play_btn.text = GLYPH_PAUSE if playing else GLYPH_PLAY
-	_play_pause_btn.text = GLYPH_PAUSE if playing else GLYPH_PLAY
+	_play_btn.icon = pause_icon if playing else play_icon
+	_play_pause_btn.icon = pause_icon if playing else play_icon
 	if PodcastPlayer.started:
 		_progress.set_value_no_signal(PodcastPlayer.get_progress())
 		_time_label.text = _fmt(PodcastPlayer.get_position())

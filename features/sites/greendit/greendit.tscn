@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dne3mqyi3ktee" path="res://features/sites/greendit/greendit.gd" id="1_greendit"]
 [ext_resource type="Theme" uid="uid://bu4nqfrdq2xgm" path="res://features/sites/greendit/greendit_comments_theme.tres" id="2_comments_theme"]
 [ext_resource type="Script" uid="uid://c4skv1qe2stk7" path="res://features/sites/greendit/greendit_comment.gd" id="3_o5146"]
+[ext_resource type="Texture2D" uid="uid://ctvrj41p1vw8n" path="res://assets/logos/icons/play-button-up.png" id="4_icon_up"]
+[ext_resource type="Texture2D" uid="uid://sx26hacip0s3" path="res://assets/logos/icons/play-button-down.png" id="5_icon_down"]
 
 [sub_resource type="Resource" id="Resource_iwl4i"]
 script = ExtResource("3_o5146")
@@ -219,12 +221,14 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="UpArrow" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
+[node name="UpArrow" type="TextureRect" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
+self_modulate = Color(0.133, 0.773, 0.369, 1)
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.133, 0.773, 0.369, 1)
-theme_override_font_sizes/font_size = 16
-text = "▲"
-horizontal_alignment = 1
+mouse_filter = 2
+texture = ExtResource("4_icon_up")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Score" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
 layout_mode = 2
@@ -233,12 +237,14 @@ theme_override_font_sizes/font_size = 15
 text = "15"
 horizontal_alignment = 1
 
-[node name="DownArrow" type="Label" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
+[node name="DownArrow" type="TextureRect" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox/VoteBar"]
+self_modulate = Color(0.75, 0.75, 0.74, 1)
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.75, 0.74, 1)
-theme_override_font_sizes/font_size = 16
-text = "▼"
-horizontal_alignment = 1
+mouse_filter = 2
+texture = ExtResource("5_icon_down")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PostContent" type="VBoxContainer" parent="Page/Scroll/OuterMargin/BodySection/MainCard/CardVBox/PostMargin/PostHBox"]
 layout_mode = 2

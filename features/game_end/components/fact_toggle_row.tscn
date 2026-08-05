@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ge_fact_toggle_row"]
 
 [ext_resource type="Script" path="res://features/game_end/components/fact_toggle_row.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://btlvppx1m0oav" path="res://assets/logos/icons/x.png" id="2_icon_x"]
 
 [node name="FactToggleRow" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 0)
@@ -24,6 +25,25 @@ mouse_filter = 2
 theme_type_variation = &"GameEndCheckOff"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarkIcon" type="TextureRect" parent="Row/Mark"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 0.851, 0.239, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_icon_x")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Text" type="Label" parent="Row"]
 unique_name_in_owner = true

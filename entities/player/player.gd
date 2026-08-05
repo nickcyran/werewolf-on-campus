@@ -16,10 +16,12 @@ extends Node3D
 @onready var _crosshair_dot: ColorRect = $UI/Control/Crosshair/CrosshairDot
 @onready var _exit_focus_btn: Button = %ExitFocusBtn
 @onready var _controls_hint: VBoxContainer = %ControlsHint
+@onready var _hud_root: Control = $UI/Control
 
 var _controls_hint_tween: Tween
 var _controls_hint_timer: float = 8.0 # auto-hide after 8 seconds
 var _controls_visible := true
+var _hud_hidden := false # debug: clean-screen toggle
 
 
 func _ready() -> void:
@@ -52,6 +54,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_toggle_hud"):
+		_toggle_hud()
+		return
+
 	if event.is_action_pressed("toggle_fullscreen"):
 		ScreenMode.toggle()
 		return
@@ -90,7 +96,7 @@ func _on_game_state_changed(new_state: GameManager.State) -> void:
 	_interact_prompt.visible = false
 
 	# Show exit-focus button only while focused
-	_exit_focus_btn.visible = focused
+	_exit_focus_btn.visible = focused && !_hud_hidden
 
 	if !playing:
 		_raycaster.clear()
@@ -139,6 +145,14 @@ func _hide_controls_hint() -> void:
 	_controls_visible = false
 	_controls_hint_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	_controls_hint_tween.tween_property(_controls_hint, "modulate:a", 0.0, 0.5)
+
+
+## Debug: clears the HUD (clock, crosshair, prompts, hints) and the back button
+## so the screen can be viewed unobstructed.
+func _toggle_hud() -> void:
+	_hud_hidden = !_hud_hidden
+	_hud_root.visible = !_hud_hidden
+	_exit_focus_btn.visible = !_hud_hidden && GameManager.state == GameManager.State.FOCUSED
 
 
 func _on_exit_focus_pressed() -> void:

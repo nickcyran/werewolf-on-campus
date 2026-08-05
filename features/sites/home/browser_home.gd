@@ -15,6 +15,8 @@ const INDEX_COLOR := Color("c2beb2")
 const CONTINUE_LOCKED_TEXT := Color("6f6a80")
 
 @export var sites: Array[SiteDefinition] = []
+## Fills the checklist box once a fact is confirmed.
+@export var check_icon: Texture2D
 
 @onready var _grid: GridContainer = %Grid
 @onready var _checklist_items: VBoxContainer = %ChecklistItems
@@ -25,7 +27,7 @@ const CONTINUE_LOCKED_TEXT := Color("6f6a80")
 @onready var _threshold_label: Label = %ThresholdLabel
 @onready var _continue_btn: Button = %ContinueBtn
 
-# per-fact visual refs: {"row_style": StyleBoxFlat, "check_style": StyleBoxFlat, "mark": Label}
+# per-fact visual refs: {"row_style": StyleBoxFlat, "check_style": StyleBoxFlat, "mark": TextureRect}
 var _fact_rows: Array[Dictionary] = []
 
 
@@ -141,13 +143,12 @@ func _make_fact_row(index: int, fact_text: String) -> Control:
 	check.custom_minimum_size = Vector2(19, 19)
 	check.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	check.add_theme_stylebox_override("panel", check_style)
-	var mark := Label.new()
-	mark.text = "✓"
-	mark.add_theme_color_override("font_color", Color.WHITE)
-	mark.add_theme_font_size_override("font_size", 11)
-	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	mark.set_anchors_preset(Control.PRESET_FULL_RECT)
+	var mark := TextureRect.new()
+	mark.texture = check_icon
+	mark.self_modulate = Color.WHITE
+	mark.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	mark.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	mark.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT, Control.PRESET_MODE_MINSIZE, 5)
 	check.add_child(mark)
 	hbox.add_child(check)
 
@@ -188,7 +189,7 @@ func _apply_fact_visual(index: int, checked: bool) -> void:
 	var check_style: StyleBoxFlat = refs["check_style"]
 	check_style.bg_color = ACCENT if checked else Color(0, 0, 0, 0)
 	check_style.border_color = ACCENT if checked else CHECK_BORDER
-	(refs["mark"] as Label).visible = checked
+	(refs["mark"] as TextureRect).visible = checked
 
 
 func _update_marked_tag() -> void:

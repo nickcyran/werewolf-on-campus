@@ -15,6 +15,9 @@ const BUBBLE_TEXT_WRAP_WIDTH := 600
 const BUBBLE_WRAP_THRESHOLD := 40
 const IMAGE_WIDTH := 407.0
 
+## Stands in for a photo-only message in the inbox preview line.
+@export var photo_icon: Texture2D
+
 @onready var _inbox_view: Control = %InboxView
 @onready var _thread_list: VBoxContainer = %ThreadList
 @onready var _thread_view: Control = %ThreadView
@@ -139,15 +142,31 @@ func _make_thread_row(thread_index: int) -> Control:
 		name_row.add_child(time_lbl)
 	info.add_child(name_row)
 
+	var last_msg: TextingMessage = delivered.back() if !delivered.is_empty() else null
+
+	var preview_row := HBoxContainer.new()
+	preview_row.add_theme_constant_override("separation", 8)
+	if last_msg && last_msg.body == "" && last_msg.image:
+		var photo_mark := TextureRect.new()
+		photo_mark.texture = photo_icon
+		photo_mark.custom_minimum_size = Vector2(25, 25)
+		photo_mark.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		photo_mark.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		photo_mark.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		photo_mark.self_modulate = SECONDARY_COLOR
+		preview_row.add_child(photo_mark)
+
 	var preview_lbl := Label.new()
-	preview_lbl.text = _preview_text(delivered.back() if !delivered.is_empty() else null)
+	preview_lbl.text = _preview_text(last_msg)
+	preview_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	preview_lbl.add_theme_color_override(
 		"font_color", SECONDARY_COLOR if !delivered.is_empty() else PLACEHOLDER_COLOR
 	)
 	preview_lbl.add_theme_font_size_override("font_size", 25)
 	preview_lbl.clip_text = true
 	preview_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	info.add_child(preview_lbl)
+	preview_row.add_child(preview_lbl)
+	info.add_child(preview_row)
 
 	hbox.add_child(info)
 
@@ -176,7 +195,7 @@ func _open_thread(thread_index: int) -> void:
 
 func _populate_thread(thread_index: int) -> void:
 	var thread = Texting.get_thread(thread_index)
-	_thread_header.text = thread.contact_name + "  ›"
+	_thread_header.text = thread.contact_name
 	_thread_avatar.self_modulate = thread.avatar_color
 	_thread_avatar_initial.text = thread.avatar_initial
 
@@ -262,5 +281,5 @@ func _preview_text(msg: TextingMessage) -> String:
 	if msg.body != "":
 		return msg.body
 	if msg.image:
-		return "📷 Photo"
+		return "Photo"
 	return ""

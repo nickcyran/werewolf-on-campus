@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ge_field_guide_screen"]
 
 [ext_resource type="Script" path="res://features/game_end/screens/field_guide_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b5oaaton3e2ox" path="res://assets/logos/icons/arrow.png" id="2_icon_arrow"]
 
 [node name="FieldGuideScreen" type="Control"]
 layout_mode = 3
@@ -44,7 +45,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"GameEndTitle"
-text = "SNIFFING OUT A LIAR"
+text = "GUIDED LEARNING"
 autowrap_mode = 3
 
 [node name="TitleSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
@@ -97,7 +98,7 @@ theme_override_constants/separation = 0
 [node name="Header" type="PanelContainer" parent="Layout/Scroll/Margin/Column/Columns/NegPanel/Stack"]
 layout_mode = 2
 mouse_filter = 2
-theme_type_variation = &"GameEndPanelHeader"
+theme_type_variation = &"GameEndPanelHeaderTop"
 
 [node name="Row" type="HBoxContainer" parent="Layout/Scroll/Margin/Column/Columns/NegPanel/Stack/Header"]
 layout_mode = 2
@@ -139,7 +140,7 @@ theme_override_constants/separation = 0
 [node name="Header" type="PanelContainer" parent="Layout/Scroll/Margin/Column/Columns/PosPanel/Stack"]
 layout_mode = 2
 mouse_filter = 2
-theme_type_variation = &"GameEndPanelHeader"
+theme_type_variation = &"GameEndPanelHeaderTop"
 
 [node name="Row" type="HBoxContainer" parent="Layout/Scroll/Margin/Column/Columns/PosPanel/Stack/Header"]
 layout_mode = 2
@@ -186,4 +187,6 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndPrimaryBtn"
-text = "START SNIFF TEST →"
+text = "START SNIFF TEST"
+icon = ExtResource("2_icon_arrow")
+icon_alignment = 2

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://features/phone/phone.gd" id="1_phone"]
 [ext_resource type="PackedScene" path="res://features/phone/phone_home.tscn" id="2_home"]
+[ext_resource type="Texture2D" uid="uid://d23m7h218rj7p" path="res://assets/logos/icons/chevron-left.png" id="3_icon_back"]
 
 [sub_resource type="StyleBoxFlat" id="HomePillNormal"]
 bg_color = Color(1, 1, 1, 0.55)
@@ -102,14 +103,16 @@ layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.498, 0.643, 0.961, 1)
-theme_override_colors/font_hover_color = Color(0.75, 0.82, 1, 1)
-theme_override_font_sizes/font_size = 46
+theme_override_colors/icon_normal_color = Color(0.498, 0.643, 0.961, 1)
+theme_override_colors/icon_hover_color = Color(0.75, 0.82, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.75, 0.82, 1, 1)
+theme_override_constants/icon_max_width = 26
 theme_override_styles/normal = SubResource("BackBtnNormal")
 theme_override_styles/hover = SubResource("BackBtnHover")
 theme_override_styles/pressed = SubResource("BackBtnHover")
 theme_override_styles/focus = SubResource("BackBtnNormal")
-text = "‹"
+icon = ExtResource("3_icon_back")
+icon_alignment = 1
 
 [node name="TimeLabel" type="Label" parent="PhoneContent/StatusBar/StatusRow"]
 layout_mode = 2

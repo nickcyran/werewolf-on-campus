@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cps3w2rwwa4oo" path="res://assets/logos/channel29_badge.png" id="3_badge"]
 [ext_resource type="Script" path="res://ui/components/dynamic_date_label.gd" id="4_dyndate"]
 [ext_resource type="Script" path="res://ui/components/link_rich_text_label.gd" id="5_link"]
+[ext_resource type="Texture2D" uid="uid://bxlxqy75hqu42" path="res://assets/logos/icons/weather.png" id="6_icon_weather"]
 [ext_resource type="PackedScene" path="res://features/sites/trifangnews/professor_bio.tscn" id="6_professor"]
 
 [sub_resource type="StyleBoxFlat" id="NavBtnNormal"]
@@ -128,11 +129,15 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="CloudIcon" type="Label" parent="Content/NavBar/WeatherWidget" unique_id=302981749]
+[node name="CloudIcon" type="TextureRect" parent="Content/NavBar/WeatherWidget" unique_id=302981749]
+self_modulate = Color(0.87, 0.87, 0.87, 1)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.87, 0.87, 0.87, 1)
-theme_override_font_sizes/font_size = 16
-text = "☁"
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("6_icon_weather")
+expand_mode = 1
+stretch_mode = 5
 vertical_alignment = 1
 
 [node name="TempVBox" type="VBoxContainer" parent="Content/NavBar/WeatherWidget" unique_id=619284035]

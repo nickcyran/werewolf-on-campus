@@ -25,7 +25,7 @@ func apply_comment(data: GreenditComment, depth: int) -> void:
 	%Author.text = data.author if data.author else "u/anonymous"
 	%TimeLabel.text = data.time
 	%Body.text = _stylize_links(data.body)
-	%Score.text = "▲ %d" % data.score
+	%Score.text = str(data.score)
 
 	if depth > 0:
 		_indent_spacer.custom_minimum_size = Vector2(depth * 20, 0)

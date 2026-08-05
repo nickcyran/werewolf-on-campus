@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://covjpgn4cv5rb" path="res://assets/icon.svg" id="3_4xrv5"]
 [ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="4_uf3vh"]
 [ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="5_theme"]
+[ext_resource type="Texture2D" uid="uid://d23m7h218rj7p" path="res://assets/logos/icons/chevron-left.png" id="6_icon_back"]
+[ext_resource type="Texture2D" uid="uid://bxfwwrg68toxv" path="res://assets/logos/icons/heart-filled.png" id="7_icon_heart"]
+[ext_resource type="Texture2D" uid="uid://3r4jp5jmi32k" path="res://assets/logos/icons/overflow-menu.png" id="8_icon_more"]
 
 [sub_resource type="Resource" id="Resource_1t1ph"]
 script = ExtResource("2_4xrv5")
@@ -126,6 +129,8 @@ grow_vertical = 2
 theme = ExtResource("5_theme")
 script = ExtResource("1_app")
 posts = Array[ExtResource("2_4xrv5")]([SubResource("Resource_1t1ph"), SubResource("Resource_2ic71")])
+more_icon = ExtResource("8_icon_more")
+heart_icon = ExtResource("7_icon_heart")
 
 [node name="BG" type="ColorRect" parent="." unique_id=1908640299]
 layout_mode = 1
@@ -167,7 +172,12 @@ theme_override_styles/normal = SubResource("HomeChipStyle")
 theme_override_styles/hover = SubResource("HomeChipHoverStyle")
 theme_override_styles/pressed = SubResource("HomeChipHoverStyle")
 theme_override_styles/focus = SubResource("HomeChipStyle")
-text = "‹  Home"
+theme_override_colors/icon_normal_color = Color(0.894, 0.847, 0.776, 1)
+theme_override_colors/icon_hover_color = Color(0.949, 0.929, 0.902, 1)
+theme_override_constants/icon_max_width = 15
+text = "Home"
+icon = ExtResource("6_icon_back")
+icon_alignment = 0
 
 [node name="Spacer1" type="Control" parent="VBox/Header/HeaderHBox" unique_id=1946391889]
 layout_mode = 2
@@ -205,9 +215,12 @@ layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.761, 0.376, 0.247, 1)
-theme_override_font_sizes/font_size = 32
-text = "♥"
+theme_override_colors/icon_normal_color = Color(0.761, 0.376, 0.247, 1)
+theme_override_colors/icon_hover_color = Color(0.761, 0.376, 0.247, 1)
+theme_override_colors/icon_pressed_color = Color(0.761, 0.376, 0.247, 1)
+theme_override_constants/icon_max_width = 30
+icon = ExtResource("7_icon_heart")
+icon_alignment = 1
 flat = true
 
 [node name="Stories" type="PanelContainer" parent="VBox" unique_id=1971168098]

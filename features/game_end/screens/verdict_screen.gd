@@ -11,6 +11,8 @@ const VERDICT_NO := "NO"
 const _FactToggleRowScene := preload("res://features/game_end/components/fact_toggle_row.tscn")
 
 var _verdict := ""
+var _yes_hovered := false
+var _no_hovered := false
 
 @onready var _yes_card: PanelContainer = %YesCard
 @onready var _yes_dot: Panel = %YesDot
@@ -30,6 +32,10 @@ var _verdict := ""
 func _ready() -> void:
 	_yes_card.gui_input.connect(_on_card_input.bind(VERDICT_YES))
 	_no_card.gui_input.connect(_on_card_input.bind(VERDICT_NO))
+	_yes_card.mouse_entered.connect(_set_card_hovered.bind(VERDICT_YES, true))
+	_yes_card.mouse_exited.connect(_set_card_hovered.bind(VERDICT_YES, false))
+	_no_card.mouse_entered.connect(_set_card_hovered.bind(VERDICT_NO, true))
+	_no_card.mouse_exited.connect(_set_card_hovered.bind(VERDICT_NO, false))
 	_submit_btn.pressed.connect(_on_submit)
 
 
@@ -72,19 +78,41 @@ func _on_submit() -> void:
 	submitted.emit(_verdict)
 
 
-func _refresh() -> void:
+func _set_card_hovered(verdict: String, hovered: bool) -> void:
+	if verdict == VERDICT_YES:
+		_yes_hovered = hovered
+	else:
+		_no_hovered = hovered
+	_refresh_cards()
+
+
+## A picked card keeps its yes/no colour on hover; only the shade lifts.
+func _refresh_cards() -> void:
 	var yes_picked := _verdict == VERDICT_YES
 	var no_picked := _verdict == VERDICT_NO
 
-	_yes_card.theme_type_variation = &"GameEndChoiceYes" if yes_picked else &"GameEndChoice"
+	if yes_picked:
+		_yes_card.theme_type_variation = &"GameEndChoiceYesHover" if _yes_hovered else &"GameEndChoiceYes"
+	else:
+		_yes_card.theme_type_variation = &"GameEndChoiceHover" if _yes_hovered else &"GameEndChoice"
+
+	if no_picked:
+		_no_card.theme_type_variation = &"GameEndChoiceNoHover" if _no_hovered else &"GameEndChoiceNo"
+	else:
+		_no_card.theme_type_variation = &"GameEndChoiceHover" if _no_hovered else &"GameEndChoice"
+
 	_yes_dot.theme_type_variation = &"GameEndDotOnYes" if yes_picked else &"GameEndDotOff"
 	_yes_label.theme_type_variation = &"GameEndChoiceLabelPicked" if yes_picked else &"GameEndChoiceLabel"
 	_yes_hint.theme_type_variation = &"GameEndChoiceHintPicked" if yes_picked else &"GameEndChoiceHint"
 
-	_no_card.theme_type_variation = &"GameEndChoiceNo" if no_picked else &"GameEndChoice"
 	_no_dot.theme_type_variation = &"GameEndDotOnNo" if no_picked else &"GameEndDotOff"
 	_no_label.theme_type_variation = &"GameEndChoiceLabelPicked" if no_picked else &"GameEndChoiceLabel"
 	_no_hint.theme_type_variation = &"GameEndChoiceHintPicked" if no_picked else &"GameEndChoiceHint"
+
+
+func _refresh() -> void:
+	var yes_picked := _verdict == VERDICT_YES
+	_refresh_cards()
 
 	# The signs only make sense as backing for a yes.
 	_signs_section.visible = yes_picked

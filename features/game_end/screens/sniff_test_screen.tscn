@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" path="res://features/game_end/screens/sniff_test_screen.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://ui/components/video_player_control.tscn" id="2_video"]
+[ext_resource type="Texture2D" uid="uid://b5oaaton3e2ox" path="res://assets/logos/icons/arrow.png" id="3_icon_arrow"]
+[ext_resource type="Texture2D" uid="uid://ll5pp5n0fqmf" path="res://assets/logos/icons/arrow-left.png" id="4_icon_arrow_left"]
+[ext_resource type="Texture2D" uid="uid://0dexgkmp30wn" path="res://assets/logos/icons/arrow-up.png" id="5_icon_arrow_up"]
+[ext_resource type="Texture2D" uid="uid://b7lkhjsnjubg6" path="res://assets/logos/icons/arrow-down.png" id="6_icon_arrow_down"]
+[ext_resource type="Texture2D" uid="uid://dyoek0enj057t" path="res://assets/logos/icons/play-button.png" id="7_icon_play"]
+[ext_resource type="Texture2D" uid="uid://cnmemcpn2ywln" path="res://assets/logos/icons/pause-button.png" id="8_icon_pause"]
 
 [node name="SniffTestScreen" type="Control"]
 layout_mode = 3
@@ -12,6 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_script")
+play_icon = ExtResource("7_icon_play")
+pause_icon = ExtResource("8_icon_pause")
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -48,7 +56,9 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndBackBtn"
-text = "← BACK"
+text = "BACK"
+icon = ExtResource("4_icon_arrow_left")
+icon_alignment = 0
 
 [node name="LabelMargin" type="MarginContainer" parent="Layout/TopBar/Row"]
 layout_mode = 2
@@ -149,7 +159,9 @@ size_flags_horizontal = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndPrimaryBtn"
-text = "▶  PLAY"
+text = "PLAY"
+icon = ExtResource("7_icon_play")
+icon_alignment = 0
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="Layout/SourceArea/AudioView"]
 unique_name_in_owner = true
@@ -180,7 +192,9 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndYellowBtn"
-text = "TAGS ↑"
+text = "TAGS"
+icon = ExtResource("5_icon_arrow_up")
+icon_alignment = 2
 
 [node name="CollapsedSubmitBtn" type="Button" parent="Layout/CollapsedBar/Row"]
 unique_name_in_owner = true
@@ -228,7 +242,9 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndGhostBtn"
-text = "HIDE ↓"
+text = "HIDE"
+icon = ExtResource("6_icon_arrow_down")
+icon_alignment = 2
 
 [node name="Scroll" type="ScrollContainer" parent="Layout/Drawer/Stack"]
 layout_mode = 2
@@ -342,4 +358,6 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndPrimaryBtn"
-text = "SUBMIT RESPONSE →"
+text = "SUBMIT RESPONSE"
+icon = ExtResource("3_icon_arrow")
+icon_alignment = 2

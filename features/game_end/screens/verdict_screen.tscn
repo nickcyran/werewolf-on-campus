@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ge_verdict_screen"]
 
 [ext_resource type="Script" path="res://features/game_end/screens/verdict_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b5oaaton3e2ox" path="res://assets/logos/icons/arrow.png" id="2_icon_arrow"]
 
 [node name="VerdictScreen" type="Control"]
 layout_mode = 3
@@ -32,9 +33,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/margin_left = 172
-theme_override_constants/margin_top = 56
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 172
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 24
 
 [node name="Column" type="VBoxContainer" parent="Layout/Scroll/Margin"]
 layout_mode = 2
@@ -47,18 +48,18 @@ theme_type_variation = &"GameEndKicker"
 text = "SO, IS THERE A"
 
 [node name="KickerSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
-custom_minimum_size = Vector2(0, 8)
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 mouse_filter = 2
 
 [node name="Hero" type="Label" parent="Layout/Scroll/Margin/Column"]
 layout_mode = 2
 mouse_filter = 2
-theme_type_variation = &"GameEndHero"
+theme_type_variation = &"GameEndHeroCompact"
 text = "WEREWOLF?"
 
 [node name="HeroSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 2
 
@@ -72,7 +73,7 @@ text = "You've read the sources. Make the call, then back it up with the signs y
 autowrap_mode = 3
 
 [node name="LedeSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 mouse_filter = 2
 
@@ -187,7 +188,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="SectionSpacer" type="Control" parent="Layout/Scroll/Margin/Column/SignsSection"]
-custom_minimum_size = Vector2(0, 34)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 mouse_filter = 2
 
@@ -211,7 +212,7 @@ theme_type_variation = &"GameEndHint"
 text = "0 selected · optional"
 
 [node name="HeadSpacer" type="Control" parent="Layout/Scroll/Margin/Column/SignsSection"]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 2
 
@@ -220,7 +221,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
+theme_override_constants/v_separation = 8
 columns = 2
 
 [node name="Footer" type="PanelContainer" parent="Layout"]
@@ -248,4 +249,6 @@ disabled = true
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndPrimaryBtn"
-text = "SUBMIT STATEMENT →"
+text = "SUBMIT STATEMENT"
+icon = ExtResource("2_icon_arrow")
+icon_alignment = 2

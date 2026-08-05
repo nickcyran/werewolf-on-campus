@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://features/phone/phone_app_definition.gd" id="3_pad"]
 [ext_resource type="PackedScene" path="res://features/phone/apps/texting/texting.tscn" id="4_texting"]
 [ext_resource type="Script" path="res://ui/components/dynamic_date_label.gd" id="5_dyndate"]
+[ext_resource type="Texture2D" uid="uid://dcrorixonolbp" path="res://assets/logos/capture.png" id="6_capture_icon"]
+[ext_resource type="Texture2D" uid="uid://8o0prvv4qf0a" path="res://assets/logos/xMessage.png" id="7_message_icon"]
 
 [sub_resource type="Gradient" id="Gradient_wallpaper"]
 offsets = PackedFloat32Array(0, 0.45, 1)
@@ -42,7 +44,7 @@ fill_to = Vector2(0.8, 1)
 script = ExtResource("3_pad")
 scene = ExtResource("2_capture")
 label = "Capture"
-icon = "📷"
+icon_texture = ExtResource("6_capture_icon")
 color = Color(0.259, 0.6, 0.416, 1)
 tile_gradient = SubResource("GradTex_capture")
 
@@ -50,7 +52,7 @@ tile_gradient = SubResource("GradTex_capture")
 script = ExtResource("3_pad")
 scene = ExtResource("4_texting")
 label = "Messages"
-icon = "💬"
+icon_texture = ExtResource("7_message_icon")
 color = Color(0.271, 0.441, 0.855, 1)
 tile_gradient = SubResource("GradTex_messages")
 

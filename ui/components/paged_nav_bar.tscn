@@ -2,6 +2,8 @@
 
 [ext_resource type="StyleBox" uid="uid://b4w0kcje27u0b" path="res://ui/components/nav_button.tres" id="1_kvei1"]
 [ext_resource type="StyleBox" uid="uid://okmryflesldu" path="res://ui/components/nav_button_hover.tres" id="2_nrbma"]
+[ext_resource type="Texture2D" uid="uid://064nnfpjhqel" path="res://assets/logos/icons/play-button-left.png" id="3_icon_back"]
+[ext_resource type="Texture2D" uid="uid://dyoek0enj057t" path="res://assets/logos/icons/play-button.png" id="4_icon_next"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdvev"]
 bg_color = Color(0.01639165, 0.016391335, 0.023116909, 1)
@@ -44,7 +46,9 @@ theme_override_styles/hover_pressed_mirrored = ExtResource("2_nrbma")
 theme_override_styles/disabled = ExtResource("1_kvei1")
 theme_override_styles/disabled_mirrored = ExtResource("1_kvei1")
 theme_override_styles/focus = ExtResource("2_nrbma")
-text = "◀ Back"
+text = "Back"
+icon = ExtResource("3_icon_back")
+icon_alignment = 0
 
 [node name="PageIndicator" type="Label" parent="NavContent" unique_id=440787137]
 layout_mode = 2
@@ -67,4 +71,6 @@ theme_override_styles/hover_pressed_mirrored = ExtResource("2_nrbma")
 theme_override_styles/disabled = ExtResource("1_kvei1")
 theme_override_styles/disabled_mirrored = ExtResource("1_kvei1")
 theme_override_styles/focus = ExtResource("2_nrbma")
-text = "Next ▶"
+text = "Next"
+icon = ExtResource("4_icon_next")
+icon_alignment = 2

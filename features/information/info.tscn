@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctemwlf3u5mcl"]
+[gd_scene load_steps=5 format=3 uid="uid://ctemwlf3u5mcl"]
 
 [ext_resource type="Script" uid="uid://bls7ilph7p54x" path="res://features/information/info.gd" id="1_55op0"]
 [ext_resource type="PackedScene" uid="uid://bwpagednavbr01" path="res://ui/components/paged_nav_bar.tscn" id="2_nav"]
 [ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="3_theme"]
+[ext_resource type="Texture2D" uid="uid://btlvppx1m0oav" path="res://assets/logos/icons/x.png" id="4_icon_close"]
 
 [node name="Info" type="Control" unique_id=1447644326]
 layout_mode = 3
@@ -265,7 +266,8 @@ theme_override_constants/margin_bottom = 0
 [node name="Exit" type="Button" parent="ExitMargin"]
 layout_mode = 2
 theme_type_variation = &"InfoCloseButton"
-text = "✕"
+icon = ExtResource("4_icon_close")
+icon_alignment = 1
 
 [node name="NavBar" parent="." instance=ExtResource("2_nav")]
 

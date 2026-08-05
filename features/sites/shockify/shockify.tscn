@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bm8vh3px06k1w" path="res://features/sites/shockify/shockify.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://dlw4sliwnm120" path="res://assets/logos/SHOCKIFY logo.png" id="2_logo"]
+[ext_resource type="Texture2D" uid="uid://dyoek0enj057t" path="res://assets/logos/icons/play-button.png" id="3_icon_play"]
+[ext_resource type="Texture2D" uid="uid://cnmemcpn2ywln" path="res://assets/logos/icons/pause-button.png" id="4_icon_pause"]
+[ext_resource type="Texture2D" uid="uid://dq5rxja6phadx" path="res://assets/logos/icons/heart-empty.png" id="5_icon_heart"]
+[ext_resource type="Texture2D" uid="uid://rpjkhp7ivvf5" path="res://assets/logos/icons/double-chevron-left.png" id="6_icon_prev"]
+[ext_resource type="Texture2D" uid="uid://b4pju82xfddmw" path="res://assets/logos/icons/double-chevron-right.png" id="7_icon_next"]
+[ext_resource type="Texture2D" uid="uid://brrebhdwp4tlt" path="res://assets/logos/icons/hamburger-menu.png" id="8_icon_transcript"]
+[ext_resource type="Texture2D" uid="uid://btlvppx1m0oav" path="res://assets/logos/icons/x.png" id="9_icon_close"]
 
 [sub_resource type="Gradient" id="Gradient_art"]
 colors = PackedColorArray(0.541, 0.247, 0.988, 1, 0.29, 0.102, 0.541, 1)
@@ -112,6 +119,8 @@ site_name = "Shockify"
 site_logo = ExtResource("2_logo")
 tile_color = Color(0.6151227, 0.35617754, 0.9263735, 1)
 site_url = "www.shockify.fm/tricitycast"
+play_icon = ExtResource("3_icon_play")
+pause_icon = ExtResource("4_icon_pause")
 
 [node name="BG" type="ColorRect" parent="." unique_id=1373402062]
 layout_mode = 1
@@ -320,18 +329,25 @@ custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_max_width = 20
 theme_override_styles/normal = SubResource("PlayCircleNormal")
 theme_override_styles/pressed = SubResource("PlayCirclePressed")
 theme_override_styles/hover = SubResource("PlayCircleHover")
-text = "▶"
+icon = ExtResource("3_icon_play")
+icon_alignment = 1
 
-[node name="HeartLabel" type="Label" parent="Layout/Body/MainArea/MainScroll/Content/ActionMargin/ActionHBox" unique_id=2074755076]
+[node name="HeartIcon" type="TextureRect" parent="Layout/Body/MainArea/MainScroll/Content/ActionMargin/ActionHBox" unique_id=2074755076]
+self_modulate = Color(0.702, 0.702, 0.702, 1)
+custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
-theme_override_font_sizes/font_size = 26
-text = "♡"
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_icon_heart")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TableMargin" type="MarginContainer" parent="Layout/Body/MainArea/MainScroll/Content" unique_id=574722185]
 layout_mode = 2
@@ -681,9 +697,12 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
-theme_override_font_sizes/font_size = 16
-text = "✕"
+theme_override_colors/icon_normal_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_colors/icon_hover_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/icon_pressed_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_constants/icon_max_width = 14
+icon = ExtResource("9_icon_close")
+icon_alignment = 1
 flat = true
 
 [node name="TScroll" type="ScrollContainer" parent="Layout/Body/TranscriptPanel/TMargin/TVBox"]
@@ -796,11 +815,15 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="PrevLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=87417003]
+[node name="PrevIcon" type="TextureRect" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=87417003]
+self_modulate = Color(0.702, 0.702, 0.702, 1)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
-theme_override_font_sizes/font_size = 18
-text = "«"
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("6_icon_prev")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PlayPauseBtn" type="Button" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=129220271]
 unique_name_in_owner = true
@@ -808,18 +831,25 @@ custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_max_width = 13
 theme_override_styles/normal = SubResource("BarPlayNormal")
 theme_override_styles/pressed = SubResource("BarPlayHover")
 theme_override_styles/hover = SubResource("BarPlayHover")
-text = "▶"
+icon = ExtResource("3_icon_play")
+icon_alignment = 1
 
-[node name="NextLabel" type="Label" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=605988374]
+[node name="NextIcon" type="TextureRect" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls/ControlRow" unique_id=605988374]
+self_modulate = Color(0.702, 0.702, 0.702, 1)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
-theme_override_font_sizes/font_size = 18
-text = "»"
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("7_icon_next")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ProgressRow" type="HBoxContainer" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/Controls" unique_id=101119018]
 layout_mode = 2
@@ -869,9 +899,12 @@ layout_mode = 2
 size_flags_vertical = 4
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.702, 0.702, 0.702, 1)
-theme_override_font_sizes/font_size = 20
-text = "≡"
+theme_override_colors/icon_normal_color = Color(0.702, 0.702, 0.702, 1)
+theme_override_colors/icon_hover_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/icon_pressed_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_constants/icon_max_width = 18
+icon = ExtResource("8_icon_transcript")
+icon_alignment = 1
 flat = true
 
 [node name="VolumeSlider" type="HSlider" parent="Layout/PlayerBar/PlayerMargin/PlayerContent/RightRow" unique_id=1817463956]

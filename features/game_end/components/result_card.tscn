@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ge_result_card"]
 
 [ext_resource type="Script" path="res://features/game_end/components/result_card.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c8b88rbyj786l" path="res://assets/logos/icons/check-mark.png" id="2_icon_check"]
+[ext_resource type="Texture2D" uid="uid://btlvppx1m0oav" path="res://assets/logos/icons/x.png" id="3_icon_x"]
 
 [node name="ResultCard" type="PanelContainer"]
 custom_minimum_size = Vector2(320, 0)
@@ -23,6 +25,43 @@ mouse_filter = 2
 theme_type_variation = &"GameEndBadgeGood"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BadgeGood" type="TextureRect" parent="Row/Badge"]
+unique_name_in_owner = true
+self_modulate = Color(0.086, 0.071, 0.122, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_icon_check")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BadgeBad" type="TextureRect" parent="Row/Badge"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 0.949, 0.933, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_icon_x")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Text" type="VBoxContainer" parent="Row"]
 layout_mode = 2

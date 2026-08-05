@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://jnf7e2eiwo5w" path="res://assets/fonts/JMH Typewriter-Black.ttf" id="11_jmhblack"]
 [ext_resource type="Script" uid="uid://drkkgknwgg4ro" path="res://features/sites/home/browser_home_grid_bg.gd" id="12_dotsbg"]
 [ext_resource type="Script" uid="uid://sb7vnjokbevp" path="res://features/sites/home/source_ring.gd" id="13_ring"]
+[ext_resource type="Texture2D" uid="uid://c8b88rbyj786l" path="res://assets/logos/icons/check-mark.png" id="14_icon_check"]
 
 [sub_resource type="Resource" id="1_site_nw"]
 script = ExtResource("10_sd")
@@ -131,6 +132,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_home")
 sites = Array[ExtResource("10_sd")]([SubResource("1_site_nw"), SubResource("2_site_greendit"), SubResource("3_site_email"), SubResource("4_site_acww"), SubResource("5_site_ch29"), SubResource("6_site_tfn"), SubResource("7_site_shockify")])
+check_icon = ExtResource("14_icon_check")
 site_name = "Home"
 site_url = "www.tri-search.com"
 

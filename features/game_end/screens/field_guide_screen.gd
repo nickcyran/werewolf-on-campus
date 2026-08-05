@@ -33,7 +33,8 @@ func _build() -> void:
 
 
 func _fill(list: VBoxContainer, indicators: Array[ReliabilityIndicator]) -> void:
-	for indicator in indicators:
+	for i in range(indicators.size()):
 		var entry: GuideEntry = _GuideEntryScene.instantiate()
 		list.add_child(entry)
-		entry.configure(indicator)
+		entry.configure(indicators[i])
+		entry.set_last(i == indicators.size() - 1)

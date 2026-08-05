@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://jkk0k46bs2fd" path="res://features/browser/browser.gd" id="1_vmb4q"]
 [ext_resource type="PackedScene" uid="uid://cwpmhn0ngqhpn" path="res://features/sites/home/browser_home.tscn" id="2_vmb4q"]
 [ext_resource type="Theme" uid="uid://ds283i4swr252" path="res://features/browser/browser_theme.tres" id="3_theme"]
+[ext_resource type="Texture2D" uid="uid://064nnfpjhqel" path="res://assets/logos/icons/play-button-left.png" id="4_icon_back"]
+[ext_resource type="Texture2D" uid="uid://dyoek0enj057t" path="res://assets/logos/icons/play-button.png" id="5_icon_fwd"]
 
 [node name="Browser" type="Control" node_paths=PackedStringArray("new_tab_btn", "zoom_out_btn", "zoom_reset_btn", "zoom_in_btn") unique_id=97724406]
 layout_mode = 3
@@ -96,7 +98,7 @@ custom_minimum_size = Vector2(36, 28)
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"NavButton"
-text = "◀"
+icon = ExtResource("4_icon_back")
 icon_alignment = 1
 
 [node name="ForwardBtn" type="Button" parent="Browser Content/NavBar/NavBarHBox" unique_id=206801185]
@@ -104,7 +106,7 @@ custom_minimum_size = Vector2(36, 28)
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"NavButton"
-text = "▶"
+icon = ExtResource("5_icon_fwd")
 icon_alignment = 1
 
 [node name="AddressBar" type="PanelContainer" parent="Browser Content/NavBar/NavBarHBox" unique_id=1080606760]

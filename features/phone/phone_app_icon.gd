@@ -9,7 +9,7 @@ var _style_hover := StyleBoxFlat.new()
 var _style_pressed := StyleBoxFlat.new()
 
 @onready var _icon_btn: Button = %IconButton
-@onready var _glyph: Label = %Glyph
+@onready var _icon_texture: TextureRect = %IconTexture
 @onready var _tile_gradient: TextureRect = %TileGradient
 @onready var _label: Label = %AppLabel
 @onready var _badge_panel: PanelContainer = %BadgePanel
@@ -31,7 +31,7 @@ func configure(definition: PhoneAppDefinition) -> void:
 	if !is_node_ready():
 		await ready
 
-	_glyph.text = definition.icon
+	_icon_texture.texture = definition.icon_texture
 	_label.text = definition.label
 	_style_normal.bg_color = definition.color
 	_style_hover.bg_color = definition.color.lightened(0.15)

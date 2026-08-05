@@ -14,6 +14,10 @@ var elapsed := 0.0
 var day_over := false
 var started := false
 
+## Debug/testing only: set by the backslash shortcut so the end sequence opens straight
+## into the sniff test instead of the verdict screen.
+var debug_skip_to_sniff := false
+
 var _prev_display := ""
 var _refresh_acc := 0.0
 
@@ -26,6 +30,7 @@ func reset() -> void:
 	elapsed = 0.0
 	day_over = false
 	started = false
+	debug_skip_to_sniff = false
 	_prev_display = ""
 	_refresh_acc = 0.0
 
@@ -37,6 +42,19 @@ func end_day() -> void:
 	elapsed = max_game_time_seconds
 	day_over = true
 	day_ended.emit()
+
+
+## Debug/testing only: backslash ends the night immediately and skips to the sniff test.
+func _unhandled_input(event: InputEvent) -> void:
+	if !event.is_action_pressed("debug_end_day"):
+		return
+
+	get_viewport().set_input_as_handled()
+	if day_over || !started:
+		return
+
+	debug_skip_to_sniff = true
+	end_day()
 
 
 func _process(delta: float) -> void:

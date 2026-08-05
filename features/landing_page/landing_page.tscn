@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" path="res://ui/components/dashed_border.tscn" id="5_dash"]
 [ext_resource type="Script" uid="uid://bic3ovncnp0ro" path="res://ui/components/tilt.gd" id="6_tilt"]
 [ext_resource type="Shader" uid="uid://b1ots50ovqjba" path="res://vfx/dashed_border.gdshader" id="7_rxdks"]
+[ext_resource type="Texture2D" uid="uid://064nnfpjhqel" path="res://assets/logos/icons/play-button-left.png" id="8_icon_back"]
+[ext_resource type="Texture2D" uid="uid://dyoek0enj057t" path="res://assets/logos/icons/play-button.png" id="9_icon_next"]
 
 [sub_resource type="Gradient" id="Gradient_glow"]
 offsets = PackedFloat32Array(0, 0.3, 1)
@@ -29,14 +31,35 @@ shader_parameter/thickness = 3.0
 shader_parameter/dash = 9.0
 shader_parameter/gap = 7.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxdks"]
-resource_local_to_scene = true
-shader = ExtResource("7_rxdks")
-shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
-shader_parameter/rect_size = Vector2(748, 62)
-shader_parameter/thickness = 2.0
-shader_parameter/dash = 8.0
-shader_parameter/gap = 6.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxdks"]
+bg_color = Color(0.0627451, 0.05490196, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8235294, 0.24705882, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpivu"]
+bg_color = Color(0.0627451, 0.05490196, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.34117648, 0.8509804, 0.46666667, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s7l30"]
 resource_local_to_scene = true
@@ -55,6 +78,30 @@ shader_parameter/rect_size = Vector2(748, 62)
 shader_parameter/thickness = 2.0
 shader_parameter/dash = 8.0
 shader_parameter/gap = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5iv2u"]
+resource_local_to_scene = true
+shader = ExtResource("7_rxdks")
+shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
+shader_parameter/rect_size = Vector2(748, 62)
+shader_parameter/thickness = 2.0
+shader_parameter/dash = 8.0
+shader_parameter/gap = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7l30"]
+bg_color = Color(0.0627451, 0.05490196, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.36078432, 0.7176471, 0.99215686, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
 
 [node name="LandingPage" type="Control" unique_id=1494604626]
 layout_mode = 3
@@ -208,6 +255,7 @@ custom_minimum_size = Vector2(820, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"LandingCard"
+theme_override_styles/panel = SubResource("StyleBoxFlat_rxdks")
 script = ExtResource("6_tilt")
 tilt_degrees = -0.4
 
@@ -311,6 +359,7 @@ custom_minimum_size = Vector2(840, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"MissionCard"
+theme_override_styles/panel = SubResource("StyleBoxFlat_qpivu")
 script = ExtResource("6_tilt")
 tilt_degrees = -0.4000000000000057
 
@@ -371,7 +420,7 @@ text = "Is there really a werewolf on campus right now?"
 autowrap_mode = 3
 
 [node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row1" unique_id=1696339690 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_rxdks")
+material = SubResource("ShaderMaterial_s7l30")
 layout_mode = 2
 line_color = Color(0.341, 0.851, 0.467, 0.35)
 thickness = 2.0
@@ -408,7 +457,7 @@ text = "How can you recognize it?"
 autowrap_mode = 3
 
 [node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row2" unique_id=1424080793 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_s7l30")
+material = SubResource("ShaderMaterial_sv4sl")
 layout_mode = 2
 line_color = Color(0.341, 0.851, 0.467, 0.35)
 thickness = 2.0
@@ -445,7 +494,7 @@ text = "How can you protect yourself and avoid getting eaten?"
 autowrap_mode = 3
 
 [node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row3" unique_id=1492627916 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_sv4sl")
+material = SubResource("ShaderMaterial_5iv2u")
 layout_mode = 2
 line_color = Color(0.341, 0.851, 0.467, 0.35)
 thickness = 2.0
@@ -520,6 +569,7 @@ custom_minimum_size = Vector2(860, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"HowToCard"
+theme_override_styles/panel = SubResource("StyleBoxFlat_s7l30")
 script = ExtResource("6_tilt")
 tilt_degrees = 0.4000000000000057
 
@@ -664,7 +714,9 @@ alignment = 2
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"NavBackBtn"
-text = "◀ Back"
+text = "Back"
+icon = ExtResource("8_icon_back")
+icon_alignment = 0
 
 [node name="PageIndicator" type="Label" parent="NavBar" unique_id=36730509]
 custom_minimum_size = Vector2(90, 0)
@@ -682,14 +734,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"NavNextBtn"
-text = "Next ▶"
+text = "Next"
+icon = ExtResource("9_icon_next")
+icon_alignment = 2
 
 [node name="Begin" type="Button" parent="NavBar/NextSlot" unique_id=1163500332]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"NavBeginBtn"
-text = "Begin ▶"
+text = "Begin"
+icon = ExtResource("9_icon_next")
+icon_alignment = 2
 
 [node name="FadeOverlay" type="ColorRect" parent="." unique_id=540599999]
 visible = false

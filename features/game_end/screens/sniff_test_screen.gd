@@ -10,6 +10,9 @@ signal tag_toggled(indicator_index: int, tagged: bool)
 
 const _TagRowScene := preload("res://features/game_end/components/tag_row.tscn")
 
+@export var play_icon: Texture2D
+@export var pause_icon: Texture2D
+
 var _rows: Dictionary = {}  # indicator index -> TagRow
 var _scene_instance: Node = null
 
@@ -50,7 +53,6 @@ func _ready() -> void:
 ## [param tagged] holds the indicator indices already marked on this source.
 func show_source(index: int, total: int, source: GuidedLearningSource, tagged: Dictionary) -> void:
 	_source_label.text = "SOURCE %d/%d" % [index + 1, total]
-	_back_btn.text = "← BACK"
 
 	for indicator_index: int in _rows:
 		(_rows[indicator_index] as TagRow).set_tagged(tagged.get(indicator_index, false))
@@ -63,7 +65,7 @@ func show_source(index: int, total: int, source: GuidedLearningSource, tagged: D
 func clear_source() -> void:
 	_video_view.stop()
 	_audio_player.stop()
-	_audio_btn.text = "▶  PLAY"
+	_set_audio_btn_playing(false)
 	if _scene_instance:
 		_scene_instance.queue_free()
 		_scene_instance = null
@@ -154,11 +156,16 @@ func _toggle_drawer() -> void:
 func _toggle_audio() -> void:
 	if _audio_player.playing:
 		_audio_player.stop()
-		_audio_btn.text = "▶  PLAY"
+		_set_audio_btn_playing(false)
 	else:
 		_audio_player.play()
-		_audio_btn.text = "❚❚  PAUSE"
+		_set_audio_btn_playing(true)
 
 
 func _on_audio_finished() -> void:
-	_audio_btn.text = "▶  PLAY"
+	_set_audio_btn_playing(false)
+
+
+func _set_audio_btn_playing(playing: bool) -> void:
+	_audio_btn.text = "PAUSE" if playing else "PLAY"
+	_audio_btn.icon = pause_icon if playing else play_icon

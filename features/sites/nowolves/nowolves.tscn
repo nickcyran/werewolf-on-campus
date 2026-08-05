@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://b2rcs6y6hjgs4" path="res://assets/fonts/JMH Typewriter.ttf" id="4_jmhreg"]
 [ext_resource type="Texture2D" uid="uid://bo3ysexmratmm" path="res://assets/ad/Source - Ad Garlic Emporium.png" id="5_garlic"]
 [ext_resource type="Script" path="res://ui/components/dynamic_date_label.gd" id="6_dyndate"]
+[ext_resource type="Texture2D" uid="uid://btlvppx1m0oav" path="res://assets/logos/icons/x.png" id="7_icon_close"]
 
 [sub_resource type="StyleBoxFlat" id="GarlicCard"]
 bg_color = Color(1, 1, 1, 1)
@@ -357,10 +358,12 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_jmhblack")
-theme_override_font_sizes/font_size = 14
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 12
 theme_override_styles/normal = SubResource("GarlicCloseNormal")
 theme_override_styles/pressed = SubResource("GarlicCloseHover")
 theme_override_styles/hover = SubResource("GarlicCloseHover")
-text = "✕"
+icon = ExtResource("7_icon_close")
+icon_alignment = 1

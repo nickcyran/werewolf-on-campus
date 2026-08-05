@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ceq18rs5nix2b" path="res://assets/media/werwolf_spotting.png" id="3_image"]
 [ext_resource type="Texture2D" uid="uid://cf6gtkk83vs7g" path="res://assets/logos/Tri-fang logo 1.png" id="3_twoay"]
 [ext_resource type="Script" path="res://ui/components/dynamic_date_label.gd" id="4_dyndate"]
+[ext_resource type="Texture2D" uid="uid://bxlxqy75hqu42" path="res://assets/logos/icons/weather.png" id="5_icon_weather"]
 
 [sub_resource type="StyleBoxFlat" id="BreakingPillBg"]
 content_margin_left = 10.0
@@ -81,11 +82,15 @@ theme_override_constants/separation = 8
 alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="CloudIcon" type="Label" parent="ScrollContainer/Content/WeatherBar/WeatherRow" unique_id=1774965449]
+[node name="CloudIcon" type="TextureRect" parent="ScrollContainer/Content/WeatherBar/WeatherRow" unique_id=1774965449]
+self_modulate = Color(0.09, 0.085, 0.1, 1)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.09, 0.085, 0.1, 1)
-theme_override_font_sizes/font_size = 16
-text = "☁"
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_icon_weather")
+expand_mode = 1
+stretch_mode = 5
 vertical_alignment = 1
 
 [node name="TempVBox" type="VBoxContainer" parent="ScrollContainer/Content/WeatherBar/WeatherRow" unique_id=1820541832]

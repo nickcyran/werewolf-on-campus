@@ -8,6 +8,7 @@ const C_RING_ACTIVE := Color(0.55, 0.75, 0.65)
 const C_RING_SELF := Color(0.50, 0.50, 0.52)
 const C_SEPARATOR := Color(0.18, 0.16, 0.16, 1)
 const C_ICON_OUTLINE := Color(0.949, 0.929, 0.902, 1)
+const C_HEART := Color(0.761, 0.376, 0.247, 1)
 const C_PLACEHOLDER := Color(0.35, 0.25, 0.23, 1)
 
 # ── Story data ────────────────────────────────────────────────────────────────
@@ -21,6 +22,8 @@ const STORY_COLORS: Array[Color] = [
 ]
 
 @export var posts: Array[CapturePost] = []
+@export var more_icon: Texture2D
+@export var heart_icon: Texture2D
 
 @onready var _stories_hbox: HBoxContainer = $VBox/Stories/StoriesScroll/StoriesHBox
 @onready var _posts_vbox: VBoxContainer = $VBox/PostsFeed/PostsVBox
@@ -170,7 +173,8 @@ func _make_post_header(post: CapturePost) -> Control:
 	more.custom_minimum_size = Vector2(42, 0)
 	more.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	more.flat = true
-	more.text = "⋮"
+	more.icon = more_icon
+	more.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	more.theme_type_variation = &"CaptureMoreBtn"
 	hbox.add_child(more)
 
@@ -241,15 +245,19 @@ func _make_post_actions(post: CapturePost) -> Control:
 	return actions
 
 
-## Like / comment on the left, save on the right — outlines rather than glyphs, so
-## they render the same whatever the font falls back to.
+## Like / comment on the left, save on the right — an icon and outlines rather than
+## font glyphs, so they render the same whatever the font falls back to.
 func _make_action_icons() -> Control:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 28)
 
-	var heart := Label.new()
-	heart.text = "♥"
-	heart.theme_type_variation = &"CaptureActionHeart"
+	var heart := TextureRect.new()
+	heart.texture = heart_icon
+	heart.custom_minimum_size = Vector2(38, 38)
+	heart.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	heart.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	heart.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	heart.self_modulate = C_HEART
 	row.add_child(heart)
 
 	var bubble := Panel.new()

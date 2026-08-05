@@ -45,6 +45,7 @@ theme = ExtResource("2_theme")
 color = Color(0.043, 0.035, 0.075, 1)
 script = ExtResource("1_script")
 sources = Array[ExtResource("10_source")]([ExtResource("11_src1"), ExtResource("12_src2"), ExtResource("13_src5"), ExtResource("14_src4"), ExtResource("15_src6"), ExtResource("16_src7"), ExtResource("17_src8"), ExtResource("18_src9"), ExtResource("19_src10")])
+debug_sniff_source = ExtResource("14_src4")
 
 [node name="Background" type="Control" parent="."]
 unique_name_in_owner = true

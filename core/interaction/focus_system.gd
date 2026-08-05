@@ -4,6 +4,10 @@ extends Node
 @export var camera_path: NodePath
 @export var tween_duration: float = 0.45
 
+@export_group("Debug Fullscreen")
+@export var fullscreen_layer: CanvasLayer
+@export var fullscreen_texture: TextureRect
+
 var camera: Camera3D
 var tween: Tween
 
@@ -19,6 +23,9 @@ var _cached_vp_size: Vector2
 var _cached_scale: Vector2
 var _rect_dirty := true
 
+# debug: draws the focused embedded viewport over the whole window
+var _fullscreen := false
+
 
 func _ready() -> void:
 	camera = get_node(camera_path) as Camera3D
@@ -27,6 +34,20 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if GameManager.state != GameManager.State.FOCUSED:
+		return
+
+	# Debug toggles are checked before forwarding so they never reach the embedded UI.
+	if event.is_action_pressed("debug_screen_fullscreen"):
+		get_viewport().set_input_as_handled()
+		set_fullscreen(!_fullscreen)
+		return
+
+	# Left unhandled on purpose: the player HUD owns this toggle.
+	if event.is_action_pressed("debug_toggle_hud"):
+		return
+
+	# Left unhandled on purpose: DayClock owns this debug shortcut.
+	if event.is_action_pressed("debug_end_day"):
 		return
 
 	if is_animating:
@@ -51,6 +72,7 @@ func _on_focus_requested(node: Node3D) -> void:
 
 	focused_node = _resolve_focus_node()
 	saved_transform = focused_node.global_transform
+	set_fullscreen(false)
 	_rect_dirty = true
 
 	var destination := _compute_destination()
@@ -58,10 +80,24 @@ func _on_focus_requested(node: Node3D) -> void:
 
 
 func unfocus() -> void:
+	set_fullscreen(false)
+
 	# revert viewport to low-cost mode when leaving focus
 	if target and target.embedded_viewport:
 		target.embedded_viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_PARENT_VISIBLE
 	_tween_to(saved_transform, GameManager.release_focus)
+
+
+## Debug helper: blows the focused screen up to fill the window instead of
+## viewing it through its 3D quad. Input is remapped to the enlarged rect.
+func set_fullscreen(enabled: bool) -> void:
+	if !fullscreen_layer || !fullscreen_texture:
+		return
+
+	_fullscreen = enabled && target != null && target.embedded_viewport != null
+	fullscreen_texture.texture = target.embedded_viewport.get_texture() if _fullscreen else null
+	fullscreen_layer.visible = _fullscreen
+	_rect_dirty = true
 
 
 func _resolve_focus_node() -> Node3D:
@@ -144,6 +180,9 @@ func _forward_input(event: InputEvent) -> bool:
 
 
 func _compute_screen_rect() -> Rect2:
+	if _fullscreen:
+		return _compute_fullscreen_rect()
+
 	# Get mesh displaying viewport
 	var mesh := target.embedded_viewport.get_parent() as MeshInstance3D
 	var quad := mesh.mesh as QuadMesh
@@ -160,3 +199,14 @@ func _compute_screen_rect() -> Rect2:
 	var bottom_right := camera.unproject_position(t.origin + half_w - half_h)
 
 	return Rect2(top_left, bottom_right - top_left)
+
+
+func _compute_fullscreen_rect() -> Rect2:
+	# The TextureRect keeps the viewport aspect centred, so the drawn image is
+	# letterboxed inside the control and only that band accepts input.
+	var frame := fullscreen_texture.get_global_rect()
+	var vp_size := Vector2(target.embedded_viewport.size)
+	var fit := minf(frame.size.x / vp_size.x, frame.size.y / vp_size.y)
+	var drawn := vp_size * fit
+
+	return Rect2(frame.position + (frame.size - drawn) * 0.5, drawn)

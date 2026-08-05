@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ge_evidence_screen"]
 
 [ext_resource type="Script" path="res://features/game_end/screens/evidence_review_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b5oaaton3e2ox" path="res://assets/logos/icons/arrow.png" id="2_icon_arrow"]
 
 [node name="EvidenceReviewScreen" type="Control"]
 layout_mode = 3
@@ -122,4 +123,6 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndPrimaryBtn"
-text = "CONTINUE →"
+text = "CONTINUE"
+icon = ExtResource("2_icon_arrow")
+icon_alignment = 2

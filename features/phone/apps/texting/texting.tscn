@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://yi0krisotj6r"]
 
 [ext_resource type="Script" uid="uid://rxc3bimuil77" path="res://features/phone/apps/texting/texting.gd" id="1_texting"]
+[ext_resource type="Texture2D" uid="uid://b8gtq0hbio3fv" path="res://assets/logos/icons/chevron.png" id="2_icon_chevron"]
+[ext_resource type="Texture2D" uid="uid://d23m7h218rj7p" path="res://assets/logos/icons/chevron-left.png" id="3_icon_back"]
+[ext_resource type="Texture2D" uid="uid://0dexgkmp30wn" path="res://assets/logos/icons/arrow-up.png" id="4_icon_send"]
+[ext_resource type="Texture2D" uid="uid://dcrorixonolbp" path="res://assets/logos/capture.png" id="5_icon_photo"]
+[ext_resource type="Texture2D" uid="uid://btlvppx1m0oav" path="res://assets/logos/icons/x.png" id="6_icon_close"]
+[ext_resource type="Texture2D" uid="uid://civn7hmuxag40" path="res://assets/logos/icons/circle.png" id="7_icon_search"]
 
 [sub_resource type="StyleBoxFlat" id="SearchField"]
 bg_color = Color(1, 1, 1, 0.07)
@@ -83,6 +89,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_texting")
+photo_icon = ExtResource("5_icon_photo")
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -142,13 +149,15 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 16
 
-[node name="SearchGlyph" type="Label" parent="InboxView/InboxScroll/InboxMargin/InboxVBox/SearchField/SearchRow"]
+[node name="SearchGlyph" type="TextureRect" parent="InboxView/InboxScroll/InboxMargin/InboxVBox/SearchField/SearchRow"]
+self_modulate = Color(0.886, 0.906, 0.969, 0.45)
+custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_colors/font_color = Color(0.886, 0.906, 0.969, 0.45)
-theme_override_font_sizes/font_size = 25
-text = "○"
+texture = ExtResource("7_icon_search")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SearchLabel" type="Label" parent="InboxView/InboxScroll/InboxMargin/InboxVBox/SearchField/SearchRow"]
 layout_mode = 2
@@ -214,12 +223,29 @@ theme_override_font_sizes/font_size = 44
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ThreadHeaderLabel" type="Label" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter"]
+[node name="HeaderNameRow" type="HBoxContainer" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ThreadHeaderLabel" type="Label" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter/HeaderNameRow"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.957, 0.965, 0.992, 1)
 theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
+
+[node name="ThreadHeaderChevron" type="TextureRect" parent="ThreadView/ThreadVBox/ThreadHeader/HeaderCenter/HeaderNameRow"]
+self_modulate = Color(0.957, 0.965, 0.992, 1)
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_icon_chevron")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ThreadBackBtn" type="Button" parent="ThreadView/ThreadVBox/ThreadHeader"]
 unique_name_in_owner = true
@@ -231,12 +257,15 @@ offset_right = 92.0
 offset_bottom = 124.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.498, 0.643, 0.961, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_colors/icon_normal_color = Color(0.498, 0.643, 0.961, 1)
+theme_override_colors/icon_hover_color = Color(0.498, 0.643, 0.961, 1)
+theme_override_colors/icon_pressed_color = Color(0.498, 0.643, 0.961, 1)
+theme_override_constants/icon_max_width = 24
 theme_override_styles/normal = SubResource("BackCircle")
 theme_override_styles/hover = SubResource("BackCircleHover")
 theme_override_styles/pressed = SubResource("BackCircleHover")
-text = "‹"
+icon = ExtResource("3_icon_back")
+icon_alignment = 1
 
 [node name="ThreadDivider" type="ColorRect" parent="ThreadView/ThreadVBox"]
 custom_minimum_size = Vector2(0, 1)
@@ -315,18 +344,22 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("ComposerSend")
 
-[node name="SendLabel" type="Label" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox/SendCircle"]
+[node name="SendIcon" type="TextureRect" parent="ThreadView/ThreadVBox/ComposerMargin/ComposerHBox/SendCircle"]
+self_modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = -17.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 34
-text = "↑"
-horizontal_alignment = 1
-vertical_alignment = 1
+mouse_filter = 2
+texture = ExtResource("4_icon_send")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ImageViewer" type="Control" parent="."]
 unique_name_in_owner = true
@@ -379,7 +412,10 @@ offset_top = 24.0
 offset_right = -24.0
 offset_bottom = 94.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 50
-text = "✕"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 40
+icon = ExtResource("6_icon_close")
+icon_alignment = 1
 flat = true

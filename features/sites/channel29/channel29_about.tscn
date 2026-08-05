@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bh3cta78fe4un" path="res://features/sites/site.gd" id="1_site"]
 [ext_resource type="Texture2D" uid="uid://cps3w2rwwa4oo" path="res://assets/logos/channel29_badge.png" id="3_badge"]
+[ext_resource type="Texture2D" uid="uid://bxlxqy75hqu42" path="res://assets/logos/icons/weather.png" id="4_icon_weather"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1dgf"]
 content_margin_left = 18.0
@@ -119,11 +120,15 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="CloudIcon" type="Label" parent="Content/NavBar/WeatherWidget" unique_id=1465104635]
+[node name="CloudIcon" type="TextureRect" parent="Content/NavBar/WeatherWidget" unique_id=1465104635]
+self_modulate = Color(0.87, 0.87, 0.87, 1)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.87, 0.87, 0.87, 1)
-theme_override_font_sizes/font_size = 16
-text = "☁"
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("4_icon_weather")
+expand_mode = 1
+stretch_mode = 5
 vertical_alignment = 1
 
 [node name="TempVBox" type="VBoxContainer" parent="Content/NavBar/WeatherWidget" unique_id=708976302]

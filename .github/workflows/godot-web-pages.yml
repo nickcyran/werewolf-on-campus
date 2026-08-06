@@ -8,23 +8,17 @@ on:
 env:
   GODOT_VERSION: "4.6.1"
   GODOT_STATUS: "stable"
-  # Public repo that serves the Pages site. This repo (the source) stays private;
-  # only the exported build is pushed there, never the project files.
-  PAGES_REPO: "nickcyran/werewolf-on-campus-play"
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      # Nothing is written back to this repo — the build is pushed to PAGES_REPO
-      # using PAGES_DEPLOY_TOKEN instead.
-      contents: read
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
 
-      # Private repos bill Actions minutes, and the templates are ~1 GB, so both
-      # the editor binary and the templates are cached between runs.
+      # The templates are ~1 GB; caching them keeps each run to a couple of minutes.
       - name: Cache Godot and export templates
         id: godot-cache
         uses: actions/cache@v4
@@ -70,27 +64,12 @@ jobs:
           # Pages would otherwise run the output through Jekyll and drop _-prefixed files.
           touch build/web/.nojekyll
 
-          # An export that quietly produces nothing must not reach the public repo.
+          # An export that quietly produces nothing must not reach the live site.
           test -s build/web/index.html
           test -s build/web/index.wasm
 
-      # The whole point of the split: the public repo must never receive project
-      # source. This fails the run rather than publishing anything unexpected.
-      - name: Verify no source files in the published build
-        run: |
-          set -euo pipefail
-          leaked=$(find build/web -type f \
-            \( -name '*.gd' -o -name '*.gdc' -o -name '*.tscn' -o -name '*.tres' \
-            -o -name '*.cfg' -o -name '*.import' -o -name '*.uid' -o -name '*.godot' \) | sort)
-
-          if [ -n "${leaked}" ]; then
-            echo "::error::Project source would be published to ${PAGES_REPO}:"
-            echo "${leaked}"
-            exit 1
-          fi
-
-          echo "Publishing:"
-          find build/web -type f -printf '%10s  %p\n' | sort -k2
+      - name: Show export output
+        run: find ./build/web -type f -printf '%10s  %p\n' | sort -k2
 
       # GitHub Pages doesn't allow custom response headers, so we inject a
       # service worker (coi-serviceworker) that sets the Cross-Origin-Isolation
@@ -108,13 +87,9 @@ jobs:
           echo '<html><head><meta http-equiv="refresh" content="0;url=index.html"></head></html>' \
             > "build/web/404.html"
 
-      - name: Deploy to public Pages repo
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-          external_repository: ${{ env.PAGES_REPO }}
-          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
-          # Single-commit orphan branch: the public repo keeps no build history.
           force_orphan: true
-          commit_message: "Deploy build from ${{ github.sha }}"

@@ -54,6 +54,19 @@ shader_parameter/corner_radius = 0.01
 [node name="Room" type="Node3D" unique_id=2024368730]
 script = ExtResource("1_qwhiq")
 
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 250
+
+[node name="FadeOverlay" type="ColorRect" parent="FadeLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="FocusSystem" type="Node" parent="." node_paths=PackedStringArray("fullscreen_layer", "fullscreen_texture") unique_id=1245401149]
 script = ExtResource("fs_1")
 camera_path = NodePath("../Player/Camera3D")
@@ -115,7 +128,7 @@ snap_2d_vertices_to_pixel = true
 size = Vector2i(2560, 1440)
 size_2d_override = Vector2i(1280, 720)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 1
 
 [node name="Browser" parent="Interactables/Computer/Screen/SubViewport" unique_id=1089262983 instance=ExtResource("4_34v3w")]
 
@@ -183,6 +196,6 @@ snap_2d_vertices_to_pixel = true
 size = Vector2i(1684, 3120)
 size_2d_override = Vector2i(842, 1560)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 1
 
 [node name="Phone" parent="Interactables/Phone/Screen/SubViewport" unique_id=474418138 instance=ExtResource("phone_1")]

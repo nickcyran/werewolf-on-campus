@@ -5,50 +5,99 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  GODOT_VERSION: "4.6.1"
+  GODOT_STATUS: "stable"
+  # Public repo that serves the Pages site. This repo (the source) stays private;
+  # only the exported build is pushed there, never the project files.
+  PAGES_REPO: "nickcyran/werewolf-on-campus-play"
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      # Nothing is written back to this repo — the build is pushed to PAGES_REPO
+      # using PAGES_DEPLOY_TOKEN instead.
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
 
+      # Private repos bill Actions minutes, and the templates are ~1 GB, so both
+      # the editor binary and the templates are cached between runs.
+      - name: Cache Godot and export templates
+        id: godot-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot-bin
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-${{ env.GODOT_STATUS }}-linux-x86_64
+
       - name: Install Godot and export templates
+        if: steps.godot-cache.outputs.cache-hit != 'true'
         run: |
-          GODOT_VERSION="4.6.1"
-          GODOT_STATUS="stable"
+          set -euo pipefail
           GODOT_BIN="Godot_v${GODOT_VERSION}-${GODOT_STATUS}_linux.x86_64"
-          TEMPLATE_DIR="${HOME}/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_STATUS}"
           BASE_URL="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-${GODOT_STATUS}"
+          TEMPLATE_DIR="${HOME}/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_STATUS}"
 
           sudo apt-get update
           sudo apt-get install -y wget unzip
 
-          wget -q "${BASE_URL}/${GODOT_BIN}.zip"
-          unzip -q "${GODOT_BIN}.zip"
-          chmod +x "${GODOT_BIN}"
+          mkdir -p "${HOME}/godot-bin" "${TEMPLATE_DIR}"
 
-          mkdir -p "${TEMPLATE_DIR}"
+          wget -q "${BASE_URL}/${GODOT_BIN}.zip"
+          unzip -q "${GODOT_BIN}.zip" -d "${HOME}/godot-bin"
+          chmod +x "${HOME}/godot-bin/${GODOT_BIN}"
+
           wget -q "${BASE_URL}/Godot_v${GODOT_VERSION}-${GODOT_STATUS}_export_templates.tpz"
           unzip -q "Godot_v${GODOT_VERSION}-${GODOT_STATUS}_export_templates.tpz" -d ./godot-templates
           cp -r ./godot-templates/templates/* "${TEMPLATE_DIR}/"
 
           test -f "${TEMPLATE_DIR}/web_release.zip"
 
+      - name: Export web build
+        run: |
+          set -euo pipefail
+          GODOT="${HOME}/godot-bin/Godot_v${GODOT_VERSION}-${GODOT_STATUS}_linux.x86_64"
+
           mkdir -p build/web
-          ./${GODOT_BIN} --headless --path . --import
-          ./${GODOT_BIN} --headless --path . --export-release "Web" "build/web/index.html"
+          # First pass imports assets; it is expected to be noisy on a cold cache.
+          "${GODOT}" --headless --path . --import
+          "${GODOT}" --headless --path . --export-release "Web" "build/web/index.html"
+
+          # Pages would otherwise run the output through Jekyll and drop _-prefixed files.
           touch build/web/.nojekyll
 
-      - name: Show export output
-        run: find ./build/web -type f | sort
+          # An export that quietly produces nothing must not reach the public repo.
+          test -s build/web/index.html
+          test -s build/web/index.wasm
+
+      # The whole point of the split: the public repo must never receive project
+      # source. This fails the run rather than publishing anything unexpected.
+      - name: Verify no source files in the published build
+        run: |
+          set -euo pipefail
+          leaked=$(find build/web -type f \
+            \( -name '*.gd' -o -name '*.gdc' -o -name '*.tscn' -o -name '*.tres' \
+            -o -name '*.cfg' -o -name '*.import' -o -name '*.uid' -o -name '*.godot' \) | sort)
+
+          if [ -n "${leaked}" ]; then
+            echo "::error::Project source would be published to ${PAGES_REPO}:"
+            echo "${leaked}"
+            exit 1
+          fi
+
+          echo "Publishing:"
+          find build/web -type f -printf '%10s  %p\n' | sort -k2
 
       # GitHub Pages doesn't allow custom response headers, so we inject a
       # service worker (coi-serviceworker) that sets the Cross-Origin-Isolation
       # headers Godot's web export requires for SharedArrayBuffer.
       - name: Inject coi-serviceworker
         run: |
+          set -euo pipefail
           curl -sL https://raw.githubusercontent.com/gzuidhof/coi-serviceworker/master/coi-serviceworker.js \
             -o "build/web/coi-serviceworker.js"
           sed -i 's|<head>|<head>\n\t<script src="coi-serviceworker.js"></script>|' "build/web/index.html"
@@ -59,9 +108,13 @@ jobs:
           echo '<html><head><meta http-equiv="refresh" content="0;url=index.html"></head></html>' \
             > "build/web/404.html"
 
-      - name: Deploy to gh-pages
+      - name: Deploy to public Pages repo
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: ${{ env.PAGES_REPO }}
+          publish_branch: gh-pages
           publish_dir: ./build/web
+          # Single-commit orphan branch: the public repo keeps no build history.
           force_orphan: true
+          commit_message: "Deploy build from ${{ github.sha }}"

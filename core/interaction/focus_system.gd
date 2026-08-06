@@ -67,8 +67,7 @@ func _on_focus_requested(node: Node3D) -> void:
 		return
 
 	# force the embedded viewport to render while focused
-	if target.embedded_viewport:
-		target.embedded_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	target.set_screen_focused(true)
 
 	focused_node = _resolve_focus_node()
 	saved_transform = focused_node.global_transform
@@ -82,9 +81,9 @@ func _on_focus_requested(node: Node3D) -> void:
 func unfocus() -> void:
 	set_fullscreen(false)
 
-	# revert viewport to low-cost mode when leaving focus
-	if target and target.embedded_viewport:
-		target.embedded_viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_PARENT_VISIBLE
+	# revert viewport to its throttled idle refresh when leaving focus
+	if target:
+		target.set_screen_focused(false)
 	_tween_to(saved_transform, GameManager.release_focus)
 
 

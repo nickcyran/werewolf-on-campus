@@ -16,6 +16,7 @@ const SLIDE_DURATION := 0.25
 var _slide_index: int = 0
 var _is_sliding := false
 var _started := false
+var _room_requested := false
 
 
 func _ready() -> void:
@@ -25,6 +26,7 @@ func _ready() -> void:
 	_begin_btn.pressed.connect(_start_game)
 	_update_nav()
 	_start_ambient()
+	_preload_room()
 
 	# simple fade in from black
 	var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -118,6 +120,17 @@ func _update_nav() -> void:
 
 # -- start game ---------------------------------------------------------------
 
+## The room pulls in the browser, every site scene and the phone, which is far too much
+## to load on the main thread once Begin is pressed. It goes onto a background thread
+## while the player is still reading the slides instead.
+func _preload_room() -> void:
+	# Let the first layout and paint settle before adding load traffic.
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	_room_requested = ResourceLoader.load_threaded_request(ROOM_SCENE) == OK
+
+
 func _start_game() -> void:
 	if _started:
 		return
@@ -129,7 +142,23 @@ func _start_game() -> void:
 	var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	tw.tween_property(_fade_overlay, "modulate:a", 1.0, 0.6)
 	tw.tween_interval(0.2)
-	tw.tween_callback(func():
-		DayClock.start()
-		get_tree().change_scene_to_file(ROOM_SCENE)
-	)
+	await tw.finished
+
+	var room: PackedScene = await _await_room()
+	DayClock.start()
+	get_tree().change_scene_to_packed(room)
+
+
+## Holds on black for whatever the background load has not already covered — usually
+## nothing. Falls back to a blocking load if the threaded request never took.
+func _await_room() -> PackedScene:
+	while _room_requested:
+		match ResourceLoader.load_threaded_get_status(ROOM_SCENE):
+			ResourceLoader.THREAD_LOAD_LOADED:
+				return ResourceLoader.load_threaded_get(ROOM_SCENE)
+			ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+				await get_tree().process_frame
+			_:
+				break
+
+	return load(ROOM_SCENE)

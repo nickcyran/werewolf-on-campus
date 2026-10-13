@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ReliabilityIndicator" format=3]
+
+[ext_resource type="Script" uid="uid://cw7t8jfp8kc6v" path="res://features/guided_learning/reliability_indicator.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+label = "Not AI-generated"
+is_positive = true
+why = "Real footage of a real event, not a fabrication."

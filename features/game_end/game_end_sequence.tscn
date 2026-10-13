@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://b0ud2j5df8c67" path="res://features/guided_learning/sources/source_08_bigwolfstar93.tres" id="17_src8"]
 [ext_resource type="Resource" path="res://features/guided_learning/sources/source_09_infographic_inaccurate.tres" id="18_src9"]
 [ext_resource type="Resource" path="res://features/guided_learning/sources/source_10_infographic_accurate.tres" id="19_src10"]
+[ext_resource type="Resource" path="res://features/guided_learning/sources/source_11_garlic_emporium.tres" id="20_src11"]
+[ext_resource type="Resource" uid="uid://dt87to8bfiiyx" path="res://features/guided_learning/sources/source_03_cloudmail.tres" id="21_src3"]
 
 [sub_resource type="Gradient" id="Gradient_glow"]
 offsets = PackedFloat32Array(0, 0.3, 1)
@@ -44,7 +46,7 @@ mouse_filter = 2
 theme = ExtResource("2_theme")
 color = Color(0.043, 0.035, 0.075, 1)
 script = ExtResource("1_script")
-sources = Array[ExtResource("10_source")]([ExtResource("11_src1"), ExtResource("12_src2"), ExtResource("13_src5"), ExtResource("14_src4"), ExtResource("15_src6"), ExtResource("16_src7"), ExtResource("17_src8"), ExtResource("18_src9"), ExtResource("19_src10")])
+sources = Array[ExtResource("10_source")]([ExtResource("11_src1"), ExtResource("20_src11"), ExtResource("12_src2"), ExtResource("21_src3"), ExtResource("13_src5"), ExtResource("14_src4"), ExtResource("15_src6"), ExtResource("16_src7"), ExtResource("17_src8"), ExtResource("18_src9"), ExtResource("19_src10")])
 
 [node name="Background" type="Control" parent="."]
 unique_name_in_owner = true

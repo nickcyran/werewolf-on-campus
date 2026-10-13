@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/sites/email/letters/email_letter_view.gd" id="1_script"]
+[ext_resource type="Theme" uid="uid://dosjhvpyoh2j4" path="res://features/sites/email/email_theme.tres" id="2_theme"]
+[ext_resource type="Resource" uid="uid://cw8m2pr4tvqn6" path="res://features/sites/email/emails/president_announcement.tres" id="3_email"]
+[ext_resource type="PackedScene" uid="uid://dyjs5bkwfgx6b" path="res://features/sites/email/letters/president_announcement_email.tscn" id="4_letter"]
+
+[node name="PresidentLetterView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+email = ExtResource("3_email")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmailDetailPanel"
+
+[node name="Scroll" type="ScrollContainer" parent="Panel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Center" type="CenterContainer" parent="Panel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Letter" parent="Panel/Scroll/Center" instance=ExtResource("4_letter")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(630, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0

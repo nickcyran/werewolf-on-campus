@@ -10,5 +10,7 @@ url = "tri-fang.edu/news"
 scene = ExtResource("1_3me45")
 recent_date = true
 reliable_publisher = true
+accessible_author_info = true
 informative_language = true
+expert_credentials = true
 clearly_labeled_news = true

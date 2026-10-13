@@ -29,6 +29,8 @@ enum Type {SCENE, IMAGE, VIDEO, AUDIO}
 @export var demands_trust: bool = false
 @export var source_profits: bool = false
 @export var mixed_accuracy: bool = false
+@export var contradicts_facts: bool = false
+@export var outdated: bool = false
 
 # ── Positive indicators ───────────────────────────────────────────────────────
 @export_group("Positive Indicators")
@@ -38,10 +40,13 @@ enum Type {SCENE, IMAGE, VIDEO, AUDIO}
 @export var informative_language: bool = false
 @export var expert_credentials: bool = false
 @export var clearly_labeled_news: bool = false
+@export var not_ai_generated: bool = false
+@export var authoritative_support: bool = false
 
 
 # Returns the indices into ReliabilityIndicatorData.INDICATORS that are checked.
-# Order must stay in sync with that array (negatives 0-12, positives 13-18).
+# Order must stay in sync with that array (negatives 0-12, positives 13-18, then
+# negatives 19-20 and positives 21-22, appended later).
 func get_indicator_indices() -> Array[int]:
 	var result: Array[int] = []
 	var checks: Array[bool] = [
@@ -51,6 +56,7 @@ func get_indicator_indices() -> Array[int]:
 		demands_trust, source_profits, mixed_accuracy,
 		recent_date, reliable_publisher, accessible_author_info,
 		informative_language, expert_credentials, clearly_labeled_news,
+		contradicts_facts, outdated, not_ai_generated, authoritative_support,
 	]
 	for i in range(checks.size()):
 		if checks[i]:

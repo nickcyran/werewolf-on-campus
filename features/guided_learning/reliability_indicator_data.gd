@@ -31,4 +31,8 @@ static func _load_indicators() -> Array[ReliabilityIndicator]:
 		preload("res://features/guided_learning/reliability_indicators/indicator_16.tres"),
 		preload("res://features/guided_learning/reliability_indicators/indicator_17.tres"),
 		preload("res://features/guided_learning/reliability_indicators/indicator_18.tres"),
+		preload("res://features/guided_learning/reliability_indicators/indicator_19.tres"),
+		preload("res://features/guided_learning/reliability_indicators/indicator_20.tres"),
+		preload("res://features/guided_learning/reliability_indicators/indicator_21.tres"),
+		preload("res://features/guided_learning/reliability_indicators/indicator_22.tres"),
 	]

@@ -9,7 +9,6 @@ display_name = "Likely Indicators of a Werewolf"
 url = "texts/mom"
 type = 1
 image = ExtResource("1_image")
-mixed_accuracy = true
 recent_date = true
 reliable_publisher = true
 accessible_author_info = true

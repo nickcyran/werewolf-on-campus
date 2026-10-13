@@ -166,6 +166,65 @@ icon_alignment = 0
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="Layout/SourceArea/AudioView"]
 unique_name_in_owner = true
 
+[node name="TrustPanel" type="PanelContainer" parent="Layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"GameEndPanel"
+
+[node name="Margin" type="MarginContainer" parent="Layout/TrustPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 26
+
+[node name="Stack" type="VBoxContainer" parent="Layout/TrustPanel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="Question" type="Label" parent="Layout/TrustPanel/Margin/Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndEyebrow"
+text = "DO YOU TRUST THIS SOURCE?"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="Layout/TrustPanel/Margin/Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"GameEndHint"
+text = "Go with your first read. You'll check the indicators next."
+horizontal_alignment = 1
+
+[node name="Choices" type="HBoxContainer" parent="Layout/TrustPanel/Margin/Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="TrustYesBtn" type="Button" parent="Layout/TrustPanel/Margin/Stack/Choices"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "YES"
+
+[node name="TrustNoBtn" type="Button" parent="Layout/TrustPanel/Margin/Stack/Choices"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"GameEndPrimaryBtn"
+text = "NO"
+
 [node name="CollapsedBar" type="PanelContainer" parent="Layout"]
 unique_name_in_owner = true
 visible = false

@@ -1,6 +1,6 @@
 class_name SniffTestScreen extends Control
-## 04 — Sniff test. Shows one source at a time and lets the player tag the tells they
-## spot in it. The tag list is the full checklist, so every tell an authored source
+## 04 — Sniff test. Shows one source at a time, asks for a gut call on whether to trust
+## it, then lets the player tag the tells they spot in it. The tag list is the full checklist, so every tell an authored source
 ## carries can actually be found.
 
 signal back_requested
@@ -15,6 +15,7 @@ const _TagRowScene := preload("res://features/game_end/components/tag_row.tscn")
 
 var _rows: Dictionary = {}  # indicator index -> TagRow
 var _scene_instance: Node = null
+var _asking_trust := false
 
 @onready var _back_btn: Button = %BackBtn
 @onready var _source_label: Label = %SourceLabel
@@ -29,6 +30,7 @@ var _scene_instance: Node = null
 @onready var _audio_title: Label = %AudioTitle
 @onready var _audio_btn: Button = %AudioBtn
 @onready var _audio_player: AudioStreamPlayer = %AudioPlayer
+@onready var _trust_panel: PanelContainer = %TrustPanel
 @onready var _collapsed_bar: PanelContainer = %CollapsedBar
 @onready var _collapsed_count: Label = %CollapsedCount
 @onready var _drawer: PanelContainer = %Drawer
@@ -39,7 +41,9 @@ var _scene_instance: Node = null
 
 
 func _ready() -> void:
-	_back_btn.pressed.connect(func(): back_requested.emit())
+	_back_btn.pressed.connect(_on_back)
+	%TrustYesBtn.pressed.connect(_show_tags)
+	%TrustNoBtn.pressed.connect(_show_tags)
 	%OpenDrawerBtn.pressed.connect(_toggle_drawer)
 	%HideDrawerBtn.pressed.connect(_toggle_drawer)
 	%CollapsedSubmitBtn.pressed.connect(func(): submitted.emit())
@@ -51,7 +55,10 @@ func _ready() -> void:
 
 
 ## [param tagged] holds the indicator indices already marked on this source.
-func show_source(index: int, total: int, source: GuidedLearningSource, tagged: Dictionary) -> void:
+## [param ask_trust] is false when stepping back into a source, which reopens its tags.
+func show_source(
+	index: int, total: int, source: GuidedLearningSource, tagged: Dictionary, ask_trust := true
+) -> void:
 	_source_label.text = "SOURCE %d/%d" % [index + 1, total]
 
 	for indicator_index: int in _rows:
@@ -59,6 +66,11 @@ func show_source(index: int, total: int, source: GuidedLearningSource, tagged: D
 	refresh_counts(tagged)
 
 	_show_content(source)
+
+	if ask_trust:
+		_show_trust()
+	else:
+		_show_tags()
 
 
 ## Frees the embedded source and silences any media before the sequence moves on.
@@ -146,6 +158,28 @@ func refresh_counts(tagged: Dictionary) -> void:
 	_collapsed_count.text = "%d tells tagged on this source" % total
 	_neg_count.text = "%d marked" % negatives
 	_pos_count.text = "%d marked" % positives
+
+
+func _show_trust() -> void:
+	_asking_trust = true
+	_trust_panel.visible = true
+	_drawer.visible = false
+	_collapsed_bar.visible = false
+
+
+func _show_tags() -> void:
+	_asking_trust = false
+	_trust_panel.visible = false
+	_drawer.visible = true
+	_collapsed_bar.visible = false
+
+
+## Back from the tags returns to this source's trust question before leaving it.
+func _on_back() -> void:
+	if _asking_trust:
+		back_requested.emit()
+	else:
+		_show_trust()
 
 
 func _toggle_drawer() -> void:

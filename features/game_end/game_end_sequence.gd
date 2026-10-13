@@ -13,12 +13,6 @@ signal closed
 ## Sources the sniff test walks through, in order. Set in the Inspector.
 @export var sources: Array[GuidedLearningSource] = []
 
-## Debug/testing only: the one source the backslash shortcut's sniff test walks. It does
-## not have to appear in [member sources].
-@export var debug_sniff_source: GuidedLearningSource = preload(
-	"res://features/guided_learning/sources/source_04_channel_29.tres"
-)
-
 const _FOCUS_EXIT_FRAMES := 300
 const _ROOM_SCENE := "res://features/room/room.tscn"
 const _MAIN_MENU_SCENE := "res://features/landing_page/landing_page.tscn"
@@ -26,8 +20,6 @@ const _MAIN_MENU_SCENE := "res://features/landing_page/landing_page.tscn"
 ## source index -> { indicator index -> true }
 var _tags: Dictionary = {}
 var _source_index := 0
-## The sources this run actually walks: [member sources], or just the debug one.
-var _run_sources: Array[GuidedLearningSource] = []
 
 @onready var _background: Control = %Background
 @onready var _verdict_screen: VerdictScreen = %VerdictScreen
@@ -58,10 +50,7 @@ func run() -> void:
 	mouse_filter = MOUSE_FILTER_STOP
 	_tags.clear()
 	_source_index = 0
-	_run_sources = _resolve_run_sources()
-
-	_verdict_screen.enter()
-	_show(_verdict_screen)
+	_start_first_screen()
 
 	modulate.a = 0.0
 	visible = true
@@ -71,6 +60,17 @@ func run() -> void:
 
 
 # -- navigation ----------------------------------------------------------------
+
+## Debug/testing only: the backslash shortcut opens straight into the sniff test.
+func _start_first_screen() -> void:
+	if DayClock.debug_skip_to_sniff:
+		DayClock.debug_skip_to_sniff = false
+		_open_source()
+		return
+
+	_verdict_screen.enter()
+	_show(_verdict_screen)
+
 
 func _on_verdict_submitted(_verdict: String) -> void:
 	_evidence_screen.enter()
@@ -86,22 +86,7 @@ func _on_guide_continued() -> void:
 	_open_source()
 
 
-## Debug/testing only: the backslash shortcut cuts the sniff test down to a single
-## source. Every screen before it still runs as normal.
-func _resolve_run_sources() -> Array[GuidedLearningSource]:
-	if !DayClock.debug_skip_to_sniff:
-		return sources
-
-	DayClock.debug_skip_to_sniff = false
-	if !debug_sniff_source:
-		push_warning("debug_sniff_source is unset; walking every source instead.")
-		return sources
-
-	var only: Array[GuidedLearningSource] = [debug_sniff_source]
-	return only
-
-
-## Back steps through the sources, then out to the guide from the first one.
+## Back steps through the sources, landing on each one's tags, then out to the guide.
 func _on_sniff_back() -> void:
 	if _source_index == 0:
 		_sniff_screen.clear_source()
@@ -109,11 +94,11 @@ func _on_sniff_back() -> void:
 		return
 
 	_source_index -= 1
-	_open_source()
+	_open_source(false)
 
 
 func _on_sniff_submitted() -> void:
-	if _source_index < _run_sources.size() - 1:
+	if _source_index < sources.size() - 1:
 		_source_index += 1
 		_open_source()
 		return
@@ -123,10 +108,14 @@ func _on_sniff_submitted() -> void:
 	_show(_results_screen)
 
 
-func _open_source() -> void:
+func _open_source(ask_trust := true) -> void:
 	_show(_sniff_screen)
 	_sniff_screen.show_source(
-		_source_index, _run_sources.size(), _run_sources[_source_index], _tags_for(_source_index)
+		_source_index,
+		sources.size(),
+		sources[_source_index],
+		_tags_for(_source_index),
+		ask_trust
 	)
 
 
@@ -153,9 +142,9 @@ func _tags_for(source_index: int) -> Dictionary:
 
 func _count_hits() -> int:
 	var hits := 0
-	for i in range(_run_sources.size()):
+	for i in range(sources.size()):
 		var tags: Dictionary = _tags.get(i, {})
-		for indicator_index: int in _run_sources[i].get_indicator_indices():
+		for indicator_index: int in sources[i].get_indicator_indices():
 			if tags.get(indicator_index, false):
 				hits += 1
 	return hits
@@ -163,7 +152,7 @@ func _count_hits() -> int:
 
 func _count_tells() -> int:
 	var total := 0
-	for source in _run_sources:
+	for source in sources:
 		total += source.get_indicator_indices().size()
 	return total
 

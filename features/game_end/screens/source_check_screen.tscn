@@ -57,7 +57,22 @@ texture = ExtResource("3_paw")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="TopBar" type="HBoxContainer" parent="."]
+[node name="Stage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="HBoxContainer" parent="Stage"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -68,49 +83,49 @@ offset_bottom = 50.0
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="TitleRow" type="HBoxContainer" parent="TopBar"]
+[node name="TitleRow" type="HBoxContainer" parent="Stage/TopBar"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Moon" type="Panel" parent="TopBar/TitleRow"]
+[node name="Moon" type="Panel" parent="Stage/TopBar/TitleRow"]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_type_variation = &"SCMoon"
 
-[node name="Title" type="Label" parent="TopBar/TitleRow"]
+[node name="Title" type="Label" parent="Stage/TopBar/TitleRow"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_type_variation = &"SCTitle"
 text = "Source Check"
 
-[node name="LeftSpacer" type="Control" parent="TopBar"]
+[node name="LeftSpacer" type="Control" parent="Stage/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Dots" type="HBoxContainer" parent="TopBar"]
+[node name="Dots" type="HBoxContainer" parent="Stage/TopBar"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 7
 
-[node name="RightSpacer" type="Control" parent="TopBar"]
+[node name="RightSpacer" type="Control" parent="Stage/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="RoundTagHolder" type="Control" parent="TopBar"]
+[node name="RoundTagHolder" type="Control" parent="Stage/TopBar"]
 custom_minimum_size = Vector2(200, 37)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="RoundTag" type="PanelContainer" parent="TopBar/RoundTagHolder"]
+[node name="RoundTag" type="PanelContainer" parent="Stage/TopBar/RoundTagHolder"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -122,21 +137,12 @@ grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"SCRoundTag"
 
-[node name="RoundLabel" type="Label" parent="TopBar/RoundTagHolder/RoundTag"]
+[node name="RoundLabel" type="Label" parent="Stage/TopBar/RoundTagHolder/RoundTag"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"SCRoundTagLabel"
 text = "Round 1 of 11"
-
-[node name="Stage" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="Browser" type="Control" parent="Stage"]
 unique_name_in_owner = true

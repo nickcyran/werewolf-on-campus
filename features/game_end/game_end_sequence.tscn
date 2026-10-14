@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ge_verdict_screen" path="res://features/game_end/screens/verdict_screen.tscn" id="5_verdict"]
 [ext_resource type="PackedScene" uid="uid://ge_evidence_screen" path="res://features/game_end/screens/evidence_review_screen.tscn" id="6_evidence"]
 [ext_resource type="PackedScene" uid="uid://ge_field_guide_screen" path="res://features/game_end/screens/field_guide_screen.tscn" id="7_guide"]
-[ext_resource type="PackedScene" uid="uid://ge_sniff_test_screen" path="res://features/game_end/screens/sniff_test_screen.tscn" id="8_sniff"]
-[ext_resource type="PackedScene" uid="uid://ge_results_screen" path="res://features/game_end/screens/results_screen.tscn" id="9_results"]
+[ext_resource type="PackedScene" path="res://features/game_end/screens/source_check_screen.tscn" id="8_source_check"]
 [ext_resource type="Script" uid="uid://3pce0tomye27" path="res://features/guided_learning/guided_learning_source.gd" id="10_source"]
 [ext_resource type="Resource" uid="uid://b0y81c0cwn056" path="res://features/guided_learning/sources/source_01_nowolves.tres" id="11_src1"]
 [ext_resource type="Resource" uid="uid://xlx7j30nugcy" path="res://features/guided_learning/sources/source_02_greendit.tres" id="12_src2"]
@@ -134,12 +133,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="SniffTestScreen" parent="Screens" instance=ExtResource("8_sniff")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-
-[node name="GameEndResultsScreen" parent="Screens" instance=ExtResource("9_results")]
+[node name="SourceCheckScreen" parent="Screens" instance=ExtResource("8_source_check")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

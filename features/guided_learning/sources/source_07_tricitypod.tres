@@ -7,8 +7,9 @@
 script = ExtResource("2_0rr1p")
 display_name = "TriCityPod"
 url = "shockify.fm/tricitycast"
-type = 0
 scene = ExtResource("1_scene")
+source_type = "Podcast"
+explanation = "This is purely conjecture; entertainment not reporting. The hosts are dissmissive of the real facts using mocking language to dissparage the experts."
 emotional_language = true
 dismissive_tone = true
 claims_without_evidence = true

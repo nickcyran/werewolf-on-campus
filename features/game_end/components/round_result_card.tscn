@@ -1,0 +1,152 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/game_end/components/round_result_card.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c8b88rbyj786l" path="res://assets/logos/icons/check-mark.png" id="2_icon_check"]
+[ext_resource type="Texture2D" uid="uid://btlvppx1m0oav" path="res://assets/logos/icons/x.png" id="3_icon_x"]
+
+[node name="RoundResultCard" type="PanelContainer"]
+custom_minimum_size = Vector2(236, 0)
+mouse_filter = 2
+theme_type_variation = &"SCResultCard"
+script = ExtResource("1_script")
+
+[node name="Stack" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Head" type="HBoxContainer" parent="Stack"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="RoundNum" type="Label" parent="Stack/Head"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCRoundNum"
+text = "ROUND 01"
+
+[node name="TypeChip" type="PanelContainer" parent="Stack/Head"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCTypeChip"
+
+[node name="TypeLabel" type="Label" parent="Stack/Head/TypeChip"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCTypeLabel"
+text = "News article"
+
+[node name="Name" type="Label" parent="Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCCardName"
+text = "Source"
+autowrap_mode = 3
+
+[node name="TruthRow" type="HBoxContainer" parent="Stack"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Truth" type="PanelContainer" parent="Stack/TruthRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCTruthGood"
+
+[node name="TruthLabel" type="Label" parent="Stack/TruthRow/Truth"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCTruthTextGood"
+text = "RELIABLE"
+
+[node name="Rule" type="Panel" parent="Stack"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCRule"
+
+[node name="CallRow" type="HBoxContainer" parent="Stack"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="CallLabel" type="Label" parent="Stack/CallRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"SCCardRow"
+text = "Your call"
+
+[node name="CallValue" type="Label" parent="Stack/CallRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCCardValueGood"
+text = "Reliable"
+
+[node name="CallCheck" type="TextureRect" parent="Stack/CallRow"]
+unique_name_in_owner = true
+modulate = Color(0.31, 0.827, 0.604, 1)
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_icon_check")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CallCross" type="TextureRect" parent="Stack/CallRow"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 0.42, 0.506, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("3_icon_x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpottedRow" type="HBoxContainer" parent="Stack"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SpottedLabel" type="Label" parent="Stack/SpottedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"SCCardRow"
+text = "Flags spotted"
+
+[node name="SpottedValue" type="Label" parent="Stack/SpottedRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCCardValue"
+text = "0 / 0"
+
+[node name="WrongRow" type="HBoxContainer" parent="Stack"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WrongLabel" type="Label" parent="Stack/WrongRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"SCCardRow"
+text = "False alarms"
+
+[node name="WrongValue" type="Label" parent="Stack/WrongRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCCardValue"
+text = "0"

@@ -14,6 +14,15 @@ enum Type {SCENE, IMAGE, VIDEO, AUDIO}
 @export var video: VideoStream # Type.VIDEO
 @export var audio: AudioStream # Type.AUDIO
 
+# ── Source check ──────────────────────────────────────────────────────────────
+@export_group("Source Check")
+## The answer to "Is this source reliable?", revealed after the player locks in.
+@export var is_reliable: bool = false
+## Shown on the round intro and the results card, e.g. "News article".
+@export var source_type: String = ""
+## The lesson shown under the reveal: why the source is or isn't reliable.
+@export_multiline var explanation: String = ""
+
 # ── Negative indicators ───────────────────────────────────────────────────────
 @export_group("Negative Indicators")
 @export var no_date: bool = false

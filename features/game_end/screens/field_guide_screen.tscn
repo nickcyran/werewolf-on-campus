@@ -187,6 +187,6 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"GameEndPrimaryBtn"
-text = "START SNIFF TEST"
+text = "START SOURCE CHECK"
 icon = ExtResource("2_icon_arrow")
 icon_alignment = 2

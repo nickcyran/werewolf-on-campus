@@ -8,4 +8,6 @@ script = ExtResource("2_kdnvg")
 display_name = "CloudMail"
 url = "cloudmail.edu/inbox"
 scene = ExtResource("1_okq8v")
+source_type = "University email"
+explanation = "It's a real email from the university... but it's also years old. Just because there was a werewolf then, doesn't mean theres one now."
 outdated = true

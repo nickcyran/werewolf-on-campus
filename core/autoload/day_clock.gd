@@ -15,7 +15,7 @@ var day_over := false
 var started := false
 
 ## Debug/testing only: set by the backslash shortcut so the end sequence opens straight
-## into the sniff test instead of the verdict screen.
+## into the source check instead of the verdict screen.
 var debug_skip_to_sniff := false
 
 var _prev_display := ""
@@ -44,7 +44,7 @@ func end_day() -> void:
 	day_ended.emit()
 
 
-## Debug/testing only: backslash ends the night immediately and skips to the sniff test.
+## Debug/testing only: backslash ends the night immediately and skips to the source check.
 func _unhandled_input(event: InputEvent) -> void:
 	if !event.is_action_pressed("debug_end_day"):
 		return

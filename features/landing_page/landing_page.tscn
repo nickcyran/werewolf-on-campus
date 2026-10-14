@@ -22,7 +22,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpivu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7l30"]
 resource_local_to_scene = true
 shader = ExtResource("7_rxdks")
 shader_parameter/line_color = Color(0.102, 0.071, 0.024, 1)
@@ -61,20 +61,11 @@ shadow_color = Color(0, 0, 0, 0.35)
 shadow_size = 6
 shadow_offset = Vector2(0, 3)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7l30"]
-resource_local_to_scene = true
-shader = ExtResource("7_rxdks")
-shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
-shader_parameter/rect_size = Vector2(748, 62)
-shader_parameter/thickness = 2.0
-shader_parameter/dash = 8.0
-shader_parameter/gap = 6.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sv4sl"]
 resource_local_to_scene = true
 shader = ExtResource("7_rxdks")
 shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
-shader_parameter/rect_size = Vector2(748, 62)
+shader_parameter/rect_size = Vector2(67, 1261)
 shader_parameter/thickness = 2.0
 shader_parameter/dash = 8.0
 shader_parameter/gap = 6.0
@@ -83,7 +74,16 @@ shader_parameter/gap = 6.0
 resource_local_to_scene = true
 shader = ExtResource("7_rxdks")
 shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
-shader_parameter/rect_size = Vector2(748, 62)
+shader_parameter/rect_size = Vector2(71, 703)
+shader_parameter/thickness = 2.0
+shader_parameter/dash = 8.0
+shader_parameter/gap = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bprh8"]
+resource_local_to_scene = true
+shader = ExtResource("7_rxdks")
+shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
+shader_parameter/rect_size = Vector2(71, 1447)
 shader_parameter/thickness = 2.0
 shader_parameter/dash = 8.0
 shader_parameter/gap = 6.0
@@ -242,7 +242,7 @@ text = "A Misinformation Literacy Game"
 horizontal_alignment = 1
 
 [node name="ChipBorder" parent="Slide1/Scroll/Margin/VBox/Chip" unique_id=565044674 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_qpivu")
+material = SubResource("ShaderMaterial_s7l30")
 layout_mode = 2
 
 [node name="Spacer2" type="Control" parent="Slide1/Scroll/Margin/VBox" unique_id=1464936309]
@@ -420,7 +420,7 @@ text = "Is there really a werewolf on campus right now?"
 autowrap_mode = 3
 
 [node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row1" unique_id=1696339690 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_s7l30")
+material = SubResource("ShaderMaterial_sv4sl")
 layout_mode = 2
 line_color = Color(0.341, 0.851, 0.467, 0.35)
 thickness = 2.0
@@ -457,7 +457,7 @@ text = "How can you recognize it?"
 autowrap_mode = 3
 
 [node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row2" unique_id=1424080793 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_sv4sl")
+material = SubResource("ShaderMaterial_5iv2u")
 layout_mode = 2
 line_color = Color(0.341, 0.851, 0.467, 0.35)
 thickness = 2.0
@@ -494,7 +494,7 @@ text = "How can you protect yourself and avoid getting eaten?"
 autowrap_mode = 3
 
 [node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row3" unique_id=1492627916 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_5iv2u")
+material = SubResource("ShaderMaterial_bprh8")
 layout_mode = 2
 line_color = Color(0.341, 0.851, 0.467, 0.35)
 thickness = 2.0
@@ -716,7 +716,6 @@ size_flags_vertical = 4
 theme_type_variation = &"NavBackBtn"
 text = "Back"
 icon = ExtResource("8_icon_back")
-icon_alignment = 0
 
 [node name="PageIndicator" type="Label" parent="NavBar" unique_id=36730509]
 custom_minimum_size = Vector2(90, 0)

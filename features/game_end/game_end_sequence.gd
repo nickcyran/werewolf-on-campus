@@ -1,7 +1,7 @@
 class_name GameEndSequence extends ColorRect
 ## The end-of-round sequence, shown the moment the clock stops — whether it ran out or
-## the browser ended the round early. Five screens in order: call the werewolf, see how
-## the statements held up, learn the tells, run them on every source, then score.
+## the browser ended the round early. Four screens in order: call the werewolf, see how
+## the statements held up, learn the tells, then check every source round by round.
 ##
 ## It also owns the hand-off out of play: dropping the player out of a focused screen
 ## and holding the run in [constant GameManager.State.TIME_UP].
@@ -10,23 +10,18 @@ class_name GameEndSequence extends ColorRect
 ## with Play Again or Main Menu.
 signal closed
 
-## Sources the sniff test walks through, in order. Set in the Inspector.
+## Sources the source check walks through, in order. Set in the Inspector.
 @export var sources: Array[GuidedLearningSource] = []
 
 const _FOCUS_EXIT_FRAMES := 300
 const _ROOM_SCENE := "res://features/room/room.tscn"
 const _MAIN_MENU_SCENE := "res://features/landing_page/landing_page.tscn"
 
-## source index -> { indicator index -> true }
-var _tags: Dictionary = {}
-var _source_index := 0
-
 @onready var _background: Control = %Background
 @onready var _verdict_screen: VerdictScreen = %VerdictScreen
 @onready var _evidence_screen: EvidenceReviewScreen = %EvidenceReviewScreen
 @onready var _guide_screen: FieldGuideScreen = %FieldGuideScreen
-@onready var _sniff_screen: SniffTestScreen = %SniffTestScreen
-@onready var _results_screen: GameEndResultsScreen = %GameEndResultsScreen
+@onready var _source_check_screen: SourceCheckScreen = %SourceCheckScreen
 
 
 func _ready() -> void:
@@ -36,11 +31,8 @@ func _ready() -> void:
 	_verdict_screen.submitted.connect(_on_verdict_submitted)
 	_evidence_screen.continued.connect(_on_evidence_continued)
 	_guide_screen.continued.connect(_on_guide_continued)
-	_sniff_screen.back_requested.connect(_on_sniff_back)
-	_sniff_screen.submitted.connect(_on_sniff_submitted)
-	_sniff_screen.tag_toggled.connect(_on_tag_toggled)
-	_results_screen.play_again_requested.connect(_on_play_again)
-	_results_screen.main_menu_requested.connect(_on_main_menu)
+	_source_check_screen.play_again_requested.connect(_on_play_again)
+	_source_check_screen.main_menu_requested.connect(_on_main_menu)
 
 
 func run() -> void:
@@ -48,8 +40,6 @@ func run() -> void:
 
 	GameManager.state = GameManager.State.TIME_UP
 	mouse_filter = MOUSE_FILTER_STOP
-	_tags.clear()
-	_source_index = 0
 	_start_first_screen()
 
 	modulate.a = 0.0
@@ -61,11 +51,11 @@ func run() -> void:
 
 # -- navigation ----------------------------------------------------------------
 
-## Debug/testing only: the backslash shortcut opens straight into the sniff test.
+## Debug/testing only: the backslash shortcut opens straight into the source check.
 func _start_first_screen() -> void:
 	if DayClock.debug_skip_to_sniff:
 		DayClock.debug_skip_to_sniff = false
-		_open_source()
+		_open_source_check()
 		return
 
 	_verdict_screen.enter()
@@ -82,79 +72,19 @@ func _on_evidence_continued() -> void:
 
 
 func _on_guide_continued() -> void:
-	_source_index = 0
-	_open_source()
+	_open_source_check()
 
 
-## Back steps through the sources, landing on each one's tags, then out to the guide.
-func _on_sniff_back() -> void:
-	if _source_index == 0:
-		_sniff_screen.clear_source()
-		_show(_guide_screen)
-		return
-
-	_source_index -= 1
-	_open_source(false)
+func _open_source_check() -> void:
+	_show(_source_check_screen)
+	_source_check_screen.start(sources)
 
 
-func _on_sniff_submitted() -> void:
-	if _source_index < sources.size() - 1:
-		_source_index += 1
-		_open_source()
-		return
-
-	_sniff_screen.clear_source()
-	_results_screen.show_score(_count_hits(), _count_tells())
-	_show(_results_screen)
-
-
-func _open_source(ask_trust := true) -> void:
-	_show(_sniff_screen)
-	_sniff_screen.show_source(
-		_source_index,
-		sources.size(),
-		sources[_source_index],
-		_tags_for(_source_index),
-		ask_trust
-	)
-
-
-func _on_tag_toggled(indicator_index: int, tagged: bool) -> void:
-	var tags := _tags_for(_source_index)
-	tags[indicator_index] = tagged
-	_sniff_screen.refresh_counts(tags)
-
-
-## The sniff test draws its own background, so the moon and sky stay behind the rest.
+## The source check draws its own background, so the moon and sky stay behind the rest.
 func _show(screen: Control) -> void:
 	for child in %Screens.get_children():
 		(child as Control).visible = child == screen
-	_background.visible = screen != _sniff_screen
-
-
-# -- scoring -------------------------------------------------------------------
-
-func _tags_for(source_index: int) -> Dictionary:
-	if !_tags.has(source_index):
-		_tags[source_index] = {}
-	return _tags[source_index]
-
-
-func _count_hits() -> int:
-	var hits := 0
-	for i in range(sources.size()):
-		var tags: Dictionary = _tags.get(i, {})
-		for indicator_index: int in sources[i].get_indicator_indices():
-			if tags.get(indicator_index, false):
-				hits += 1
-	return hits
-
-
-func _count_tells() -> int:
-	var total := 0
-	for source in sources:
-		total += source.get_indicator_indices().size()
-	return total
+	_background.visible = screen != _source_check_screen
 
 
 # -- run lifecycle -------------------------------------------------------------

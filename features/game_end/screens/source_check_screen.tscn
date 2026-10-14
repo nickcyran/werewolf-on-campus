@@ -1,0 +1,745 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/game_end/screens/source_check_screen.gd" id="1_script"]
+[ext_resource type="Theme" path="res://features/game_end/source_check_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://4anf2sc3wcbj" path="res://assets/media/paw_texture.png" id="3_paw"]
+[ext_resource type="PackedScene" path="res://features/game_end/components/site_nav_bar.tscn" id="4_nav"]
+[ext_resource type="PackedScene" path="res://ui/components/video_player_control.tscn" id="5_video"]
+[ext_resource type="Texture2D" uid="uid://dyoek0enj057t" path="res://assets/logos/icons/play-button.png" id="6_icon_play"]
+[ext_resource type="Texture2D" uid="uid://cnmemcpn2ywln" path="res://assets/logos/icons/pause-button.png" id="7_icon_pause"]
+[ext_resource type="Texture2D" uid="uid://ll5pp5n0fqmf" path="res://assets/logos/icons/arrow-left.png" id="8_icon_left"]
+[ext_resource type="Texture2D" uid="uid://b5oaaton3e2ox" path="res://assets/logos/icons/arrow.png" id="9_icon_right"]
+[ext_resource type="Texture2D" uid="uid://b7lkhjsnjubg6" path="res://assets/logos/icons/arrow-down.png" id="10_icon_down"]
+
+[node name="SourceCheckScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+play_icon = ExtResource("6_icon_play")
+pause_icon = ExtResource("7_icon_pause")
+next_icon = ExtResource("9_icon_right")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"SCBackground"
+
+[node name="PawLayer" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Paws" type="TextureRect" parent="PawLayer"]
+unique_name_in_owner = true
+modulate = Color(0.137, 0.11, 0.208, 1)
+layout_mode = 0
+offset_right = 16000.0
+offset_bottom = 10000.0
+scale = Vector2(0.16, 0.16)
+mouse_filter = 2
+texture = ExtResource("3_paw")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 13.0
+offset_right = -40.0
+offset_bottom = 50.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TitleRow" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Moon" type="Panel" parent="TopBar/TitleRow"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCMoon"
+
+[node name="Title" type="Label" parent="TopBar/TitleRow"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCTitle"
+text = "Source Check"
+
+[node name="LeftSpacer" type="Control" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Dots" type="HBoxContainer" parent="TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="RightSpacer" type="Control" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="RoundTagHolder" type="Control" parent="TopBar"]
+custom_minimum_size = Vector2(200, 37)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RoundTag" type="PanelContainer" parent="TopBar/RoundTagHolder"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"SCRoundTag"
+
+[node name="RoundLabel" type="Label" parent="TopBar/RoundTagHolder/RoundTag"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCRoundTagLabel"
+text = "Round 1 of 11"
+
+[node name="Stage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Browser" type="Control" parent="Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 67.0
+offset_right = 1240.0
+offset_bottom = 600.0
+mouse_filter = 2
+
+[node name="Frame" type="PanelContainer" parent="Stage/Browser"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"SCFrame"
+
+[node name="Clip" type="PanelContainer" parent="Stage/Browser/Frame"]
+clip_children = 1
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCFrameClip"
+
+[node name="Stack" type="VBoxContainer" parent="Stage/Browser/Frame/Clip"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="NavBar" parent="Stage/Browser/Frame/Clip/Stack" instance=ExtResource("4_nav")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Content" type="Control" parent="Stage/Browser/Frame/Clip/Stack"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="SceneHolder" type="Control" parent="Stage/Browser/Frame/Clip/Stack/Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SceneContainer" type="SubViewportContainer" parent="Stage/Browser/Frame/Clip/Stack/Content/SceneHolder"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1192.0
+offset_bottom = 487.0
+stretch = true
+
+[node name="SceneViewport" type="SubViewport" parent="Stage/Browser/Frame/Clip/Stack/Content/SceneHolder/SceneContainer"]
+unique_name_in_owner = true
+size = Vector2i(1192, 487)
+render_target_update_mode = 4
+
+[node name="ImageArea" type="PanelContainer" parent="Stage/Browser/Frame/Clip/Stack/Content"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SCImageBg"
+
+[node name="ImageScroll" type="ScrollContainer" parent="Stage/Browser/Frame/Clip/Stack/Content/ImageArea"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ImageMargin" type="MarginContainer" parent="Stage/Browser/Frame/Clip/Stack/Content/ImageArea/ImageScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 18
+
+[node name="ImageView" type="TextureRect" parent="Stage/Browser/Frame/Clip/Stack/Content/ImageArea/ImageScroll/ImageMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VideoArea" type="PanelContainer" parent="Stage/Browser/Frame/Clip/Stack/Content"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SCVideoBg"
+
+[node name="VideoView" parent="Stage/Browser/Frame/Clip/Stack/Content/VideoArea" instance=ExtResource("5_video")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AudioArea" type="PanelContainer" parent="Stage/Browser/Frame/Clip/Stack/Content"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SCVideoBg"
+
+[node name="AudioView" type="VBoxContainer" parent="Stage/Browser/Frame/Clip/Stack/Content/AudioArea"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="AudioTitle" type="Label" parent="Stage/Browser/Frame/Clip/Stack/Content/AudioArea/AudioView"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"SCAudioTitle"
+text = "Audio source"
+
+[node name="AudioBtn" type="Button" parent="Stage/Browser/Frame/Clip/Stack/Content/AudioArea/AudioView"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SCYellowBtn"
+text = "PLAY"
+icon = ExtResource("6_icon_play")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="Stage/Browser/Frame/Clip/Stack/Content/AudioArea/AudioView"]
+unique_name_in_owner = true
+
+[node name="ScrollHint" type="PanelContainer" parent="Stage/Browser"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"SCHintPill"
+
+[node name="Row" type="HBoxContainer" parent="Stage/Browser/ScrollHint"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="HintLabel" type="Label" parent="Stage/Browser/ScrollHint/Row"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCHintLabel"
+text = "Scroll to see it all"
+
+[node name="HintArrow" type="TextureRect" parent="Stage/Browser/ScrollHint/Row"]
+modulate = Color(0.027, 0.02, 0.047, 1)
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("10_icon_down")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StampPivot" type="Control" parent="Stage/Browser"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Stamp" type="PanelContainer" parent="Stage/Browser/StampPivot"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+rotation = -0.20944
+mouse_filter = 2
+theme_type_variation = &"SCStampGood"
+
+[node name="StampLabel" type="Label" parent="Stage/Browser/StampPivot/Stamp"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCStampTextGood"
+text = "RELIABLE"
+
+[node name="AskLayer" type="Control" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AskBar" type="PanelContainer" parent="Stage/AskLayer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -103.0
+offset_right = 300.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"SCAskBar"
+
+[node name="Row" type="HBoxContainer" parent="Stage/AskLayer/AskBar"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="AskLabel" type="Label" parent="Stage/AskLayer/AskBar/Row"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCAsk"
+text = "Is this source reliable?"
+
+[node name="Buttons" type="HBoxContainer" parent="Stage/AskLayer/AskBar/Row"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="ReliableBtn" type="Button" parent="Stage/AskLayer/AskBar/Row/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SCGreenBtn"
+text = "Reliable"
+
+[node name="UnreliableBtn" type="Button" parent="Stage/AskLayer/AskBar/Row/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SCRedBtn"
+text = "Not reliable"
+
+[node name="CallLayer" type="Control" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CallArea" type="VBoxContainer" parent="Stage/CallLayer"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 568.0
+offset_right = 800.0
+offset_bottom = 700.0
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="CallRow" type="HBoxContainer" parent="Stage/CallLayer/CallArea"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="YourCall" type="Label" parent="Stage/CallLayer/CallArea/CallRow"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCYourCall"
+text = "Your call:"
+
+[node name="Verdict" type="PanelContainer" parent="Stage/CallLayer/CallArea/CallRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCVerdictGood"
+
+[node name="VerdictLabel" type="Label" parent="Stage/CallLayer/CallArea/CallRow/Verdict"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCVerdictLabel"
+text = "RELIABLE"
+
+[node name="ChangeBtn" type="Button" parent="Stage/CallLayer/CallArea/CallRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SCGhostBtn"
+text = "Change answer"
+icon = ExtResource("8_icon_left")
+
+[node name="CallMsg" type="Label" parent="Stage/CallLayer/CallArea/CallRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCCallGood"
+text = "Nice call!"
+
+[node name="Lesson" type="Label" parent="Stage/CallLayer/CallArea"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCLesson"
+text = "Lesson"
+autowrap_mode = 3
+
+[node name="PanelLayer" type="Control" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Stage/PanelLayer"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -467.0
+offset_top = 67.0
+offset_right = -40.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_type_variation = &"SCPanel"
+
+[node name="Stack" type="VBoxContainer" parent="Stage/PanelLayer/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Head" type="HBoxContainer" parent="Stage/PanelLayer/Panel/Stack"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PanelTitle" type="Label" parent="Stage/PanelLayer/Panel/Stack/Head"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"SCPanelTitle"
+text = "Check the flags"
+
+[node name="PickCount" type="Label" parent="Stage/PanelLayer/Panel/Stack/Head"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_type_variation = &"SCPickCount"
+text = "0 ticked"
+
+[node name="PanelHint" type="Label" parent="Stage/PanelLayer/Panel/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCHint"
+text = "Tick every flag you can find in this source."
+autowrap_mode = 3
+
+[node name="Scroll" type="ScrollContainer" parent="Stage/PanelLayer/Panel/Stack"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ScrollMargin" type="MarginContainer" parent="Stage/PanelLayer/Panel/Stack/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="Lists" type="VBoxContainer" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="GreenHead" type="HBoxContainer" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Dot" type="Panel" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists/GreenHead"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCFlagDotGreen"
+
+[node name="Label" type="Label" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists/GreenHead"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCFlagHeader"
+text = "GREEN FLAGS"
+
+[node name="GreenList" type="VBoxContainer" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="RedHead" type="HBoxContainer" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Dot" type="Panel" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists/RedHead"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCFlagDotRed"
+
+[node name="Label" type="Label" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists/RedHead"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCFlagHeader"
+text = "RED FLAGS"
+
+[node name="RedList" type="VBoxContainer" parent="Stage/PanelLayer/Panel/Stack/Scroll/ScrollMargin/Lists"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="PanelBtn" type="Button" parent="Stage/PanelLayer/Panel/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SCYellowBtn"
+text = "Lock it in!"
+icon_alignment = 2
+
+[node name="Results" type="Control" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 80.0
+offset_right = -40.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Stack" type="VBoxContainer" parent="Stage/Results"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="ResultsTitle" type="Label" parent="Stage/Results/Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"SCResultsTitle"
+text = "Evaluation Complete!"
+
+[node name="ResultsSub" type="Label" parent="Stage/Results/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"SCResultsSub"
+text = "You called 0 of 0 sources right."
+
+[node name="CardsScroll" type="ScrollContainer" parent="Stage/Results/Stack"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CardsMargin" type="MarginContainer" parent="Stage/Results/Stack/CardsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Cards" type="HFlowContainer" parent="Stage/Results/Stack/CardsScroll/CardsMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+alignment = 1
+
+[node name="ResultButtons" type="HBoxContainer" parent="Stage/Results/Stack"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PlayAgainBtn" type="Button" parent="Stage/Results/Stack/ResultButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SCYellowBtn"
+text = "Play again"
+
+[node name="MainMenuBtn" type="Button" parent="Stage/Results/Stack/ResultButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SCTealBtn"
+text = "Main menu"
+
+[node name="Intro" type="Control" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IntroStack" type="VBoxContainer" parent="Stage/Intro"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="IntroType" type="Label" parent="Stage/Intro/IntroStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"SCIntroType"
+text = "NEWS ARTICLE"
+
+[node name="IntroRound" type="Label" parent="Stage/Intro/IntroStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"SCIntroRound"
+text = "ROUND 01"

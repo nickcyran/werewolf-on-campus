@@ -1,0 +1,104 @@
+[gd_resource type="Theme" format=3]
+
+[sub_resource type="StyleBoxFlat" id="sb_body"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.035, 0.04, 0.063, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.239, 0.259, 0.341, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 16
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="sb_screen"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.078, 0.094, 0.196, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_notch"]
+bg_color = Color(0.035, 0.04, 0.063, 1)
+corner_radius_top_left = 99
+corner_radius_top_right = 99
+corner_radius_bottom_right = 99
+corner_radius_bottom_left = 99
+
+[sub_resource type="StyleBoxFlat" id="sb_card"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 9.0
+bg_color = Color(0.957, 0.965, 0.992, 0.14)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 8
+
+[sub_resource type="StyleBoxFlat" id="sb_app_tile"]
+bg_color = Color(0.271, 0.441, 0.855, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="sb_key"]
+content_margin_left = 6.0
+content_margin_top = 1.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.957, 0.965, 0.992, 0.92)
+border_width_bottom = 2
+border_color = Color(0.6, 0.64, 0.78, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+PhoneNotifAppTile/base_type = &"Panel"
+PhoneNotifAppTile/styles/panel = SubResource("sb_app_tile")
+PhoneNotifBody/base_type = &"PanelContainer"
+PhoneNotifBody/styles/panel = SubResource("sb_body")
+PhoneNotifCard/base_type = &"PanelContainer"
+PhoneNotifCard/styles/panel = SubResource("sb_card")
+PhoneNotifClock/base_type = &"Label"
+PhoneNotifClock/colors/font_color = Color(0.957, 0.965, 0.992, 1)
+PhoneNotifClock/font_sizes/font_size = 30
+PhoneNotifHintText/base_type = &"Label"
+PhoneNotifHintText/colors/font_color = Color(0.886, 0.906, 0.969, 0.75)
+PhoneNotifHintText/font_sizes/font_size = 11
+PhoneNotifKey/base_type = &"PanelContainer"
+PhoneNotifKey/styles/panel = SubResource("sb_key")
+PhoneNotifKeyText/base_type = &"Label"
+PhoneNotifKeyText/colors/font_color = Color(0.078, 0.094, 0.196, 1)
+PhoneNotifKeyText/font_sizes/font_size = 10
+PhoneNotifMeta/base_type = &"Label"
+PhoneNotifMeta/colors/font_color = Color(0.886, 0.906, 0.969, 0.7)
+PhoneNotifMeta/font_sizes/font_size = 10
+PhoneNotifNotch/base_type = &"Panel"
+PhoneNotifNotch/styles/panel = SubResource("sb_notch")
+PhoneNotifPreview/base_type = &"Label"
+PhoneNotifPreview/colors/font_color = Color(0.886, 0.906, 0.969, 0.85)
+PhoneNotifPreview/font_sizes/font_size = 12
+PhoneNotifScreen/base_type = &"PanelContainer"
+PhoneNotifScreen/styles/panel = SubResource("sb_screen")
+PhoneNotifSender/base_type = &"Label"
+PhoneNotifSender/colors/font_color = Color(0.957, 0.965, 0.992, 1)
+PhoneNotifSender/font_sizes/font_size = 14

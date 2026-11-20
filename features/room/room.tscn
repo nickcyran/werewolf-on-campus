@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cptm2sbujptc3" path="res://core/interaction/focus_system.gd" id="fs_1"]
 [ext_resource type="PackedScene" path="res://features/phone/phone.tscn" id="phone_1"]
 [ext_resource type="Shader" path="res://vfx/rounded_screen.gdshader" id="shader_screen"]
+[ext_resource type="PackedScene" path="res://features/phone/phone_notification.tscn" id="phone_notif_1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_computer"]
 size = Vector3(0.435, 0.27, 0.06)
@@ -95,6 +96,9 @@ grow_vertical = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="PhoneNotification" parent="." node_paths=PackedStringArray("phone") instance=ExtResource("phone_notif_1")]
+phone = NodePath("../Interactables/Phone")
 
 [node name="Player" parent="." unique_id=1808541239 instance=ExtResource("1_0sso4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.731053, 1.0158874, 0.35152888)

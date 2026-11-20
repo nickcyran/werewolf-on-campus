@@ -1,0 +1,176 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://features/phone/phone_notification.gd" id="1_script"]
+[ext_resource type="Theme" path="res://features/phone/phone_notification_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://8o0prvv4qf0a" path="res://assets/logos/xMessage.png" id="3_icon"]
+
+[node name="PhoneNotification" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+
+[node name="Holder" type="Control" parent="Root"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -244.0
+offset_top = -232.0
+offset_right = -28.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Slide" type="Control" parent="Root/Holder"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PhoneBody" type="PanelContainer" parent="Root/Holder/Slide"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifBody"
+
+[node name="Screen" type="PanelContainer" parent="Root/Holder/Slide/PhoneBody"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifScreen"
+
+[node name="Stack" type="VBoxContainer" parent="Root/Holder/Slide/PhoneBody/Screen"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Notch" type="Panel" parent="Root/Holder/Slide/PhoneBody/Screen/Stack"]
+custom_minimum_size = Vector2(46, 9)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifNotch"
+
+[node name="Clock" type="Label" parent="Root/Holder/Slide/PhoneBody/Screen/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifClock"
+text = "9:00 AM"
+horizontal_alignment = 1
+
+[node name="Card" type="PanelContainer" parent="Root/Holder/Slide/PhoneBody/Screen/Stack"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifCard"
+
+[node name="Rows" type="VBoxContainer" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="AppRow" type="HBoxContainer" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="AppTile" type="Panel" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card/Rows/AppRow"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifAppTile"
+
+[node name="AppIcon" type="TextureRect" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card/Rows/AppRow/AppTile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AppName" type="Label" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card/Rows/AppRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifMeta"
+text = "MESSAGES"
+
+[node name="When" type="Label" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card/Rows/AppRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifMeta"
+text = "now"
+
+[node name="Sender" type="Label" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifSender"
+text = "Contact"
+text_overrun_behavior = 3
+
+[node name="Preview" type="Label" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/Card/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifPreview"
+text = "Message preview"
+autowrap_mode = 3
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="HintRow" type="HBoxContainer" parent="Root/Holder/Slide/PhoneBody/Screen/Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="Key" type="PanelContainer" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/HintRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifKey"
+
+[node name="KeyLabel" type="Label" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/HintRow/Key"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifKeyText"
+text = "Esc"
+
+[node name="HintLabel" type="Label" parent="Root/Holder/Slide/PhoneBody/Screen/Stack/HintRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"PhoneNotifHintText"
+text = "then pick up your phone"

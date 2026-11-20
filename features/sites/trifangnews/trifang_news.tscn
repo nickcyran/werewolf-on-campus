@@ -91,7 +91,6 @@ mouse_filter = 2
 texture = ExtResource("5_icon_weather")
 expand_mode = 1
 stretch_mode = 5
-vertical_alignment = 1
 
 [node name="TempVBox" type="VBoxContainer" parent="ScrollContainer/Content/WeatherBar/WeatherRow" unique_id=1820541832]
 layout_mode = 2
@@ -257,7 +256,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.615, 0.63, 1)
 theme_override_font_sizes/font_size = 14
-text = "July 24, 2026"
+text = "November 13, 2026"
 script = ExtResource("4_dyndate")
 offset_days = -7
 
@@ -288,6 +287,8 @@ size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.88, 0.875, 0.89, 1)
 theme_override_font_sizes/normal_font_size = 21
 text = "“At approximately 2:30pm on Wednesday, a werewolf sighting occurred. A clip has gone viral with an influencer finding a creature in the campus tunnels. 
+
+Other reports corroborate that it may be a werewolf. These creatures have an unusual fear of vacuum cleaners, with several sightings indicating that the sound of a vacuum may be enough to drive them away.
 
 Officers closely examining the scene found scattered fur. If anyone can provide any information, please call 567-TRI-TPFPD."
 fit_content = true
@@ -364,7 +365,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
-text = "July 31"
+text = "November 20"
 script = ExtResource("4_dyndate")
 pattern = "MMMM D"
 
@@ -389,7 +390,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
-text = "July 30"
+text = "November 19"
 script = ExtResource("4_dyndate")
 pattern = "MMMM D"
 offset_days = -1
@@ -415,7 +416,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.57, 0.565, 0.58, 1)
 theme_override_font_sizes/font_size = 12
-text = "July 29"
+text = "November 18"
 script = ExtResource("4_dyndate")
 pattern = "MMMM D"
 offset_days = -2

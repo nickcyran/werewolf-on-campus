@@ -2,6 +2,36 @@
 
 [ext_resource type="Script" path="res://features/game_end/screens/evidence_review_screen.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://b5oaaton3e2ox" path="res://assets/logos/icons/arrow.png" id="2_icon_arrow"]
+[ext_resource type="Script" path="res://features/game_end/end_state_tier.gd" id="3_tier"]
+[ext_resource type="PackedScene" path="res://features/game_end/components/end_state_pup.tscn" id="4_pup"]
+[ext_resource type="Texture2D" uid="uid://b6lec77m3mg07" path="res://assets/media/WinStateEnd-Pup 1.png" id="5_pup_win"]
+[ext_resource type="Texture2D" uid="uid://bhu5ydgid8xbe" path="res://assets/media/MidStateEnd-Pup 1.png" id="6_pup_mid"]
+[ext_resource type="Texture2D" uid="uid://dtshnvqvytvyi" path="res://assets/media/FailStateEnd-Pup 1.png" id="7_pup_fail"]
+
+[sub_resource type="Resource" id="Resource_tier_win"]
+script = ExtResource("3_tier")
+min_ratio = 0.71
+pup = ExtResource("5_pup_win")
+message = "Solid reading. You separated what the sources backed up from what they didn't."
+verdict_style = &"GameEndScoreWin"
+backdrop_style = &"GameEndPupDiscWin"
+bob_height = 8.0
+
+[sub_resource type="Resource" id="Resource_tier_mid"]
+script = ExtResource("3_tier")
+min_ratio = 0.4
+pup = ExtResource("6_pup_mid")
+message = "About half. The tricky ones are usually the claims with no evidence attached."
+verdict_style = &"GameEndScoreMid"
+backdrop_style = &"GameEndPupDiscMid"
+bob_height = 4.0
+
+[sub_resource type="Resource" id="Resource_tier_fail"]
+script = ExtResource("3_tier")
+pup = ExtResource("7_pup_fail")
+message = "A lot of these slipped past. Worth going back to see what the sources actually supported."
+verdict_style = &"GameEndScoreFail"
+backdrop_style = &"GameEndPupDiscFail"
 
 [node name="EvidenceReviewScreen" type="Control"]
 layout_mode = 3
@@ -12,6 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_script")
+tiers = Array[ExtResource("3_tier")]([SubResource("Resource_tier_win"), SubResource("Resource_tier_mid"), SubResource("Resource_tier_fail")])
 
 [node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,54 +72,75 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="Layout/Scroll/Margin/Column"]
+[node name="Header" type="HBoxContainer" parent="Layout/Scroll/Margin/Column"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 36
+
+[node name="Pup" parent="Layout/Scroll/Margin/Column/Header" instance=ExtResource("4_pup")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(352, 264)
+layout_mode = 2
+
+[node name="Intro" type="VBoxContainer" parent="Layout/Scroll/Margin/Column/Header"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Layout/Scroll/Margin/Column/Header/Intro"]
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"GameEndTitle"
 text = "HOW YOU READ IT"
 autowrap_mode = 3
 
-[node name="TitleSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
-custom_minimum_size = Vector2(0, 10)
+[node name="TitleSpacer" type="Control" parent="Layout/Scroll/Margin/Column/Header/Intro"]
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ScoreRow" type="HBoxContainer" parent="Layout/Scroll/Margin/Column"]
+[node name="ScoreRow" type="HBoxContainer" parent="Layout/Scroll/Margin/Column/Header/Intro"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 10
 
-[node name="Score" type="Label" parent="Layout/Scroll/Margin/Column/ScoreRow"]
+[node name="Score" type="Label" parent="Layout/Scroll/Margin/Column/Header/Intro/ScoreRow"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-theme_type_variation = &"GameEndScore"
+theme_type_variation = &"GameEndScoreWin"
 text = "0"
 
-[node name="ScoreTotal" type="Label" parent="Layout/Scroll/Margin/Column/ScoreRow"]
-unique_name_in_owner = true
+[node name="TotalBaseline" type="MarginContainer" parent="Layout/Scroll/Margin/Column/Header/Intro/ScoreRow"]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_bottom = 13
+
+[node name="ScoreTotal" type="Label" parent="Layout/Scroll/Margin/Column/Header/Intro/ScoreRow/TotalBaseline"]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"GameEndScoreTotal"
 text = "/ 8 read correctly"
 
-[node name="ScoreSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
-custom_minimum_size = Vector2(0, 8)
+[node name="ScoreSpacer" type="Control" parent="Layout/Scroll/Margin/Column/Header/Intro"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Quip" type="Label" parent="Layout/Scroll/Margin/Column"]
+[node name="Quip" type="Label" parent="Layout/Scroll/Margin/Column/Header/Intro"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
-size_flags_horizontal = 0
 mouse_filter = 2
-theme_type_variation = &"GameEndBody"
+theme_type_variation = &"GameEndBodyLarge"
 autowrap_mode = 3
 
-[node name="QuipSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
-custom_minimum_size = Vector2(0, 14)
+[node name="HeaderSpacer" type="Control" parent="Layout/Scroll/Margin/Column"]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
 mouse_filter = 2
 

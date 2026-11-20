@@ -35,6 +35,8 @@ const _FINISH_STEP := 10.0
 @export var play_icon: Texture2D
 @export var pause_icon: Texture2D
 @export var next_icon: Texture2D
+## Score bands for the results board: the pup, headline and message for each.
+@export var result_tiers: Array[EndStateTier] = []
 
 var _sources: Array[GuidedLearningSource] = []
 var _round := 0
@@ -89,7 +91,10 @@ var _tweens: Array[Tween] = []
 @onready var _red_list: VBoxContainer = %RedList
 @onready var _panel_btn: Button = %PanelBtn
 @onready var _results: Control = %Results
+@onready var _results_pup: EndStatePup = %ResultsPup
+@onready var _headline: Label = %Headline
 @onready var _results_sub: Label = %ResultsSub
+@onready var _message: Label = %Message
 @onready var _cards: HFlowContainer = %Cards
 @onready var _intro: Control = %Intro
 @onready var _intro_type: Label = %IntroType
@@ -354,7 +359,13 @@ func _show_results() -> void:
 		card.modulate.a = 0.0
 		_tween().tween_property(card, "modulate:a", 1.0, 0.4).set_delay(0.4 + i * 0.08)
 
-	_results_sub.text = "You called %d of %d sources right." % [correct, _history.size()]
+	_results_sub.text = "%d of %d sources called right." % [correct, _history.size()]
+	var tier := EndStateTier.pick(result_tiers, correct, _history.size())
+	if tier:
+		_headline.text = tier.headline
+		_headline.theme_type_variation = tier.verdict_style
+		_message.text = tier.message
+		_results_pup.show_tier(tier, 0.15)
 	_results.visible = true
 	_results.modulate.a = 0.0
 	_tween().tween_property(_results, "modulate:a", 1.0, 0.4)

@@ -10,6 +10,39 @@
 [ext_resource type="Texture2D" uid="uid://ll5pp5n0fqmf" path="res://assets/logos/icons/arrow-left.png" id="8_icon_left"]
 [ext_resource type="Texture2D" uid="uid://b5oaaton3e2ox" path="res://assets/logos/icons/arrow.png" id="9_icon_right"]
 [ext_resource type="Texture2D" uid="uid://b7lkhjsnjubg6" path="res://assets/logos/icons/arrow-down.png" id="10_icon_down"]
+[ext_resource type="Script" path="res://features/game_end/end_state_tier.gd" id="11_tier"]
+[ext_resource type="PackedScene" path="res://features/game_end/components/end_state_pup.tscn" id="12_pup"]
+[ext_resource type="Texture2D" uid="uid://b6lec77m3mg07" path="res://assets/media/WinStateEnd-Pup 1.png" id="13_pup_win"]
+[ext_resource type="Texture2D" uid="uid://bhu5ydgid8xbe" path="res://assets/media/MidStateEnd-Pup 1.png" id="14_pup_mid"]
+[ext_resource type="Texture2D" uid="uid://dtshnvqvytvyi" path="res://assets/media/FailStateEnd-Pup 1.png" id="15_pup_fail"]
+
+[sub_resource type="Resource" id="Resource_tier_win"]
+script = ExtResource("11_tier")
+min_ratio = 0.71
+pup = ExtResource("13_pup_win")
+headline = "Top Dog!"
+message = "You can tell a solid source from a shaky one. Nice work."
+verdict_style = &"SCResultsHeadlineWin"
+backdrop_style = &"SCPupDiscWin"
+bob_height = 8.0
+
+[sub_resource type="Resource" id="Resource_tier_mid"]
+script = ExtResource("11_tier")
+min_ratio = 0.4
+pup = ExtResource("14_pup_mid")
+headline = "Not Bad!"
+message = "A few sources fooled you. Check who's behind a claim before you trust it."
+verdict_style = &"SCResultsHeadlineMid"
+backdrop_style = &"SCPupDiscMid"
+bob_height = 4.0
+
+[sub_resource type="Resource" id="Resource_tier_fail"]
+script = ExtResource("11_tier")
+pup = ExtResource("15_pup_fail")
+headline = "Tough Round"
+message = "These sources got past you this time. Look over the flags below, then try again."
+verdict_style = &"SCResultsHeadlineFail"
+backdrop_style = &"SCPupDiscFail"
 
 [node name="SourceCheckScreen" type="Control"]
 layout_mode = 3
@@ -24,6 +57,7 @@ script = ExtResource("1_script")
 play_icon = ExtResource("6_icon_play")
 pause_icon = ExtResource("7_icon_pause")
 next_icon = ExtResource("9_icon_right")
+result_tiers = Array[ExtResource("11_tier")]([SubResource("Resource_tier_win"), SubResource("Resource_tier_mid"), SubResource("Resource_tier_fail")])
 
 [node name="BG" type="Panel" parent="."]
 layout_mode = 1
@@ -640,7 +674,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Stack" type="VBoxContainer" parent="Stage/Results"]
+[node name="Columns" type="HBoxContainer" parent="Stage/Results"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -648,67 +682,123 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 28
 
-[node name="ResultsTitle" type="Label" parent="Stage/Results/Stack"]
+[node name="Hero" type="VBoxContainer" parent="Stage/Results/Columns"]
+custom_minimum_size = Vector2(352, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 mouse_filter = 2
-theme_type_variation = &"SCResultsTitle"
-text = "Evaluation Complete!"
+theme_override_constants/separation = 4
+alignment = 1
 
-[node name="ResultsSub" type="Label" parent="Stage/Results/Stack"]
+[node name="ResultsPup" parent="Stage/Results/Columns/Hero" instance=ExtResource("12_pup")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(352, 264)
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="Stage/Results/Columns/Hero"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+mouse_filter = 2
+theme_type_variation = &"SCResultsHeadlineWin"
+text = "Top Dog!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ResultsSub" type="Label" parent="Stage/Results/Columns/Hero"]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"SCResultsSub"
-text = "You called 0 of 0 sources right."
+text = "0 of 0 sources called right."
+horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="CardsScroll" type="ScrollContainer" parent="Stage/Results/Stack"]
+[node name="SubSpacer" type="Control" parent="Stage/Results/Columns/Hero"]
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="CardsMargin" type="MarginContainer" parent="Stage/Results/Stack/CardsScroll"]
-layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
 
-[node name="Cards" type="HFlowContainer" parent="Stage/Results/Stack/CardsScroll/CardsMargin"]
+[node name="Message" type="Label" parent="Stage/Results/Columns/Hero"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-alignment = 1
+theme_type_variation = &"SCLesson"
+horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="ResultButtons" type="HBoxContainer" parent="Stage/Results/Stack"]
+[node name="ButtonsSpacer" type="Control" parent="Stage/Results/Columns/Hero"]
+custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 16
+
+[node name="ResultButtons" type="HBoxContainer" parent="Stage/Results/Columns/Hero"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
 alignment = 1
 
-[node name="PlayAgainBtn" type="Button" parent="Stage/Results/Stack/ResultButtons"]
+[node name="PlayAgainBtn" type="Button" parent="Stage/Results/Columns/Hero/ResultButtons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"SCYellowBtn"
 text = "Play again"
 
-[node name="MainMenuBtn" type="Button" parent="Stage/Results/Stack/ResultButtons"]
+[node name="MainMenuBtn" type="Button" parent="Stage/Results/Columns/Hero/ResultButtons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"SCTealBtn"
 text = "Main menu"
+
+[node name="Board" type="VBoxContainer" parent="Stage/Results/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="BoardHead" type="HBoxContainer" parent="Stage/Results/Columns/Board"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Dot" type="Panel" parent="Stage/Results/Columns/Board/BoardHead"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"SCDotCurrent"
+
+[node name="BoardTitle" type="Label" parent="Stage/Results/Columns/Board/BoardHead"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"SCFlagHeader"
+text = "ROUND BY ROUND"
+
+[node name="CardsScroll" type="ScrollContainer" parent="Stage/Results/Columns/Board"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CardsMargin" type="MarginContainer" parent="Stage/Results/Columns/Board/CardsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Cards" type="HFlowContainer" parent="Stage/Results/Columns/Board/CardsScroll/CardsMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 20
 
 [node name="Intro" type="Control" parent="Stage"]
 unique_name_in_owner = true

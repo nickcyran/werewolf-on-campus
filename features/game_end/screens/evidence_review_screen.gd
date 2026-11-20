@@ -6,13 +6,10 @@ signal continued
 
 const _ResultCardScene := preload("res://features/game_end/components/result_card.tscn")
 
-const _QUIPS: Array[String] = [
-	"A lot of these slipped past. Worth going back to see what the sources actually supported.",
-	"About half. The tricky ones are usually the claims with no evidence attached.",
-	"Solid reading. You caught most of what was and wasn't backed up.",
-	"Excellent. You separated the supported claims from the noise almost perfectly.",
-]
+## Score bands: the pup, quip and score colour for each. Set in the Inspector.
+@export var tiers: Array[EndStateTier] = []
 
+@onready var _pup: EndStatePup = %Pup
 @onready var _score: Label = %Score
 @onready var _score_total: Label = %ScoreTotal
 @onready var _quip: Label = %Quip
@@ -44,7 +41,12 @@ func enter() -> void:
 
 	_score.text = str(score)
 	_score_total.text = "/ %d read correctly" % facts.size()
-	_quip.text = _QUIPS[mini(_QUIPS.size() - 1, int(score / 2.2))]
+
+	var tier := EndStateTier.pick(tiers, score, facts.size())
+	if tier:
+		_score.theme_type_variation = tier.verdict_style
+		_quip.text = tier.message
+		_pup.show_tier(tier, 0.2)
 
 
 func _note_for(supported: bool, checked: bool) -> String:

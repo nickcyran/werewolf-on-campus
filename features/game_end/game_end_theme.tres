@@ -540,7 +540,64 @@ bg_color = Color(0.937, 0.91, 0.847, 0.05)
 border_width_right = 1
 border_color = Color(0.937, 0.91, 0.847, 0.1)
 
+[sub_resource type="StyleBoxFlat" id="sb_pup_disc_win"]
+bg_color = Color(0.639, 0.749, 0.361, 0.22)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.639, 0.749, 0.361, 0.6)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="sb_pup_disc_mid"]
+bg_color = Color(1, 0.851, 0.239, 0.18)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.851, 0.239, 0.55)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="sb_pup_disc_fail"]
+bg_color = Color(0.878, 0.231, 0.188, 0.22)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.878, 0.231, 0.188, 0.6)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+corner_detail = 20
+
 [resource]
+GameEndPupDiscFail/base_type = &"Panel"
+GameEndPupDiscFail/styles/panel = SubResource("sb_pup_disc_fail")
+GameEndPupDiscMid/base_type = &"Panel"
+GameEndPupDiscMid/styles/panel = SubResource("sb_pup_disc_mid")
+GameEndPupDiscWin/base_type = &"Panel"
+GameEndPupDiscWin/styles/panel = SubResource("sb_pup_disc_win")
+GameEndScoreFail/base_type = &"Label"
+GameEndScoreFail/colors/font_color = Color(0.941, 0.541, 0.447, 1)
+GameEndScoreFail/font_sizes/font_size = 56
+GameEndScoreFail/fonts/font = ExtResource("1_typewriter")
+GameEndScoreMid/base_type = &"Label"
+GameEndScoreMid/colors/font_color = Color(1, 0.851, 0.239, 1)
+GameEndScoreMid/font_sizes/font_size = 56
+GameEndScoreMid/fonts/font = ExtResource("1_typewriter")
+GameEndScoreWin/base_type = &"Label"
+GameEndScoreWin/colors/font_color = Color(0.639, 0.749, 0.361, 1)
+GameEndScoreWin/font_sizes/font_size = 56
+GameEndScoreWin/fonts/font = ExtResource("1_typewriter")
 GameEndBackBtn/base_type = &"Button"
 GameEndBackBtn/colors/font_color = Color(0.557, 0.525, 0.463, 1)
 GameEndBackBtn/colors/font_hover_color = Color(0.937, 0.91, 0.847, 1)

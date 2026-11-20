@@ -3,16 +3,22 @@ extends Control
 const ROOM_SCENE := "res://features/room/room.tscn"
 const SLIDE_DURATION := 0.25
 
-@onready var _slides: Array[Control] = [$Slide1, $Slide2, $Slide3]
+## How far the claw marks travel as they slash in.
+const CLAW_SLASH := Vector2(-24.0, 24.0)
+
+@onready var _back_slot: Control = $NavBar/BackSlot
 @onready var _back_btn: Button = $NavBar/BackSlot/Back
+@onready var _next_slot: HBoxContainer = $NavBar/NextSlot
 @onready var _forward_btn: Button = $NavBar/NextSlot/Forward
 @onready var _begin_btn: Button = $NavBar/NextSlot/Begin
 @onready var _page_label: Label = $NavBar/PageIndicator
 @onready var _fade_overlay: ColorRect = $FadeOverlay
 
-@onready var _moon_glow: TextureRect = $Background/Moon/Glow
-@onready var _hero_title: Label = $Slide1/Scroll/Margin/VBox/Title
+@onready var _hero_title: Label = %Title
+@onready var _claws: Array[Control] = [%ClawsLeft, %ClawsRight]
 
+## Every child of Slides is a page, in order, so pages are added in the editor.
+var _slides: Array[Control] = []
 var _slide_index: int = 0
 var _is_sliding := false
 var _started := false
@@ -20,6 +26,12 @@ var _room_requested := false
 
 
 func _ready() -> void:
+	for child in %Slides.get_children():
+		_slides.append(child as Control)
+		(child as Control).visible = _slides.size() == 1
+	for claw in _claws:
+		claw.modulate.a = 0.0
+
 	_fade_overlay.modulate.a = 1.0
 	_back_btn.pressed.connect(_on_back_pressed)
 	_forward_btn.pressed.connect(_on_forward_pressed)
@@ -44,19 +56,20 @@ func _start_ambient() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 
-	_pulse_moon()
+	_slash_claws()
 	_flicker_title()
 
 
-func _pulse_moon() -> void:
-	var tw := create_tween().set_loops().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tw.set_parallel(true)
-	tw.tween_property(_moon_glow, "scale", Vector2(1.14, 1.14), 2.5)
-	tw.tween_property(_moon_glow, "modulate:a", 1.0, 2.5)
-	tw.chain()
-	tw.set_parallel(true)
-	tw.tween_property(_moon_glow, "scale", Vector2.ONE, 2.5)
-	tw.tween_property(_moon_glow, "modulate:a", 0.7, 2.5)
+## Each set rakes in along its own strokes, the right one a beat after the left.
+func _slash_claws() -> void:
+	for i in range(_claws.size()):
+		var claw := _claws[i]
+		var rest := claw.position
+		claw.position = rest - CLAW_SLASH
+		claw.modulate.a = 0.0
+		var tw := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		tw.tween_property(claw, "position", rest, 0.35).set_delay(0.5 + i * 0.18)
+		tw.parallel().tween_property(claw, "modulate:a", 1.0, 0.12).set_delay(0.5 + i * 0.18)
 
 
 func _flicker_title() -> void:
@@ -109,9 +122,14 @@ func _change_slide(direction: int) -> void:
 	_update_nav()
 
 
+## A single page drops the paging controls and centres Begin on its own.
 func _update_nav() -> void:
 	var on_last := _slide_index >= _slides.size() - 1
+	var paged := _slides.size() > 1
 
+	_back_slot.visible = paged
+	_page_label.visible = paged
+	_next_slot.alignment = BoxContainer.ALIGNMENT_BEGIN if paged else BoxContainer.ALIGNMENT_CENTER
 	_back_btn.visible = _slide_index > 0
 	_forward_btn.visible = !on_last
 	_begin_btn.visible = on_last

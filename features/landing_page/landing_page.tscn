@@ -2,106 +2,9 @@
 
 [ext_resource type="Script" uid="uid://1hocdmnbbt1w" path="res://features/landing_page/landing_page.gd" id="1_script"]
 [ext_resource type="Theme" uid="uid://d0jx4wd0hbena" path="res://ui/main_theme.tres" id="2_theme"]
-[ext_resource type="Texture2D" uid="uid://q8ayacuc40q" path="res://assets/intro assets/intro-bg.png" id="3_bg"]
-[ext_resource type="Texture2D" uid="uid://bxv60h3faise4" path="res://assets/intro assets/moon.png" id="4_qpivu"]
-[ext_resource type="PackedScene" path="res://ui/components/dashed_border.tscn" id="5_dash"]
-[ext_resource type="Script" uid="uid://bic3ovncnp0ro" path="res://ui/components/tilt.gd" id="6_tilt"]
-[ext_resource type="Shader" uid="uid://b1ots50ovqjba" path="res://vfx/dashed_border.gdshader" id="7_rxdks"]
+[ext_resource type="Texture2D" path="res://assets/intro assets/claw_marks.png" id="3_claws"]
 [ext_resource type="Texture2D" uid="uid://064nnfpjhqel" path="res://assets/logos/icons/play-button-left.png" id="8_icon_back"]
 [ext_resource type="Texture2D" uid="uid://dyoek0enj057t" path="res://assets/logos/icons/play-button.png" id="9_icon_next"]
-
-[sub_resource type="Gradient" id="Gradient_glow"]
-offsets = PackedFloat32Array(0, 0.3, 1)
-colors = PackedColorArray(1, 0.957, 0.784, 0.55, 1, 0.957, 0.784, 0.22, 1, 0.957, 0.784, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_glow"]
-gradient = SubResource("Gradient_glow")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7l30"]
-resource_local_to_scene = true
-shader = ExtResource("7_rxdks")
-shader_parameter/line_color = Color(0.102, 0.071, 0.024, 1)
-shader_parameter/rect_size = Vector2(470, 41)
-shader_parameter/thickness = 3.0
-shader_parameter/dash = 9.0
-shader_parameter/gap = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxdks"]
-bg_color = Color(0.0627451, 0.05490196, 0.101960786, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.8235294, 0.24705882, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.35)
-shadow_size = 6
-shadow_offset = Vector2(0, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpivu"]
-bg_color = Color(0.0627451, 0.05490196, 0.101960786, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.34117648, 0.8509804, 0.46666667, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.35)
-shadow_size = 6
-shadow_offset = Vector2(0, 3)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sv4sl"]
-resource_local_to_scene = true
-shader = ExtResource("7_rxdks")
-shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
-shader_parameter/rect_size = Vector2(67, 1261)
-shader_parameter/thickness = 2.0
-shader_parameter/dash = 8.0
-shader_parameter/gap = 6.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5iv2u"]
-resource_local_to_scene = true
-shader = ExtResource("7_rxdks")
-shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
-shader_parameter/rect_size = Vector2(71, 703)
-shader_parameter/thickness = 2.0
-shader_parameter/dash = 8.0
-shader_parameter/gap = 6.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bprh8"]
-resource_local_to_scene = true
-shader = ExtResource("7_rxdks")
-shader_parameter/line_color = Color(0.341, 0.851, 0.467, 0.35)
-shader_parameter/rect_size = Vector2(71, 1447)
-shader_parameter/thickness = 2.0
-shader_parameter/dash = 8.0
-shader_parameter/gap = 6.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7l30"]
-bg_color = Color(0.0627451, 0.05490196, 0.101960786, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.36078432, 0.7176471, 0.99215686, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-shadow_color = Color(0, 0, 0, 0.35)
-shadow_size = 6
-shadow_offset = Vector2(0, 3)
 
 [node name="LandingPage" type="Control" unique_id=1494604626]
 layout_mode = 3
@@ -113,7 +16,7 @@ grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_script")
 
-[node name="Background" type="Control" parent="." unique_id=562904087]
+[node name="Background" type="ColorRect" parent="." unique_id=562904087]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,58 +24,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Sky" type="TextureRect" parent="Background" unique_id=398402494]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ClawsLeft" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 30.0
+offset_right = 226.0
+offset_bottom = 213.0
 mouse_filter = 2
-texture = ExtResource("3_bg")
-expand_mode = 3
+texture = ExtResource("3_claws")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Moon" type="Control" parent="Background" unique_id=931871559]
+[node name="ClawsRight" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -248.65002
-offset_top = 24.0
-offset_right = -33.650024
-offset_bottom = 239.0
+offset_left = -240.0
+offset_top = 9.0
+offset_right = -30.0
+offset_bottom = 192.0
 grow_horizontal = 0
 mouse_filter = 2
-
-[node name="Glow" type="TextureRect" parent="Background/Moon" unique_id=1638093081]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -140.0
-offset_right = 140.0
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(220, 220)
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_glow")
+texture = ExtResource("3_claws")
 expand_mode = 1
+stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="Background/Moon" unique_id=1320421538]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_qpivu")
-expand_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Slide1" type="Control" parent="." unique_id=199411762]
+[node name="Slides" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,514 +67,90 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Scroll" type="ScrollContainer" parent="Slide1" unique_id=221660574]
+[node name="Welcome" type="Control" parent="Slides" unique_id=199411762]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-follow_focus = true
+mouse_filter = 2
 
-[node name="Margin" type="MarginContainer" parent="Slide1/Scroll" unique_id=1536134921]
+[node name="Scroll" type="ScrollContainer" parent="Slides/Welcome" unique_id=221660574]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="Slides/Welcome/Scroll" unique_id=1536134921]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 52
-theme_override_constants/margin_right = 60
+theme_override_constants/margin_left = 131
+theme_override_constants/margin_top = 85
+theme_override_constants/margin_right = 130
 theme_override_constants/margin_bottom = 16
 
-[node name="VBox" type="VBoxContainer" parent="Slide1/Scroll/Margin" unique_id=1119486819]
+[node name="VBox" type="VBoxContainer" parent="Slides/Welcome/Scroll/Margin" unique_id=1119486819]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="Slide1/Scroll/Margin/VBox" unique_id=1488520233]
+[node name="Title" type="Label" parent="Slides/Welcome/Scroll/Margin/VBox" unique_id=1488520233]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"LandingHeroTitle"
-theme_override_font_sizes/font_size = 120
-text = "WEREWOLF ON CAMPUS"
-horizontal_alignment = 1
-autowrap_mode = 3
-script = ExtResource("6_tilt")
-tilt_degrees = -1.5
-
-[node name="Spacer1" type="Control" parent="Slide1/Scroll/Margin/VBox" unique_id=720152281]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Chip" type="PanelContainer" parent="Slide1/Scroll/Margin/VBox" unique_id=1697024473]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"LandingChip"
-script = ExtResource("6_tilt")
-tilt_degrees = 1.2
-
-[node name="ChipMargin" type="MarginContainer" parent="Slide1/Scroll/Margin/VBox/Chip" unique_id=1579360279]
-layout_mode = 2
-theme_override_constants/margin_left = 26
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 26
-theme_override_constants/margin_bottom = 8
-
-[node name="Subtitle" type="Label" parent="Slide1/Scroll/Margin/VBox/Chip/ChipMargin" unique_id=884340927]
-layout_mode = 2
-theme_type_variation = &"LandingSubtitle"
-text = "A Misinformation Literacy Game"
-horizontal_alignment = 1
-
-[node name="ChipBorder" parent="Slide1/Scroll/Margin/VBox/Chip" unique_id=565044674 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_s7l30")
-layout_mode = 2
-
-[node name="Spacer2" type="Control" parent="Slide1/Scroll/Margin/VBox" unique_id=1464936309]
-custom_minimum_size = Vector2(0, 38)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Card" type="PanelContainer" parent="Slide1/Scroll/Margin/VBox" unique_id=1815242224]
-custom_minimum_size = Vector2(820, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"LandingCard"
-theme_override_styles/panel = SubResource("StyleBoxFlat_rxdks")
-script = ExtResource("6_tilt")
-tilt_degrees = -0.4
-
-[node name="CardMargin" type="MarginContainer" parent="Slide1/Scroll/Margin/VBox/Card" unique_id=111249726]
-layout_mode = 2
-theme_override_constants/margin_left = 44
-theme_override_constants/margin_top = 34
-theme_override_constants/margin_right = 44
-theme_override_constants/margin_bottom = 34
-
-[node name="CardVBox" type="VBoxContainer" parent="Slide1/Scroll/Margin/VBox/Card/CardMargin" unique_id=1318232040]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Body1" type="Label" parent="Slide1/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=396234522]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"LandingBody"
-text = "You are a student at Tri-Fang University in Tri City."
+theme_type_variation = &"IntroTitle"
+text = "Welcome to Tri-Fang University!"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Spacer1" type="Control" parent="Slide1/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=451906228]
-custom_minimum_size = Vector2(0, 18)
+[node name="TitleSpacer" type="Control" parent="Slides/Welcome/Scroll/Margin/VBox"]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Body2" type="Label" parent="Slide1/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=775605859]
+[node name="Subtitle" type="Label" parent="Slides/Welcome/Scroll/Margin/VBox"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"LandingBody"
-text = "There are reports of a werewolf on campus and you have to determine if there is any validity to these claims."
+theme_type_variation = &"IntroSubtitle"
+text = "Before you begin, there are a few things you should know."
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Spacer2" type="Control" parent="Slide1/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=811927938]
-custom_minimum_size = Vector2(0, 26)
+[node name="SubtitleSpacer" type="Control" parent="Slides/Welcome/Scroll/Margin/VBox"]
+custom_minimum_size = Vector2(0, 19)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Detail1" type="Label" parent="Slide1/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=1559780668]
+[node name="BulletIndent" type="MarginContainer" parent="Slides/Welcome/Scroll/Margin/VBox"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"LandingDetail"
-text = "Use knowledge from the game in order to draw your conclusion."
-horizontal_alignment = 1
-autowrap_mode = 3
+theme_override_constants/margin_left = 6
 
-[node name="Slide2" type="Control" parent="." unique_id=675734592]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Bullets" type="RichTextLabel" parent="Slides/Welcome/Scroll/Margin/VBox/BulletIndent"]
+layout_mode = 2
 mouse_filter = 2
+theme_type_variation = &"IntroBullets"
+bbcode_enabled = true
+text = "[ul bullet=●]First, yes—werewolves are real. And unfortunately, they are a verified threat. They can shapeshift into wolves, eat humans, and they have been known to spread false information to make their next meal a little easier to find. Luckily, not everything you hear comes from a werewolf.
+Humans can be helpful too! Some people at Tri-Fang are experts who provide real, useful, evidence-based information. Others are scared, confused, or simply don't know what they're talking about—and may accidentally spread misinformation.
+You may even encounter people who are skeptical of evidence, even when the facts are right in front of them. That's where [u]you[/u] come in.
+Your job is to figure out which information you can trust and which information you should question.
+You don't need to know anything about werewolves before playing. Everything you need to succeed is right here at Tri-Fang University.[/ul]"
+fit_content = true
+scroll_active = false
 
-[node name="Scroll" type="ScrollContainer" parent="Slide2" unique_id=1189860486]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-follow_focus = true
-
-[node name="Margin" type="MarginContainer" parent="Slide2/Scroll" unique_id=146766535]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 16
-
-[node name="VBox" type="VBoxContainer" parent="Slide2/Scroll/Margin" unique_id=1298919575]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Title" type="Label" parent="Slide2/Scroll/Margin/VBox" unique_id=1699253044]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"MissionTitleGreen"
-text = "Your Mission"
-horizontal_alignment = 1
-script = ExtResource("6_tilt")
-tilt_degrees = -0.4000000000000057
-wobble_degrees = 0.4
-wobble_seconds = 4.0
-
-[node name="Spacer1" type="Control" parent="Slide2/Scroll/Margin/VBox" unique_id=10585420]
-custom_minimum_size = Vector2(0, 28)
+[node name="ClosingSpacer" type="Control" parent="Slides/Welcome/Scroll/Margin/VBox"]
+custom_minimum_size = Vector2(0, 57)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Card" type="PanelContainer" parent="Slide2/Scroll/Margin/VBox" unique_id=423364720]
-custom_minimum_size = Vector2(840, 0)
+[node name="Closing" type="Label" parent="Slides/Welcome/Scroll/Margin/VBox"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"MissionCard"
-theme_override_styles/panel = SubResource("StyleBoxFlat_qpivu")
-script = ExtResource("6_tilt")
-tilt_degrees = -0.4000000000000057
-
-[node name="CardMargin" type="MarginContainer" parent="Slide2/Scroll/Margin/VBox/Card" unique_id=1290847330]
-layout_mode = 2
-theme_override_constants/margin_left = 44
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 44
-theme_override_constants/margin_bottom = 32
-
-[node name="CardVBox" type="VBoxContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin" unique_id=772383756]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Intro" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=1620171535]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"MissionIntro"
-text = "During your research you will encounter conflicting information about the werewolves. Your goal is to determine:"
-autowrap_mode = 3
-
-[node name="Spacer1" type="Control" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=428636497]
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Rows" type="VBoxContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=1439634389]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Row1" type="PanelContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows" unique_id=1242319388]
-layout_mode = 2
-theme_type_variation = &"MissionRow"
-script = ExtResource("6_tilt")
-tilt_degrees = -0.6
-
-[node name="RowMargin" type="MarginContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row1" unique_id=2136789980]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 12
-
-[node name="RowBox" type="HBoxContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row1/RowMargin" unique_id=653371323]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Number" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row1/RowMargin/RowBox" unique_id=197345659]
-layout_mode = 2
-theme_type_variation = &"MissionNumber"
-text = "1"
-
-[node name="Text" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row1/RowMargin/RowBox" unique_id=1080766147]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"MissionEmphasis"
-text = "Is there really a werewolf on campus right now?"
-autowrap_mode = 3
-
-[node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row1" unique_id=1696339690 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_sv4sl")
-layout_mode = 2
-line_color = Color(0.341, 0.851, 0.467, 0.35)
-thickness = 2.0
-dash = 8.0
-gap = 6.0
-
-[node name="Row2" type="PanelContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows" unique_id=538465675]
-layout_mode = 2
-theme_type_variation = &"MissionRow"
-script = ExtResource("6_tilt")
-tilt_degrees = 0.5
-
-[node name="RowMargin" type="MarginContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row2" unique_id=1978244181]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 12
-
-[node name="RowBox" type="HBoxContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row2/RowMargin" unique_id=1604111949]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Number" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row2/RowMargin/RowBox" unique_id=1090185465]
-layout_mode = 2
-theme_type_variation = &"MissionNumber"
-text = "2"
-
-[node name="Text" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row2/RowMargin/RowBox" unique_id=40805977]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"MissionEmphasis"
-text = "How can you recognize it?"
-autowrap_mode = 3
-
-[node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row2" unique_id=1424080793 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_5iv2u")
-layout_mode = 2
-line_color = Color(0.341, 0.851, 0.467, 0.35)
-thickness = 2.0
-dash = 8.0
-gap = 6.0
-
-[node name="Row3" type="PanelContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows" unique_id=1701227285]
-layout_mode = 2
-theme_type_variation = &"MissionRow"
-script = ExtResource("6_tilt")
-tilt_degrees = -0.4
-
-[node name="RowMargin" type="MarginContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row3" unique_id=234100933]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 12
-
-[node name="RowBox" type="HBoxContainer" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row3/RowMargin" unique_id=1765653907]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Number" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row3/RowMargin/RowBox" unique_id=1810429519]
-layout_mode = 2
-theme_type_variation = &"MissionNumber"
-text = "3"
-
-[node name="Text" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row3/RowMargin/RowBox" unique_id=447070405]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"MissionEmphasis"
-text = "How can you protect yourself and avoid getting eaten?"
-autowrap_mode = 3
-
-[node name="RowBorder" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox/Rows/Row3" unique_id=1492627916 instance=ExtResource("5_dash")]
-material = SubResource("ShaderMaterial_bprh8")
-layout_mode = 2
-line_color = Color(0.341, 0.851, 0.467, 0.35)
-thickness = 2.0
-dash = 8.0
-gap = 6.0
-
-[node name="Spacer2" type="Control" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=55447391]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Hint" type="Label" parent="Slide2/Scroll/Margin/VBox/Card/CardMargin/CardVBox" unique_id=997251003]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"MissionHint"
-text = "Use your knowledge and skills in real-world information evaluation to decide what counts as \"true\" in the game."
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Slide3" type="Control" parent="." unique_id=1033802443]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Scroll" type="ScrollContainer" parent="Slide3" unique_id=1376832832]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-follow_focus = true
-
-[node name="Margin" type="MarginContainer" parent="Slide3/Scroll" unique_id=244645107]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 16
-
-[node name="VBox" type="VBoxContainer" parent="Slide3/Scroll/Margin" unique_id=310908265]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Title" type="Label" parent="Slide3/Scroll/Margin/VBox" unique_id=2003703460]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"HowToTitleBlue"
-text = "How to Play"
-horizontal_alignment = 1
-script = ExtResource("6_tilt")
-tilt_degrees = 0.4000000000000057
-wobble_degrees = 0.4
-wobble_seconds = 4.0
-
-[node name="Spacer1" type="Control" parent="Slide3/Scroll/Margin/VBox" unique_id=1954922647]
-custom_minimum_size = Vector2(0, 28)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Card" type="PanelContainer" parent="Slide3/Scroll/Margin/VBox" unique_id=685352787]
-custom_minimum_size = Vector2(860, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"HowToCard"
-theme_override_styles/panel = SubResource("StyleBoxFlat_s7l30")
-script = ExtResource("6_tilt")
-tilt_degrees = 0.4000000000000057
-
-[node name="CardMargin" type="MarginContainer" parent="Slide3/Scroll/Margin/VBox/Card" unique_id=674428062]
-layout_mode = 2
-theme_override_constants/margin_left = 44
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 44
-theme_override_constants/margin_bottom = 32
-
-[node name="Bullets" type="VBoxContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin" unique_id=889572474]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Bullet1" type="HBoxContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets" unique_id=1529931655]
-layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="MarkerSlot" type="MarginContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet1" unique_id=908582900]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 9
-
-[node name="Marker" type="ColorRect" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet1/MarkerSlot" unique_id=490870377]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-color = Color(0.365, 0.722, 1, 1)
-script = ExtResource("6_tilt")
-tilt_degrees = 45.0
-
-[node name="Text" type="Label" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet1" unique_id=850003447]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"HowToBullet"
-text = "Look through all the sources of information presented in the game."
-autowrap_mode = 3
-
-[node name="Bullet2" type="HBoxContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets" unique_id=2075515075]
-layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="MarkerSlot" type="MarginContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet2" unique_id=458650163]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 9
-
-[node name="Marker" type="ColorRect" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet2/MarkerSlot" unique_id=341334853]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-color = Color(0.365, 0.722, 1, 1)
-script = ExtResource("6_tilt")
-tilt_degrees = 45.0
-
-[node name="Text" type="Label" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet2" unique_id=1856314221]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"HowToBullet"
-text = "Evaluate which sources are more reliable and which may be less trustworthy."
-autowrap_mode = 3
-
-[node name="Bullet3" type="HBoxContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets" unique_id=2131495134]
-layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="MarkerSlot" type="MarginContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet3" unique_id=142859358]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 9
-
-[node name="Marker" type="ColorRect" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet3/MarkerSlot" unique_id=717004120]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-color = Color(0.365, 0.722, 1, 1)
-script = ExtResource("6_tilt")
-tilt_degrees = 45.0
-
-[node name="Text" type="Label" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet3" unique_id=1708614353]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"HowToBullet"
-text = "Some info is accurate; some is mis- or disinformation—and you will not always know which is which."
-autowrap_mode = 3
-
-[node name="Bullet4" type="HBoxContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets" unique_id=1625342849]
-layout_mode = 2
-theme_override_constants/separation = 18
-
-[node name="MarkerSlot" type="MarginContainer" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet4" unique_id=116017347]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 9
-
-[node name="Marker" type="ColorRect" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet4/MarkerSlot" unique_id=27477775]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-color = Color(0.365, 0.722, 1, 1)
-script = ExtResource("6_tilt")
-tilt_degrees = 45.0
-
-[node name="Text" type="Label" parent="Slide3/Scroll/Margin/VBox/Card/CardMargin/Bullets/Bullet4" unique_id=352382661]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"HowToBullet"
-text = "Determine what is true within the game by the end of the \"night.\""
+theme_type_variation = &"IntroClosing"
+text = "The world may be fictional, but the skills you're practicing are real. Think carefully. Check your sources. And whatever you do...
+Don't become a werewolf's dinner!!!"
 autowrap_mode = 3
 
 [node name="NavBar" type="HBoxContainer" parent="." unique_id=1221297008]
@@ -721,7 +182,7 @@ icon = ExtResource("8_icon_back")
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_type_variation = &"NavPageIndicator"
-text = "1 / 3"
+text = "1 / 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
